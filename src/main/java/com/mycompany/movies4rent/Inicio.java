@@ -30,6 +30,9 @@ public class Inicio extends javax.swing.JFrame {
         mensajeBienvenida = new javax.swing.JTextArea();
         labelUsuario = new javax.swing.JLabel();
         textUsuario = new javax.swing.JTextField();
+        labelContraseña = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
+        buttonLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MOVIES4RENT");
@@ -58,11 +61,23 @@ public class Inicio extends javax.swing.JFrame {
         labelUsuario.setText("Usuario");
 
         textUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        textUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         textUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         textUsuario.setToolTipText("");
         textUsuario.setAutoscrolls(false);
         textUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textUsuario.setMinimumSize(new java.awt.Dimension(30, 20));
+
+        labelContraseña.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        labelContraseña.setText("Contraseña");
+
+        passwordField.setBackground(new java.awt.Color(204, 204, 204));
+        passwordField.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        passwordField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+
+        buttonLogin.setBackground(new java.awt.Color(0, 0, 204));
+        buttonLogin.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        buttonLogin.setText("ENTRAR");
 
         javax.swing.GroupLayout PanelinicioLayout = new javax.swing.GroupLayout(Panelinicio);
         Panelinicio.setLayout(PanelinicioLayout);
@@ -74,10 +89,13 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelinicioLayout.createSequentialGroup()
                 .addContainerGap(279, Short.MAX_VALUE)
-                .addGroup(PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelContraseña)
                     .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUsuario)
-                    .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(268, 268, 268))
         );
         PanelinicioLayout.setVerticalGroup(
@@ -87,11 +105,17 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(textLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelContraseña)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(buttonLogin)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -111,8 +135,11 @@ public class Inicio extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panelinicio;
+    private javax.swing.JButton buttonLogin;
+    private javax.swing.JLabel labelContraseña;
     private javax.swing.JLabel labelUsuario;
     private javax.swing.JTextArea mensajeBienvenida;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel textLogo;
     private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables
