@@ -9,7 +9,6 @@ package com.mycompany.movies4rent;
  * @author Carlos
  */
 public class Inicio extends javax.swing.JFrame {
-
     /**
      * Creates new form Inicio
      */
@@ -27,31 +26,56 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         Panelinicio = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        textLogo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MOVIES4RENT");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
 
         Panelinicio.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icesoftlogo.png"))); // NOI18N
+        textLogo.setBackground(new java.awt.Color(255, 255, 255));
+        textLogo.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        textLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textLogo.setText("MOVIES4RENT");
+        textLogo.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.black));
+        textLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(255, 102, 0));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 0));
+        jTextArea1.setRows(2);
+        jTextArea1.setText("       Bienvenido a MOVIES4RENT\nDebes iniciar sesion para poder acceder");
+        jTextArea1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, java.awt.Color.black, java.awt.Color.green));
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout PanelinicioLayout = new javax.swing.GroupLayout(Panelinicio);
         Panelinicio.setLayout(PanelinicioLayout);
         PanelinicioLayout.setHorizontalGroup(
             PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelinicioLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(729, Short.MAX_VALUE))
+                .addGroup(PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelinicioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelinicioLayout.createSequentialGroup()
+                        .addGap(265, 265, 265)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         PanelinicioLayout.setVerticalGroup(
             PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelinicioLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 360, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(textLogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(303, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -71,6 +95,8 @@ public class Inicio extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panelinicio;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
 }
