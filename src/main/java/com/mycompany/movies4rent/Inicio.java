@@ -75,9 +75,11 @@ public class Inicio extends javax.swing.JFrame {
         passwordField.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         passwordField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
-        buttonLogin.setBackground(new java.awt.Color(0, 0, 204));
+        buttonLogin.setBackground(new java.awt.Color(102, 153, 255));
         buttonLogin.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         buttonLogin.setText("ENTRAR");
+        buttonLogin.setBorderPainted(false);
+        buttonLogin.setFocusable(false);
 
         javax.swing.GroupLayout PanelinicioLayout = new javax.swing.GroupLayout(Panelinicio);
         Panelinicio.setLayout(PanelinicioLayout);
