@@ -28,6 +28,8 @@ public class Inicio extends javax.swing.JFrame {
         Panelinicio = new javax.swing.JPanel();
         textLogo = new javax.swing.JLabel();
         mensajeBienvenida = new javax.swing.JTextArea();
+        labelUsuario = new javax.swing.JLabel();
+        textUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MOVIES4RENT");
@@ -52,6 +54,16 @@ public class Inicio extends javax.swing.JFrame {
         mensajeBienvenida.setText("       Bienvenido a MOVIES4RENT\nDebes iniciar sesion para poder acceder");
         mensajeBienvenida.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, java.awt.Color.black, java.awt.Color.green));
 
+        labelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        labelUsuario.setText("Usuario");
+
+        textUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        textUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        textUsuario.setToolTipText("");
+        textUsuario.setAutoscrolls(false);
+        textUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        textUsuario.setMinimumSize(new java.awt.Dimension(30, 20));
+
         javax.swing.GroupLayout PanelinicioLayout = new javax.swing.GroupLayout(Panelinicio);
         Panelinicio.setLayout(PanelinicioLayout);
         PanelinicioLayout.setHorizontalGroup(
@@ -62,7 +74,10 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelinicioLayout.createSequentialGroup()
                 .addContainerGap(279, Short.MAX_VALUE)
-                .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelUsuario)
+                    .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(268, 268, 268))
         );
         PanelinicioLayout.setVerticalGroup(
@@ -72,7 +87,11 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(textLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(249, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -92,7 +111,9 @@ public class Inicio extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panelinicio;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JTextArea mensajeBienvenida;
     private javax.swing.JLabel textLogo;
+    private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables
 }
