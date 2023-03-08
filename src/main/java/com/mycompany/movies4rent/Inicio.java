@@ -49,13 +49,13 @@ public class Inicio extends javax.swing.JFrame {
         textLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         mensajeBienvenida.setEditable(false);
-        mensajeBienvenida.setBackground(new java.awt.Color(255, 153, 0));
+        mensajeBienvenida.setBackground(new java.awt.Color(255, 255, 255));
         mensajeBienvenida.setColumns(20);
         mensajeBienvenida.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        mensajeBienvenida.setForeground(new java.awt.Color(153, 0, 153));
         mensajeBienvenida.setRows(2);
         mensajeBienvenida.setText("       Bienvenido a MOVIES4RENT\nDebes iniciar sesion para poder acceder");
-        mensajeBienvenida.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, java.awt.Color.black, java.awt.Color.green));
+        mensajeBienvenida.setBorder(null);
+        mensajeBienvenida.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         labelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         labelUsuario.setText("Usuario");
@@ -65,7 +65,7 @@ public class Inicio extends javax.swing.JFrame {
         textUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         textUsuario.setToolTipText("");
         textUsuario.setAutoscrolls(false);
-        textUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        textUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         textUsuario.setMinimumSize(new java.awt.Dimension(30, 20));
 
         labelContraseña.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
@@ -117,7 +117,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addComponent(buttonLogin)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
