@@ -31,7 +31,7 @@ public class Inicio extends javax.swing.JFrame {
         labelUsuario = new javax.swing.JLabel();
         textUsuario = new javax.swing.JTextField();
         labelContraseña = new javax.swing.JLabel();
-        passwordField = new javax.swing.JPasswordField();
+        textPassword = new javax.swing.JPasswordField();
         buttonLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,15 +71,20 @@ public class Inicio extends javax.swing.JFrame {
         labelContraseña.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         labelContraseña.setText("Contraseña");
 
-        passwordField.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.toolbar.hoverBackground"));
-        passwordField.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        passwordField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        textPassword.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.toolbar.hoverBackground"));
+        textPassword.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        textPassword.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         buttonLogin.setBackground(new java.awt.Color(153, 204, 255));
         buttonLogin.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         buttonLogin.setText("ENTRAR");
         buttonLogin.setBorderPainted(false);
         buttonLogin.setFocusable(false);
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelinicioLayout = new javax.swing.GroupLayout(Panelinicio);
         Panelinicio.setLayout(PanelinicioLayout);
@@ -92,7 +97,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelinicioLayout.createSequentialGroup()
                 .addContainerGap(279, Short.MAX_VALUE)
                 .addGroup(PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelContraseña)
                     .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUsuario)
@@ -114,7 +119,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelContraseña)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addComponent(buttonLogin)
                 .addContainerGap(112, Short.MAX_VALUE))
@@ -134,6 +139,15 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        // TODO add your handling code here:
+        String user = textUsuario.getText() ;
+        String password = textPassword.getText();
+        
+        
+        System.out.println(user+password);
+    }//GEN-LAST:event_buttonLoginActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panelinicio;
@@ -141,8 +155,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel labelContraseña;
     private javax.swing.JLabel labelUsuario;
     private javax.swing.JTextArea mensajeBienvenida;
-    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel textLogo;
+    private javax.swing.JPasswordField textPassword;
     private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables
 }

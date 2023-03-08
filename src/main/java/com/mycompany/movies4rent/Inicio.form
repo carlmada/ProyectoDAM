@@ -58,7 +58,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="279" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="passwordField" alignment="2" min="-2" pref="250" max="-2" attributes="0"/>
+                      <Component id="textPassword" alignment="2" min="-2" pref="250" max="-2" attributes="0"/>
                       <Component id="labelContraseña" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="textUsuario" alignment="2" min="-2" pref="250" max="-2" attributes="0"/>
                       <Component id="labelUsuario" alignment="2" min="-2" max="-2" attributes="0"/>
@@ -83,7 +83,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="labelContraseña" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="passwordField" min="-2" max="-2" attributes="0"/>
+                  <Component id="textPassword" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="buttonLogin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="112" max="32767" attributes="0"/>
@@ -168,7 +168,7 @@
             <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="passwordField">
+        <Component class="javax.swing.JPasswordField" name="textPassword">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="e0" id="Button.toolbar.hoverBackground" palette="3" red="e0" type="palette"/>
@@ -191,6 +191,9 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonLoginActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
