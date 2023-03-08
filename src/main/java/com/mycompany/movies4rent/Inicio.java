@@ -142,9 +142,11 @@ public class Inicio extends javax.swing.JFrame {
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         // TODO add your handling code here:
         String user = textUsuario.getText() ;
-        String password = textPassword.getText();
+        char[] password = textPassword.getPassword();
+        String pass = new String (password);
                 
-        //System.out.println(user+password);
+        //System.out.println(user+pass);
+        //System.exit(0);
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     
