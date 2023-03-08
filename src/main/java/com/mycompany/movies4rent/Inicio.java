@@ -4,6 +4,9 @@
  */
 package com.mycompany.movies4rent;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlos
@@ -60,7 +63,7 @@ public class Inicio extends javax.swing.JFrame {
         labelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         labelUsuario.setText("Usuario");
 
-        textUsuario.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.toolbar.hoverBackground"));
+        textUsuario.setBackground(java.awt.SystemColor.control);
         textUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         textUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         textUsuario.setToolTipText("");
@@ -71,7 +74,7 @@ public class Inicio extends javax.swing.JFrame {
         labelContraseña.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         labelContraseña.setText("Contraseña");
 
-        textPassword.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.toolbar.hoverBackground"));
+        textPassword.setBackground(java.awt.SystemColor.control);
         textPassword.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         textPassword.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
@@ -90,12 +93,10 @@ public class Inicio extends javax.swing.JFrame {
         Panelinicio.setLayout(PanelinicioLayout);
         PanelinicioLayout.setHorizontalGroup(
             PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelinicioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(textLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelinicioLayout.createSequentialGroup()
-                .addContainerGap(279, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(textLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelContraseña)
@@ -109,10 +110,10 @@ public class Inicio extends javax.swing.JFrame {
             PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelinicioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textLogo))
+                .addGap(36, 36, 36)
                 .addComponent(labelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,7 +123,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addComponent(buttonLogin)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,6 +147,7 @@ public class Inicio extends javax.swing.JFrame {
         String pass = new String (password);
                 
         //System.out.println(user+pass);
+        JOptionPane.showMessageDialog(new JFrame(), "Usuario correcto");
         //System.exit(0);
     }//GEN-LAST:event_buttonLoginActionPerformed
 
