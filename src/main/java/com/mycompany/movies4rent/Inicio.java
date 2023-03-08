@@ -143,9 +143,8 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         String user = textUsuario.getText() ;
         String password = textPassword.getText();
-        
-        
-        System.out.println(user+password);
+                
+        //System.out.println(user+password);
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     
