@@ -60,7 +60,7 @@ public class Inicio extends javax.swing.JFrame {
         labelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         labelUsuario.setText("Usuario");
 
-        textUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        textUsuario.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.toolbar.hoverBackground"));
         textUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         textUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         textUsuario.setToolTipText("");
@@ -71,11 +71,11 @@ public class Inicio extends javax.swing.JFrame {
         labelContraseña.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         labelContraseña.setText("Contraseña");
 
-        passwordField.setBackground(new java.awt.Color(204, 204, 204));
+        passwordField.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.toolbar.hoverBackground"));
         passwordField.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         passwordField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
-        buttonLogin.setBackground(new java.awt.Color(102, 153, 255));
+        buttonLogin.setBackground(new java.awt.Color(153, 204, 255));
         buttonLogin.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         buttonLogin.setText("ENTRAR");
         buttonLogin.setBorderPainted(false);
