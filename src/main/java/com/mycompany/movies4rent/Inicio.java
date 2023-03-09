@@ -147,7 +147,7 @@ public class Inicio extends javax.swing.JFrame {
         String pass = new String (password);
                 
         //System.out.println(user+pass);
-        JOptionPane.showMessageDialog(new JFrame(), "Usuario correcto");
+        //JOptionPane.showMessageDialog(new JFrame(), "Usuario correcto");
         //System.exit(0);
     }//GEN-LAST:event_buttonLoginActionPerformed
 
