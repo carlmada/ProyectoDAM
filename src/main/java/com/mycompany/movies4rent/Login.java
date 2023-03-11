@@ -20,6 +20,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -37,11 +38,13 @@ public class Login extends javax.swing.JFrame {
         labelContraseña = new javax.swing.JLabel();
         textPassword = new javax.swing.JPasswordField();
         buttonLogin = new javax.swing.JButton();
+        buttonNuevoUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MOVIES4RENT");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
 
         Panelinicio.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -89,6 +92,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        buttonNuevoUsuario.setBackground(new java.awt.Color(153, 204, 255));
+        buttonNuevoUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        buttonNuevoUsuario.setText("NUEVO USUARIO");
+        buttonNuevoUsuario.setBorderPainted(false);
+        buttonNuevoUsuario.setFocusable(false);
+
         javax.swing.GroupLayout PanelinicioLayout = new javax.swing.GroupLayout(Panelinicio);
         Panelinicio.setLayout(PanelinicioLayout);
         PanelinicioLayout.setHorizontalGroup(
@@ -103,7 +112,8 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUsuario)
                     .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(268, 268, 268))
         );
         PanelinicioLayout.setVerticalGroup(
@@ -123,7 +133,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addComponent(buttonLogin)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(buttonNuevoUsuario)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,7 +164,7 @@ public class Login extends javax.swing.JFrame {
         try {
             //Creamos la url 
             URL url;
-            url = new URL("http://localhost:8080/demo");
+            url = new URL("http://localhost:8080/demo/");
             //Creamos la conexion con la url
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             //Indicamos el metodo de la peticion en la conexion (GET)
@@ -166,6 +178,7 @@ public class Login extends javax.swing.JFrame {
                 System.out.println("error de conexion");
             } else {
                 System.out.println("conexion establecida");
+                
                 LoginAdmin ventanaAdmin = new LoginAdmin();
                 ventanaAdmin.setVisible(true);
             }
@@ -180,6 +193,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panelinicio;
     private javax.swing.JButton buttonLogin;
+    private javax.swing.JButton buttonNuevoUsuario;
     private javax.swing.JLabel labelContraseña;
     private javax.swing.JLabel labelUsuario;
     private javax.swing.JTextArea mensajeBienvenida;

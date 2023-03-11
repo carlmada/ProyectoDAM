@@ -8,6 +8,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 
     public LoginAdmin() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -19,7 +20,8 @@ public class LoginAdmin extends javax.swing.JFrame {
         mensajeBienvenida = new javax.swing.JTextArea();
         jButtonCerrarSesion = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanelAdmin.setBackground(new java.awt.Color(255, 255, 255));
         jPanelAdmin.setPreferredSize(new java.awt.Dimension(800, 400));

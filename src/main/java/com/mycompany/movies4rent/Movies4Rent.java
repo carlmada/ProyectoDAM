@@ -9,9 +9,11 @@ package com.mycompany.movies4rent;
  */
 public class Movies4Rent {
 
+    public static Login inicio = new Login();
+    
+    
     public static void main(String[] args) {
         //System.out.println("Hello World!");
-        Login inicio = new Login();
         inicio.setVisible(true);
     }
 }
