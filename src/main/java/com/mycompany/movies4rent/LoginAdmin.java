@@ -1,4 +1,3 @@
-
 package com.mycompany.movies4rent;
 
 /**
@@ -18,6 +17,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         jPanelAdmin = new javax.swing.JPanel();
         textLogo = new javax.swing.JLabel();
         mensajeBienvenida = new javax.swing.JTextArea();
+        jButtonCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,9 +35,12 @@ public class LoginAdmin extends javax.swing.JFrame {
         mensajeBienvenida.setColumns(20);
         mensajeBienvenida.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         mensajeBienvenida.setRows(2);
-        mensajeBienvenida.setText("       Bienvenido a MOVIES4RENT\n              Eres administrador.\nPuedes realizar las siguientes acciones.");
+        mensajeBienvenida.setText("       Bienvenido a MOVIES4RENT\n          Eres ADMINISTRADOR\nPuedes realizar las siguientes acciones.");
         mensajeBienvenida.setBorder(null);
         mensajeBienvenida.setSelectionColor(new java.awt.Color(255, 255, 255));
+
+        jButtonCerrarSesion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jButtonCerrarSesion.setText("Cerrar Sesion");
 
         javax.swing.GroupLayout jPanelAdminLayout = new javax.swing.GroupLayout(jPanelAdmin);
         jPanelAdmin.setLayout(jPanelAdminLayout);
@@ -48,15 +51,19 @@ public class LoginAdmin extends javax.swing.JFrame {
                 .addComponent(textLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addComponent(jButtonCerrarSesion)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanelAdminLayout.setVerticalGroup(
             jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAdminLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textLogo))
+                .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonCerrarSesion)
+                    .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textLogo)))
                 .addContainerGap(332, Short.MAX_VALUE))
         );
 
@@ -74,13 +81,12 @@ public class LoginAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JPanel jPanelAdmin;
     private javax.swing.JTextArea mensajeBienvenida;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
-
 
 }

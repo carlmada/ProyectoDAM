@@ -155,21 +155,23 @@ public class Login extends javax.swing.JFrame {
             url = new URL("http://localhost:8080/demo");
             //Creamos la conexion con la url
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //Indicamos el mwetodo de la peticion en la conexion (GET)
+            //Indicamos el metodo de la peticion en la conexion (GET)
             //conn.setRequestMethod("GET");
             //Hacemos la conexion
             conn.connect();
 
             //Comprovamos la conexion
             int codigoRespuesta = conn.getResponseCode();
-            if(codigoRespuesta != 200){
+            if (codigoRespuesta != 200) {
                 System.out.println("error de conexion");
-            }else{
+            } else {
                 System.out.println("conexion establecida");
+                LoginAdmin ventanaAdmin = new LoginAdmin();
+                ventanaAdmin.setVisible(true);
             }
 
         } catch (Exception ex) {
-                ex.printStackTrace();
+            ex.printStackTrace();
         }
 
 
