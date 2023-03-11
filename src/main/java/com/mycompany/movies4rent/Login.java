@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author Carlos
  */
-public class Inicio extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Inicio
      */
-    public Inicio() {
+    public Login() {
         initComponents();
     }
 
@@ -53,7 +53,6 @@ public class Inicio extends javax.swing.JFrame {
         textLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         mensajeBienvenida.setEditable(false);
-        mensajeBienvenida.setBackground(new java.awt.Color(255, 255, 255));
         mensajeBienvenida.setColumns(20);
         mensajeBienvenida.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         mensajeBienvenida.setRows(2);

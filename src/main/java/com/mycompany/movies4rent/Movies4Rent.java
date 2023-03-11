@@ -11,7 +11,7 @@ public class Movies4Rent {
 
     public static void main(String[] args) {
         //System.out.println("Hello World!");
-        Inicio inicio = new Inicio();
+        Login inicio = new Login();
         inicio.setVisible(true);
     }
 }
