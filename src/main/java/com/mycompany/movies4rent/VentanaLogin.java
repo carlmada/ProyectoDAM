@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author Carlos
  */
-public class Login extends javax.swing.JFrame {
+public class VentanaLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form Inicio
      */
-    public Login() {
+    public VentanaLogin() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -179,7 +179,7 @@ public class Login extends javax.swing.JFrame {
             } else {
                 System.out.println("conexion establecida");
                 
-                LoginAdmin ventanaAdmin = new LoginAdmin();
+                VentanaAdmin ventanaAdmin = new VentanaAdmin();
                 ventanaAdmin.setVisible(true);
             }
 

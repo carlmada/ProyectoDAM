@@ -4,9 +4,9 @@ package com.mycompany.movies4rent;
  *
  * @author Carlos
  */
-public class LoginAdmin extends javax.swing.JFrame {
+public class VentanaAdmin extends javax.swing.JFrame {
 
-    public LoginAdmin() {
+    public VentanaAdmin() {
         initComponents();
         setLocationRelativeTo(null);
     }

@@ -9,7 +9,7 @@ package com.mycompany.movies4rent;
  */
 public class Movies4Rent {
 
-    public static Login inicio = new Login();
+    public static VentanaLogin inicio = new VentanaLogin();
     
     
     public static void main(String[] args) {
