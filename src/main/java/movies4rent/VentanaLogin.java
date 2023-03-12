@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.movies4rent;
+package movies4rent;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -37,7 +37,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         textUsuario = new javax.swing.JTextField();
         labelContraseña = new javax.swing.JLabel();
         textPassword = new javax.swing.JPasswordField();
-        buttonLogin = new javax.swing.JButton();
+        buttonEntrar = new javax.swing.JButton();
         buttonNuevoUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +47,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         setResizable(false);
 
         Panelinicio.setBackground(new java.awt.Color(255, 255, 255));
+        Panelinicio.setPreferredSize(new java.awt.Dimension(800, 400));
 
         textLogo.setBackground(new java.awt.Color(255, 255, 255));
         textLogo.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
@@ -81,14 +82,14 @@ public class VentanaLogin extends javax.swing.JFrame {
         textPassword.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         textPassword.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
-        buttonLogin.setBackground(new java.awt.Color(153, 204, 255));
-        buttonLogin.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        buttonLogin.setText("ENTRAR");
-        buttonLogin.setBorderPainted(false);
-        buttonLogin.setFocusable(false);
-        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+        buttonEntrar.setBackground(new java.awt.Color(153, 204, 255));
+        buttonEntrar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        buttonEntrar.setText("ENTRAR");
+        buttonEntrar.setBorderPainted(false);
+        buttonEntrar.setFocusable(false);
+        buttonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonLoginActionPerformed(evt);
+                buttonEntrarActionPerformed(evt);
             }
         });
 
@@ -97,6 +98,11 @@ public class VentanaLogin extends javax.swing.JFrame {
         buttonNuevoUsuario.setText("NUEVO USUARIO");
         buttonNuevoUsuario.setBorderPainted(false);
         buttonNuevoUsuario.setFocusable(false);
+        buttonNuevoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonNuevoUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelinicioLayout = new javax.swing.GroupLayout(Panelinicio);
         Panelinicio.setLayout(PanelinicioLayout);
@@ -105,14 +111,14 @@ public class VentanaLogin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelinicioLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(textLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(PanelinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelContraseña)
                     .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUsuario)
                     .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(268, 268, 268))
         );
@@ -132,7 +138,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
-                .addComponent(buttonLogin)
+                .addComponent(buttonEntrar)
                 .addGap(34, 34, 34)
                 .addComponent(buttonNuevoUsuario)
                 .addContainerGap(63, Short.MAX_VALUE))
@@ -142,17 +148,17 @@ public class VentanaLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panelinicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Panelinicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panelinicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Panelinicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+    private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
         // TODO add your handling code here:
         String user = textUsuario.getText();
         char[] password = textPassword.getPassword();
@@ -160,7 +166,7 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         //System.out.println(user+pass);
         //JOptionPane.showMessageDialog(new JFrame(), "Usuario correcto");
-        //System.exit(0);
+        
         try {
             //Creamos la url 
             URL url;
@@ -188,11 +194,16 @@ public class VentanaLogin extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_buttonLoginActionPerformed
+    }//GEN-LAST:event_buttonEntrarActionPerformed
+
+    private void buttonNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNuevoUsuarioActionPerformed
+        VentanaNuevoUsuario ventanaNuevoUsuario = new VentanaNuevoUsuario();
+                ventanaNuevoUsuario.setVisible(true);
+    }//GEN-LAST:event_buttonNuevoUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panelinicio;
-    private javax.swing.JButton buttonLogin;
+    private javax.swing.JButton buttonEntrar;
     private javax.swing.JButton buttonNuevoUsuario;
     private javax.swing.JLabel labelContraseña;
     private javax.swing.JLabel labelUsuario;

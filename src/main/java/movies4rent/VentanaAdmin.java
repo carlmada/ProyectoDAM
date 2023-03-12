@@ -1,4 +1,4 @@
-package com.mycompany.movies4rent;
+package movies4rent;
 
 /**
  *
@@ -21,9 +21,11 @@ public class VentanaAdmin extends javax.swing.JFrame {
         jButtonCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("ADMINISTRADOR");
         setResizable(false);
 
         jPanelAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAdmin.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jPanelAdmin.setPreferredSize(new java.awt.Dimension(800, 400));
 
         textLogo.setBackground(new java.awt.Color(255, 255, 255));
@@ -73,11 +75,11 @@ public class VentanaAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
