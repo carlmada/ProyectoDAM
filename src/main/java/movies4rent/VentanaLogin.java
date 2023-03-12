@@ -4,10 +4,14 @@
  */
 package movies4rent;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -166,27 +170,40 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         //System.out.println(user+pass);
         //JOptionPane.showMessageDialog(new JFrame(), "Usuario correcto");
-        
         try {
             //Creamos la url 
             URL url;
-            url = new URL("http://localhost:8080/demo/");
+            url = new URL("http://localhost:8080/usuaris/");
             //Creamos la conexion con la url
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             //Indicamos el metodo de la peticion en la conexion (GET)
-            //conn.setRequestMethod("GET");
+            conn.setRequestMethod("GET");
             //Hacemos la conexion
             conn.connect();
 
+            StringBuilder resultado = new StringBuilder();
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String linea;
+            while ((linea = rd.readLine()) != null) {
+                resultado.append(linea);
+            }
+            
+            
             //Comprovamos la conexion
             int codigoRespuesta = conn.getResponseCode();
             if (codigoRespuesta != 200) {
                 System.out.println("error de conexion");
             } else {
                 System.out.println("conexion establecida");
-                
                 VentanaAdmin ventanaAdmin = new VentanaAdmin();
                 ventanaAdmin.setVisible(true);
+            System.out.println(resultado.toString());
+            
+                      
+            //Prueba JSON
+            JSONArray jsonArray = new JSONArray(resultado.toString());
+            JSONObject objeto1 = jsonArray.getJSONObject(0);
+            System.out.println(objeto1.toString());
             }
 
         } catch (Exception ex) {
@@ -198,7 +215,7 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void buttonNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNuevoUsuarioActionPerformed
         VentanaNuevoUsuario ventanaNuevoUsuario = new VentanaNuevoUsuario();
-                ventanaNuevoUsuario.setVisible(true);
+        ventanaNuevoUsuario.setVisible(true);
     }//GEN-LAST:event_buttonNuevoUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
