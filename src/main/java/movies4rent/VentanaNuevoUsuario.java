@@ -44,7 +44,6 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("NUEVO USUARIO");
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         jPanelNuevoUsuario.setBackground(new java.awt.Color(255, 255, 255));
@@ -196,7 +195,7 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
                     .addGroup(jPanelNuevoUsuarioLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabelDireccion)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(295, 304, Short.MAX_VALUE))
             .addGroup(jPanelNuevoUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,21 +213,16 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
                             .addComponent(textTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textPasswordNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonRegistroUsuario))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelNuevoUsuarioLayout.createSequentialGroup()
                         .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelPassword)
                             .addComponent(jLabelConfirmPassword))
-                        .addGap(88, 88, 88)
-                        .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textPasswordNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanelNuevoUsuarioLayout.createSequentialGroup()
-                .addGap(334, 334, 334)
-                .addComponent(buttonRegistroUsuario)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelNuevoUsuarioLayout.setVerticalGroup(
             jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,9 +263,9 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
                 .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelConfirmPassword))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(buttonRegistroUsuario)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
