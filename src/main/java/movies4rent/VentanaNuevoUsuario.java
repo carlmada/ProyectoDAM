@@ -90,6 +90,11 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
         buttonRegistroUsuario.setText("REGISTRAR");
         buttonRegistroUsuario.setBorderPainted(false);
         buttonRegistroUsuario.setFocusable(false);
+        buttonRegistroUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegistroUsuarioActionPerformed(evt);
+            }
+        });
 
         textNombre.setBackground(java.awt.SystemColor.control);
         textNombre.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
@@ -263,7 +268,7 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
                 .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelConfirmPassword))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(buttonRegistroUsuario)
                 .addGap(41, 41, 41))
         );
@@ -305,6 +310,10 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
     private void textUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textUsernameActionPerformed
+
+    private void buttonRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegistroUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRegistroUsuarioActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables

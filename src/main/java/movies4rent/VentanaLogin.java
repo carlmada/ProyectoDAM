@@ -4,19 +4,30 @@
  */
 package movies4rent;
 
-import java.io.BufferedReader;
+import Modelos.DTOS.LoginUserDTO;
+import Modelos.DTOS.responseDTO;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import helper.Constants;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.net.HttpURLConnection;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import javax.json.JsonObject;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Form;
+import javax.ws.rs.core.Response;
 /**
  *
  * @author Carlos
@@ -174,56 +185,38 @@ public class VentanaLogin extends javax.swing.JFrame {
         char[] password = textPassword.getPassword();
         String pass = new String(password);
 
-        //System.out.println(user+pass);
-        //JOptionPane.showMessageDialog(new JFrame(), "Usuario correcto");
-        try {
-            //Creamos la url 
-            URL url = new URL("http://localhost:8080/login");
-
-            Map<String, String> params = new LinkedHashMap<>();
-
-            params.put("username", user);
-            params.put("password", pass);
-
-            StringBuilder datos = new StringBuilder();
-
-            for (Map.Entry<String, String> param : params.entrySet()) {
-                if (datos.length() != 0) {
-                    datos.append('&');
-                }
-                datos.append(URLEncoder.encode(param.getKey()));
-                datos.append('=');
-                datos.append(URLEncoder.encode(param.getValue()));
-            }
+        //Creamos el cliente de login
+        Client client = ClientBuilder.newClient();
+        //Creamos el target (URL)
+        WebTarget target = client.target(Constants.url + "/login");
+        //Creamos la solicitud
+        Invocation.Builder solicitud = target.request();
+        //Creamos el objeto que espera el servidor
+        LoginUserDTO loginUser = new LoginUserDTO();
+        //Asignamos los valores
+        loginUser.setPassword(pass);
+        loginUser.setUsername(user);
+        //Creamos una instancia de Gson para convertir nuestro String a JSON
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(loginUser);
+        System.out.println(jsonString);
+        
+        //Enviamos nuestro json via POST a la API
+        Response post = solicitud.post(Entity.json(jsonString));
+        
+        //Recibimos la respuesta y la leemos en una clase String
+        String responseJsonString = post.readEntity(String.class);
+        //El string es un json que lo convertimos en un objeto de java
+        responseDTO responseJson = gson.fromJson(responseJsonString, responseDTO.class);
+        switch (post.getStatus()) {
+            case 200:
+                //Imprimimos el token(tu codigo iria aqui)
+                System.out.println(responseJson.getValue().getToken());
+                break;
             
-            System.out.println(datos.toString());
-            // hasta aqui bien..................
-            
-            byte[] postBytes = datos.toString().getBytes("utf-8");
-
-            //Creamos la conexion con la url.
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //Indicamos el metodo de la peticion en la conexion (GET)
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setRequestProperty("Accept", "*/*");
-            conn.setRequestProperty("Content-Length", String.valueOf(postBytes.length));
-            conn.setDoOutput(true);
-            
-            OutputStream os = conn.getOutputStream();
-            os.write(postBytes, 0, postBytes.length);
-            //conn.getOutputStream().write(postBytes);
-
-            Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            for (int c = in.read(); c != -1; c = in.read()) {
-                System.out.print((char) c);
-            }
-
-            int codigoRespuesta = conn.getResponseCode();
-            System.out.println("respuesta del servidor: " + codigoRespuesta);
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            default: 
+                System.out.println("Error");
+                break;
         }
     }//GEN-LAST:event_buttonEntrarActionPerformed
 

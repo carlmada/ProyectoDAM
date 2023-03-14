@@ -1,6 +1,8 @@
 
 package Modelos;
 
+import java.util.UUID;
+
 /**
  *
  * @author Carlos
@@ -8,26 +10,26 @@ package Modelos;
 public class Usuarios {
     
     //Atributos.
-    int id;
+    UUID id;
     String address;
     String apellidos;
     String email;
-    int id_rol;
+    boolean isAdmin = false;
     String nombre;
     String password;
     String telefono;
     String username;
 
     //Constructor.
-    public Usuarios(int id, String address, String apellidos,
-                    String email, int id_rol, String nombre, 
+    public Usuarios(UUID id, String address, String apellidos,
+                    String email, boolean isAdmin, String nombre, 
                     String password, String telefono, String username) {
         
         this.id = id;
         this.address = address;
         this.apellidos = apellidos;
         this.email = email;
-        this.id_rol = id_rol;
+        this.isAdmin = isAdmin;
         this.nombre = nombre;
         this.password = password;
         this.telefono = telefono;
@@ -36,11 +38,11 @@ public class Usuarios {
     
     //Getters-Setters.
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -68,12 +70,12 @@ public class Usuarios {
         this.email = email;
     }
 
-    public int getId_rol() {
-        return id_rol;
+    public boolean getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setId_rol(int id_rol) {
-        this.id_rol = id_rol;
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public String getNombre() {
