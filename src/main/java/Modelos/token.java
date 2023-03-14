@@ -9,24 +9,22 @@ import java.util.UUID;
 
 /**
  *
- * @author Er_jo
+ * @author Carlos
  */
-public class token {
-       private UUID id;
-
+public class Token {
+      
+    //Atributos.
+    private UUID id;
     String username;
-
     String token;
-
     LocalDateTime creationDate;
-
     LocalDateTime lastUsed;
 
-    public token() {
-        
+    //Constructor.
+    public Token() {
     }
 
-    public token(UUID id, String username, String token, LocalDateTime creationDate, LocalDateTime lastUsed) {
+    public Token(UUID id, String username, String token, LocalDateTime creationDate, LocalDateTime lastUsed) {
         this.id = id;
         this.username = username;
         this.token = token;
@@ -34,6 +32,7 @@ public class token {
         this.lastUsed = lastUsed;
     }
 
+    //Getters-Setters.
     public UUID getId() {
         return id;
     }

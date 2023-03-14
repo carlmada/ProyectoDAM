@@ -6,7 +6,7 @@ package helper;
 
 /**
  *
- * @author Er_jo
+ * @author Carlos
  */
 public class Constants {
     
