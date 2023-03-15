@@ -2,7 +2,10 @@ movies4rent\VentanaLogin$2.class
 Modelos\token.class
 movies4rent\VentanaNuevoUsuario$2.class
 Modelos\DTOS\LoginUserDTO.class
+<<<<<<< HEAD
 movies4rent\VentanaUsuario.class
+=======
+>>>>>>> origin/master
 movies4rent\VentanaNuevoUsuario.class
 movies4rent\VentanaNuevoUsuario$1.class
 helper\Constants.class
@@ -17,4 +20,8 @@ Modelos\DTOS\responseDTO.class
 movies4rent\VentanaLogin$1.class
 movies4rent\VentanaNuevoUsuario$7.class
 movies4rent\VentanaNuevoUsuario$3.class
+<<<<<<< HEAD
+=======
+.netbeans_automatic_build
+>>>>>>> origin/master
 Modelos\Usuarios.class

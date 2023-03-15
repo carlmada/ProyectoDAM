@@ -1,8 +1,6 @@
-
 package Modelos;
 
 import java.util.UUID;
-
 /**
  *
  * @author Carlos
@@ -23,8 +21,7 @@ public class Usuarios {
     //Constructor.
     public Usuarios(UUID id, String address, String apellidos,
                     String email, boolean isAdmin, String nombre, 
-                    String password, String telefono, String username) {
-        
+                    String password, String telefono, String username) { 
         this.id = id;
         this.address = address;
         this.apellidos = apellidos;
@@ -34,6 +31,10 @@ public class Usuarios {
         this.password = password;
         this.telefono = telefono;
         this.username = username;
+    }
+
+    public Usuarios() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     //Getters-Setters.

@@ -8,7 +8,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
     public VentanaAdmin() {
         initComponents();
-        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -39,7 +38,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         mensajeBienvenida.setColumns(20);
         mensajeBienvenida.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         mensajeBienvenida.setRows(2);
-        mensajeBienvenida.setText("       Bienvenido a MOVIES4RENT\n          Eres ADMINISTRADOR\nPuedes realizar las siguientes acciones.");
+        mensajeBienvenida.setText("       Bienvenido a MOVIES4RENT\n          Eres ADMINISTRADOR");
         mensajeBienvenida.setBorder(null);
         mensajeBienvenida.setSelectionColor(new java.awt.Color(255, 255, 255));
 
@@ -68,7 +67,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
                     .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(textLogo)))
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(351, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -83,9 +82,11 @@ public class VentanaAdmin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JPanel jPanelAdmin;

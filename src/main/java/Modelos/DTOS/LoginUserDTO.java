@@ -6,13 +6,15 @@ package Modelos.DTOS;
 
 /**
  *
- * @author Er_jo
+ * @author Carlos
  */
 public class LoginUserDTO {
     
+    //Atributos.
     private String username;
     private String password;
 
+    //Getters-Setters.
     public String getUsername() {
         return username;
     }
