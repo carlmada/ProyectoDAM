@@ -34,6 +34,8 @@ import javax.ws.rs.core.Response;
  */
 public class VentanaLogin extends javax.swing.JFrame {
 
+    public static String user;
+    public static String pass;
     /**
      * Creates new form Inicio
      */
@@ -181,14 +183,14 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
         // TODO add your handling code here:
-        String user = textUsuario.getText();
+        user = textUsuario.getText();
         char[] password = textPassword.getPassword();
-        String pass = new String(password);
+        pass = new String(password);
 
         //Creamos el cliente de login
         Client client = ClientBuilder.newClient();
         //Creamos el target (URL)
-        WebTarget target = client.target(Constants.url + "/login");
+        WebTarget target = client.target(Constants.url + Constants.urlLogin);
         //Creamos la solicitud
         Invocation.Builder solicitud = target.request();
         //Creamos el objeto que espera el servidor
@@ -211,7 +213,22 @@ public class VentanaLogin extends javax.swing.JFrame {
         switch (post.getStatus()) {
             case 200:
                 //Imprimimos el token(tu codigo iria aqui)
-                System.out.println(responseJson.getValue().getToken());
+                System.out.println(responseJson.getMessage());
+                System.out.println("token: "+responseJson.getValue().getToken());
+                System.out.println("is admin: "+responseJson.getValue().isAdmin());
+                
+                if(responseJson.getValue().isAdmin()){
+                    //Ventana administrador.
+                    System.out.println("entras admin");
+                    VentanaAdmin ventanaAdmin = new VentanaAdmin();
+                    ventanaAdmin.setVisible(true);
+                }else{
+                    //Ventana usuario.
+                    System.out.println("entras user");
+                    VentanaUsuario ventanaUsuario = new VentanaUsuario();
+                    ventanaUsuario.setVisible(true);
+                }
+               
                 break;
             
             default: 

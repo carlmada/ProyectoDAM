@@ -11,5 +11,6 @@ package helper;
 public class Constants {
     
    public static String url = "http://localhost:8080";
+   public static String urlLogin = "/login";
     
 }
