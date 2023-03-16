@@ -6,22 +6,30 @@ package Modelos;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 /**
  *
  * @author Carlos
  */
+<<<<<<< HEAD
 public class Token {
       
     //Atributos.
+=======
+public class token {
+
+>>>>>>> c849ec9 (Continuo codificacion de registro nuevo usuario y RegisterUserDTO)
     private UUID id;
     String username;
     String token;
     LocalDateTime creationDate;
     LocalDateTime lastUsed;
 
+<<<<<<< HEAD
     //Constructor.
     public Token() {
+=======
+    public token() {
+>>>>>>> c849ec9 (Continuo codificacion de registro nuevo usuario y RegisterUserDTO)
     }
 
     public Token(UUID id, String username, String token, LocalDateTime creationDate, LocalDateTime lastUsed) {
@@ -41,28 +49,28 @@ public class Token {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getToken() {
         return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
-
     public LocalDateTime getLastUsed() {
         return lastUsed;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public void setLastUsed(LocalDateTime lastUsed) {
@@ -70,4 +78,3 @@ public class Token {
     }
 
 }
-

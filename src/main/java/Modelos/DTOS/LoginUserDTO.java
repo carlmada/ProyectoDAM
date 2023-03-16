@@ -6,7 +6,11 @@ package Modelos.DTOS;
 
 /**
  *
+<<<<<<< HEAD
  * @author Carlos
+=======
+ * @author Carlos.
+>>>>>>> c849ec9 (Continuo codificacion de registro nuevo usuario y RegisterUserDTO)
  */
 public class LoginUserDTO {
     
