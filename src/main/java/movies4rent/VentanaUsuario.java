@@ -8,10 +8,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     public VentanaUsuario() {
         initComponents();
-<<<<<<< HEAD
         setLocationRelativeTo(null);
-=======
->>>>>>> origin/master
     }
 
     @SuppressWarnings("unchecked")
@@ -88,10 +85,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
         );
 
         pack();
-<<<<<<< HEAD
-=======
-        setLocationRelativeTo(null);
->>>>>>> origin/master
     }// </editor-fold>//GEN-END:initComponents
 
     

@@ -33,10 +33,6 @@ public class Usuarios {
         this.username = username;
     }
 
-    public Usuarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     //Getters-Setters.
 
     public UUID getId() {

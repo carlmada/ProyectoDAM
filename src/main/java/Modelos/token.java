@@ -10,28 +10,20 @@ import java.util.UUID;
  *
  * @author Carlos
  */
-<<<<<<< HEAD
-public class Token {
       
     //Atributos.
-=======
-public class token {
+public class Token {
 
->>>>>>> c849ec9 (Continuo codificacion de registro nuevo usuario y RegisterUserDTO)
     private UUID id;
     String username;
     String token;
     LocalDateTime creationDate;
     LocalDateTime lastUsed;
 
-<<<<<<< HEAD
     //Constructor.
-    public Token() {
-=======
-    public token() {
->>>>>>> c849ec9 (Continuo codificacion de registro nuevo usuario y RegisterUserDTO)
-    }
 
+    public Token() {
+    }
     public Token(UUID id, String username, String token, LocalDateTime creationDate, LocalDateTime lastUsed) {
         this.id = id;
         this.username = username;

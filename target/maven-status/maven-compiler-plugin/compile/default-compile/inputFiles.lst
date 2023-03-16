@@ -2,13 +2,11 @@ C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\LoginUserDTO.ja
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\VentanaLogin.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\helper\Constants.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\VentanaNuevoUsuario.java
-C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\token.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\Token.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\Usuarios.java
-<<<<<<< HEAD
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\VentanaUsuario.java
-=======
->>>>>>> origin/master
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\responseDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\Movies4Rent.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\TokenDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\VentanaAdmin.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\RegisterUserDTO.java
