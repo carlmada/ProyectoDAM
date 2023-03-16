@@ -1,12 +1,13 @@
 package Modelos;
 
 import java.util.UUID;
+
 /**
  *
  * @author Carlos
  */
 public class Usuarios {
-    
+
     //Atributos.
     UUID id;
     String address;
@@ -20,8 +21,8 @@ public class Usuarios {
 
     //Constructor.
     public Usuarios(UUID id, String address, String apellidos,
-                    String email, boolean isAdmin, String nombre, 
-                    String password, String telefono, String username) { 
+            String email, boolean isAdmin, String nombre,
+            String password, String telefono, String username) {
         this.id = id;
         this.address = address;
         this.apellidos = apellidos;
@@ -34,7 +35,6 @@ public class Usuarios {
     }
 
     //Getters-Setters.
-
     public UUID getId() {
         return id;
     }
@@ -106,5 +106,5 @@ public class Usuarios {
     public void setUsername(String username) {
         this.username = username;
     }
-       
+
 }

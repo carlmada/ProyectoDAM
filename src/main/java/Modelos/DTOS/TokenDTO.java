@@ -9,19 +9,20 @@ package Modelos.DTOS;
  * @author Carlos
  */
 public class TokenDTO {
-    
+
     //Atributos.
     private String token;
     private boolean isAdmin;
 
     //Constructor.
-    public TokenDTO() {    }
-     
+    public TokenDTO() {
+    }
+
     public TokenDTO(String token, boolean isAdmin) {
         this.token = token;
         this.isAdmin = isAdmin;
     }
-   
+
     //Getters-Setters.
     public String getToken() {
         return token;

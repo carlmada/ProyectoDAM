@@ -1,14 +1,13 @@
 package Modelos.DTOS;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Carlos
  */
-
 public class responseDTO {
 
     private String message;
@@ -21,7 +20,7 @@ public class responseDTO {
         this.message = message;
         this.value = value;
     }
-    
+
     //Getters-Setters
     public String getMessage() {
         return message;
@@ -39,4 +38,3 @@ public class responseDTO {
         this.value = value;
     }
 }
-

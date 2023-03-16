@@ -85,8 +85,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JPanel jPanelAdmin;

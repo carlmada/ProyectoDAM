@@ -6,12 +6,12 @@ package Modelos;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+
 /**
  *
  * @author Carlos
  */
-      
-    //Atributos.
+//Atributos.
 public class Token {
 
     private UUID id;
@@ -21,9 +21,9 @@ public class Token {
     LocalDateTime lastUsed;
 
     //Constructor.
-
     public Token() {
     }
+
     public Token(UUID id, String username, String token, LocalDateTime creationDate, LocalDateTime lastUsed) {
         this.id = id;
         this.username = username;

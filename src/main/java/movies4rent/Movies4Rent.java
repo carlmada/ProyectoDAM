@@ -10,8 +10,7 @@ package movies4rent;
 public class Movies4Rent {
 
     public static VentanaLogin inicio = new VentanaLogin();
-    
-    
+
     public static void main(String[] args) {
         //System.out.println("Hello World!");
         inicio.setVisible(true);

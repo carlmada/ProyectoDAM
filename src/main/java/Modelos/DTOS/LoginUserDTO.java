@@ -9,7 +9,7 @@ package Modelos.DTOS;
  * @author Carlos
  */
 public class LoginUserDTO {
-    
+
     //Atributos.
     private String username;
     private String password;
@@ -30,5 +30,5 @@ public class LoginUserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
 }
