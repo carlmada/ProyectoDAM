@@ -1,5 +1,15 @@
 package movies4rent;
 
+import Modelos.DTOS.LogoutUserDTO;
+import com.google.gson.Gson;
+import helper.Constants;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
+
 /**
  *
  * @author Carlos
@@ -84,6 +94,33 @@ public class VentanaAdmin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    //Creamos un string con el token obtenido .
+    String token = Constants.token;
+
+    //Haremos la peticion al servidor del nombre del usuario.
+    //Creamos el cliente de login
+    Client client = ClientBuilder.newClient();
+    //Creamos el target (URL)
+    WebTarget target = client.target(Constants.urlUsuariosInfo);
+    //Creamos la solicitud
+    Invocation.Builder solicitud = target.request();
+    //Creamos el objeto que espera el servidor
+    LogoutUserDTO logout = new LogoutUserDTO();
+    //Asignamos los valores
+   logout.
+
+    //loginUser.setUsername (user);
+    //Creamos una instancia de Gson para convertir nuestro String a JSON
+    Gson gson = new Gson();
+    //String jsonString = gson.toJson(loginUser);
+
+    //Enviamos nuestro json via POST a la API
+    //Response post = solicitud.post(Entity.json(jsonString));
+
+    //Recibimos la respuesta y la leemos en una clase String
+    //String responseJsonString = post.readEntity(String.class);
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;

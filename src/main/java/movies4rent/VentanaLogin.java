@@ -217,6 +217,9 @@ public class VentanaLogin extends javax.swing.JFrame {
                 System.out.println("token: " + responseJson.getValue().getToken());
                 System.out.println("is admin: " + responseJson.getValue().isAdmin());
 
+                //Asignamos el token a la variable global.
+                Constants.token = responseJson.getValue().getToken();
+                
                 if (responseJson.getValue().isAdmin()) {
                     //Ventana administrador.
                     System.out.println("entras admin");

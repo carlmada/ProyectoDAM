@@ -12,7 +12,7 @@ import java.util.UUID;
  * @author Carlos
  */
 //Atributos.
-public class Token {
+public class token {
 
     private UUID id;
     String username;
@@ -21,10 +21,10 @@ public class Token {
     LocalDateTime lastUsed;
 
     //Constructor.
-    public Token() {
+    public token() {
     }
 
-    public Token(UUID id, String username, String token, LocalDateTime creationDate, LocalDateTime lastUsed) {
+    public token(UUID id, String username, String token, LocalDateTime creationDate, LocalDateTime lastUsed) {
         this.id = id;
         this.username = username;
         this.token = token;
