@@ -1,6 +1,8 @@
 package movies4rent;
 
+import Modelos.DTOS.UserInfoDTO;
 import Modelos.DTOS.responseLogoutDTO;
+import Modelos.DTOS.responseUserInfoDTO;
 import com.google.gson.Gson;
 import helper.Constants;
 import java.io.BufferedReader;
@@ -26,7 +28,46 @@ public class VentanaUsuario extends javax.swing.JFrame {
     public VentanaUsuario() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        
+        //***********************************************
+        StringBuilder resultado = new StringBuilder();
+        try {
+            //Creamos la URL
+            URL url = new URL(Constants.urlUsuariosInfo + "?token=" + Constants.token);
+            //Creamos la conexion al servidor.
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            //Metodo GET
+            conn.setRequestMethod("GET");
 
+            ////Abrimos un input Stream de datos del servidor
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            //Leemos la respuesta del servidor.
+            String linea;
+            while ((linea = rd.readLine()) != null) {
+                resultado.append(linea);
+            }
+            //Cerramos la conexion.
+            rd.close();
+        } catch (MalformedURLException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+
+        //Creamos una instancia de Gson para convertir nuestro String a JSON
+        Gson gson = new Gson();
+
+        //Pasamos la respuesta a un String.
+        String responseJsonString = resultado.toString();
+
+        //El string es un json que lo convertimos en un objeto de java
+        responseUserInfoDTO responseJson = gson.fromJson(responseJsonString, responseUserInfoDTO.class);
+        System.out.println(responseJson.getValue().getNombre());
+        
+        //***********************************************
+        
     }
     
      /**
