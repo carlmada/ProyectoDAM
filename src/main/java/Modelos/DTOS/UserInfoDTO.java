@@ -1,5 +1,7 @@
 package Modelos.DTOS;
 
+import java.util.UUID;
+
 /**
  *
  * @author Carlos
@@ -10,7 +12,7 @@ public class UserInfoDTO {
     }
     
     //Atributos
-    private int id;
+    private UUID id;
     private String nombre;
     private String apellidos;
     private String email;
@@ -18,11 +20,11 @@ public class UserInfoDTO {
     
     
     //Getters-Setters.
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

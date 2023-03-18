@@ -1,6 +1,5 @@
 package movies4rent;
 
-import Modelos.DTOS.UserInfoDTO;
 import Modelos.DTOS.responseLogoutDTO;
 import Modelos.DTOS.responseUserInfoDTO;
 import com.google.gson.Gson;
@@ -27,9 +26,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
      */
     public VentanaUsuario() {
         initComponents();
-        setLocationRelativeTo(null);
-        
-        
+        setLocationRelativeTo(null);       
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
@@ -65,9 +62,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         //El string es un json que lo convertimos en un objeto de java
         responseUserInfoDTO responseJson = gson.fromJson(responseJsonString, responseUserInfoDTO.class);
         System.out.println(responseJson.getValue().getNombre());
-        
         //***********************************************
-        
     }
     
      /**
