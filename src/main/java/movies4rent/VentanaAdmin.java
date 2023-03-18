@@ -27,8 +27,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
      */
     public VentanaAdmin() {
         initComponents();
+        setLocationRelativeTo(null); 
         
-        /*
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
@@ -63,10 +63,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         //El string es un json que lo convertimos en un objeto de java
         responseUserInfoDTO responseJson = gson.fromJson(responseJsonString, responseUserInfoDTO.class);
-        System.out.println(responseJson);
+        System.out.println(responseJson.getValue().getNombre());
+        jTextFieldNombre.setText(responseJson.getValue().getNombre()); 
         //***********************************************
-        */
-        
     }
 
     /**
@@ -81,6 +80,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
         textLogo = new javax.swing.JLabel();
         mensajeBienvenida = new javax.swing.JTextArea();
         jButtonCerrarSesion = new javax.swing.JButton();
+        jLabelUsuario = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADMINISTRADOR");
@@ -113,6 +114,13 @@ public class VentanaAdmin extends javax.swing.JFrame {
             }
         });
 
+        jLabelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jLabelUsuario.setText("USUARIO:");
+
+        jTextFieldNombre.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jTextFieldNombre.setToolTipText("");
+        jTextFieldNombre.setBorder(null);
+
         javax.swing.GroupLayout jPanelAdminLayout = new javax.swing.GroupLayout(jPanelAdmin);
         jPanelAdmin.setLayout(jPanelAdminLayout);
         jPanelAdminLayout.setHorizontalGroup(
@@ -122,20 +130,29 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addComponent(textLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(39, 39, 39)
+                .addComponent(jLabelUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAdminLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
         );
         jPanelAdminLayout.setVerticalGroup(
             jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAdminLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonCerrarSesion)
-                    .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textLogo)))
-                .addContainerGap(351, Short.MAX_VALUE))
+                        .addComponent(jLabelUsuario)
+                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textLogo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
+                .addComponent(jButtonCerrarSesion)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,7 +225,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelAdmin;
+    private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextArea mensajeBienvenida;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
