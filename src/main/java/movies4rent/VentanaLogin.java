@@ -219,22 +219,25 @@ public class VentanaLogin extends javax.swing.JFrame {
 
                 //Asignamos el token a la variable global.
                 Constants.token = responseJson.getValue().getToken();
-                
+
                 if (responseJson.getValue().isAdmin()) {
                     //Ventana administrador.
                     System.out.println("entras admin");
                     VentanaAdmin ventanaAdmin = new VentanaAdmin();
                     ventanaAdmin.setVisible(true);
+                    this.dispose();
                 } else {
                     //Ventana usuario.
                     System.out.println("entras user");
                     VentanaUsuario ventanaUsuario = new VentanaUsuario();
                     ventanaUsuario.setVisible(true);
+                    this.dispose();
                 }
                 break;
             default:
                 System.out.println("Error");
                 break;
+
         }
     }//GEN-LAST:event_buttonEntrarActionPerformed
 

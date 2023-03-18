@@ -1,13 +1,15 @@
 package movies4rent;
 
-import Modelos.DTOS.LoginUserDTO;
-import Modelos.DTOS.LogoutUserDTO;
+import Modelos.DTOS.responseLogoutDTO;
 import com.google.gson.Gson;
 import helper.Constants;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation;
-import javax.ws.rs.client.WebTarget;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +20,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     public VentanaUsuario() {
         initComponents();
         setLocationRelativeTo(null);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -53,6 +56,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
         jButtonCerrarSesion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jButtonCerrarSesion.setText("Cerrar Sesion");
+        jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelUsuarioLayout = new javax.swing.GroupLayout(jPanelUsuario);
         jPanelUsuario.setLayout(jPanelUsuarioLayout);
@@ -96,51 +104,57 @@ public class VentanaUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    //Creamos un string con el token obtenido .
-    String token = Constants.token;
+    private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
 
-    //Haremos la peticion al servidor del nombre del usuario.
-    //Creamos el cliente de login
-    Client client = ClientBuilder.newClient();
-    //Creamos el target (URL)
-    WebTarget target = client.target(Constants.urlUsuariosInfo);
-    //Creamos la solicitud
-    Invocation.Builder solicitud = target.request();
-    //Creamos el objeto que espera el servidor
-    LogoutUserDTO logout2 = new LogoutUserDTO();
-    
-    //Asignamos los valores
-    logout2;
-           
-    //loginUser.setUsername (user);
-    //Creamos una instancia de Gson para convertir nuestro String a JSON
-    //Gson gson = new Gson();
-    //String jsonString = gson.toJson(loginUser);
+        StringBuilder resultado = new StringBuilder();
+        try {
 
-    //Enviamos nuestro json via POST a la API
-    //Response post = solicitud.post(Entity.json(jsonString));
+            //Creamos la URL
+            URL url = new URL(Constants.urlLogout + "?token=" + Constants.token);
+            //Creamos la conexion al servidor.
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            //Metodo GET
+            conn.setRequestMethod("GET");
 
-    //Recibimos la respuesta y la leemos en una clase String
-    //String responseJsonString = post.readEntity(String.class);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+            //Abrimos un InputStream de datos del servidor
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            //Leemos la respuesta del servidor.
+            String linea;
+            while ((linea = rd.readLine()) != null) {
+                resultado.append(linea);
+            }
+            //Cerramos la conexion.
+            rd.close();
+        } catch (MalformedURLException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+
+        //Creamos una instancia de Gson para convertir nuestro String a JSON
+        Gson gson = new Gson();
+
+        //Pasamos la respuesta a un String.
+        String responseJsonString = resultado.toString();
+
+        //El string es un json que lo convertimos en un objeto de java
+        responseLogoutDTO responseJson = gson.fromJson(responseJsonString, responseLogoutDTO.class);
+
+        // Mostramos mensaje emergente de informacion.
+        JOptionPane.showMessageDialog(this,
+                "Has cerrado la sesion.\nVolverás a la pantalla de login.",
+                "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+        //Cerramos la ventana de usuario.
+        this.dispose();
+        VentanaLogin inicio = new VentanaLogin();
+        inicio.setVisible(true);
+    }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JPanel jPanelUsuario;
     private javax.swing.JTextArea mensajeBienvenida;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
+
 }
