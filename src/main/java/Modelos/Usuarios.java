@@ -3,6 +3,7 @@ package Modelos;
 import java.util.UUID;
 
 /**
+ * Clase que define los atributos de un usuario de la aplicacion.
  *
  * @author Carlos
  */
@@ -20,6 +21,20 @@ public class Usuarios {
     String username;
 
     //Constructor.
+
+    /**
+     * Constructor con sus parametros.
+     *
+     * @param id
+     * @param address
+     * @param apellidos
+     * @param email
+     * @param isAdmin
+     * @param nombre
+     * @param password
+     * @param telefono
+     * @param username
+     */
     public Usuarios(UUID id, String address, String apellidos,
             String email, boolean isAdmin, String nombre,
             String password, String telefono, String username) {

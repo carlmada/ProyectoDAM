@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelos.DTOS;
 
 /**
- *
+ * 
+ * Clase que formata los datos del
+ * token que seran recibidos del servidor
+ * 
  * @author Carlos
  */
 public class TokenDTO {
@@ -18,6 +17,12 @@ public class TokenDTO {
     public TokenDTO() {
     }
 
+    /**
+     * Constructor con los parametros.
+     *
+     * @param token
+     * @param isAdmin
+     */
     public TokenDTO(String token, boolean isAdmin) {
         this.token = token;
         this.isAdmin = isAdmin;

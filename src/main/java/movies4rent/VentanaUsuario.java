@@ -12,17 +12,27 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Ventana del usuario USUARIO
+ * .
  * @author Carlos
  */
 public class VentanaUsuario extends javax.swing.JFrame {
 
+    /**
+     * Constructor de un nuevo formulario
+     * Ventana USUARIO.
+     * 
+     */
     public VentanaUsuario() {
         initComponents();
         setLocationRelativeTo(null);
 
     }
-
+    
+     /**
+     * Metodo que llama el constructor para inicializar el formulario.
+     * Este metodo se regenera automaticamente por el Editor de formularios.
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -104,6 +114,13 @@ public class VentanaUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo que se ejecuta al clicar
+     * en el boton CERRAR SESION del formulario.
+     * 
+     * Operacion de logout del servidor.
+     * 
+     */
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
 
         StringBuilder resultado = new StringBuilder();

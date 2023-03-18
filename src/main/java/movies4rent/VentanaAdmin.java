@@ -12,15 +12,26 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Ventana del usuario ADMINISTRADOR.
+ * 
  * @author Carlos
  */
 public class VentanaAdmin extends javax.swing.JFrame {
 
+    /**
+     * 
+     * Constructor de un nuevo formulario
+     * Ventana Administrador.
+     * 
+     */
     public VentanaAdmin() {
         initComponents();
     }
 
+    /**
+     * Metodo que llama el constructor para inicializar el formulario.
+     * Este metodo se regenera automaticamente por el Editor de formularios.
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -101,6 +112,13 @@ public class VentanaAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo que se ejecuta al clicar
+     * en el boton CERRAR SESION del formulario.
+     * 
+     * Operacion de logout del servidor.
+     * 
+     */
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         StringBuilder resultado = new StringBuilder();
         try {
@@ -114,7 +132,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
             ////Abrimos un input Stream de datos del servidor
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-      
+
             //Leemos la respuesta del servidor.
             String linea;
             while ((linea = rd.readLine()) != null) {
@@ -136,7 +154,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         //El string es un json que lo convertimos en un objeto de java
         responseLogoutDTO responseJson = gson.fromJson(responseJsonString, responseLogoutDTO.class);
-       
+
         // Mostramos mensaje emergente de informacion.
         JOptionPane.showMessageDialog(this,
                 "Has cerrado la sesion.\nVolverás a la pantalla de login.",

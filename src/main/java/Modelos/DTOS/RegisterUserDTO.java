@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelos.DTOS;
 
 /**
+ * Clase que formatea los datos de registro
+ * de un nuevo usuario que se enviaran al servidor.
  *
  * @author Carlos
  */

@@ -1,16 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package helper;
 
 /**
  *
+ * Clase con las variables static
+ * que seran utilizadas en la aplicacion.
+ * 
  * @author Carlos
  */
 public class Constants {
 
-    //Constants amb les url del servidor a on farem les peticions.
+    //Variables con las url del servidor donde realizaremos las peticiones.
     public static String url = "http://localhost:8080";
     public static String urlLogin = url + "/login";
     public static String urlLogout = url + "/logout";

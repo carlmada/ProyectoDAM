@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelos;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
+ * Clase que define el objeto Token con sus atributos.
  *
  * @author Carlos
  */
@@ -24,6 +21,15 @@ public class token {
     public token() {
     }
 
+    /**
+     * Constructor con todos sus parametros.
+     *
+     * @param id
+     * @param username
+     * @param token
+     * @param creationDate
+     * @param lastUsed
+     */
     public token(UUID id, String username, String token, LocalDateTime creationDate, LocalDateTime lastUsed) {
         this.id = id;
         this.username = username;

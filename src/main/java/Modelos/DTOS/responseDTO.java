@@ -1,11 +1,11 @@
 package Modelos.DTOS;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 /**
- *
+ * 
+ * Clase que formata los datos 
+ * de respuesta del servidor a
+ * la peticion de login.
+ * 
  * @author Carlos
  */
 public class responseDTO {
@@ -16,6 +16,12 @@ public class responseDTO {
     public responseDTO() {
     }
 
+    /**
+     * Constructor con los parametros.
+     *
+     * @param message
+     * @param value
+     */
     public responseDTO(String message, TokenDTO value) {
         this.message = message;
         this.value = value;
