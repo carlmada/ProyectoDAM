@@ -1,5 +1,7 @@
 movies4rent\VentanaLogin$2.class
+Modelos\DTOS\responseLogoutDTO.class
 Modelos\token.class
+movies4rent\VentanaUsuario$1.class
 Modelos\DTOS\LoginUserDTO.class
 movies4rent\VentanaUsuario.class
 movies4rent\VentanaNuevoUsuario.class
@@ -12,4 +14,6 @@ Modelos\DTOS\TokenDTO.class
 movies4rent\VentanaLogin.class
 Modelos\DTOS\responseDTO.class
 movies4rent\VentanaLogin$1.class
+movies4rent\VentanaAdmin$1.class
+Modelos\DTOS\LogoutUserDTO.class
 Modelos\Usuarios.class
