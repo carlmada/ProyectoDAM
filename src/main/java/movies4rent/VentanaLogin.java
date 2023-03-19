@@ -4,6 +4,7 @@ import Modelos.DTOS.LoginUserDTO;
 import Modelos.DTOS.responseDTO;
 import com.google.gson.Gson;
 import helper.Constants;
+import javax.swing.JOptionPane;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -204,14 +205,15 @@ public class VentanaLogin extends javax.swing.JFrame {
         responseDTO responseJson = gson.fromJson(responseJsonString, responseDTO.class);
         switch (post.getStatus()) {
             case 200:
-                //Imprimimos el token(tu codigo iria aqui)
+                //Si conexion es correcta
                 System.out.println(responseJson.getMessage());
                 System.out.println("token: " + responseJson.getValue().getToken());
                 System.out.println("is admin: " + responseJson.getValue().isAdmin());
 
                 //Asignamos el token a la variable global.
                 Constants.token = responseJson.getValue().getToken();
-
+                // Comprobamos si es administrador o usuario
+                // y lo dirigimos a su ventana correspondiente.
                 if (responseJson.getValue().isAdmin()) {
                     //Ventana administrador.
                     System.out.println("entras admin");
@@ -227,7 +229,11 @@ public class VentanaLogin extends javax.swing.JFrame {
                 }
                 break;
             default:
-                System.out.println("Error");
+                System.out.println("Error de Login");
+                // Mostramos mensaje emergente de informacion.
+                JOptionPane.showMessageDialog(this,
+                        "     Error de Login.\nVuelve a iniciar sesion.",
+                        "INFORMACION", JOptionPane.ERROR_MESSAGE);
                 break;
 
         }
@@ -243,6 +249,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void buttonNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNuevoUsuarioActionPerformed
         VentanaNuevoUsuario ventanaNuevoUsuario = new VentanaNuevoUsuario();
         ventanaNuevoUsuario.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_buttonNuevoUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

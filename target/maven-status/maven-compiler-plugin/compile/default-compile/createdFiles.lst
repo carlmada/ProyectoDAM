@@ -3,7 +3,9 @@ Modelos\DTOS\responseLogoutDTO.class
 Modelos\token.class
 movies4rent\VentanaUsuario$1.class
 Modelos\DTOS\LoginUserDTO.class
+Modelos\DTOS\UserInfoDTO.class
 movies4rent\VentanaUsuario.class
+Modelos\DTOS\responseUserInfoDTO.class
 movies4rent\VentanaNuevoUsuario.class
 movies4rent\VentanaNuevoUsuario$1.class
 helper\Constants.class

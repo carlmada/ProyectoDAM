@@ -283,16 +283,16 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
     private void buttonRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegistroUsuarioActionPerformed
         // Leemos los campos de datos del usuario.
 
-        //1º Comprobamos que los password sean iguales...
-        //Leemos los passwords...
+        // 1º Comprobamos que los password sean iguales...
+        // Leemos los passwords...
         char[] password = textPassword.getPassword();
         String pass = new String(password);
 
         char[] passwordConfirmacion = textConfirmPassword.getPassword();
         String passConfirm = new String(passwordConfirmacion);
-        //Comparamos...
+        // Comparamos...
         if (pass.equals(passConfirm)) {
-            //Leo el resto de campos
+            // Leemos el resto de campos
             String nombre = textNombre.getText();
             String apellidos = textApellidos.getText();
             String telefono = textTelefono.getText();
@@ -300,19 +300,19 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
             String direccion = textDireccion.getText();
             String userName = textUsername.getText();
 
-            //Creamos el cliente de login
+            // Creamos el cliente de login
             Client client = ClientBuilder.newClient();
-            //Creamos el target (URL)
-
+            
+            // Creamos el target (URL)
             WebTarget target = client.target(Constants.urlRegister);
 
-            //Creamos la solicitud
+            // Creamos la solicitud
             Invocation.Builder solicitud = target.request();
 
-            //Creamos el objeto que espera el servidor
+            // Creamos el objeto DTO que espera el servidor
             RegisterUserDTO registerUser = new RegisterUserDTO();
 
-            //Asignamos los valores
+            // Asignamos los valores
             registerUser.setNombre(nombre);
             registerUser.setApellidos(apellidos);
             registerUser.setTelefono(telefono);
@@ -321,24 +321,31 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
             registerUser.setUsername(userName);
             registerUser.setPassword(pass);
 
-            //Creamos una instancia de Gson para convertir nuestro String a JSON
+            // Creamos una instancia de Gson para convertir nuestro String a JSON
             Gson gson = new Gson();
+            // lo pasamos a objeto Json
             String jsonString = gson.toJson(registerUser);
-            System.out.println(jsonString);
+            // System.out.println(jsonString);
 
-            //Enviamos nuestro json via POST a la API
+            // Enviamos nuestro json via POST a la API
             Response post = solicitud.post(Entity.json(jsonString));
 
-            //Recibimos la respuesta y la leemos en una clase String
+            // Recibimos la respuesta y la leemos en una clase String
             String responseJsonString = post.readEntity(String.class);
+            
+            // Si todo ha salido correcto.
+            if(post.getStatus()==200){
+            // Comprobacion por consola.
             System.out.println(responseJsonString);
 
             // Mostramos mensaje emergente de informacion.
             JOptionPane.showMessageDialog(this,
                     "Usuario registrado correctamente.",
                     "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-            //Cerramos la ventana de registro.    
+            // Cerramos la ventana de registro. 
+            // y volvemos a inicio.
             this.dispose();
+            }
 
         } else {
             // Mostramos mensaje emergente de aviso.
@@ -355,6 +362,7 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
             textEmail.setText("");
             textDireccion.setText("");
             textUsername.setText("");
+            // Continuamos en ventana de nuevo registro.
         }
     }//GEN-LAST:event_buttonRegistroUsuarioActionPerformed
 

@@ -30,22 +30,24 @@ public class VentanaUsuario extends javax.swing.JFrame {
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
-            //Creamos la URL
+            // Creamos la URL
             URL url = new URL(Constants.urlUsuariosInfo + "?token=" + Constants.token);
-            //Creamos la conexion al servidor.
+            // Creamos la conexion al servidor.
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //Metodo GET
+            // Metodo GET
             conn.setRequestMethod("GET");
 
-            ////Abrimos un input Stream de datos del servidor
+            // Abrimos un input Stream de datos del servidor
+            // y esperamos la respuesta del servidor.
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-            //Leemos la respuesta del servidor.
+            // Leemos la respuesta del servidor.
+            // y contruimos el string 'resultado'
             String linea;
             while ((linea = rd.readLine()) != null) {
                 resultado.append(linea);
             }
-            //Cerramos la conexion.
+            // Cerramos la conexion.
             rd.close();
         } catch (MalformedURLException ex) {
             System.out.println(ex);
@@ -53,15 +55,17 @@ public class VentanaUsuario extends javax.swing.JFrame {
             System.out.println(ex);
         }
 
-        //Creamos una instancia de Gson para convertir nuestro String a JSON
+        // Creamos una instancia de Gson para convertir nuestro String a JSON
         Gson gson = new Gson();
 
-        //Pasamos la respuesta a un String.
+        // Pasamos la respuesta a un String.
         String responseJsonString = resultado.toString();
 
-        //El string es un json que lo convertimos en un objeto de java
+        // El string es un json que lo convertimos en un objeto de java
+        // Lo transformamos gracias al objeto DTO creado para ello.
         responseUserInfoDTO responseJson = gson.fromJson(responseJsonString, responseUserInfoDTO.class);
-        System.out.println(responseJson.getValue().getNombre());
+        // System.out.println(responseJson.getValue().getNombre());
+        // Ponemos el nombre en el textfield correspondiente.
         jTextFieldNombre.setText(responseJson.getValue().getNombre());       
         //***********************************************
     }
@@ -176,25 +180,24 @@ public class VentanaUsuario extends javax.swing.JFrame {
      * 
      */
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
-
         StringBuilder resultado = new StringBuilder();
         try {
 
-            //Creamos la URL
+            // Creamos la URL
             URL url = new URL(Constants.urlLogout + "?token=" + Constants.token);
-            //Creamos la conexion al servidor.
+            // Creamos la conexion al servidor.
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //Metodo GET
+            // Metodo GET
             conn.setRequestMethod("GET");
 
-            //Abrimos un InputStream de datos del servidor
+            // Abrimos un InputStream de datos del servidor
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            //Leemos la respuesta del servidor.
+            // Leemos la respuesta del servidor.
             String linea;
             while ((linea = rd.readLine()) != null) {
                 resultado.append(linea);
             }
-            //Cerramos la conexion.
+            // Cerramos la conexion.
             rd.close();
         } catch (MalformedURLException ex) {
             System.out.println(ex);
@@ -202,21 +205,22 @@ public class VentanaUsuario extends javax.swing.JFrame {
             System.out.println(ex);
         }
 
-        //Creamos una instancia de Gson para convertir nuestro String a JSON
+        // Creamos una instancia de Gson para convertir nuestro String a JSON
         Gson gson = new Gson();
 
-        //Pasamos la respuesta a un String.
+        // Pasamos la respuesta a un String.
         String responseJsonString = resultado.toString();
 
-        //El string es un json que lo convertimos en un objeto de java
+        // El string es un json que lo convertimos en un objeto de java
         responseLogoutDTO responseJson = gson.fromJson(responseJsonString, responseLogoutDTO.class);
 
         // Mostramos mensaje emergente de informacion.
         JOptionPane.showMessageDialog(this,
-                "Has cerrado la sesion.\nVolverás a la pantalla de login.",
+                "    Has cerrado la sesion.\nVolverás a la pantalla de login.",
                 "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-        //Cerramos la ventana de usuario.
+        // Cerramos la ventana de usuario.
         this.dispose();
+        // Volvemos la ventana de inicio.
         VentanaLogin inicio = new VentanaLogin();
         inicio.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
