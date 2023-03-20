@@ -8,7 +8,7 @@ package Modelos.DTOS;
  *
  * @author Carlos
  */
-public class responseLogoutDTO {
+public class ResponseLogoutDTO {
 
     // Atributos.
     private String message;
@@ -31,4 +31,6 @@ public class responseLogoutDTO {
         this.value = value;
     }
 
+    
+    
 }

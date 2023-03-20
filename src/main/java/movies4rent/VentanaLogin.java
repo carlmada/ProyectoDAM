@@ -1,7 +1,7 @@
 package movies4rent;
 
 import Modelos.DTOS.LoginUserDTO;
-import Modelos.DTOS.responseDTO;
+import Modelos.DTOS.ResponseLoginDTO;
 import com.google.gson.Gson;
 import helper.Constants;
 import javax.swing.JOptionPane;
@@ -202,7 +202,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         //Recibimos la respuesta y la leemos en una clase String
         String responseJsonString = post.readEntity(String.class);
         //El string es un json que lo convertimos en un objeto de java
-        responseDTO responseJson = gson.fromJson(responseJsonString, responseDTO.class);
+        ResponseLoginDTO responseJson = gson.fromJson(responseJsonString, ResponseLoginDTO.class);
         switch (post.getStatus()) {
             case 200:
                 //Si conexion es correcta

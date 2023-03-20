@@ -8,12 +8,12 @@ package Modelos.DTOS;
  * 
  * @author Carlos
  */
-public class responseDTO {
+public class ResponseLoginDTO {
 
     private String message;
     private TokenDTO value;
 
-    public responseDTO() {
+    public ResponseLoginDTO() {
     }
 
     /**
@@ -22,7 +22,7 @@ public class responseDTO {
      * @param message
      * @param value
      */
-    public responseDTO(String message, TokenDTO value) {
+    public ResponseLoginDTO(String message, TokenDTO value) {
         this.message = message;
         this.value = value;
     }
@@ -43,4 +43,6 @@ public class responseDTO {
     public void setValue(TokenDTO value) {
         this.value = value;
     }
+    
+    
 }

@@ -345,6 +345,8 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
             // Cerramos la ventana de registro. 
             // y volvemos a inicio.
             this.dispose();
+            VentanaLogin inicio = new VentanaLogin();
+            inicio.setVisible(true);
             }
 
         } else {

@@ -1,7 +1,7 @@
 package movies4rent;
 
-import Modelos.DTOS.responseLogoutDTO;
-import Modelos.DTOS.responseUserInfoDTO;
+import Modelos.DTOS.ResponseLogoutDTO;
+import Modelos.DTOS.ResponseUserInfoDTO;
 import com.google.gson.Gson;
 import helper.Constants;
 import java.io.BufferedReader;
@@ -22,6 +22,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
     /**
      * Constructor de un nuevo formulario
      * Ventana USUARIO.
+     * 
+     * Se crea una peticion al servidor 
+     * para mostrar el nombre del usuario.
      * 
      */
     public VentanaUsuario() {
@@ -63,7 +66,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
         // El string es un json que lo convertimos en un objeto de java
         // Lo transformamos gracias al objeto DTO creado para ello.
-        responseUserInfoDTO responseJson = gson.fromJson(responseJsonString, responseUserInfoDTO.class);
+        ResponseUserInfoDTO responseJson = gson.fromJson(responseJsonString, ResponseUserInfoDTO.class);
         // System.out.println(responseJson.getValue().getNombre());
         // Ponemos el nombre en el textfield correspondiente.
         jTextFieldNombre.setText(responseJson.getValue().getNombre());       
@@ -212,7 +215,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         String responseJsonString = resultado.toString();
 
         // El string es un json que lo convertimos en un objeto de java
-        responseLogoutDTO responseJson = gson.fromJson(responseJsonString, responseLogoutDTO.class);
+        ResponseLogoutDTO responseJson = gson.fromJson(responseJsonString, ResponseLogoutDTO.class);
 
         // Mostramos mensaje emergente de informacion.
         JOptionPane.showMessageDialog(this,

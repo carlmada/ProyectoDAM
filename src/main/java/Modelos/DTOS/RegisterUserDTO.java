@@ -1,7 +1,7 @@
 package Modelos.DTOS;
 
 /**
- * Clase que formatea los datos de registro
+ * Clase que formata los datos de registro
  * de un nuevo usuario que se enviaran al servidor.
  *
  * @author Carlos

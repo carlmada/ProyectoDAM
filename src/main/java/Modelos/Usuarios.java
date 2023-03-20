@@ -3,7 +3,8 @@ package Modelos;
 import java.util.UUID;
 
 /**
- * Clase que define los atributos de un usuario de la aplicacion.
+ * Clase que define los atributos 
+ * de un usuario de la aplicacion.
  *
  * @author Carlos
  */
@@ -19,8 +20,6 @@ public class Usuarios {
     String password;
     String telefono;
     String username;
-
-    //Constructor.
 
     /**
      * Constructor con sus parametros.

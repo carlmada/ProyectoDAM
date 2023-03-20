@@ -8,7 +8,7 @@ package Modelos.DTOS;
  * @author Carlos
  */
  
-public class responseUserInfoDTO {
+public class ResponseUserInfoDTO {
     
     // Atributos.
     private String message;
@@ -30,5 +30,7 @@ public class responseUserInfoDTO {
     public void setValue(UserInfoDTO value) {
         this.value = value;
     }  
+    
+    
     
 }

@@ -4,6 +4,10 @@ import java.util.UUID;
 
 /**
  *
+ * Clase que formata los datos 
+ * que recibiremos del servidor
+ * con la informacion del usuario.
+ * 
  * @author Carlos
  */
 public class UserInfoDTO {
