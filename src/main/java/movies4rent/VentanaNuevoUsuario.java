@@ -2,7 +2,7 @@ package movies4rent;
 
 import Modelos.DTOS.RegisterUserDTO;
 import com.google.gson.Gson;
-import helper.Constants;
+import utils.Constants;
 import javax.swing.JOptionPane;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -340,8 +340,9 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
 
             // Mostramos mensaje emergente de informacion.
             JOptionPane.showMessageDialog(this,
-                    "Usuario registrado correctamente.",
-                    "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+                    "Usuario registrado correctamente."
+                    + "\nVolverás a la pantalla de login.",
+                    "NUEVO USUARIO", JOptionPane.INFORMATION_MESSAGE);
             // Cerramos la ventana de registro. 
             // y volvemos a inicio.
             this.dispose();

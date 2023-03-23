@@ -1,9 +1,11 @@
-C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\responseUserInfoDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\ResponseUserInfoDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\VentanaModificarUsuario.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\VentanaLogin.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\utils\Constants.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\LogoutUserDTO.java
-C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\responseDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\Movies4Rent.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\TokenDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\UpdateUserDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\RegisterUserDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\LoginUserDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\helper\Constants.java
@@ -13,4 +15,5 @@ C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\Usuarios.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\UserInfoDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\VentanaUsuario.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\VentanaAdmin.java
-C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\responseLogoutDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\ResponseLoginDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\ResponseLogoutDTO.java

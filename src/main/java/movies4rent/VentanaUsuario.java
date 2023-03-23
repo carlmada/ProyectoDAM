@@ -3,7 +3,7 @@ package movies4rent;
 import Modelos.DTOS.ResponseLogoutDTO;
 import Modelos.DTOS.ResponseUserInfoDTO;
 import com.google.gson.Gson;
-import helper.Constants;
+import utils.Constants;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -87,6 +87,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jButtonCerrarSesion = new javax.swing.JButton();
         jLabelUsuario = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
+        modificarPerfil = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("USUARIO");
@@ -121,17 +122,29 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jLabelUsuario.setText("USUARIO:");
 
+        jTextFieldNombre.setEditable(false);
+        jTextFieldNombre.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldNombre.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jTextFieldNombre.setToolTipText("");
         jTextFieldNombre.setBorder(null);
+
+        modificarPerfil.setBackground(new java.awt.Color(242, 242, 242));
+        modificarPerfil.setText("Modificar Perfil");
+        modificarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPerfilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelUsuarioLayout = new javax.swing.GroupLayout(jPanelUsuario);
         jPanelUsuario.setLayout(jPanelUsuarioLayout);
         jPanelUsuarioLayout.setHorizontalGroup(
             jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
+            .addGroup(jPanelUsuarioLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(textLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(modificarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGap(35, 35, 35)
                 .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
@@ -156,7 +169,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
                         .addComponent(jLabelUsuario)
                         .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(textLogo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                .addGap(56, 56, 56)
+                .addComponent(modificarPerfil)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion)
                 .addContainerGap())
         );
@@ -165,7 +180,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelUsuario, 802, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,12 +243,19 @@ public class VentanaUsuario extends javax.swing.JFrame {
         inicio.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
+    private void modificarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPerfilActionPerformed
+        VentanaModificarUsuario ventanaModificarUsuario = new VentanaModificarUsuario();
+        ventanaModificarUsuario.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_modificarPerfilActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelUsuario;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextArea mensajeBienvenida;
+    private javax.swing.JButton modificarPerfil;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
 

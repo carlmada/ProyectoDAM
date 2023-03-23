@@ -3,7 +3,7 @@ package movies4rent;
 import Modelos.DTOS.LoginUserDTO;
 import Modelos.DTOS.ResponseLoginDTO;
 import com.google.gson.Gson;
-import helper.Constants;
+import utils.Constants;
 import javax.swing.JOptionPane;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
