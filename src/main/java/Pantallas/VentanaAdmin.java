@@ -1,4 +1,4 @@
-package movies4rent;
+package Pantallas;
 
 import Modelos.DTOS.ResponseLogoutDTO;
 import Modelos.DTOS.ResponseUserInfoDTO;
@@ -13,31 +13,32 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 /**
- * Ventana del usuario USUARIO
- * .
+ * Ventana del usuario ADMINISTRADOR.
+ * 
  * @author Carlos
  */
-public class VentanaUsuario extends javax.swing.JFrame {
+public class VentanaAdmin extends javax.swing.JFrame {
 
     /**
+     * 
      * Constructor de un nuevo formulario
-     * Ventana USUARIO.
+     * Ventana Administrador.
      * 
      * Se crea una peticion al servidor 
      * para mostrar el nombre del usuario.
      * 
      */
-    public VentanaUsuario() {
+    public VentanaAdmin() {
         initComponents();
-        setLocationRelativeTo(null);       
+        setLocationRelativeTo(null); 
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
-            // Creamos la URL
+            //Creamos la URL
             URL url = new URL(Constants.urlUsuariosInfo + "?token=" + Constants.token);
-            // Creamos la conexion al servidor.
+            //Creamos la conexion al servidor.
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            // Metodo GET
+            //Metodo GET
             conn.setRequestMethod("GET");
 
             // Abrimos un input Stream de datos del servidor
@@ -69,11 +70,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
         ResponseUserInfoDTO responseJson = gson.fromJson(responseJsonString, ResponseUserInfoDTO.class);
         // System.out.println(responseJson.getValue().getNombre());
         // Ponemos el nombre en el textfield correspondiente.
-        jTextFieldNombre.setText(responseJson.getValue().getNombre());       
+        jTextFieldNombre.setText(responseJson.getValue().getNombre()); 
         //***********************************************
     }
-    
-     /**
+
+    /**
      * Metodo que llama el constructor para inicializar el formulario.
      * Este metodo se regenera automaticamente por el Editor de formularios.
      */
@@ -81,20 +82,25 @@ public class VentanaUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelUsuario = new javax.swing.JPanel();
+        jPanelAdmin = new javax.swing.JPanel();
         textLogo = new javax.swing.JLabel();
         mensajeBienvenida = new javax.swing.JTextArea();
         jButtonCerrarSesion = new javax.swing.JButton();
         jLabelUsuario = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
-        modificarPerfil = new javax.swing.JButton();
+        gestionUsuarios = new javax.swing.JButton();
+        gestionPeliculas = new javax.swing.JButton();
+        gestionAlquiler = new javax.swing.JButton();
+        correoAvisoClientes = new javax.swing.JButton();
+        rankingPeliculas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("USUARIO");
+        setTitle("ADMINISTRADOR");
         setResizable(false);
 
-        jPanelUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jPanelAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAdmin.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jPanelAdmin.setPreferredSize(new java.awt.Dimension(800, 400));
 
         textLogo.setBackground(new java.awt.Color(255, 255, 255));
         textLogo.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
@@ -107,7 +113,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         mensajeBienvenida.setColumns(20);
         mensajeBienvenida.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         mensajeBienvenida.setRows(2);
-        mensajeBienvenida.setText("       Bienvenido a MOVIES4RENT\n                Eres USUARIO\n");
+        mensajeBienvenida.setText("       Bienvenido a MOVIES4RENT\n          Eres ADMINISTRADOR");
         mensajeBienvenida.setBorder(null);
         mensajeBienvenida.setSelectionColor(new java.awt.Color(255, 255, 255));
 
@@ -122,56 +128,84 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jLabelUsuario.setText("USUARIO:");
 
-        jTextFieldNombre.setEditable(false);
-        jTextFieldNombre.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldNombre.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jTextFieldNombre.setToolTipText("");
         jTextFieldNombre.setBorder(null);
 
-        modificarPerfil.setBackground(new java.awt.Color(242, 242, 242));
-        modificarPerfil.setText("Modificar Perfil");
-        modificarPerfil.addActionListener(new java.awt.event.ActionListener() {
+        gestionUsuarios.setBackground(new java.awt.Color(242, 242, 242));
+        gestionUsuarios.setText("Gestión Usuarios");
+
+        gestionPeliculas.setBackground(new java.awt.Color(242, 242, 242));
+        gestionPeliculas.setText("Gestión Películas");
+
+        gestionAlquiler.setBackground(new java.awt.Color(242, 242, 242));
+        gestionAlquiler.setText("Gestión Alquiler Películas");
+        gestionAlquiler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarPerfilActionPerformed(evt);
+                gestionAlquilerActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanelUsuarioLayout = new javax.swing.GroupLayout(jPanelUsuario);
-        jPanelUsuario.setLayout(jPanelUsuarioLayout);
-        jPanelUsuarioLayout.setHorizontalGroup(
-            jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelUsuarioLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(modificarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
-                .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jLabelUsuario)
-                .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelUsuarioLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCerrarSesion)
-                        .addGap(59, 59, 59))
-                    .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+        correoAvisoClientes.setBackground(new java.awt.Color(242, 242, 242));
+        correoAvisoClientes.setText("Correo a clientes");
+        correoAvisoClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correoAvisoClientesActionPerformed(evt);
+            }
+        });
+
+        rankingPeliculas.setBackground(new java.awt.Color(242, 242, 242));
+        rankingPeliculas.setText("Ranking de Películas");
+
+        javax.swing.GroupLayout jPanelAdminLayout = new javax.swing.GroupLayout(jPanelAdmin);
+        jPanelAdmin.setLayout(jPanelAdminLayout);
+        jPanelAdminLayout.setHorizontalGroup(
+            jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAdminLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCerrarSesion)
+                .addGap(63, 63, 63))
+            .addGroup(jPanelAdminLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAdminLayout.createSequentialGroup()
+                        .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(gestionUsuarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textLogo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabelUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(rankingPeliculas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(correoAvisoClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gestionAlquiler, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gestionPeliculas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
-        jPanelUsuarioLayout.setVerticalGroup(
-            jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+        jPanelAdminLayout.setVerticalGroup(
+            jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAdminLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelUsuario)
                         .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(textLogo))
-                .addGap(56, 56, 56)
-                .addComponent(modificarPerfil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
+                .addComponent(gestionUsuarios)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(gestionPeliculas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(gestionAlquiler)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rankingPeliculas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(correoAvisoClientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion)
                 .addContainerGap())
         );
@@ -180,14 +214,15 @@ public class VentanaUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -208,8 +243,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
             // Metodo GET
             conn.setRequestMethod("GET");
 
-            // Abrimos un InputStream de datos del servidor
+            // Abrimos un input Stream de datos del servidor
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
             // Leemos la respuesta del servidor.
             String linea;
             while ((linea = rd.readLine()) != null) {
@@ -243,19 +279,25 @@ public class VentanaUsuario extends javax.swing.JFrame {
         inicio.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
-    private void modificarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPerfilActionPerformed
-        VentanaModificarUsuario ventanaModificarUsuario = new VentanaModificarUsuario();
-        ventanaModificarUsuario.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_modificarPerfilActionPerformed
+    private void gestionAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionAlquilerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gestionAlquilerActionPerformed
+
+    private void correoAvisoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoAvisoClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_correoAvisoClientesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton correoAvisoClientes;
+    private javax.swing.JButton gestionAlquiler;
+    private javax.swing.JButton gestionPeliculas;
+    private javax.swing.JButton gestionUsuarios;
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JPanel jPanelUsuario;
+    private javax.swing.JPanel jPanelAdmin;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextArea mensajeBienvenida;
-    private javax.swing.JButton modificarPerfil;
+    private javax.swing.JButton rankingPeliculas;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
 

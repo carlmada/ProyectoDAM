@@ -3,6 +3,8 @@
  */
 package movies4rent;
 
+import Pantallas.VentanaLogin;
+
 /**
  * Clase Principal (Main) de la aplicaion.
  * 

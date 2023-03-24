@@ -1,7 +1,5 @@
-package movies4rent;
+package Pantallas;
 
-import Modelos.DTOS.RegisterUserDTO;
-import Modelos.DTOS.ResponseLogoutDTO;
 import Modelos.DTOS.ResponseUpdateUserDTO;
 import Modelos.DTOS.ResponseUserInfoDTO;
 import Modelos.DTOS.UpdateUserDTO;
@@ -23,8 +21,7 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * Ventana de modificacion
- * de los datos del usuario.
+ * Ventana de modificacion de los datos del usuario.
  *
  * @author Carlos
  */
@@ -74,15 +71,14 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
         // El string es un json que lo convertimos en un objeto de java
         // Lo transformamos gracias al objeto DTO creado para ello.
         ResponseUserInfoDTO responseJson = gson.fromJson(responseJsonString, ResponseUserInfoDTO.class);
-        
+
         // Ponemos el nombre en el textfield correspondiente.
         jTextFieldNombre.setText(responseJson.getValue().getNombre());
         //***********************************************
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este
-     * metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -103,6 +99,7 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
         textEmail = new javax.swing.JTextField();
         textDireccion = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
+        buttonInicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MODIFICAR USUARIO");
@@ -152,7 +149,6 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
         textNombre.setBackground(java.awt.SystemColor.control);
         textNombre.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         textNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        textNombre.setToolTipText("");
         textNombre.setAutoscrolls(false);
         textNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         textNombre.setMinimumSize(new java.awt.Dimension(30, 20));
@@ -194,6 +190,17 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
         jTextFieldNombre.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jTextFieldNombre.setBorder(null);
 
+        buttonInicio.setBackground(new java.awt.Color(153, 204, 255));
+        buttonInicio.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        buttonInicio.setText("INICIO");
+        buttonInicio.setBorderPainted(false);
+        buttonInicio.setFocusable(false);
+        buttonInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonInicioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelNuevoUsuarioLayout = new javax.swing.GroupLayout(jPanelNuevoUsuario);
         jPanelNuevoUsuario.setLayout(jPanelNuevoUsuarioLayout);
         jPanelNuevoUsuarioLayout.setHorizontalGroup(
@@ -208,7 +215,7 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
                             .addComponent(jLabelApellidos)
                             .addComponent(jLabelNombre)
                             .addComponent(jLabelDireccion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
                         .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,7 +224,8 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
                             .addComponent(textDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelNuevoUsuario)
                             .addComponent(buttonModificarUsuario)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonInicio)))
                     .addGroup(jPanelNuevoUsuarioLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(textLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,7 +265,9 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
                         .addComponent(textDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(44, 44, 44)
                 .addComponent(buttonModificarUsuario)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(buttonInicio)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -289,72 +299,99 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
         String email = textEmail.getText();
         String direccion = textDireccion.getText();
 
-        // Creamos el cliente de login
-        Client client = ClientBuilder.newClient();
+        // Mostramos mensaje emergente de confirmacion.
+        int opcion
+                = JOptionPane.showConfirmDialog(null, "Has introducido:\n\n"
+                        + " Nombre: " + nombre + "\n"
+                        + " Apellidos: " + apellidos + "\n"
+                        + " Telefono: " + telefono + "\n"
+                        + " Email: " + email + "\n"
+                        + " Direccion:  " + direccion
+                        + "\n\n            Es correcto?",
+                        "CONFIRMACION", 0);
 
-        // Creamos el target (URL)
-        WebTarget target = client.target(Constants.urlUpdateUsuarios+ "?token=" + Constants.token);
+        //Si es correcto, hacemos la modificacion...
+        if (opcion == 0) {
 
-        // Creamos la solicitud
-        Invocation.Builder solicitud = target.request();
+            // Creamos el cliente de login
+            Client client = ClientBuilder.newClient();
 
-        // Creamos el objeto DTO que espera el servidor
-        UpdateUserDTO updateUser = new UpdateUserDTO();
+            // Creamos el target (URL)
+            WebTarget target = client.target(Constants.urlUpdateUsuarios + "?token=" + Constants.token);
 
-        // Asignamos los valores
-        updateUser.setNombre(nombre);
-        updateUser.setApellidos(apellidos);
-        updateUser.setTelefono(telefono);
-        updateUser.setEmail(email);
-        updateUser.setDireccion(direccion);
+            // Creamos la solicitud
+            Invocation.Builder solicitud = target.request();
 
-        // Creamos una instancia de Gson para convertir nuestro String a JSON
-        Gson gson = new Gson();
-        // lo pasamos a objeto Json
-        String jsonString = gson.toJson(updateUser);
-        
-        // Enviamos nuestro json via PUT a la API
-        Response post = solicitud.put(Entity.json(jsonString));
+            // Creamos el objeto DTO que espera el servidor
+            UpdateUserDTO updateUser = new UpdateUserDTO();
 
-        // Recibimos la respuesta y la leemos en una clase String
-        String responseJsonString = post.readEntity(String.class);
-        
-        // El string es un json que lo convertimos en un objeto de java
-        ResponseUpdateUserDTO responseJson = gson.fromJson(responseJsonString, ResponseUpdateUserDTO.class);
-                        
-        // Si todo ha salido correcto.
-        if (post.getStatus() == 200) {
-            // Comprobacion por consola.
-            System.out.println(responseJson.getMessage());
+            // Asignamos los valores
+            updateUser.setNombre(nombre);
+            updateUser.setApellidos(apellidos);
+            updateUser.setTelefono(telefono);
+            updateUser.setEmail(email);
+            updateUser.setDireccion(direccion);
 
-            // Mostramos mensaje emergente de informacion.
-            JOptionPane.showMessageDialog(this,
-                    responseJson.getMessage()
-                    +"\nVolverás a la pantalla de login.",
-                    "PERFIL DE USUARIO", JOptionPane.INFORMATION_MESSAGE);
-            // Cerramos la ventana de registro. 
-            // y volvemos a inicio.
-            this.dispose();
-            VentanaLogin inicio = new VentanaLogin();
-            inicio.setVisible(true);
-        }else{
-            // Mostramos mensaje emergente de aviso.
-            JOptionPane.showMessageDialog(this,
-                    responseJson.getMessage()+"\n"
-                    + "Vuelve a introducir los datos.",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-            // Limpiamos todos los campos.
-            textNombre.setText("");
-            textApellidos.setText("");
-            textTelefono.setText("");
-            textEmail.setText("");
-            textDireccion.setText("");
-            // Continuamos en ventana de modificacion de perfil.
+            // Creamos una instancia de Gson para convertir nuestro String a JSON
+            Gson gson = new Gson();
+            // lo pasamos a objeto Json
+            String jsonString = gson.toJson(updateUser);
+
+            // Enviamos nuestro json via PUT a la API
+            Response post = solicitud.put(Entity.json(jsonString));
+
+            // Recibimos la respuesta y la leemos en una clase String
+            String responseJsonString = post.readEntity(String.class);
+
+            // El string es un json que lo convertimos en un objeto de java
+            ResponseUpdateUserDTO responseJson = gson.fromJson(responseJsonString, ResponseUpdateUserDTO.class);
+
+            // Si todo ha salido correcto.
+            if (post.getStatus() == 200) {
+                // Comprobacion por consola.
+                System.out.println(responseJson.getMessage());
+
+                // Mostramos mensaje emergente de informacion.
+                JOptionPane.showMessageDialog(this,
+                        responseJson.getMessage()
+                        + "\nVolverás a la pantalla de login.",
+                        "PERFIL DE USUARIO", JOptionPane.INFORMATION_MESSAGE);
+                // Cerramos la ventana de registro. 
+                // y volvemos a inicio.
+                this.dispose();
+                VentanaLogin inicio = new VentanaLogin();
+                inicio.setVisible(true);
+            } else {
+                // Mostramos mensaje emergente de aviso.
+                JOptionPane.showMessageDialog(this,
+                        responseJson.getMessage() + "\n"
+                        + "Vuelve a introducir los datos.",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+                // Limpiamos todos los campos.
+                textNombre.setText("");
+                textApellidos.setText("");
+                textTelefono.setText("");
+                textEmail.setText("");
+                textDireccion.setText("");
+                // Continuamos en ventana de modificacion de perfil.
+            }
+        } else {
+            //Si no es correcto, volvemos atras...
+            initComponents();
         }
-        
     }//GEN-LAST:event_buttonModificarUsuarioActionPerformed
 
+    private void buttonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioActionPerformed
+        // Cerramos la ventana de registro. 
+        // y volvemos a inicio.
+        this.dispose();
+        VentanaLogin inicio = new VentanaLogin();
+        inicio.setVisible(true);
+
+    }//GEN-LAST:event_buttonInicioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonInicio;
     private javax.swing.JButton buttonModificarUsuario;
     private javax.swing.JLabel jLabelApellidos;
     private javax.swing.JLabel jLabelDireccion;

@@ -1,4 +1,4 @@
-package movies4rent;
+package Pantallas;
 
 import Modelos.DTOS.RegisterUserDTO;
 import com.google.gson.Gson;
@@ -185,7 +185,7 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
                     .addGroup(jPanelNuevoUsuarioLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabelDireccion)))
-                .addGap(295, 304, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanelNuevoUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +253,7 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
                 .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelConfirmPassword))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(buttonRegistroUsuario)
                 .addGap(41, 41, 41))
         );

@@ -15,6 +15,7 @@ movies4rent\VentanaUsuario$1.class
 Modelos\DTOS\ResponseLogoutDTO.class
 Modelos\DTOS\LoginUserDTO.class
 movies4rent\VentanaNuevoUsuario$1.class
+Modelos\DTOS\ResponseUpdateUserDTO.class
 movies4rent\VentanaAdmin.class
 movies4rent\VentanaModificarUsuario$1.class
 movies4rent\Movies4Rent.class

@@ -1,4 +1,4 @@
-package movies4rent;
+package Pantallas;
 
 import Modelos.DTOS.LoginUserDTO;
 import Modelos.DTOS.ResponseLoginDTO;
@@ -151,7 +151,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 .addComponent(buttonEntrar)
                 .addGap(34, 34, 34)
                 .addComponent(buttonNuevoUsuario)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
