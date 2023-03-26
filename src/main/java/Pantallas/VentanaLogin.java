@@ -13,9 +13,8 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
 /**
- * Ventana para hacer el login
- * a la aplicacion.
- * 
+ * Ventana para hacer el login a la aplicacion.
+ *
  * @author Carlos
  */
 public class VentanaLogin extends javax.swing.JFrame {
@@ -32,9 +31,8 @@ public class VentanaLogin extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario.
-     * Este metodo se regenera automaticamente por el Editor de formularios.
-     * 
+     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
+     *
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -169,11 +167,10 @@ public class VentanaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Metodo que se ejecuta al clicar
-     * en el boton ENTRAR del formulario.
-     * 
+     * Metodo que se ejecuta al clicar en el boton ENTRAR del formulario.
+     *
      * Operacion de login al servidor.
-     * 
+     *
      */
     private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
         // TODO add your handling code here:
@@ -240,11 +237,10 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonEntrarActionPerformed
 
     /**
-     * Metodo que se ejecuta al clicar
-     * en el boton NUEVO USUARIO del formulario.
-     * 
+     * Metodo que se ejecuta al clicar en el boton NUEVO USUARIO del formulario.
+     *
      * Conduce a la ventana de registro de nuevo usuario.
-     * 
+     *
      */
     private void buttonNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNuevoUsuarioActionPerformed
         VentanaNuevoUsuario ventanaNuevoUsuario = new VentanaNuevoUsuario();

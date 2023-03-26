@@ -4,8 +4,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
- * Clase que define el objeto 
- * Token con sus atributos.
+ * Clase que define el objeto Token con sus atributos.
  *
  * @author Carlos
  */

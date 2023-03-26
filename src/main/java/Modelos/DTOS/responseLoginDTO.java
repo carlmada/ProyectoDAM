@@ -1,11 +1,9 @@
 package Modelos.DTOS;
 
 /**
- * 
- * Clase que formata los datos 
- * de respuesta del servidor a
- * la peticion de login.
- * 
+ *
+ * Clase que formata los datos de respuesta del servidor a la peticion de login.
+ *
  * @author Carlos
  */
 public class ResponseLoginDTO {
@@ -43,6 +41,5 @@ public class ResponseLoginDTO {
     public void setValue(TokenDTO value) {
         this.value = value;
     }
-    
-    
+
 }

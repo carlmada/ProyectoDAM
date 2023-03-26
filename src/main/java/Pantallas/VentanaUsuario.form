@@ -87,7 +87,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   <Component id="modificarPerfil" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="209" max="32767" attributes="0"/>
+                  <EmptySpace pref="207" max="32767" attributes="0"/>
                   <Component id="jButtonCerrarSesion" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -175,6 +175,9 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f2" green="f2" red="f2" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Serif" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Modificar Perfil"/>
           </Properties>

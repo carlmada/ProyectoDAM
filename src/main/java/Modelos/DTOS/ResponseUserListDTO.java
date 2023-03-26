@@ -1,15 +1,18 @@
 package Modelos.DTOS;
 
+import java.util.List;
+
 /**
- * Clase que formata los datos de respuesta del servidor a la peticion de Modificacion de usuario.
+ *
+ * Clase que formata los datos de respuesta del servidor a la peticion de la lista de usuarios .
  *
  * @author Carlos
  */
-public class ResponseUpdateUserDTO {
+public class ResponseUserListDTO {
 
     // Atributos.
     private String message;
-    private String value;
+    private List<UserListDTO> value;
 
     //Getters-Setters.
     public String getMessage() {
@@ -20,11 +23,11 @@ public class ResponseUpdateUserDTO {
         this.message = message;
     }
 
-    public String getValue() {
+    public List<UserListDTO> getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(List<UserListDTO> value) {
         this.value = value;
     }
 

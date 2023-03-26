@@ -12,25 +12,23 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
 /**
- * 
+ *
  * Ventana de registro de nuevo usuario.
- * 
+ *
  * @author Carlos
  */
 public class VentanaNuevoUsuario extends javax.swing.JFrame {
 
     /**
-    * Constructor de un nuevo formulario
-    * Ventana NUEVO USUARIO.
-    */
+     * Constructor de un nuevo formulario Ventana NUEVO USUARIO.
+     */
     public VentanaNuevoUsuario() {
         initComponents();
         setLocationRelativeTo(null);
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario.
-     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -273,12 +271,10 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Metodo que se ejecuta al clicar
-     * en el boton REGISTRAR del formulario.
-     * 
-     * Operacion de registro de un 
-     * nuevo usuario de la aplicacion.
-     * 
+     * Metodo que se ejecuta al clicar en el boton REGISTRAR del formulario.
+     *
+     * Operacion de registro de un nuevo usuario de la aplicacion.
+     *
      */
     private void buttonRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegistroUsuarioActionPerformed
         // Leemos los campos de datos del usuario.
@@ -302,7 +298,7 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
 
             // Creamos el cliente de login
             Client client = ClientBuilder.newClient();
-            
+
             // Creamos el target (URL)
             WebTarget target = client.target(Constants.urlRegister);
 
@@ -332,22 +328,22 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
 
             // Recibimos la respuesta y la leemos en una clase String
             String responseJsonString = post.readEntity(String.class);
-            
-            // Si todo ha salido correcto.
-            if(post.getStatus()==200){
-            // Comprobacion por consola.
-            System.out.println(responseJsonString);
 
-            // Mostramos mensaje emergente de informacion.
-            JOptionPane.showMessageDialog(this,
-                    "Usuario registrado correctamente."
-                    + "\nVolverás a la pantalla de login.",
-                    "NUEVO USUARIO", JOptionPane.INFORMATION_MESSAGE);
-            // Cerramos la ventana de registro. 
-            // y volvemos a inicio.
-            this.dispose();
-            VentanaLogin inicio = new VentanaLogin();
-            inicio.setVisible(true);
+            // Si todo ha salido correcto.
+            if (post.getStatus() == 200) {
+                // Comprobacion por consola.
+                System.out.println(responseJsonString);
+
+                // Mostramos mensaje emergente de informacion.
+                JOptionPane.showMessageDialog(this,
+                        "Usuario registrado correctamente."
+                        + "\nVolverás a la pantalla de login.",
+                        "NUEVO USUARIO", JOptionPane.INFORMATION_MESSAGE);
+                // Cerramos la ventana de registro. 
+                // y volvemos a inicio.
+                this.dispose();
+                VentanaLogin inicio = new VentanaLogin();
+                inicio.setVisible(true);
             }
 
         } else {

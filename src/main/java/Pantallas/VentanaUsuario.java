@@ -13,23 +13,21 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 /**
- * Ventana del usuario USUARIO
- * .
+ * Ventana del usuario USUARIO .
+ *
  * @author Carlos
  */
 public class VentanaUsuario extends javax.swing.JFrame {
 
     /**
-     * Constructor de un nuevo formulario
-     * Ventana USUARIO.
-     * 
-     * Se crea una peticion al servidor 
-     * para mostrar el nombre del usuario.
-     * 
+     * Constructor de un nuevo formulario Ventana USUARIO.
+     *
+     * Se crea una peticion al servidor para mostrar el nombre del usuario.
+     *
      */
     public VentanaUsuario() {
         initComponents();
-        setLocationRelativeTo(null);       
+        setLocationRelativeTo(null);
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
@@ -69,13 +67,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
         ResponseUserInfoDTO responseJson = gson.fromJson(responseJsonString, ResponseUserInfoDTO.class);
         // System.out.println(responseJson.getValue().getNombre());
         // Ponemos el nombre en el textfield correspondiente.
-        jTextFieldNombre.setText(responseJson.getValue().getNombre());       
+        jTextFieldNombre.setText(responseJson.getValue().getNombre());
         //***********************************************
     }
-    
-     /**
-     * Metodo que llama el constructor para inicializar el formulario.
-     * Este metodo se regenera automaticamente por el Editor de formularios.
+
+    /**
+     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -131,6 +128,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jTextFieldNombre.setBorder(null);
 
         modificarPerfil.setBackground(new java.awt.Color(242, 242, 242));
+        modificarPerfil.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         modificarPerfil.setText("Modificar Perfil");
         modificarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,7 +171,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     .addComponent(textLogo))
                 .addGap(56, 56, 56)
                 .addComponent(modificarPerfil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion)
                 .addContainerGap())
         );
@@ -193,11 +191,10 @@ public class VentanaUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Metodo que se ejecuta al clicar
-     * en el boton CERRAR SESION del formulario.
-     * 
+     * Metodo que se ejecuta al clicar en el boton CERRAR SESION del formulario.
+     *
      * Operacion de logout del servidor.
-     * 
+     *
      */
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         StringBuilder resultado = new StringBuilder();

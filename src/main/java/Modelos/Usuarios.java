@@ -3,8 +3,7 @@ package Modelos;
 import java.util.UUID;
 
 /**
- * Clase que define los atributos 
- * de un usuario de la aplicacion.
+ * Clase que define los atributos de un usuario de la aplicacion.
  *
  * @author Carlos
  */
@@ -12,7 +11,7 @@ public class Usuarios {
 
     //Atributos.
     UUID id;
-    String address;
+    String direccion;
     String apellidos;
     String email;
     boolean isAdmin = false;
@@ -38,7 +37,7 @@ public class Usuarios {
             String email, boolean isAdmin, String nombre,
             String password, String telefono, String username) {
         this.id = id;
-        this.address = address;
+        this.direccion = address;
         this.apellidos = apellidos;
         this.email = email;
         this.isAdmin = isAdmin;
@@ -57,12 +56,12 @@ public class Usuarios {
         this.id = id;
     }
 
-    public String getAddress() {
-        return address;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getApellidos() {

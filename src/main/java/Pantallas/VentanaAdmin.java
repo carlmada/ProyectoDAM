@@ -14,23 +14,21 @@ import javax.swing.JOptionPane;
 
 /**
  * Ventana del usuario ADMINISTRADOR.
- * 
+ *
  * @author Carlos
  */
 public class VentanaAdmin extends javax.swing.JFrame {
 
     /**
-     * 
-     * Constructor de un nuevo formulario
-     * Ventana Administrador.
-     * 
-     * Se crea una peticion al servidor 
-     * para mostrar el nombre del usuario.
-     * 
+     *
+     * Constructor de un nuevo formulario Ventana Administrador.
+     *
+     * Se crea una peticion al servidor para mostrar el nombre del usuario.
+     *
      */
     public VentanaAdmin() {
         initComponents();
-        setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
@@ -70,13 +68,12 @@ public class VentanaAdmin extends javax.swing.JFrame {
         ResponseUserInfoDTO responseJson = gson.fromJson(responseJsonString, ResponseUserInfoDTO.class);
         // System.out.println(responseJson.getValue().getNombre());
         // Ponemos el nombre en el textfield correspondiente.
-        jTextFieldNombre.setText(responseJson.getValue().getNombre()); 
+        jTextFieldNombre.setText(responseJson.getValue().getNombre());
         //***********************************************
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario.
-     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -133,12 +130,20 @@ public class VentanaAdmin extends javax.swing.JFrame {
         jTextFieldNombre.setBorder(null);
 
         gestionUsuarios.setBackground(new java.awt.Color(242, 242, 242));
+        gestionUsuarios.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         gestionUsuarios.setText("Gestión Usuarios");
+        gestionUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionUsuariosActionPerformed(evt);
+            }
+        });
 
         gestionPeliculas.setBackground(new java.awt.Color(242, 242, 242));
+        gestionPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         gestionPeliculas.setText("Gestión Películas");
 
         gestionAlquiler.setBackground(new java.awt.Color(242, 242, 242));
+        gestionAlquiler.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         gestionAlquiler.setText("Gestión Alquiler Películas");
         gestionAlquiler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +152,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
         });
 
         correoAvisoClientes.setBackground(new java.awt.Color(242, 242, 242));
-        correoAvisoClientes.setText("Correo a clientes");
+        correoAvisoClientes.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        correoAvisoClientes.setText("Correo a usuarios");
         correoAvisoClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 correoAvisoClientesActionPerformed(evt);
@@ -155,6 +161,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         });
 
         rankingPeliculas.setBackground(new java.awt.Color(242, 242, 242));
+        rankingPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         rankingPeliculas.setText("Ranking de Películas");
 
         javax.swing.GroupLayout jPanelAdminLayout = new javax.swing.GroupLayout(jPanelAdmin);
@@ -167,23 +174,21 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addGap(63, 63, 63))
             .addGroup(jPanelAdminLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAdminLayout.createSequentialGroup()
-                        .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(gestionUsuarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textLogo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                        .addGap(40, 40, 40)
-                        .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabelUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(correoAvisoClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(rankingPeliculas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(correoAvisoClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(gestionAlquiler, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(gestionPeliculas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addComponent(gestionPeliculas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gestionUsuarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textLogo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                .addGap(40, 40, 40)
+                .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabelUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         jPanelAdminLayout.setVerticalGroup(
             jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,7 +210,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addComponent(rankingPeliculas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(correoAvisoClientes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion)
                 .addContainerGap())
         );
@@ -226,11 +231,10 @@ public class VentanaAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Metodo que se ejecuta al clicar
-     * en el boton CERRAR SESION del formulario.
-     * 
+     * Metodo que se ejecuta al clicar en el boton CERRAR SESION del formulario.
+     *
      * Operacion de logout del servidor.
-     * 
+     *
      */
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         StringBuilder resultado = new StringBuilder();
@@ -286,6 +290,12 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void correoAvisoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoAvisoClientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_correoAvisoClientesActionPerformed
+
+    private void gestionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuariosActionPerformed
+        VentanaGestionUsuarios gestionUsuarios = new VentanaGestionUsuarios();
+        gestionUsuarios.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_gestionUsuariosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton correoAvisoClientes;

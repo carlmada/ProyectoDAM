@@ -1,10 +1,9 @@
 package Modelos.DTOS;
 
 /**
- * 
- * Clase que formata los datos del
- * token que seran recibidos del servidor
- * 
+ *
+ * Clase que formata los datos del token que seran recibidos del servidor
+ *
  * @author Carlos
  */
 public class TokenDTO {

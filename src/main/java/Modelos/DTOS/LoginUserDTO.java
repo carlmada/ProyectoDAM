@@ -1,9 +1,7 @@
 package Modelos.DTOS;
 
 /**
- * Clase que formatea los datos 
- * que serviran para hacer el login 
- * al servidor.
+ * Clase que formatea los datos que serviran para hacer el login al servidor.
  *
  * @author Carlos
  */

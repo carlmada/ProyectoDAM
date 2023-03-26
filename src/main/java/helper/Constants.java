@@ -2,9 +2,8 @@ package helper;
 
 /**
  *
- * Clase con las variables static
- * que seran utilizadas en la aplicacion.
- * 
+ * Clase con las variables static que seran utilizadas en la aplicacion.
+ *
  * @author Carlos
  */
 public class Constants {

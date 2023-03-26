@@ -1,10 +1,8 @@
 package Modelos.DTOS;
 
 /**
- * 
- * Clase que formata los datos 
- * de respuesta del servidor a
- * la peticion de logout.
+ *
+ * Clase que formata los datos de respuesta del servidor a la peticion de logout.
  *
  * @author Carlos
  */
@@ -31,6 +29,4 @@ public class ResponseLogoutDTO {
         this.value = value;
     }
 
-    
-    
 }

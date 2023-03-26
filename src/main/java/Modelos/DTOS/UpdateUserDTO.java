@@ -1,18 +1,16 @@
 package Modelos.DTOS;
 
 /**
- * Clase que formata los datos que se enviaran
- * al servidor para modificar el perfil
- * del usuario.
- * 
+ * Clase que formata los datos que se enviaran al servidor para modificar el perfil del usuario.
+ *
  * @author Carlos
  */
 public class UpdateUserDTO {
-    
+
     //Constructor vacio.
     public UpdateUserDTO() {
     }
-        
+
     //Atributos.
     private String nombre;
     private String apellidos;
@@ -59,5 +57,5 @@ public class UpdateUserDTO {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-       
+
 }
