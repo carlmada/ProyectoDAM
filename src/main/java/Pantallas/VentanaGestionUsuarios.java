@@ -5,7 +5,7 @@ import Modelos.DTOS.ResponseUserInfoDTO;
 import Modelos.DTOS.ResponseUserListDTO;
 import Modelos.DTOS.UserListDTO;
 import com.google.gson.Gson;
-import helper.TableUsuarios;
+import utils.TableUsuarios;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,11 +13,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import utils.Constants;
@@ -30,15 +36,16 @@ import utils.Constants;
  */
 public class VentanaGestionUsuarios extends javax.swing.JFrame {
 
+    //Variable de Clase.
     TableUsuarios model;
-   
+    JSONArray jsonArray;
+
     /**
      * Constructor de un nuevo formulario Ventana de gestion de los usuarios.
      */
     public VentanaGestionUsuarios() {
         initComponents();
-                
-       
+
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
@@ -80,12 +87,11 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         // Ponemos el nombre en el textfield correspondiente.
         jTextFieldNombre.setText(responseJson.getValue().getNombre());
         //***********************************************
-        
+
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. 
-     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -98,9 +104,9 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         jLabelUsuario = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         listaUsuarios = new javax.swing.JButton();
-        gestionPeliculas = new javax.swing.JButton();
-        gestionAlquiler = new javax.swing.JButton();
-        rankingPeliculas = new javax.swing.JButton();
+        añadirUsuario = new javax.swing.JButton();
+        modificarUsuario = new javax.swing.JButton();
+        eliminarUsuario = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
@@ -152,17 +158,22 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             }
         });
 
-        gestionPeliculas.setBackground(new java.awt.Color(242, 242, 242));
-        gestionPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        gestionPeliculas.setText("Añadir Usuarios");
+        añadirUsuario.setBackground(new java.awt.Color(242, 242, 242));
+        añadirUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        añadirUsuario.setText("Añadir Usuarios");
 
-        gestionAlquiler.setBackground(new java.awt.Color(242, 242, 242));
-        gestionAlquiler.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        gestionAlquiler.setText("Modificar ROL Usuario");
+        modificarUsuario.setBackground(new java.awt.Color(242, 242, 242));
+        modificarUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        modificarUsuario.setText("Modificar ROL Usuario");
 
-        rankingPeliculas.setBackground(new java.awt.Color(242, 242, 242));
-        rankingPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        rankingPeliculas.setText("Eliminar Usuario");
+        eliminarUsuario.setBackground(new java.awt.Color(242, 242, 242));
+        eliminarUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        eliminarUsuario.setText("Eliminar Usuario");
+        eliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarUsuarioActionPerformed(evt);
+            }
+        });
 
         jButtonVolver.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jButtonVolver.setText("Volver");
@@ -175,19 +186,13 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         jScrollPane.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane.setColumnHeaderView(null);
         jScrollPane.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jScrollPane.setRowHeaderView(null);
 
         jTable.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jTable.setColumnSelectionAllowed(false);
         jTable.setFillsViewportHeight(true);
         jTable.setFocusable(false);
         jTable.setGridColor(new java.awt.Color(153, 153, 153));
         jTable.setSelectionBackground(new java.awt.Color(102, 204, 255));
-        jTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable.setShowGrid(true);
         jScrollPane.setViewportView(jTable);
 
         javax.swing.GroupLayout jPanelGestionUsuariosLayout = new javax.swing.GroupLayout(jPanelGestionUsuarios);
@@ -197,9 +202,9 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             .addGroup(jPanelGestionUsuariosLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanelGestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(rankingPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gestionAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gestionPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(eliminarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(añadirUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(listaUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGroup(jPanelGestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -211,7 +216,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                     .addGroup(jPanelGestionUsuariosLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(jPanelGestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                             .addGroup(jPanelGestionUsuariosLayout.createSequentialGroup()
                                 .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39)
@@ -237,13 +242,13 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                     .addGroup(jPanelGestionUsuariosLayout.createSequentialGroup()
                         .addComponent(listaUsuarios)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(gestionPeliculas)
+                        .addComponent(añadirUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(gestionAlquiler)
+                        .addComponent(modificarUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rankingPeliculas))
+                        .addComponent(eliminarUsuario))
                     .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addGroup(jPanelGestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCerrarSesion)
                     .addComponent(jButtonVolver))
@@ -266,14 +271,22 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        /**
+         *
+         * Método para volver a la pantalla anterior.
+         */
+
         VentanaAdmin ventanaAdmin = new VentanaAdmin();
         ventanaAdmin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void listaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaUsuariosActionPerformed
-       
-        //Obtenemos la lista de usuarios de la BD.
+
+        /**
+         *
+         * Método para crear una tabla que muestre la lista de usuarios de la aplicacion.
+         */
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
@@ -314,7 +327,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         //*************************************************
 
         //Creamos una lista de objetos JSON
-        JSONArray jsonArray = new JSONArray();
+        jsonArray = new JSONArray();
         for (int i = 0; i < responseJson.getValue().size(); i++) {
             JSONObject obj = new JSONObject();
             obj.put("id", responseJson.getValue().get(i).getId());
@@ -334,12 +347,16 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         //Asignamos el modelo a la tabla
         jTable.setModel(model);
         //Mostramos la lista
+        //Añadimos color a la cabecera.
         JTableHeader header = jTable.getTableHeader();
         header.setBackground(Color.cyan);
-        
+
     }//GEN-LAST:event_listaUsuariosActionPerformed
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
+        /**
+         * Metodo para cerrar la sesion y volver a inicio.
+         */
         StringBuilder resultado = new StringBuilder();
         try {
 
@@ -377,8 +394,8 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
 
         // Mostramos mensaje emergente de informacion.
         JOptionPane.showMessageDialog(this,
-            "    Has cerrado la sesion.\nVolverás a la pantalla de login.",
-            "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+                "    Has cerrado la sesion.\nVolverás a la pantalla de login.",
+                "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
         // Cerramos la ventana de usuario.
         this.dispose();
         // Volvemos la ventana de inicio.
@@ -386,9 +403,84 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         inicio.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
+    private void eliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioActionPerformed
+        /**
+         * metodo para eliminar un usuario de la aplicacion.
+         *
+         */
+
+        //Obtenemos la fila seleccionada.
+        int posicion = jTable.getSelectedRow();
+
+        if (posicion == -1) {
+            // No se ha seleccionado un usuario de la tabla
+            // Mostramos mensaje emergente de informacion.
+            JOptionPane.showMessageDialog(this,
+                    "Primero debes seleccionar un\n"
+                            + "usuario en la lista de usuarios",
+                    "ELIMINAR USUARIO", JOptionPane.INFORMATION_MESSAGE);
+            
+        } else {
+            // Se ha seleccionado un usuario
+            // Creamos un objeto JSON temporal de la fila seleccionada.
+            JSONObject obj = new JSONObject();
+            obj = jsonArray.getJSONObject(posicion);
+
+            // Mostramos mensaje emergente de confirmacion.
+            int opcion = JOptionPane.showConfirmDialog(this,
+                    "Deseas eliminar el usuario\n"
+                    + obj.get("NOMBRE") + " "
+                    + obj.getString("APELLIDOS") + " ?",
+                    "CONFIRMACION",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (opcion == JOptionPane.YES_OPTION) {
+                //Eliminamos usuario.
+                //1º obtenemos su id .
+                UUID id = (UUID) obj.get("id");
+                //****************************************************************
+                // Creamos el cliente de acceso
+                Client client = ClientBuilder.newClient();
+
+                // Creamos el target (URL)
+                WebTarget target = client.target(Constants.urlUsersDeleteId
+                        + id + "?token=" + Constants.token);
+
+                // Creamos la solicitud
+                Invocation.Builder solicitud = target.request();
+
+                // Enviamos nuestro peticion DELETE a la API
+                Response deleteUser = solicitud.delete();
+
+                // Recibimos la respuesta del servidor.
+                String responseJsonString = deleteUser.readEntity(String.class);
+
+                //Covertimos el JsonString en un objeto JSON.
+                JSONObject json = new JSONObject(responseJsonString);
+                System.out.println(json.getString("message"));
+
+                // Si todo ha salido correcto.
+                if (deleteUser.getStatus() == 200) {
+                    // Mostramos mensaje emergente de informacion.
+                    JOptionPane.showMessageDialog(this,
+                            "Usuario eliminado correctamente.",
+                            "ELIMINAR USUARIO", JOptionPane.INFORMATION_MESSAGE);
+
+                    //****************************************************************
+                } else {
+                    // Si ha habido error en la operacion.
+                    // Mostramos mensaje emergente de informacion.
+                    JOptionPane.showMessageDialog(this,
+                            "Ha ocurrido un error inesperado.",
+                            "ELIMINAR USUARIO", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_eliminarUsuarioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton gestionAlquiler;
-    private javax.swing.JButton gestionPeliculas;
+    private javax.swing.JButton añadirUsuario;
+    private javax.swing.JButton eliminarUsuario;
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabelUsuario;
@@ -398,8 +490,8 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JButton listaUsuarios;
     private javax.swing.JTextArea mensajeBienvenida;
-    private javax.swing.JButton rankingPeliculas;
+    private javax.swing.JButton modificarUsuario;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
-  
+
 }

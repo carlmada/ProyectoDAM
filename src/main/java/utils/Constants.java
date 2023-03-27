@@ -17,6 +17,7 @@ public class Constants {
     public static String urlUsuariosPorId = url + "/users/{id}";
     public static String urlUsuariosInfo = url + "/users/info";
     public static String urlUpdateUsuarios = url + "/users/update";
+    public static String urlUsersDeleteId = url + "/users/delete/";
 
     //Variables globales que se usaran en la aplicacion.
     public static String token;

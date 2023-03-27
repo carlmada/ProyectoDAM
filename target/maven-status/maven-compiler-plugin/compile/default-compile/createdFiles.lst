@@ -13,7 +13,6 @@ Pantallas\VentanaModificarUsuario.class
 Modelos\DTOS\UserInfoDTO.class
 Pantallas\VentanaGestionUsuarios$3.class
 Pantallas\VentanaLogin.class
-helper\Constants.class
 Pantallas\VentanaUsuario.class
 Pantallas\VentanaAdmin$3.class
 Pantallas\VentanaGestionUsuarios$2.class
@@ -24,7 +23,6 @@ Modelos\DTOS\LogoutUserDTO.class
 Modelos\DTOS\UserListDTO.class
 Modelos\Usuarios.class
 Pantallas\VentanaAdmin$2.class
-helper\MyTableModel.class
 Modelos\DTOS\ResponseLogoutDTO.class
 Modelos\DTOS\LoginUserDTO.class
 Modelos\DTOS\ResponseUpdateUserDTO.class
@@ -33,6 +31,7 @@ movies4rent\Movies4Rent.class
 Pantallas\VentanaLogin$2.class
 Modelos\DTOS\RegisterUserDTO.class
 Modelos\DTOS\TokenDTO.class
+utils\TableUsuarios.class
 Modelos\DTOS\UpdateUserDTO.class
 Pantallas\VentanaAdmin$4.class
 Pantallas\VentanaGestionUsuarios$1.class
