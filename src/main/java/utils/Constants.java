@@ -25,14 +25,20 @@ public class Constants {
     public static String urlUpdateUsuarios = url + "/users/update";
     public static String urlUsersDeleteId = url + "/users/delete/";
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> master
     public static String urlUpdateUsuarioAdmin = url + "/users/update/{id}";
     
     //url de Peliculas.
     public static String urlPeliculas = url + "/peliculas";
     public static String urlAddPelicula = url + "/peliculas/add";
     public static String urlPeliculaPorId = url + "/peliculas/{id}";
+<<<<<<< HEAD
 >>>>>>> b3c0ac5 (fix errores varios)
+=======
+>>>>>>> master
 
     //Variables globales que se usaran en la aplicacion.
     public static String token;
