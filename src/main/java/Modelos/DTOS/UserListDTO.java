@@ -21,7 +21,8 @@ public class UserListDTO {
     private String telefono;
     private String email;
     private String direccion;
-
+    private Boolean isAdmin;
+    
     //Getters-Setters.
     public UUID getId() {
         return id;
@@ -71,4 +72,11 @@ public class UserListDTO {
         this.direccion = direccion;
     }
 
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 }

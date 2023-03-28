@@ -319,7 +319,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
 
         // Pasamos la respuesta a un String.
         String responseJsonString = resultado.toString();
-
+        System.out.println(responseJsonString);
         //*************************************************
         // El array de objetos JSON lo convertimos en un array de objetos DTO.
         // Lo transformamos gracias al objeto DTO creado para ello.
@@ -336,11 +336,12 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             obj.put("TELEFONO", responseJson.getValue().get(i).getTelefono());
             obj.put("EMAIL", responseJson.getValue().get(i).getEmail());
             obj.put("DIRECCION", responseJson.getValue().get(i).getDireccion());
+            obj.put("IsAdmin", responseJson.getValue().get(i).getIsAdmin());
             jsonArray.put(obj);
         }
 
         //Creamos un String[] de columnas
-        String[] columnNames = {"NOMBRE", "APELLIDOS", "TELEFONO", "EMAIL", "DIRECCION"};
+        String[] columnNames = {"NOMBRE", "APELLIDOS", "TELEFONO", "EMAIL", "DIRECCION", "IsAdmin"};
 
         //Creamos el modelo de tabla
         model = new TableUsuarios(jsonArray, columnNames);
