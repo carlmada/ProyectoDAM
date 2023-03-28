@@ -344,8 +344,23 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
                 this.dispose();
                 VentanaLogin inicio = new VentanaLogin();
                 inicio.setVisible(true);
+            }else{
+                // Mostramos mensaje emergente de aviso.
+                JOptionPane.showMessageDialog(this,
+                    "Error en entrada de datos.\n"
+                    + "Vuelve a introducir los datos.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            // Limpiamos todos los campos.
+            textPassword.setText("");
+            textConfirmPassword.setText("");
+            textNombre.setText("");
+            textApellidos.setText("");
+            textTelefono.setText("");
+            textEmail.setText("");
+            textDireccion.setText("");
+            textUsername.setText("");
+            // Continuamos en ventana de nuevo registro.
             }
-
         } else {
             // Mostramos mensaje emergente de aviso.
             JOptionPane.showMessageDialog(this,

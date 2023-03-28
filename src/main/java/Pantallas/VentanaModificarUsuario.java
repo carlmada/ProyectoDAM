@@ -18,6 +18,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
+import org.json.JSONObject;
 
 /**
  *
@@ -342,18 +343,16 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
 
             // Recibimos la respuesta y la leemos en una clase String
             String responseJsonString = post.readEntity(String.class);
-
-            // El string es un json que lo convertimos en un objeto de java
-            ResponseUpdateUserDTO responseJson = gson.fromJson(responseJsonString, ResponseUpdateUserDTO.class);
-
+            
+            //Covertimos el JsonString en un objeto JSON.
+            JSONObject json = new JSONObject(responseJsonString);
+                
             // Si todo ha salido correcto.
             if (post.getStatus() == 200) {
-                // Comprobacion por consola.
-                System.out.println(responseJson.getMessage());
-
+                
                 // Mostramos mensaje emergente de informacion.
-                JOptionPane.showMessageDialog(this,
-                        responseJson.getMessage()
+                JOptionPane.showMessageDialog(this,"        "+
+                        json.getString("message")
                         + "\nVolverás a la pantalla de login.",
                         "PERFIL DE USUARIO", JOptionPane.INFORMATION_MESSAGE);
                 // Cerramos la ventana de registro. 
@@ -364,7 +363,7 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
             } else {
                 // Mostramos mensaje emergente de aviso.
                 JOptionPane.showMessageDialog(this,
-                        responseJson.getMessage() + "\n"
+                        json.getString("message") + "\n"
                         + "Vuelve a introducir los datos.",
                         "ERROR", JOptionPane.ERROR_MESSAGE);
                 // Limpiamos todos los campos.
