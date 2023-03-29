@@ -23,6 +23,7 @@ Modelos\DTOS\LogoutUserDTO.class
 Modelos\DTOS\UserListDTO.class
 Modelos\Usuarios.class
 Pantallas\VentanaAdmin$2.class
+Pantallas\VentanaGestionUsuarios$4.class
 Modelos\DTOS\ResponseLogoutDTO.class
 Modelos\DTOS\LoginUserDTO.class
 Modelos\DTOS\ResponseUpdateUserDTO.class

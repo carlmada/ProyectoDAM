@@ -3,6 +3,7 @@ package Pantallas;
 import Modelos.DTOS.ResponseLogoutDTO;
 import Modelos.DTOS.ResponseUserInfoDTO;
 import Modelos.DTOS.ResponseUserListDTO;
+import Modelos.DTOS.UpdateUserAdminDTO;
 import Modelos.DTOS.UserListDTO;
 import com.google.gson.Gson;
 import utils.TableUsuarios;
@@ -10,10 +11,13 @@ import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
@@ -104,8 +109,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         jLabelUsuario = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         listaUsuarios = new javax.swing.JButton();
-        añadirUsuario = new javax.swing.JButton();
-        modificarUsuario = new javax.swing.JButton();
+        modificarRolUsuario = new javax.swing.JButton();
         eliminarUsuario = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
         jScrollPane = new javax.swing.JScrollPane();
@@ -158,13 +162,14 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             }
         });
 
-        añadirUsuario.setBackground(new java.awt.Color(242, 242, 242));
-        añadirUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        añadirUsuario.setText("Añadir Usuarios");
-
-        modificarUsuario.setBackground(new java.awt.Color(242, 242, 242));
-        modificarUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        modificarUsuario.setText("Modificar ROL Usuario");
+        modificarRolUsuario.setBackground(new java.awt.Color(242, 242, 242));
+        modificarRolUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        modificarRolUsuario.setText("Modificar ROL Usuario");
+        modificarRolUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarRolUsuarioActionPerformed(evt);
+            }
+        });
 
         eliminarUsuario.setBackground(new java.awt.Color(242, 242, 242));
         eliminarUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
@@ -203,8 +208,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanelGestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(eliminarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(modificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(añadirUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modificarRolUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(listaUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGroup(jPanelGestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -241,11 +245,9 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 .addGroup(jPanelGestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGestionUsuariosLayout.createSequentialGroup()
                         .addComponent(listaUsuarios)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(añadirUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(modificarUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
+                        .addComponent(modificarRolUsuario)
+                        .addGap(18, 18, 18)
                         .addComponent(eliminarUsuario))
                     .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
@@ -418,9 +420,9 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             // Mostramos mensaje emergente de informacion.
             JOptionPane.showMessageDialog(this,
                     "Primero debes seleccionar un\n"
-                            + "usuario en la lista de usuarios",
+                    + "usuario en la lista de usuarios",
                     "ELIMINAR USUARIO", JOptionPane.INFORMATION_MESSAGE);
-            
+
         } else {
             // Se ha seleccionado un usuario
             // Creamos un objeto JSON temporal de la fila seleccionada.
@@ -479,8 +481,104 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eliminarUsuarioActionPerformed
 
+    private void modificarRolUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarRolUsuarioActionPerformed
+        /**
+         * Metodo para modificar el ROL del usuario
+         *
+         * administrador o usuario.
+         *
+         */
+
+        //Obtenemos la fila seleccionada.
+        int posicion = jTable.getSelectedRow();
+
+        if (posicion == -1) {
+            // No se ha seleccionado un usuario de la tabla
+            // Mostramos mensaje emergente de informacion.
+            JOptionPane.showMessageDialog(this,
+                    "Primero debes seleccionar un\n"
+                    + "usuario en la lista de usuarios",
+                    "MODIFICAR ROL USUARIO", JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+
+            // Se ha seleccionado un usuario
+            // Creamos un objeto JSON temporal de la fila seleccionada.
+            JSONObject obj = new JSONObject();
+            obj = jsonArray.getJSONObject(posicion);
+
+            //Obtenemos su id.
+            UUID id = (UUID) obj.get("id");
+
+            //Comprobamos que tipo de usuario es.
+            //Si es un administrador...
+            if ((obj.getBoolean("IsAdmin")) == true) {
+
+                // Mostramos mensaje emergente de confirmacion.
+                int opcion = JOptionPane.showConfirmDialog(null,
+                        "  Usuario ADMINISTRADOR.\n"
+                        + "Deseas cambiarlo a USUARIO?",
+                        "CONFIRMACION", 0);
+
+                //Si opcion es SI...
+                if (opcion == 0) {
+                    //Cambiamos su ROL a usuario.
+                    Boolean admin=false;
+                    try {
+                        // Creamos la URL.
+                        URL url = new URL(Constants.urlUpdateUsuarioAdmin + id + "/"+admin+"?token="+Constants.token);
+                        //Creamos la conexion al servidor.
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        //Metodo PUT
+                        conn.setDoOutput(true);
+                        conn.setRequestMethod("PUT");                   
+                        System.out.println(conn.getResponseCode());
+                    } catch (MalformedURLException ex) {
+                        Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                } else {
+                    //No hacemos nada.                    
+                }
+
+            } else { //Si es Usuario...
+                
+                // Mostramos mensaje emergente de confirmacion.
+                int opcion = JOptionPane.showConfirmDialog(null,
+                        "          Es un USUARIO.\n"
+                        + "Deseas cambiarlo a ADMINISTRADOR?",
+                        "CONFIRMACION", 0);
+
+                //Si opcion es SI...
+                if (opcion == 0) {
+                    //Cambiamos su ROL a administrador.
+                    Boolean admin=true;
+                    try {
+                        // Creamos la URL.
+                        URL url = new URL(Constants.urlUpdateUsuarioAdmin + id + "/"+admin+"?token="+Constants.token);
+                        //Creamos la conexion al servidor.
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        //Metodo PUT
+                        conn.setDoOutput(true);
+                        conn.setRequestMethod("PUT");
+                        System.out.println(conn.getResponseCode());
+                        
+                    } catch (MalformedURLException ex) {
+                        Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                } else {
+                    //No hacemos nada.                    
+                }
+            }
+        }
+    }//GEN-LAST:event_modificarRolUsuarioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton añadirUsuario;
     private javax.swing.JButton eliminarUsuario;
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JButton jButtonVolver;
@@ -491,7 +589,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JButton listaUsuarios;
     private javax.swing.JTextArea mensajeBienvenida;
-    private javax.swing.JButton modificarUsuario;
+    private javax.swing.JButton modificarRolUsuario;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
 
