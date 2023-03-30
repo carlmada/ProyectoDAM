@@ -60,13 +60,11 @@
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="correoAvisoClientes" pref="200" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="rankingPeliculas" alignment="0" max="32767" attributes="0"/>
-                          <Component id="gestionAlquiler" alignment="0" max="32767" attributes="0"/>
-                          <Component id="gestionPeliculas" alignment="0" max="32767" attributes="0"/>
-                          <Component id="gestionUsuarios" alignment="0" max="32767" attributes="0"/>
-                          <Component id="textLogo" alignment="0" pref="200" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="rankingPeliculas" alignment="0" max="32767" attributes="0"/>
+                      <Component id="gestionAlquiler" alignment="0" max="32767" attributes="0"/>
+                      <Component id="gestionPeliculas" alignment="0" max="32767" attributes="0"/>
+                      <Component id="gestionUsuarios" alignment="0" max="32767" attributes="0"/>
+                      <Component id="textLogo" alignment="0" pref="200" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="mensajeBienvenida" min="-2" pref="250" max="-2" attributes="0"/>
@@ -74,7 +72,7 @@
                   <Component id="jLabelUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jTextFieldNombre" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="160" max="32767" attributes="0"/>
+                  <EmptySpace pref="83" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -100,7 +98,7 @@
                   <Component id="rankingPeliculas" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="correoAvisoClientes" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="108" max="32767" attributes="0"/>
+                  <EmptySpace pref="114" max="32767" attributes="0"/>
                   <Component id="jButtonCerrarSesion" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -148,6 +146,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonCerrarSesion">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="ff" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Serif" size="14" style="0"/>
             </Property>
@@ -200,6 +201,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Gesti&#xf3;n Pel&#xed;culas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gestionPeliculasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="gestionAlquiler">
           <Properties>

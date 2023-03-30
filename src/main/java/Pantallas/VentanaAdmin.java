@@ -1,7 +1,9 @@
 package Pantallas;
 
+import Pantallas.peliculas.VentanaGestionPeliculas;
+import Pantallas.usuarios.VentanaGestionUsuarios;
 import Modelos.DTOS.ResponseLogoutDTO;
-import Modelos.DTOS.ResponseUserInfoDTO;
+import Modelos.DTOS.usuarios.DTO.ResponseUserInfoDTO;
 import com.google.gson.Gson;
 import utils.Constants;
 import java.io.BufferedReader;
@@ -114,6 +116,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         mensajeBienvenida.setBorder(null);
         mensajeBienvenida.setSelectionColor(new java.awt.Color(255, 255, 255));
 
+        jButtonCerrarSesion.setBackground(new java.awt.Color(255, 102, 102));
         jButtonCerrarSesion.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jButtonCerrarSesion.setText("Cerrar Sesion");
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +144,11 @@ public class VentanaAdmin extends javax.swing.JFrame {
         gestionPeliculas.setBackground(new java.awt.Color(242, 242, 242));
         gestionPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         gestionPeliculas.setText("Gestión Películas");
+        gestionPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionPeliculasActionPerformed(evt);
+            }
+        });
 
         gestionAlquiler.setBackground(new java.awt.Color(242, 242, 242));
         gestionAlquiler.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
@@ -176,19 +184,18 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(correoAvisoClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(rankingPeliculas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(gestionAlquiler, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(gestionPeliculas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(gestionUsuarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textLogo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                    .addComponent(rankingPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gestionAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gestionPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gestionUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(jLabelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanelAdminLayout.setVerticalGroup(
             jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +217,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addComponent(rankingPeliculas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(correoAvisoClientes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion)
                 .addContainerGap())
         );
@@ -296,6 +303,12 @@ public class VentanaAdmin extends javax.swing.JFrame {
         gestionUsuarios.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_gestionUsuariosActionPerformed
+
+    private void gestionPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionPeliculasActionPerformed
+        VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();
+        gestionPeliculas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_gestionPeliculasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton correoAvisoClientes;

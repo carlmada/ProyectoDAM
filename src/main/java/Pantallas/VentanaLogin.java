@@ -1,5 +1,7 @@
 package Pantallas;
 
+import Pantallas.usuarios.VentanaUsuario;
+import Pantallas.usuarios.VentanaNuevoUsuario;
 import Modelos.DTOS.LoginUserDTO;
 import Modelos.DTOS.ResponseLoginDTO;
 import com.google.gson.Gson;
@@ -101,7 +103,7 @@ public class VentanaLogin extends javax.swing.JFrame {
             }
         });
 
-        buttonNuevoUsuario.setBackground(new java.awt.Color(153, 204, 255));
+        buttonNuevoUsuario.setBackground(new java.awt.Color(255, 153, 102));
         buttonNuevoUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         buttonNuevoUsuario.setText("NUEVO USUARIO");
         buttonNuevoUsuario.setBorderPainted(false);

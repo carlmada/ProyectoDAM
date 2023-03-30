@@ -31,7 +31,8 @@ public class Constants {
     public static String urlPeliculas = url + "/peliculas";
     public static String urlAddPelicula = url + "/peliculas/add";
     public static String urlPeliculaPorId = url + "/peliculas/{id}";
-
+    public static String urlpeliculaDeleteId = url + "/peliculas/delete/";
+    
     //Variables globales que se usaran en la aplicacion.
     public static String token;
 
