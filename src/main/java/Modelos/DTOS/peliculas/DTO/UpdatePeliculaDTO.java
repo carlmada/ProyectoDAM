@@ -1,36 +1,12 @@
 package Modelos.DTOS.peliculas.DTO;
 
-import java.time.LocalDate;
-import java.util.UUID;
-
 /**
- *Clase que formata los datos que recibiremos del servidor 
- *cuando pidamos la lista de peliculas.
- *
+ *Clase que formata los datos que se enviaran al servidor
+ *para modificar una pelicula.
+ * 
  * @author Carlos
  */
-public class PeliculaListDTO {
-    //Constructor.
-    public PeliculaListDTO() {
-    }
-        
-    //Atributos
-    private UUID id;
-    private String titulo;
-    private String director;
-    private String genero;
-    private Double duracion;
-    private String año;
-    private Double precio;
-    
-    //Getters-Setters.
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
+public class UpdatePeliculaDTO {
 
     public String getTitulo() {
         return titulo;
@@ -79,5 +55,16 @@ public class PeliculaListDTO {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+
+    //Constructor.
+    public UpdatePeliculaDTO() {
+    }
+    //Atributos.
+    private String titulo;
+    private String director;
+    private String genero;
+    private Double duracion;
+    private String año;
+    private Double precio;
     
 }

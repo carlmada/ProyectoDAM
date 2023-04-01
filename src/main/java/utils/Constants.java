@@ -10,7 +10,7 @@ public class Constants {
 
     //Variables con las url del servidor donde realizaremos las peticiones.
     
-    //General.
+    //URL General.
     public static String url = "http://localhost:8080";
     
     //url de login - logout - registro.
@@ -24,14 +24,16 @@ public class Constants {
     public static String urlUsuariosInfo = url + "/users/info";
     public static String urlUpdateUsuarios = url + "/users/update";
     public static String urlUsersDeleteId = url + "/users/delete/";
-
     public static String urlUpdateUsuarioAdmin = url + "/users/update/";
+    public static String urlUpdatePasswordUsuario = url + "/users/changepassword";
     
     //url de Peliculas.
     public static String urlPeliculas = url + "/peliculas";
     public static String urlAddPelicula = url + "/peliculas/add";
     public static String urlPeliculaPorId = url + "/peliculas/{id}";
     public static String urlpeliculaDeleteId = url + "/peliculas/delete/";
+    public static String urlUpdatePelicula = url + "/peliculas/update/";
+    
     
     //Variables globales que se usaran en la aplicacion.
     public static String token;

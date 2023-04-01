@@ -156,7 +156,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         jTextFieldNombre.setToolTipText("");
         jTextFieldNombre.setBorder(null);
 
-        listaUsuarios.setBackground(new java.awt.Color(242, 242, 242));
+        listaUsuarios.setBackground(new java.awt.Color(0, 204, 255));
         listaUsuarios.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         listaUsuarios.setText("Listar Usuarios");
         listaUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +165,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             }
         });
 
-        modificarRolUsuario.setBackground(new java.awt.Color(242, 242, 242));
+        modificarRolUsuario.setBackground(new java.awt.Color(255, 153, 51));
         modificarRolUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         modificarRolUsuario.setText("Modificar ROL Usuario");
         modificarRolUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +174,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             }
         });
 
-        eliminarUsuario.setBackground(new java.awt.Color(242, 242, 242));
+        eliminarUsuario.setBackground(new java.awt.Color(255, 51, 51));
         eliminarUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         eliminarUsuario.setText("Eliminar Usuario");
         eliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -254,7 +254,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(eliminarUsuario))
                     .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addGroup(jPanelGestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCerrarSesion)
                     .addComponent(jButtonVolver))

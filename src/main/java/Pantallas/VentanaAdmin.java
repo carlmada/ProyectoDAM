@@ -1,5 +1,6 @@
 package Pantallas;
 
+import Modelos.DTOS.CambioDePasswordDTO;
 import Pantallas.peliculas.VentanaGestionPeliculas;
 import Pantallas.usuarios.VentanaGestionUsuarios;
 import Modelos.DTOS.ResponseLogoutDTO;
@@ -13,6 +14,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.swing.JOptionPane;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
 
 /**
  * Ventana del usuario ADMINISTRADOR.
@@ -31,6 +38,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
     public VentanaAdmin() {
         initComponents();
         setLocationRelativeTo(null);
+        panelContraseña.setVisible(false);
+        
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
@@ -92,6 +101,14 @@ public class VentanaAdmin extends javax.swing.JFrame {
         gestionAlquiler = new javax.swing.JButton();
         correoAvisoClientes = new javax.swing.JButton();
         rankingPeliculas = new javax.swing.JButton();
+        cambioDeContraseña = new javax.swing.JButton();
+        panelContraseña = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelPassword = new javax.swing.JLabel();
+        jLabelConfirmPassword = new javax.swing.JLabel();
+        jPassword = new javax.swing.JPasswordField();
+        jPassword2 = new javax.swing.JPasswordField();
+        buttonModificarContraseña = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADMINISTRADOR");
@@ -172,6 +189,85 @@ public class VentanaAdmin extends javax.swing.JFrame {
         rankingPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         rankingPeliculas.setText("Ranking de Películas");
 
+        cambioDeContraseña.setBackground(new java.awt.Color(242, 242, 242));
+        cambioDeContraseña.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        cambioDeContraseña.setText("Cambiar Contraseña");
+        cambioDeContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambioDeContraseñaActionPerformed(evt);
+            }
+        });
+
+        panelContraseña.setBackground(new java.awt.Color(204, 255, 255));
+        panelContraseña.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Cambio de Contraseña");
+
+        jLabelPassword.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelPassword.setText("Password :");
+
+        jLabelConfirmPassword.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelConfirmPassword.setText("Confirm Password :");
+
+        jPassword.setBackground(java.awt.SystemColor.control);
+        jPassword.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+
+        jPassword2.setBackground(java.awt.SystemColor.control);
+        jPassword2.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+
+        buttonModificarContraseña.setBackground(new java.awt.Color(255, 153, 51));
+        buttonModificarContraseña.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        buttonModificarContraseña.setText("MODIFICAR");
+        buttonModificarContraseña.setBorderPainted(false);
+        buttonModificarContraseña.setFocusable(false);
+        buttonModificarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonModificarContraseñaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelContraseñaLayout = new javax.swing.GroupLayout(panelContraseña);
+        panelContraseña.setLayout(panelContraseñaLayout);
+        panelContraseñaLayout.setHorizontalGroup(
+            panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContraseñaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelContraseñaLayout.createSequentialGroup()
+                        .addComponent(jLabelConfirmPassword)
+                        .addGap(14, 14, 14)
+                        .addComponent(jPassword2))
+                    .addGroup(panelContraseñaLayout.createSequentialGroup()
+                        .addComponent(jLabelPassword)
+                        .addGap(82, 82, 82)
+                        .addComponent(jPassword)))
+                .addContainerGap())
+            .addGroup(panelContraseñaLayout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addComponent(buttonModificarContraseña)
+                .addContainerGap(126, Short.MAX_VALUE))
+        );
+        panelContraseñaLayout.setVerticalGroup(
+            panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContraseñaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPassword)
+                    .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelConfirmPassword)
+                    .addComponent(jPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(buttonModificarContraseña)
+                .addGap(32, 32, 32))
+        );
+
         javax.swing.GroupLayout jPanelAdminLayout = new javax.swing.GroupLayout(jPanelAdmin);
         jPanelAdmin.setLayout(jPanelAdminLayout);
         jPanelAdminLayout.setHorizontalGroup(
@@ -188,14 +284,20 @@ public class VentanaAdmin extends javax.swing.JFrame {
                     .addComponent(gestionAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gestionPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gestionUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                    .addComponent(textLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(cambioDeContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addComponent(mensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(jLabelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
+            .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelAdminLayout.createSequentialGroup()
+                    .addGap(238, 238, 238)
+                    .addComponent(panelContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(184, Short.MAX_VALUE)))
         );
         jPanelAdminLayout.setVerticalGroup(
             jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,9 +319,16 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addComponent(rankingPeliculas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(correoAvisoClientes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cambioDeContraseña)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion)
                 .addContainerGap())
+            .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelAdminLayout.createSequentialGroup()
+                    .addGap(86, 86, 86)
+                    .addComponent(panelContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(42, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -310,16 +419,109 @@ public class VentanaAdmin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_gestionPeliculasActionPerformed
 
+    private void cambioDeContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioDeContraseñaActionPerformed
+      panelContraseña.setVisible(true);
+        
+    }//GEN-LAST:event_cambioDeContraseñaActionPerformed
+    
+    private void buttonModificarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarContraseñaActionPerformed
+
+        // Leemos los campos password introducidos.
+        // Comprobamos que los password sean iguales...
+
+        char[] password = jPassword.getPassword();
+        String pass = new String(password);
+
+        char[] passwordConfirmacion = jPassword2.getPassword();
+        String passConfirm = new String(passwordConfirmacion);
+
+        // Comparamos...
+        if (pass.equals(passConfirm)) {
+
+            // Creamos el cliente
+            Client client = ClientBuilder.newClient();
+
+            // Creamos el target (URL) con el token.
+            WebTarget target = client.target(Constants.urlUpdatePasswordUsuario + "?token=" + Constants.token);
+
+            // Creamos la solicitud
+            Invocation.Builder solicitud = target.request();
+
+            // Creamos el objeto DTO que espera el servidor
+            CambioDePasswordDTO cambioPassword = new CambioDePasswordDTO();
+
+            // Asignamos los valores
+            cambioPassword.setPassword(pass);
+
+            // Creamos una instancia de Gson para convertir nuestro String a JSON
+            Gson gson = new Gson();
+
+            // lo pasamos a objeto Json
+            String jsonString = gson.toJson(cambioPassword);
+
+            // Enviamos nuestro json via PUT a la API
+            Response put = solicitud.put(Entity.json(jsonString));
+
+            // Recibimos la respuesta y la leemos en una clase String
+            String responseJsonString = put.readEntity(String.class);
+
+            // Si todo ha salido correcto.
+            if (put.getStatus() == 200) {
+                // Comprobacion por consola.
+                System.out.println(responseJsonString);
+
+                // Mostramos mensaje emergente de informacion.
+                JOptionPane.showMessageDialog(this,
+                    "Contraseña actualizada correctamente."
+                    + "\nVolverás a la pantalla de login.",
+                    "CAMBIO de CONTRASEÑA", JOptionPane.INFORMATION_MESSAGE);
+                // Cerramos la ventana.
+                // y volvemos a inicio.
+                this.dispose();
+                VentanaLogin inicio = new VentanaLogin();
+                inicio.setVisible(true);
+            }else{
+                // Mostramos mensaje emergente de aviso.
+                JOptionPane.showMessageDialog(this,
+                    "Error en cambio de contraseña.\n"
+                    + "Vuelve a introducir los datos.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                // Limpiamos todos los campos.
+                jPassword.setText("");
+                jPassword2.setText("");
+                // Continuamos en ventana de nuevo registro.
+            }
+        } else {
+            // Mostramos mensaje emergente de aviso.
+            JOptionPane.showMessageDialog(this,
+                "Las contraseñas no coinciden.\n"
+                + "Vuelve a introducir los datos.",
+                "ERROR", JOptionPane.ERROR_MESSAGE);
+            // Limpiamos todos los campos.
+            jPassword.setText("");
+            jPassword2.setText("");
+            // Continuamos en ventana de nuevo registro.
+        }
+    }//GEN-LAST:event_buttonModificarContraseñaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonModificarContraseña;
+    private javax.swing.JButton cambioDeContraseña;
     private javax.swing.JButton correoAvisoClientes;
     private javax.swing.JButton gestionAlquiler;
     private javax.swing.JButton gestionPeliculas;
     private javax.swing.JButton gestionUsuarios;
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelConfirmPassword;
+    private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelAdmin;
+    private javax.swing.JPasswordField jPassword;
+    private javax.swing.JPasswordField jPassword2;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextArea mensajeBienvenida;
+    private javax.swing.JPanel panelContraseña;
     private javax.swing.JButton rankingPeliculas;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables

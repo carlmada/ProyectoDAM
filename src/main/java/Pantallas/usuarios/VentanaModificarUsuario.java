@@ -315,7 +315,7 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
         //Si es correcto, hacemos la modificacion...
         if (opcion == 0) {
 
-            // Creamos el cliente de login
+            // Creamos el cliente
             Client client = ClientBuilder.newClient();
 
             // Creamos el target (URL)

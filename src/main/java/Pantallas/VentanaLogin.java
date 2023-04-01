@@ -92,7 +92,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         textPassword.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         textPassword.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
-        buttonEntrar.setBackground(new java.awt.Color(153, 204, 255));
+        buttonEntrar.setBackground(new java.awt.Color(102, 204, 0));
         buttonEntrar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         buttonEntrar.setText("ENTRAR");
         buttonEntrar.setBorderPainted(false);
@@ -151,7 +151,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 .addComponent(buttonEntrar)
                 .addGap(34, 34, 34)
                 .addComponent(buttonNuevoUsuario)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

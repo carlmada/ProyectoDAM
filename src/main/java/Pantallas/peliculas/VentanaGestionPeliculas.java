@@ -2,6 +2,7 @@ package Pantallas.peliculas;
 
 import Modelos.DTOS.ResponseLogoutDTO;
 import Modelos.DTOS.peliculas.DTO.ResponsePeliculaListDTO;
+import Modelos.DTOS.peliculas.DTO.UpdatePeliculaDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserInfoDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserListDTO;
 import Pantallas.VentanaAdmin;
@@ -35,8 +36,7 @@ import utils.TablePeliculas;
 
 /**
  *
- * Ventana para realizar la gestión
- * de las peliculas.
+ * Ventana para realizar la gestión de las peliculas.
  *
  * @author Carlos
  */
@@ -45,14 +45,14 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
     //Variable de Clase.
     TablePeliculas model;
     JSONArray jsonArray;
+    int posicion;
 
     /**
-     * Constructor de un nuevo formulario 
-     * Ventana de gestion de peliculas.
+     * Constructor de un nuevo formulario Ventana de gestion de peliculas.
      */
     public VentanaGestionPeliculas() {
         initComponents();
-
+        panelModificarPelicula.setVisible(false);
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
@@ -98,8 +98,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. 
-     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -117,6 +116,21 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         jButtonVolver = new javax.swing.JButton();
         jScrollPane = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
+        panelModificarPelicula = new javax.swing.JPanel();
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelModificarPelicula = new javax.swing.JLabel();
+        textTitulo = new javax.swing.JTextField();
+        textDirector = new javax.swing.JTextField();
+        textGenero = new javax.swing.JTextField();
+        textDuracion = new javax.swing.JTextField();
+        textAño = new javax.swing.JTextField();
+        textPrecio = new javax.swing.JTextField();
+        jLabelDirector = new javax.swing.JLabel();
+        jLabelGenero = new javax.swing.JLabel();
+        jLabelDuracion = new javax.swing.JLabel();
+        jLabelAño = new javax.swing.JLabel();
+        jLabelPrecio = new javax.swing.JLabel();
+        buttonModificarPeliculaConfirmacion = new javax.swing.JButton();
         añadirPelicula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -158,7 +172,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         jTextFieldNombre.setToolTipText("");
         jTextFieldNombre.setBorder(null);
 
-        listaPeliculas.setBackground(new java.awt.Color(242, 242, 242));
+        listaPeliculas.setBackground(new java.awt.Color(0, 204, 255));
         listaPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         listaPeliculas.setText("Lista de Peliculas");
         listaPeliculas.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +181,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             }
         });
 
-        modificarPelicula.setBackground(new java.awt.Color(242, 242, 242));
+        modificarPelicula.setBackground(new java.awt.Color(255, 153, 51));
         modificarPelicula.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         modificarPelicula.setText("Modificar Pelicula");
         modificarPelicula.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +190,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             }
         });
 
-        eliminarPelicula.setBackground(new java.awt.Color(242, 242, 242));
+        eliminarPelicula.setBackground(new java.awt.Color(255, 51, 51));
         eliminarPelicula.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         eliminarPelicula.setText("Eliminar Pelicula");
         eliminarPelicula.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +220,157 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         jTable.setSelectionBackground(new java.awt.Color(102, 204, 255));
         jScrollPane.setViewportView(jTable);
 
-        añadirPelicula.setBackground(new java.awt.Color(242, 242, 242));
+        panelModificarPelicula.setBackground(new java.awt.Color(204, 255, 255));
+
+        jLabelTitulo.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelTitulo.setText("Titulo : ");
+
+        jLabelModificarPelicula.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelModificarPelicula.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        jLabelModificarPelicula.setText("MODIFICAR PELICULA");
+
+        textTitulo.setBackground(java.awt.SystemColor.control);
+        textTitulo.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        textTitulo.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        textTitulo.setAutoscrolls(false);
+        textTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        textTitulo.setMinimumSize(new java.awt.Dimension(30, 20));
+
+        textDirector.setBackground(java.awt.SystemColor.control);
+        textDirector.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        textDirector.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        textDirector.setAutoscrolls(false);
+        textDirector.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        textDirector.setMinimumSize(new java.awt.Dimension(30, 20));
+
+        textGenero.setBackground(java.awt.SystemColor.control);
+        textGenero.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        textGenero.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        textGenero.setAutoscrolls(false);
+        textGenero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        textGenero.setMinimumSize(new java.awt.Dimension(30, 20));
+
+        textDuracion.setBackground(java.awt.SystemColor.control);
+        textDuracion.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        textDuracion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        textDuracion.setAutoscrolls(false);
+        textDuracion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        textDuracion.setMinimumSize(new java.awt.Dimension(30, 20));
+
+        textAño.setBackground(java.awt.SystemColor.control);
+        textAño.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        textAño.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        textAño.setAutoscrolls(false);
+        textAño.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        textAño.setMinimumSize(new java.awt.Dimension(30, 20));
+
+        textPrecio.setBackground(java.awt.SystemColor.control);
+        textPrecio.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        textPrecio.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        textPrecio.setAutoscrolls(false);
+        textPrecio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        textPrecio.setMinimumSize(new java.awt.Dimension(30, 20));
+
+        jLabelDirector.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelDirector.setText("Director : ");
+
+        jLabelGenero.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelGenero.setText("Genero :");
+
+        jLabelDuracion.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelDuracion.setText("Duracion :");
+
+        jLabelAño.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelAño.setText("Año :");
+
+        jLabelPrecio.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelPrecio.setText("Precio :");
+
+        buttonModificarPeliculaConfirmacion.setBackground(new java.awt.Color(255, 153, 51));
+        buttonModificarPeliculaConfirmacion.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        buttonModificarPeliculaConfirmacion.setText("MODIFICAR");
+        buttonModificarPeliculaConfirmacion.setBorderPainted(false);
+        buttonModificarPeliculaConfirmacion.setFocusable(false);
+        buttonModificarPeliculaConfirmacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonModificarPeliculaConfirmacionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelModificarPeliculaLayout = new javax.swing.GroupLayout(panelModificarPelicula);
+        panelModificarPelicula.setLayout(panelModificarPeliculaLayout);
+        panelModificarPeliculaLayout.setHorizontalGroup(
+            panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelModificarPeliculaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelModificarPelicula)
+                .addContainerGap(158, Short.MAX_VALUE))
+            .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
+                        .addComponent(jLabelPrecio)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelModificarPeliculaLayout.createSequentialGroup()
+                        .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
+                                .addComponent(jLabelTitulo)
+                                .addGap(47, 47, 47)
+                                .addComponent(textTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
+                                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelDirector)
+                                    .addComponent(jLabelGenero)
+                                    .addComponent(jLabelDuracion)
+                                    .addComponent(jLabelAño))
+                                .addGap(28, 28, 28)
+                                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textAño, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(34, 34, 34))))
+            .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(buttonModificarPeliculaConfirmacion)
+                .addContainerGap(157, Short.MAX_VALUE))
+        );
+        panelModificarPeliculaLayout.setVerticalGroup(
+            panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelModificarPelicula)
+                .addGap(18, 18, 18)
+                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTitulo)
+                    .addComponent(textTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelDirector)
+                    .addComponent(textDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGenero)
+                    .addComponent(textGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelDuracion)
+                    .addComponent(textDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAño)
+                    .addComponent(textAño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPrecio)
+                    .addComponent(textPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(buttonModificarPeliculaConfirmacion)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        añadirPelicula.setBackground(new java.awt.Color(0, 204, 102));
         añadirPelicula.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         añadirPelicula.setText("Añadir Pelicula");
         añadirPelicula.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +393,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                     .addComponent(añadirPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonVolver)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonCerrarSesion))
@@ -242,9 +406,13 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                                 .addGap(39, 39, 39)
                                 .addComponent(jLabelUsuario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)))))
+                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(63, 63, 63))
+            .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
+                    .addContainerGap(245, Short.MAX_VALUE)
+                    .addComponent(panelModificarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(298, 298, 298)))
         );
         jPanelGestionPeliculasLayout.setVerticalGroup(
             jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +429,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
                         .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                         .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonCerrarSesion)
                             .addComponent(jButtonVolver)))
@@ -275,6 +443,11 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                         .addComponent(modificarPelicula)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
+                    .addContainerGap(68, Short.MAX_VALUE)
+                    .addComponent(panelModificarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -307,11 +480,11 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
 
         /**
          *
-         * Método para crear una tabla que muestre
-         * la lista de las peliculas de la aplicacion.
+         * Método para crear una tabla que muestre la lista de las peliculas de la aplicacion.
          */
         //***********************************************
-              
+        jScrollPane.setVisible(true);
+        jTable.setVisible(true);
         StringBuilder resultado = new StringBuilder();
         try {
             // Creamos la URL
@@ -350,7 +523,6 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         ResponsePeliculaListDTO responseJson = gson.fromJson(responseJsonString, ResponsePeliculaListDTO.class);
         //*************************************************
 
-        
         //Creamos una lista de objetos JSON
         jsonArray = new JSONArray();
         for (int i = 0; i < responseJson.getValue().size(); i++) {
@@ -360,7 +532,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             obj.put("DIRECTOR", responseJson.getValue().get(i).getDirector());
             obj.put("GENERO", responseJson.getValue().get(i).getGenero());
             obj.put("DURACION", responseJson.getValue().get(i).getDuracion());
-           // obj.put("AÑO", responseJson.getValue().get(i).getAño());
+            //obj.put("AÑO", responseJson.getValue().get(i).getAño());
             obj.put("PRECIO", responseJson.getValue().get(i).getPrecio());
             jsonArray.put(obj);
         }
@@ -436,7 +608,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
          */
 
         //Obtenemos la fila seleccionada.
-        int posicion = jTable.getSelectedRow();
+        posicion = jTable.getSelectedRow();
 
         if (posicion == -1) {
             // No se ha seleccionado ninguna pelicula de la tabla
@@ -505,102 +677,28 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
 
     private void modificarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPeliculaActionPerformed
         /**
-         * 
-         * Metodo para modificar los datos
-         * de una pelicula de la aplicacion.
          *
-         * administrador o usuario.
+         * Metodo que se ejecuta al clicar en el boton MODIFICAR PELICULA.
+         *
+         * Operacion de modificación de los datos de la pelicula. *
          *
          */
-+++++++++++
+
         //Obtenemos la fila seleccionada.
-        int posicion = jTable.getSelectedRow();
+        posicion = jTable.getSelectedRow();
 
         if (posicion == -1) {
-            // No se ha seleccionado un usuario de la tabla
+            // No se ha seleccionado ninguna pelicula de la tabla
             // Mostramos mensaje emergente de informacion.
             JOptionPane.showMessageDialog(this,
-                    "Primero debes seleccionar un\n"
-                    + "usuario en la lista de usuarios",
-                    "MODIFICAR ROL USUARIO", JOptionPane.INFORMATION_MESSAGE);
-
+                    "Primero debes seleccionar una\n"
+                    + "película de la lista.",
+                    "MODIFICAR PELICULA", JOptionPane.INFORMATION_MESSAGE);
         } else {
-
-            // Se ha seleccionado un usuario
-            // Creamos un objeto JSON temporal de la fila seleccionada.
-            JSONObject obj = new JSONObject();
-            obj = jsonArray.getJSONObject(posicion);
-
-            //Obtenemos su id.
-            UUID id = (UUID) obj.get("id");
-
-            //Comprobamos que tipo de usuario es.
-            //Si es un administrador...
-            if ((obj.getBoolean("IsAdmin")) == true) {
-
-                // Mostramos mensaje emergente de confirmacion.
-                int opcion = JOptionPane.showConfirmDialog(null,
-                        "  Usuario ADMINISTRADOR.\n"
-                        + "Deseas cambiarlo a USUARIO?",
-                        "CONFIRMACION", 0);
-
-                //Si opcion es SI...
-                if (opcion == 0) {
-                    //Cambiamos su ROL a usuario.
-                    Boolean admin=false;
-                    try {
-                        // Creamos la URL.
-                        URL url = new URL(Constants.urlUpdateUsuarioAdmin + id + "/"+admin+"?token="+Constants.token);
-                        //Creamos la conexion al servidor.
-                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                        //Metodo PUT
-                        conn.setDoOutput(true);
-                        conn.setRequestMethod("PUT"); 
-                        //Comprobacion de respuesta del servidor
-                        System.out.println(conn.getResponseCode());
-                    } catch (MalformedURLException ex) {
-                        Logger.getLogger(VentanaGestionPeliculas.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (IOException ex) {
-                        Logger.getLogger(VentanaGestionPeliculas.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                } else {
-                    //No hacemos nada.                    
-                }
-
-            } else { //Si es Usuario...
-                
-                // Mostramos mensaje emergente de confirmacion.
-                int opcion = JOptionPane.showConfirmDialog(null,
-                        "          Es un USUARIO.\n"
-                        + "Deseas cambiarlo a ADMINISTRADOR?",
-                        "CONFIRMACION", 0);
-
-                //Si opcion es SI...
-                if (opcion == 0) {
-                    //Cambiamos su ROL a administrador.
-                    Boolean admin=true;
-                    try {
-                        // Creamos la URL.
-                        URL url = new URL(Constants.urlUpdateUsuarioAdmin + id + "/"+admin+"?token="+Constants.token);
-                        //Creamos la conexion al servidor.
-                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                        //Metodo PUT
-                        conn.setDoOutput(true);
-                        conn.setRequestMethod("PUT");
-                        //Comprobacion de respuesta del servidor
-                        System.out.println(conn.getResponseCode());
-                        
-                    } catch (MalformedURLException ex) {
-                        Logger.getLogger(VentanaGestionPeliculas.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (IOException ex) {
-                        Logger.getLogger(VentanaGestionPeliculas.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                } else {
-                    //No hacemos nada.                    
-                }
-            }
+            // Se ha seleccionado una pelicula.
+            //Abrimos Panel de modificacion de pelicula.
+            jScrollPane.setVisible(false);
+            panelModificarPelicula.setVisible(true);
         }
     }//GEN-LAST:event_modificarPeliculaActionPerformed
 
@@ -610,11 +708,122 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_añadirPeliculaActionPerformed
 
+    private void buttonModificarPeliculaConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarPeliculaConfirmacionActionPerformed
+
+        /**
+         *
+         * Metodo que se ejecuta al clicar en el boton MODIFICAR 
+         * del formulario de datos de la pelicula.
+         *
+         * Operacion de modificación de los datos de la pelicula. *
+         *
+         */
+        
+        // Leemos los campos de datos de la pelicula.
+        String titulo = textTitulo.getText();
+        String director = textDirector.getText();
+        String genero = textGenero.getText();
+        Double duracion = Double.valueOf(textDuracion.getText());
+        String año = textAño.getText();
+        Double precio = Double.valueOf(textPrecio.getText());
+
+        // Creamos un objeto JSON temporal de la fila seleccionada.
+        JSONObject obj = new JSONObject();
+        obj = jsonArray.getJSONObject(posicion);
+
+        //Obtenemos su id.
+        UUID id = (UUID) obj.get("id");
+
+        // Mostramos mensaje emergente de confirmacion.
+        int opcion = JOptionPane.showConfirmDialog(null, "Has introducido:\n\n"
+                + " Titulo: " + titulo + "\n"
+                + " Director: " + director + "\n"
+                + " Genero: " + genero + "\n"
+                + " Duracion: " + duracion + "\n"
+                + " Año: " + año + "\n"
+                + "Precio: " + precio
+                + "\n\n            Es correcto?",
+                "CONFIRMACION", 0);
+        
+        //Si todo está correcto...
+        if(opcion ==0){
+            
+            // Creamos el cliente
+            Client client = ClientBuilder.newClient();
+
+            // Creamos el target (URL)
+            WebTarget target = client.target(Constants.urlUpdatePelicula + id + "?token=" + Constants.token);
+
+            // Creamos la solicitud
+            Invocation.Builder solicitud = target.request();
+
+            // Creamos el objeto DTO que espera el servidor
+            UpdatePeliculaDTO updatePelicula = new UpdatePeliculaDTO();
+
+            // Asignamos los valores
+            updatePelicula.setTitulo(titulo);
+            updatePelicula.setDirector(director);
+            updatePelicula.setGenero(genero);
+            updatePelicula.setDuracion(duracion);
+            updatePelicula.setAño(año);
+            updatePelicula.setPrecio(precio);
+            
+            // Creamos una instancia de Gson para convertir nuestro String a JSON
+            Gson gson = new Gson();
+            // lo pasamos a objeto Json
+            String jsonString = gson.toJson(updatePelicula);
+            
+            // Enviamos nuestro json via PUT a la API
+            Response post = solicitud.put(Entity.json(jsonString));
+            
+            // Recibimos la respuesta y la leemos en una clase String
+            String responseJsonString = post.readEntity(String.class);
+            
+            //Covertimos el JsonString en un objeto JSON.
+            JSONObject json = new JSONObject(responseJsonString);
+            
+            // Si todo ha salido correcto.
+            if (post.getStatus() == 200) {
+                // Mostramos mensaje emergente de informacion.
+                JOptionPane.showMessageDialog(this,""+
+                        json.getString("message")
+                        + "\nVolverás a Gestión de películas.",
+                        "MODIFICAR PELICULA", JOptionPane.INFORMATION_MESSAGE);
+                // Cerramos la ventana de registro. 
+                panelModificarPelicula.setVisible(false);
+            } else {
+                // Mostramos mensaje emergente de aviso.
+                JOptionPane.showMessageDialog(this,
+                        json.getString("message") + "\n"
+                        + "Vuelve a introducir los datos.",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+                // Limpiamos todos los campos.
+                textTitulo.setText("");
+                textDirector.setText("");
+                textGenero.setText("");
+                textDuracion.setText("");
+                textAño.setText("");
+                textPrecio.setText("");
+                //cerramos el panel
+                panelModificarPelicula.setVisible(false);
+            }
+            
+        } 
+    }//GEN-LAST:event_buttonModificarPeliculaConfirmacionActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton añadirPelicula;
+    private javax.swing.JButton buttonModificarPeliculaConfirmacion;
     private javax.swing.JButton eliminarPelicula;
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JButton jButtonVolver;
+    private javax.swing.JLabel jLabelAño;
+    private javax.swing.JLabel jLabelDirector;
+    private javax.swing.JLabel jLabelDuracion;
+    private javax.swing.JLabel jLabelGenero;
+    private javax.swing.JLabel jLabelModificarPelicula;
+    private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelGestionPeliculas;
     private javax.swing.JScrollPane jScrollPane;
@@ -623,7 +832,14 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
     private javax.swing.JButton listaPeliculas;
     private javax.swing.JTextArea mensajeGestionPeliculas;
     private javax.swing.JButton modificarPelicula;
+    private javax.swing.JPanel panelModificarPelicula;
+    private javax.swing.JTextField textAño;
+    private javax.swing.JTextField textDirector;
+    private javax.swing.JTextField textDuracion;
+    private javax.swing.JTextField textGenero;
     private javax.swing.JLabel textLogo;
+    private javax.swing.JTextField textPrecio;
+    private javax.swing.JTextField textTitulo;
     // End of variables declaration//GEN-END:variables
 
 }
