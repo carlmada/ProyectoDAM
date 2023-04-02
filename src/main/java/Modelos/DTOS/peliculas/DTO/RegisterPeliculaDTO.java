@@ -1,6 +1,5 @@
 package Modelos.DTOS.peliculas.DTO;
 
-import java.time.LocalDate;
 
 /**
  *
@@ -19,9 +18,9 @@ public class RegisterPeliculaDTO {
     private String titulo;
     private String director;
     private String genero;
-    private Double duracion;
-    private String año;
-    private Double precio;
+    private int duracion;
+    private int año;
+    private int precio;
     
     //Getters-Setters.
 
@@ -49,27 +48,27 @@ public class RegisterPeliculaDTO {
         this.genero = genero;
     }
 
-    public Double getDuracion() {
+    public int getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(Double duracion) {
+    public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
 
-    public String getAño() {
+    public int getAño() {
         return año;
     }
 
-    public void setAño(String año) {
+    public void setAño(int año) {
         this.año = año;
     }
 
-    public Double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
      

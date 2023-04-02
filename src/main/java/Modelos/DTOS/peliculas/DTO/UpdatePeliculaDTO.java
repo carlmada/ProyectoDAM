@@ -7,6 +7,18 @@ package Modelos.DTOS.peliculas.DTO;
  * @author Carlos
  */
 public class UpdatePeliculaDTO {
+   
+    //Constructor.
+    public UpdatePeliculaDTO() {
+    }
+    
+//Atributos.
+    private String titulo;
+    private String director;
+    private String genero;
+    private int duracion;
+    private int año;
+    private int precio;
 
     public String getTitulo() {
         return titulo;
@@ -32,39 +44,28 @@ public class UpdatePeliculaDTO {
         this.genero = genero;
     }
 
-    public Double getDuracion() {
+    public int getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(Double duracion) {
+    public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
 
-    public String getAño() {
+    public int getAño() {
         return año;
     }
 
-    public void setAño(String año) {
+    public void setAño(int año) {
         this.año = año;
     }
 
-    public Double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
-
-    //Constructor.
-    public UpdatePeliculaDTO() {
-    }
-    //Atributos.
-    private String titulo;
-    private String director;
-    private String genero;
-    private Double duracion;
-    private String año;
-    private Double precio;
     
 }

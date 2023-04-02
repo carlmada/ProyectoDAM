@@ -428,8 +428,8 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                        .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonCerrarSesion)
                             .addComponent(jButtonVolver)))
@@ -441,7 +441,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                         .addComponent(eliminarPelicula)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(modificarPelicula)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 224, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
@@ -532,13 +532,13 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             obj.put("DIRECTOR", responseJson.getValue().get(i).getDirector());
             obj.put("GENERO", responseJson.getValue().get(i).getGenero());
             obj.put("DURACION", responseJson.getValue().get(i).getDuracion());
-            //obj.put("AÑO", responseJson.getValue().get(i).getAño());
+            obj.put("AÑO", responseJson.getValue().get(i).getAño());
             obj.put("PRECIO", responseJson.getValue().get(i).getPrecio());
             jsonArray.put(obj);
         }
 
         //Creamos un String[] de columnas
-        String[] columnNames = {"TITULO", "DIRECTOR", "GENERO", "DURACION", "PRECIO"};
+        String[] columnNames = {"TITULO", "DIRECTOR", "GENERO","AÑO", "DURACION", "PRECIO" };
 
         //Creamos el modelo de tabla
         model = new TablePeliculas(jsonArray, columnNames);
@@ -723,9 +723,9 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         String titulo = textTitulo.getText();
         String director = textDirector.getText();
         String genero = textGenero.getText();
-        Double duracion = Double.valueOf(textDuracion.getText());
-        String año = textAño.getText();
-        Double precio = Double.valueOf(textPrecio.getText());
+        int duracion = Integer.parseInt(textDuracion.getText());
+        int año = Integer.parseInt(textAño.getText());
+        int precio = Integer.parseInt(textPrecio.getText());
 
         // Creamos un objeto JSON temporal de la fila seleccionada.
         JSONObject obj = new JSONObject();
@@ -774,16 +774,20 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             String jsonString = gson.toJson(updatePelicula);
             
             // Enviamos nuestro json via PUT a la API
-            Response post = solicitud.put(Entity.json(jsonString));
+            Response put = solicitud.put(Entity.json(jsonString));
             
             // Recibimos la respuesta y la leemos en una clase String
-            String responseJsonString = post.readEntity(String.class);
+            String responseJsonString = put.readEntity(String.class);
             
             //Covertimos el JsonString en un objeto JSON.
             JSONObject json = new JSONObject(responseJsonString);
             
+            System.out.println(put.getStatus());
+            System.out.println(json);
+            
+            
             // Si todo ha salido correcto.
-            if (post.getStatus() == 200) {
+            if (put.getStatus() == 200) {
                 // Mostramos mensaje emergente de informacion.
                 JOptionPane.showMessageDialog(this,""+
                         json.getString("message")
@@ -791,6 +795,10 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                         "MODIFICAR PELICULA", JOptionPane.INFORMATION_MESSAGE);
                 // Cerramos la ventana de registro. 
                 panelModificarPelicula.setVisible(false);
+                VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();
+                gestionPeliculas.setVisible(true);
+                this.dispose();
+                                
             } else {
                 // Mostramos mensaje emergente de aviso.
                 JOptionPane.showMessageDialog(this,
@@ -804,8 +812,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 textDuracion.setText("");
                 textAño.setText("");
                 textPrecio.setText("");
-                //cerramos el panel
-                panelModificarPelicula.setVisible(false);
+                
             }
             
         } 
