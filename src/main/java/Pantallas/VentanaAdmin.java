@@ -5,6 +5,7 @@ import Pantallas.peliculas.VentanaGestionPeliculas;
 import Pantallas.usuarios.VentanaGestionUsuarios;
 import Modelos.DTOS.ResponseLogoutDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserInfoDTO;
+import Pantalla.alquiler.VentanaGestionAlquilerPeliculas;
 import com.google.gson.Gson;
 import utils.Constants;
 import java.io.BufferedReader;
@@ -400,7 +401,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
     private void gestionAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionAlquilerActionPerformed
-        // TODO add your handling code here:
+        VentanaGestionAlquilerPeliculas alquiler = new VentanaGestionAlquilerPeliculas();
+        alquiler.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_gestionAlquilerActionPerformed
 
     private void correoAvisoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoAvisoClientesActionPerformed

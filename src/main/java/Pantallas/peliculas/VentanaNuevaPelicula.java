@@ -247,9 +247,9 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
             String titulo = textTitulo.getText();
             String director = textDirector.getText();
             String genero = textGenero.getText();
-            Double duracion = Double.valueOf(textDuracion.getText());
-            String año = textAño.getText();
-            Double precio = Double.valueOf(textPrecio.getText());
+            int duracion = Integer.parseInt(textDuracion.getText());
+            int año = Integer.parseInt(textAño.getText());
+            int precio = Integer.parseInt(textPrecio.getText());
 
             // Creamos el cliente de login
             Client client = ClientBuilder.newClient();

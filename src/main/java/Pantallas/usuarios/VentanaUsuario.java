@@ -2,9 +2,11 @@ package Pantallas.usuarios;
 
 import Modelos.DTOS.CambioDePasswordDTO;
 import Modelos.DTOS.ResponseLogoutDTO;
+import Modelos.DTOS.peliculas.DTO.ResponsePeliculaListDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserInfoDTO;
 import Pantallas.VentanaLogin;
 import com.google.gson.Gson;
+import java.awt.Color;
 import utils.Constants;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,13 +14,20 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.UUID;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import utils.TablePeliculas;
 
 /**
  * Ventana del usuario USUARIO .
@@ -26,6 +35,12 @@ import javax.ws.rs.core.Response;
  * @author Carlos
  */
 public class VentanaUsuario extends javax.swing.JFrame {
+
+    //Variable de Clase.
+    TablePeliculas modelPeliculas;
+    JSONArray jsonArrayPeliculas;
+    int posicionPelicula;
+    UUID id ;
 
     /**
      * Constructor de un nuevo formulario Ventana USUARIO.
@@ -77,17 +92,25 @@ public class VentanaUsuario extends javax.swing.JFrame {
         // System.out.println(responseJson.getValue().getNombre());
         // Ponemos el nombre en el textfield correspondiente.
         jTextFieldNombre.setText(responseJson.getValue().getNombre());
+        
+        //Obtenemos el id del usuario.
+        id = responseJson.getValue().getId();
+        
         //***********************************************
+        
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. Este
+     * metodo se regenera automaticamente por el Editor de formularios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanelUsuario = new javax.swing.JPanel();
+        jScrollPanePeliculas = new javax.swing.JScrollPane();
+        jTablePeliculas = new javax.swing.JTable();
         panelContraseña = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelPassword = new javax.swing.JLabel();
@@ -100,8 +123,10 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jButtonCerrarSesion = new javax.swing.JButton();
         jLabelUsuario = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
+        listaPeliculas = new javax.swing.JButton();
         modificarPerfil = new javax.swing.JButton();
         cambioDeContraseña = new javax.swing.JButton();
+        alquilarPelicula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("USUARIO");
@@ -110,6 +135,26 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jPanelUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jPanelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jPanelUsuario.setPreferredSize(new java.awt.Dimension(800, 400));
+
+        jScrollPanePeliculas.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPanePeliculas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPanePeliculas.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPanePeliculas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+
+        jTablePeliculas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jTablePeliculas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTablePeliculas.setFillsViewportHeight(true);
+        jTablePeliculas.setFocusable(false);
+        jTablePeliculas.setGridColor(new java.awt.Color(153, 153, 153));
+        jTablePeliculas.setSelectionBackground(new java.awt.Color(102, 204, 255));
+        jScrollPanePeliculas.setViewportView(jTablePeliculas);
 
         panelContraseña.setBackground(new java.awt.Color(204, 255, 255));
         panelContraseña.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
@@ -176,7 +221,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addGroup(panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelConfirmPassword)
                     .addComponent(jPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(buttonModificarContraseña)
                 .addGap(32, 32, 32))
         );
@@ -215,7 +260,16 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jTextFieldNombre.setToolTipText("");
         jTextFieldNombre.setBorder(null);
 
-        modificarPerfil.setBackground(new java.awt.Color(242, 242, 242));
+        listaPeliculas.setBackground(new java.awt.Color(0, 204, 255));
+        listaPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        listaPeliculas.setText("Lista de Peliculas");
+        listaPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaPeliculasActionPerformed(evt);
+            }
+        });
+
+        modificarPerfil.setBackground(new java.awt.Color(255, 153, 51));
         modificarPerfil.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         modificarPerfil.setText("Modificar Perfil");
         modificarPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -224,12 +278,21 @@ public class VentanaUsuario extends javax.swing.JFrame {
             }
         });
 
-        cambioDeContraseña.setBackground(new java.awt.Color(242, 242, 242));
+        cambioDeContraseña.setBackground(new java.awt.Color(255, 153, 51));
         cambioDeContraseña.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         cambioDeContraseña.setText("Cambiar Contraseña");
         cambioDeContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cambioDeContraseñaActionPerformed(evt);
+            }
+        });
+
+        alquilarPelicula.setBackground(new java.awt.Color(0, 204, 102));
+        alquilarPelicula.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        alquilarPelicula.setText("Alquilar Pelicula");
+        alquilarPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alquilarPeliculaActionPerformed(evt);
             }
         });
 
@@ -248,20 +311,26 @@ public class VentanaUsuario extends javax.swing.JFrame {
                         .addComponent(jLabelUsuario))
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(modificarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cambioDeContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(modificarPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(alquilarPelicula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(cambioDeContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(listaPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(panelContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCerrarSesion)
-                        .addGap(59, 59, 59))
+                        .addGap(32, 32, 32)
+                        .addComponent(jButtonCerrarSesion))
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                    .addGap(216, 216, 216)
+                    .addComponent(jScrollPanePeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(84, Short.MAX_VALUE)))
         );
         jPanelUsuarioLayout.setVerticalGroup(
             jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,13 +345,28 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
-                        .addComponent(modificarPerfil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cambioDeContraseña)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCerrarSesion))
-                    .addComponent(panelContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(panelContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                        .addComponent(listaPeliculas)
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                                .addComponent(alquilarPelicula)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(modificarPerfil)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cambioDeContraseña)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButtonCerrarSesion)
+                                .addGap(18, 18, 18))))))
+            .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                    .addGap(113, 113, 113)
+                    .addComponent(jScrollPanePeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(97, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -351,21 +435,32 @@ public class VentanaUsuario extends javax.swing.JFrame {
         inicio.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
+    /**
+     * Metodo que llama a la ventana de modificacion del perfil del usuario.
+     *
+     */
     private void modificarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPerfilActionPerformed
         VentanaModificarUsuario ventanaModificarUsuario = new VentanaModificarUsuario();
         ventanaModificarUsuario.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarPerfilActionPerformed
 
+    /**
+     * Metodo que muestra el panel de cambio de contraseña del usuario.
+     *
+     */
     private void cambioDeContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioDeContraseñaActionPerformed
         panelContraseña.setVisible(true);
     }//GEN-LAST:event_cambioDeContraseñaActionPerformed
 
+    /**
+     * Metodo que muestra el formulario de cambio de contraseña del usuario.
+     *
+     */
     private void buttonModificarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarContraseñaActionPerformed
 
         // Leemos los campos password introducidos.
         // Comprobamos que los password sean iguales...
-      
         char[] password = jPassword.getPassword();
         String pass = new String(password);
 
@@ -374,7 +469,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
         // Comparamos...
         if (pass.equals(passConfirm)) {
-            
+
             // Creamos el cliente
             Client client = ClientBuilder.newClient();
 
@@ -386,16 +481,16 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
             // Creamos el objeto DTO que espera el servidor
             CambioDePasswordDTO cambioPassword = new CambioDePasswordDTO();
-            
+
             // Asignamos los valores
             cambioPassword.setPassword(pass);
 
             // Creamos una instancia de Gson para convertir nuestro String a JSON
             Gson gson = new Gson();
-            
+
             // lo pasamos a objeto Json
             String jsonString = gson.toJson(cambioPassword);
-            
+
             // Enviamos nuestro json via PUT a la API
             Response put = solicitud.put(Entity.json(jsonString));
 
@@ -417,16 +512,16 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 this.dispose();
                 VentanaLogin inicio = new VentanaLogin();
                 inicio.setVisible(true);
-            }else{
+            } else {
                 // Mostramos mensaje emergente de aviso.
                 JOptionPane.showMessageDialog(this,
-                    "Error en cambio de contraseña.\n"
-                    + "Vuelve a introducir los datos.",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-            // Limpiamos todos los campos.
-            jPassword.setText("");
-            jPassword2.setText("");
-            // Continuamos en ventana de nuevo registro.
+                        "Error en cambio de contraseña.\n"
+                        + "Vuelve a introducir los datos.",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+                // Limpiamos todos los campos.
+                jPassword.setText("");
+                jPassword2.setText("");
+                // Continuamos en ventana de nuevo registro.
             }
         } else {
             // Mostramos mensaje emergente de aviso.
@@ -442,7 +537,124 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buttonModificarContraseñaActionPerformed
 
+    /**
+     *
+     * Metodo que usa el usuario para hacer 
+     * el alquiler de una pelicula.
+     *
+     */
+    private void alquilarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alquilarPeliculaActionPerformed
+
+        //Obtenemos la fila seleccionada de pelicula y usuario..
+        posicionPelicula = jTablePeliculas.getSelectedRow();
+        
+        if ( (posicionPelicula == -1)) {
+            // No se ha seleccionado pelicula.
+            // Mostramos mensaje emergente de informacion.
+            JOptionPane.showMessageDialog(this,
+                      "Debes seleccionar una\n"
+                    + "PELICULA de la tabla.",
+                    "ALQUILAR PELICULA", JOptionPane.INFORMATION_MESSAGE);
+        } 
+        
+    }//GEN-LAST:event_alquilarPeliculaActionPerformed
+
+    /**
+     *
+     * Metodo para mostrar la tabla de peliculas 
+     * para poder seleccionarlas.
+     *
+     */
+
+    private void listaPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasActionPerformed
+
+        //Tabla peliculas.        
+        jTablePeliculas.setVisible(true);
+
+        //Leemos la lista de peliculas.
+        StringBuilder resultadoPeliculas = new StringBuilder();
+        try {
+            // Creamos la URL
+            URL url = new URL(Constants.urlPeliculas + "?token=" + Constants.token);
+            // Creamos la conexion al servidor.
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            // Metodo GET
+            conn.setRequestMethod("GET");
+
+            // Abrimos un input Stream de datos del servidor
+            // y esperamos la respuesta del servidor.
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            // Leemos la respuesta del servidor.
+            // y contruimos el string 'resultado'
+            String linea;
+            while ((linea = rd.readLine()) != null) {
+                resultadoPeliculas.append(linea);
+            }
+            // Cerramos la conexion.
+            rd.close();
+        } catch (MalformedURLException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        // Creamos una instancia de Gson para convertir nuestro String a JSON
+        Gson gson = new Gson();
+
+        // Pasamos la respuesta a un String.
+        String responseJsonString = resultadoPeliculas.toString();
+        System.out.println(responseJsonString);
+        //*************************************************
+        // El array de objetos JSON lo convertimos en un array de objetos DTO.
+        // Lo transformamos gracias al objeto DTO creado para ello.
+        ResponsePeliculaListDTO responseJson = gson.fromJson(responseJsonString, ResponsePeliculaListDTO.class);
+        //*************************************************
+
+        //Creamos una lista de objetos JSON
+        jsonArrayPeliculas = new JSONArray();
+        for (int i = 0; i < responseJson.getValue().size(); i++) {
+            JSONObject objPelicula = new JSONObject();
+            objPelicula.put("id", responseJson.getValue().get(i).getId());
+            objPelicula.put("TITULO", responseJson.getValue().get(i).getTitulo());
+            objPelicula.put("DIRECTOR", responseJson.getValue().get(i).getDirector());
+            objPelicula.put("GENERO", responseJson.getValue().get(i).getGenero());
+            objPelicula.put("DURACION", responseJson.getValue().get(i).getDuracion());
+            objPelicula.put("AÑO", responseJson.getValue().get(i).getAño());
+            objPelicula.put("PRECIO", responseJson.getValue().get(i).getPrecio());
+            jsonArrayPeliculas.put(objPelicula);
+        }
+
+        //Creamos un String[] de columnas
+        String[] columnNamesPeliculas = {"TITULO", "DIRECTOR", "GENERO", "DURACION", "AÑO", "PRECIO"};
+
+        //Creamos el modelo de tabla
+        modelPeliculas = new TablePeliculas(jsonArrayPeliculas, columnNamesPeliculas);
+        //Asignamos el modelo a la tabla
+        jTablePeliculas.setModel(modelPeliculas);
+        //Mostramos la tabla
+        //Añadimos color a la cabecera.
+        JTableHeader header = jTablePeliculas.getTableHeader();
+        header.setBackground(Color.LIGHT_GRAY);
+        //Ponemos los datos numericos en el centro de la celda.
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(JLabel.CENTER);
+        jTablePeliculas.getColumnModel().getColumn(3).setCellRenderer(renderer);
+        jTablePeliculas.getColumnModel().getColumn(4).setCellRenderer(renderer);
+        jTablePeliculas.getColumnModel().getColumn(5).setCellRenderer(renderer);
+
+        //Asignamos el ancho de las columnas.
+        jTablePeliculas.getColumnModel().getColumn(0).setPreferredWidth(130);
+        jTablePeliculas.getColumnModel().getColumn(1).setPreferredWidth(80);
+        jTablePeliculas.getColumnModel().getColumn(3).setPreferredWidth(65);
+        jTablePeliculas.getColumnModel().getColumn(4).setPreferredWidth(35);
+        jTablePeliculas.getColumnModel().getColumn(5).setPreferredWidth(45);
+
+        //***************************************************
+
+    }//GEN-LAST:event_listaPeliculasActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton alquilarPelicula;
     private javax.swing.JButton buttonModificarContraseña;
     private javax.swing.JButton cambioDeContraseña;
     private javax.swing.JButton jButtonCerrarSesion;
@@ -453,7 +665,10 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelUsuario;
     private javax.swing.JPasswordField jPassword;
     private javax.swing.JPasswordField jPassword2;
+    private javax.swing.JScrollPane jScrollPanePeliculas;
+    private javax.swing.JTable jTablePeliculas;
     private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JButton listaPeliculas;
     private javax.swing.JTextArea mensajeBienvenida;
     private javax.swing.JButton modificarPerfil;
     private javax.swing.JPanel panelContraseña;
