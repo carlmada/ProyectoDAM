@@ -450,7 +450,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
      *
      */
     private void cambioDeContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioDeContraseñaActionPerformed
+        //cerramos la tabla peliculas si estaba abierta.        
+        jScrollPanePeliculas.setVisible(false);
+        
         panelContraseña.setVisible(true);
+        
     }//GEN-LAST:event_cambioDeContraseñaActionPerformed
 
     /**
@@ -545,6 +549,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
      */
     private void alquilarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alquilarPeliculaActionPerformed
 
+        //cerramos el panel de contraseña si estaba abierto.
+        panelContraseña.setVisible(false);
+        
         //Obtenemos la fila seleccionada de pelicula y usuario..
         posicionPelicula = jTablePeliculas.getSelectedRow();
         
@@ -568,7 +575,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     private void listaPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasActionPerformed
 
-        //Tabla peliculas.        
+        //cerramos el panel de contraseña si estaba abierto.
+        panelContraseña.setVisible(false);
+        
+        //Tabla peliculas. 
+        jScrollPanePeliculas.setVisible(true);
         jTablePeliculas.setVisible(true);
 
         //Leemos la lista de peliculas.

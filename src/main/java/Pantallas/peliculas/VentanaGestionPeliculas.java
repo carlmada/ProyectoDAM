@@ -49,6 +49,8 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
     TablePeliculas model;
     JSONArray jsonArray;
     int posicion;
+    JSONObject objModificarPelicula;
+    UUID idModificarPelicula;
 
     /**
      * Constructor de un nuevo formulario Ventana de gestion de peliculas.
@@ -403,13 +405,15 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                     .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
-                            .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
+                            .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(mensajeGestionPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39)
                                 .addComponent(jLabelUsuario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(197, 197, 197)))))
                 .addGap(63, 63, 63))
             .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
@@ -432,7 +436,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
                         .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                         .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonCerrarSesion)
                             .addComponent(jButtonVolver)))
@@ -558,6 +562,10 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         jTable.getColumnModel().getColumn(3).setCellRenderer(renderer);
         jTable.getColumnModel().getColumn(4).setCellRenderer(renderer);
         jTable.getColumnModel().getColumn(5).setCellRenderer(renderer);
+        //Asignamos el ancho de las columnas.
+        jTable.getColumnModel().getColumn(3).setPreferredWidth(15);
+        jTable.getColumnModel().getColumn(4).setPreferredWidth(20);
+        jTable.getColumnModel().getColumn(5).setPreferredWidth(15);
     }//GEN-LAST:event_listaPeliculasActionPerformed
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
@@ -708,6 +716,16 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             //Abrimos Panel de modificacion de pelicula.
             jScrollPane.setVisible(false);
             panelModificarPelicula.setVisible(true);
+            // Creamos un objeto JSON temporal de la fila seleccionada.
+            objModificarPelicula = new JSONObject();
+            objModificarPelicula = jsonArray.getJSONObject(posicion);
+            //Rellenamos los campos con los datos actuales...
+            textTitulo.setText(objModificarPelicula.get("TITULO").toString());
+            textDirector.setText(objModificarPelicula.get("DIRECTOR").toString());
+            textGenero.setText(objModificarPelicula.get("GENERO").toString());
+            textDuracion.setText(objModificarPelicula.get("DURACION").toString());
+            textAño.setText(objModificarPelicula.get("AÑO").toString());
+            textPrecio.setText(objModificarPelicula.get("PRECIO").toString());
         }
     }//GEN-LAST:event_modificarPeliculaActionPerformed
 
@@ -726,7 +744,10 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
          *
          * Operacion de modificación de los datos de la pelicula. *
          *
-         */
+         */ 
+
+        //Obtenemos su id.
+        idModificarPelicula = (UUID) objModificarPelicula.get("id");
         
         // Leemos los campos de datos de la pelicula.
         String titulo = textTitulo.getText();
@@ -735,14 +756,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         int duracion = Integer.parseInt(textDuracion.getText());
         int año = Integer.parseInt(textAño.getText());
         int precio = Integer.parseInt(textPrecio.getText());
-
-        // Creamos un objeto JSON temporal de la fila seleccionada.
-        JSONObject obj = new JSONObject();
-        obj = jsonArray.getJSONObject(posicion);
-
-        //Obtenemos su id.
-        UUID id = (UUID) obj.get("id");
-
+      
         // Mostramos mensaje emergente de confirmacion.
         int opcion = JOptionPane.showConfirmDialog(null, "Has introducido:\n\n"
                 + " Titulo: " + titulo + "\n"
@@ -761,7 +775,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             Client client = ClientBuilder.newClient();
 
             // Creamos el target (URL)
-            WebTarget target = client.target(Constants.urlUpdatePelicula + id + "?token=" + Constants.token);
+            WebTarget target = client.target(Constants.urlUpdatePelicula + idModificarPelicula + "?token=" + Constants.token);
 
             // Creamos la solicitud
             Invocation.Builder solicitud = target.request();
@@ -821,9 +835,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 textDuracion.setText("");
                 textAño.setText("");
                 textPrecio.setText("");
-                
             }
-            
         } 
     }//GEN-LAST:event_buttonModificarPeliculaConfirmacionActionPerformed
 

@@ -292,13 +292,11 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelUsuario)
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(textLogo)
-                        .addComponent(mensajeAlquilerPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textLogo)
+                    .addComponent(mensajeAlquilerPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelUsuario)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listaPeliculasUsuarios)
@@ -606,7 +604,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             int opcion = JOptionPane.showConfirmDialog(this,
                      "Deseas alquilar la pelicula\n"
                     + objPelicula.get("TITULO") + "\n"
-                    +"      al usuario\n"
+                    +"al usuario\n"
                     +objUsuario.get("NOMBRE")+" "+objUsuario.get("APELLIDOS")+ " ?",
                     "CONFIRMACION",
                     JOptionPane.YES_NO_OPTION);

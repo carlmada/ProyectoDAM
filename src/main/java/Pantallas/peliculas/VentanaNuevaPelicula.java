@@ -1,6 +1,7 @@
 package Pantallas.peliculas;
 
 import Modelos.DTOS.peliculas.DTO.RegisterPeliculaDTO;
+import Pantallas.VentanaAdmin;
 import com.google.gson.Gson;
 import java.time.LocalDate;
 import utils.Constants;
@@ -54,6 +55,7 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
         textDuracion = new javax.swing.JTextField();
         textAño = new javax.swing.JTextField();
         textPrecio = new javax.swing.JTextField();
+        jButtonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("NUEVA PELICULA");
@@ -151,6 +153,15 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
         textPrecio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         textPrecio.setMinimumSize(new java.awt.Dimension(30, 20));
 
+        jButtonVolver.setBackground(new java.awt.Color(153, 204, 0));
+        jButtonVolver.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelNuevaPeliculaLayout = new javax.swing.GroupLayout(jPanelNuevaPelicula);
         jPanelNuevaPelicula.setLayout(jPanelNuevaPeliculaLayout);
         jPanelNuevaPeliculaLayout.setHorizontalGroup(
@@ -165,7 +176,7 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
                     .addGroup(jPanelNuevaPeliculaLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabelAño)))
-                .addGap(290, 290, Short.MAX_VALUE))
+                .addGap(288, 288, Short.MAX_VALUE))
             .addGroup(jPanelNuevaPeliculaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelNuevaPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,12 +193,15 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
                     .addComponent(textDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textAño, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonRegistroPelicula))
+                    .addGroup(jPanelNuevaPeliculaLayout.createSequentialGroup()
+                        .addComponent(buttonRegistroPelicula)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelNuevaPeliculaLayout.setVerticalGroup(
             jPanelNuevaPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelNuevaPeliculaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNuevaPeliculaLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanelNuevaPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelNuevoPelicula)
@@ -216,9 +230,11 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
                 .addGroup(jPanelNuevaPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelPrecio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                .addComponent(buttonRegistroPelicula)
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addGroup(jPanelNuevaPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonRegistroPelicula)
+                    .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,8 +329,20 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_buttonRegistroPeliculaActionPerformed
 
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+       /**
+         *
+         * Método para volver a la pantalla anterior.
+         */
+
+        VentanaAdmin ventanaAdmin = new VentanaAdmin();
+        ventanaAdmin.setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVolverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonRegistroPelicula;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabelAño;
     private javax.swing.JLabel jLabelDirector;
     private javax.swing.JLabel jLabelDuracion;
