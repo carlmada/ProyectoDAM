@@ -436,11 +436,11 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
                         .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
+
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-=======
+
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
->>>>>>> origin/master
+
                         .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonCerrarSesion)
                             .addComponent(jButtonVolver)))
@@ -760,9 +760,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         int duracion = Integer.parseInt(textDuracion.getText());
         int año = Integer.parseInt(textAño.getText());
         int precio = Integer.parseInt(textPrecio.getText());
-<<<<<<< HEAD
-      
-=======
+
 
         // Creamos un objeto JSON temporal de la fila seleccionada.
         JSONObject obj = new JSONObject();
@@ -771,7 +769,6 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         //Obtenemos su id.
         UUID id = (UUID) obj.get("id");
 
->>>>>>> origin/master
         // Mostramos mensaje emergente de confirmacion.
         int opcion = JOptionPane.showConfirmDialog(null, "Has introducido:\n\n"
                 + " Titulo: " + titulo + "\n"
@@ -850,10 +847,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 textDuracion.setText("");
                 textAño.setText("");
                 textPrecio.setText("");
-<<<<<<< HEAD
-=======
-                
->>>>>>> origin/master
+
             }
         } 
     }//GEN-LAST:event_buttonModificarPeliculaConfirmacionActionPerformed
