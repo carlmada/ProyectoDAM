@@ -119,8 +119,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         modificarPelicula = new javax.swing.JButton();
         eliminarPelicula = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
-        jScrollPane = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        añadirPelicula = new javax.swing.JButton();
         panelModificarPelicula = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
         jLabelModificarPelicula = new javax.swing.JLabel();
@@ -136,7 +135,9 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         jLabelAño = new javax.swing.JLabel();
         jLabelPrecio = new javax.swing.JLabel();
         buttonModificarPeliculaConfirmacion = new javax.swing.JButton();
-        añadirPelicula = new javax.swing.JButton();
+        jButtonVolver2 = new javax.swing.JButton();
+        jScrollPane = new javax.swing.JScrollPane();
+        jTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GESTION DE PELICULAS");
@@ -213,17 +214,14 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jScrollPane.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-
-        jTable.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jTable.setFillsViewportHeight(true);
-        jTable.setFocusable(false);
-        jTable.setGridColor(new java.awt.Color(153, 153, 153));
-        jTable.setSelectionBackground(new java.awt.Color(102, 204, 255));
-        jScrollPane.setViewportView(jTable);
+        añadirPelicula.setBackground(new java.awt.Color(0, 204, 102));
+        añadirPelicula.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        añadirPelicula.setText("Añadir Pelicula");
+        añadirPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirPeliculaActionPerformed(evt);
+            }
+        });
 
         panelModificarPelicula.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -302,6 +300,15 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             }
         });
 
+        jButtonVolver2.setBackground(new java.awt.Color(153, 204, 0));
+        jButtonVolver2.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jButtonVolver2.setText("VOLVER");
+        jButtonVolver2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolver2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelModificarPeliculaLayout = new javax.swing.GroupLayout(panelModificarPelicula);
         panelModificarPelicula.setLayout(panelModificarPeliculaLayout);
         panelModificarPeliculaLayout.setHorizontalGroup(
@@ -309,7 +316,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelModificarPeliculaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelModificarPelicula)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,7 +329,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                                 .addComponent(jLabelTitulo)
                                 .addGap(47, 47, 47)
                                 .addComponent(textTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelModificarPeliculaLayout.createSequentialGroup()
                                 .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelDirector)
                                     .addComponent(jLabelGenero)
@@ -334,55 +341,64 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                                     .addComponent(textGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(textDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(textDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(textPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(textPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelModificarPeliculaLayout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(buttonModificarPeliculaConfirmacion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonVolver2)
+                                .addGap(0, 10, Short.MAX_VALUE)))
                         .addGap(34, 34, 34))))
-            .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(buttonModificarPeliculaConfirmacion)
-                .addContainerGap(157, Short.MAX_VALUE))
         );
         panelModificarPeliculaLayout.setVerticalGroup(
             panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelModificarPelicula)
-                .addGap(18, 18, 18)
-                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTitulo)
-                    .addComponent(textTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDirector)
-                    .addComponent(textDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelGenero)
-                    .addComponent(textGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDuracion)
-                    .addComponent(textDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAño)
-                    .addComponent(textAño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPrecio)
-                    .addComponent(textPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(buttonModificarPeliculaConfirmacion)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonVolver2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonModificarPeliculaConfirmacion))
+                    .addGroup(panelModificarPeliculaLayout.createSequentialGroup()
+                        .addComponent(jLabelModificarPelicula)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelTitulo)
+                            .addComponent(textTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDirector)
+                            .addComponent(textDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelGenero)
+                            .addComponent(textGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDuracion)
+                            .addComponent(textDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelAño)
+                            .addComponent(textAño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelModificarPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelPrecio)
+                            .addComponent(textPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        añadirPelicula.setBackground(new java.awt.Color(0, 204, 102));
-        añadirPelicula.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        añadirPelicula.setText("Añadir Pelicula");
-        añadirPelicula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                añadirPeliculaActionPerformed(evt);
-            }
-        });
+        jScrollPane.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPane.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+
+        jTable.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jTable.setFillsViewportHeight(true);
+        jTable.setFocusable(false);
+        jTable.setGridColor(new java.awt.Color(153, 153, 153));
+        jTable.setSelectionBackground(new java.awt.Color(102, 204, 255));
+        jScrollPane.setViewportView(jTable);
 
         javax.swing.GroupLayout jPanelGestionPeliculasLayout = new javax.swing.GroupLayout(jPanelGestionPeliculas);
         jPanelGestionPeliculas.setLayout(jPanelGestionPeliculasLayout);
@@ -396,18 +412,18 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                     .addComponent(listaPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(añadirPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonVolver)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCerrarSesion))
-                    .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
                         .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonVolver)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonCerrarSesion))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
                                 .addComponent(mensajeGestionPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39)
                                 .addComponent(jLabelUsuario)
@@ -417,7 +433,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 .addGap(63, 63, 63))
             .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
-                    .addContainerGap(245, Short.MAX_VALUE)
+                    .addContainerGap(271, Short.MAX_VALUE)
                     .addComponent(panelModificarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(298, 298, 298)))
         );
@@ -425,22 +441,16 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelUsuario)
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(textLogo)
-                        .addComponent(mensajeGestionPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textLogo)
+                    .addComponent(mensajeGestionPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelUsuario)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGestionPeliculasLayout.createSequentialGroup()
                         .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
                         .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonCerrarSesion)
                             .addComponent(jButtonVolver)))
@@ -452,13 +462,13 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                         .addComponent(eliminarPelicula)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(modificarPelicula)
-                        .addGap(0, 224, Short.MAX_VALUE)))
+                        .addGap(0, 235, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanelGestionPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionPeliculasLayout.createSequentialGroup()
-                    .addContainerGap(68, Short.MAX_VALUE)
+                    .addContainerGap(75, Short.MAX_VALUE)
                     .addComponent(panelModificarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                    .addGap(14, 14, 14)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -852,12 +862,19 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_buttonModificarPeliculaConfirmacionActionPerformed
 
+    private void jButtonVolver2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolver2ActionPerformed
+        VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();
+        gestionPeliculas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVolver2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton añadirPelicula;
     private javax.swing.JButton buttonModificarPeliculaConfirmacion;
     private javax.swing.JButton eliminarPelicula;
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JButton jButtonVolver;
+    private javax.swing.JButton jButtonVolver2;
     private javax.swing.JLabel jLabelAño;
     private javax.swing.JLabel jLabelDirector;
     private javax.swing.JLabel jLabelDuracion;

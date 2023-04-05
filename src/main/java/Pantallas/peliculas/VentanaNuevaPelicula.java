@@ -154,8 +154,8 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
         textPrecio.setMinimumSize(new java.awt.Dimension(30, 20));
 
         jButtonVolver.setBackground(new java.awt.Color(153, 204, 0));
-        jButtonVolver.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonVolver.setText("Volver");
+        jButtonVolver.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jButtonVolver.setText("VOLVER");
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVolverActionPerformed(evt);
@@ -196,7 +196,7 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
                     .addGroup(jPanelNuevaPeliculaLayout.createSequentialGroup()
                         .addComponent(buttonRegistroPelicula)
                         .addGap(27, 27, 27)
-                        .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonVolver)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelNuevaPeliculaLayout.setVerticalGroup(
@@ -230,7 +230,7 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
                 .addGroup(jPanelNuevaPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelPrecio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addGroup(jPanelNuevaPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonRegistroPelicula)
                     .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -335,9 +335,9 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
          * Método para volver a la pantalla anterior.
          */
 
-        VentanaAdmin ventanaAdmin = new VentanaAdmin();
-        ventanaAdmin.setVisible(true);
-        this.dispose();// TODO add your handling code here:
+        VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();
+        gestionPeliculas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

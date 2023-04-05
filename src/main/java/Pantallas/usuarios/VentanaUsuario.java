@@ -40,7 +40,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     TablePeliculas modelPeliculas;
     JSONArray jsonArrayPeliculas;
     int posicionPelicula;
-    UUID id ;
+    UUID idUsuario, idPelicula ;
 
     /**
      * Constructor de un nuevo formulario Ventana USUARIO.
@@ -93,8 +93,8 @@ public class VentanaUsuario extends javax.swing.JFrame {
         // Ponemos el nombre en el textfield correspondiente.
         jTextFieldNombre.setText(responseJson.getValue().getNombre());
         
-        //Obtenemos el id del usuario.
-        id = responseJson.getValue().getId();
+        //Obtenemos el idUsuario del usuario.
+        idUsuario = responseJson.getValue().getId();
         
         //***********************************************
         
@@ -118,6 +118,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jPassword = new javax.swing.JPasswordField();
         jPassword2 = new javax.swing.JPasswordField();
         buttonModificarContraseña = new javax.swing.JButton();
+        buttonInicio = new javax.swing.JButton();
         textLogo = new javax.swing.JLabel();
         mensajeBienvenida = new javax.swing.JTextArea();
         jButtonCerrarSesion = new javax.swing.JButton();
@@ -186,6 +187,17 @@ public class VentanaUsuario extends javax.swing.JFrame {
             }
         });
 
+        buttonInicio.setBackground(new java.awt.Color(153, 204, 0));
+        buttonInicio.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        buttonInicio.setText("VOLVER");
+        buttonInicio.setBorderPainted(false);
+        buttonInicio.setFocusable(false);
+        buttonInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonInicioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelContraseñaLayout = new javax.swing.GroupLayout(panelContraseña);
         panelContraseña.setLayout(panelContraseñaLayout);
         panelContraseñaLayout.setHorizontalGroup(
@@ -197,16 +209,18 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     .addGroup(panelContraseñaLayout.createSequentialGroup()
                         .addComponent(jLabelConfirmPassword)
                         .addGap(14, 14, 14)
-                        .addComponent(jPassword2))
+                        .addComponent(jPassword2, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
                     .addGroup(panelContraseñaLayout.createSequentialGroup()
                         .addComponent(jLabelPassword)
                         .addGap(82, 82, 82)
                         .addComponent(jPassword)))
                 .addContainerGap())
             .addGroup(panelContraseñaLayout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addGap(57, 57, 57)
                 .addComponent(buttonModificarContraseña)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonInicio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelContraseñaLayout.setVerticalGroup(
             panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,9 +235,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addGroup(panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelConfirmPassword)
                     .addComponent(jPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(buttonModificarContraseña)
-                .addGap(32, 32, 32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGroup(panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonModificarContraseña)
+                    .addComponent(buttonInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         textLogo.setBackground(new java.awt.Color(255, 255, 255));
@@ -357,7 +373,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                                 .addComponent(modificarPerfil)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cambioDeContraseña)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 150, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButtonCerrarSesion)
@@ -552,7 +568,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         //cerramos el panel de contraseña si estaba abierto.
         panelContraseña.setVisible(false);
         
-        //Obtenemos la fila seleccionada de pelicula y usuario..
+        //Obtenemos la fila seleccionada de pelicula.
         posicionPelicula = jTablePeliculas.getSelectedRow();
         
         if ( (posicionPelicula == -1)) {
@@ -562,7 +578,42 @@ public class VentanaUsuario extends javax.swing.JFrame {
                       "Debes seleccionar una\n"
                     + "PELICULA de la tabla.",
                     "ALQUILAR PELICULA", JOptionPane.INFORMATION_MESSAGE);
-        } 
+        }else {
+            // Se ha seleccionado una película.
+            // Creamos objeto JSON temporales de la pelicula seleccionada.
+            JSONObject objPelicula = new JSONObject();
+            objPelicula = jsonArrayPeliculas.getJSONObject(posicionPelicula);
+            //Asignamos el id de la pelicula a su variable UUID.
+            idPelicula = (UUID) objPelicula.get("id");
+            
+             // Mostramos mensaje emergente de confirmacion.
+            int opcion = JOptionPane.showConfirmDialog(this,
+                     "Deseas alquilar la pelicula\n"
+                    + objPelicula.get("TITULO")  + "  ?",
+                    "CONFIRMACION",
+                    JOptionPane.YES_NO_OPTION);
+            
+            if (opcion == JOptionPane.YES_OPTION) {
+                //****************************************************************
+                // Realizamos la peticion de alquiler nuevo 
+                // para el usuario.
+                // Creamos el cliente de acceso
+                Client client = ClientBuilder.newClient();
+                // Creamos el target (URL)
+                WebTarget target = client.target(Constants.urlPeliculasAddAlquiler
+                        +idPelicula+ "?token=" + Constants.token);
+
+
+            
+            
+            
+            }
+            
+            
+        }
+        
+        
+        
         
     }//GEN-LAST:event_alquilarPeliculaActionPerformed
 
@@ -664,8 +715,17 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_listaPeliculasActionPerformed
 
+    private void buttonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioActionPerformed
+        // Cerramos la ventana de registro.
+        // y volvemos a inicio.
+        this.dispose();
+        VentanaUsuario usuario = new VentanaUsuario();
+        usuario.setVisible(true);
+    }//GEN-LAST:event_buttonInicioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alquilarPelicula;
+    private javax.swing.JButton buttonInicio;
     private javax.swing.JButton buttonModificarContraseña;
     private javax.swing.JButton cambioDeContraseña;
     private javax.swing.JButton jButtonCerrarSesion;
