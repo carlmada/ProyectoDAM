@@ -1,5 +1,6 @@
 package Pantallas.usuarios;
 
+import Pantallas.VentanaUsuario;
 import Modelos.DTOS.usuarios.DTO.ResponseUpdateUserDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserInfoDTO;
 import Modelos.DTOS.usuarios.DTO.UpdateUserDTO;

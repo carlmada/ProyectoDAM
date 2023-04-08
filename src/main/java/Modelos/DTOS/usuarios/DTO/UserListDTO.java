@@ -4,7 +4,8 @@ import java.util.UUID;
 
 /**
  *
- * Clase que formata los datos que recibiremos del servidor cuando pidamos la lista de usuarios.
+ * Clase que formata los datos que recibiremos
+ * del servidor cuando pidamos la lista de usuarios.
  *
  * @author Carlos
  */
