@@ -101,23 +101,17 @@ public class VentanaUsuario extends javax.swing.JFrame {
         // System.out.println(responseJson.getValue().getNombre());
         // Ponemos el nombre en el textfield correspondiente.
         jTextFieldNombre.setText(responseJson.getValue().getNombre());
-<<<<<<< HEAD
 <<<<<<< HEAD:src/main/java/Pantallas/usuarios/VentanaUsuario.java
         
         //Obtenemos el idUsuario del usuario.
         idUsuario = responseJson.getValue().getId();
         
 =======
-=======
->>>>>>> master
 
         //Obtenemos el idUsuario del usuario.
         idUsuario = responseJson.getValue().getId();
 
-<<<<<<< HEAD
 >>>>>>> 194339f (Continuacion alquileres):src/main/java/Pantallas/VentanaUsuario.java
-=======
->>>>>>> master
         //***********************************************
     }
 
