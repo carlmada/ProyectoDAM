@@ -384,7 +384,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
      *
      */
     private void listaPeliculasUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasUsuariosActionPerformed
-
+        
+        
         //Mostramos lo diferentes elementos.
         jLabelPeliculas.setVisible(true);
         jLabelUsuarios.setVisible(true);
@@ -395,6 +396,10 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jScrollPaneUsuarios.setVisible(true);
         jTableUsuarios.setVisible(true);
 
+        jScrollPaneAlquileres.setVisible(false);
+        jTableAlquileres.setVisible(false);
+        
+        
         //Leemos la lista de peliculas.
         StringBuilder resultadoPeliculas = new StringBuilder();
         try {
@@ -626,11 +631,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
                 // Creamos el target (URL)
                 WebTarget target = client.target(Constants.urlPeliculasDeleteAlquilerId 
-                        +alquilerId+ "?token=" + Constants.token);
-                
-                System.out.println(Constants.urlPeliculasDeleteAlquilerId 
-                        +alquilerId+ "?token=" + Constants.token);
-                
+                        +"?alquilerId="+alquilerId
+                        +"&token=" + Constants.token);
                 
                 // Creamos la solicitud
                 Invocation.Builder solicitud = target.request();
