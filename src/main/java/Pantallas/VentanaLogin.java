@@ -1,6 +1,5 @@
 package Pantallas;
 
-import Pantallas.usuarios.VentanaUsuario;
 import Pantallas.usuarios.VentanaNuevoUsuario;
 import Modelos.DTOS.LoginUserDTO;
 import Modelos.DTOS.ResponseLoginDTO;

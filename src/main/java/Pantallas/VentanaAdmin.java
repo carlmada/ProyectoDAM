@@ -100,7 +100,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
         gestionUsuarios = new javax.swing.JButton();
         gestionPeliculas = new javax.swing.JButton();
         gestionAlquiler = new javax.swing.JButton();
-        correoAvisoClientes = new javax.swing.JButton();
         rankingPeliculas = new javax.swing.JButton();
         cambioDeContraseña = new javax.swing.JButton();
         panelContraseña = new javax.swing.JPanel();
@@ -110,6 +109,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         jPassword = new javax.swing.JPasswordField();
         jPassword2 = new javax.swing.JPasswordField();
         buttonModificarContraseña = new javax.swing.JButton();
+        jButtonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADMINISTRADOR");
@@ -177,15 +177,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
             }
         });
 
-        correoAvisoClientes.setBackground(new java.awt.Color(242, 242, 242));
-        correoAvisoClientes.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        correoAvisoClientes.setText("Correo a usuarios");
-        correoAvisoClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                correoAvisoClientesActionPerformed(evt);
-            }
-        });
-
         rankingPeliculas.setBackground(new java.awt.Color(242, 242, 242));
         rankingPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         rankingPeliculas.setText("Ranking de Películas");
@@ -229,6 +220,15 @@ public class VentanaAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButtonVolver.setBackground(new java.awt.Color(153, 204, 0));
+        jButtonVolver.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jButtonVolver.setText("VOLVER");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelContraseñaLayout = new javax.swing.GroupLayout(panelContraseña);
         panelContraseña.setLayout(panelContraseñaLayout);
         panelContraseñaLayout.setHorizontalGroup(
@@ -247,9 +247,11 @@ public class VentanaAdmin extends javax.swing.JFrame {
                         .addComponent(jPassword)))
                 .addContainerGap())
             .addGroup(panelContraseñaLayout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addGap(64, 64, 64)
                 .addComponent(buttonModificarContraseña)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonVolver)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         panelContraseñaLayout.setVerticalGroup(
             panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +267,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
                     .addComponent(jLabelConfirmPassword)
                     .addComponent(jPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(buttonModificarContraseña)
+                .addGroup(panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonModificarContraseña)
+                    .addComponent(jButtonVolver))
                 .addGap(32, 32, 32))
         );
 
@@ -280,7 +284,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
             .addGroup(jPanelAdminLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(correoAvisoClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(rankingPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gestionAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gestionPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -293,12 +296,12 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addComponent(jLabelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
             .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelAdminLayout.createSequentialGroup()
-                    .addGap(238, 238, 238)
+                    .addGap(284, 284, 284)
                     .addComponent(panelContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(184, Short.MAX_VALUE)))
+                    .addContainerGap(109, Short.MAX_VALUE)))
         );
         jPanelAdminLayout.setVerticalGroup(
             jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,17 +322,15 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rankingPeliculas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(correoAvisoClientes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cambioDeContraseña)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion)
                 .addContainerGap())
             .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelAdminLayout.createSequentialGroup()
                     .addGap(86, 86, 86)
                     .addComponent(panelContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(42, Short.MAX_VALUE)))
+                    .addContainerGap(49, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -405,10 +406,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
         alquiler.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_gestionAlquilerActionPerformed
-
-    private void correoAvisoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoAvisoClientesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_correoAvisoClientesActionPerformed
 
     private void gestionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuariosActionPerformed
         VentanaGestionUsuarios gestionUsuarios = new VentanaGestionUsuarios();
@@ -507,14 +504,25 @@ public class VentanaAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonModificarContraseñaActionPerformed
 
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        /**
+        *
+        * Método para volver a la pantalla anterior.
+        */
+
+        VentanaAdmin ventanaAdmin = new VentanaAdmin();
+        ventanaAdmin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVolverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonModificarContraseña;
     private javax.swing.JButton cambioDeContraseña;
-    private javax.swing.JButton correoAvisoClientes;
     private javax.swing.JButton gestionAlquiler;
     private javax.swing.JButton gestionPeliculas;
     private javax.swing.JButton gestionUsuarios;
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelConfirmPassword;
     private javax.swing.JLabel jLabelPassword;

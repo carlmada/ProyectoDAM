@@ -1,5 +1,6 @@
 package Pantallas.usuarios;
 
+import Pantallas.VentanaUsuario;
 import Modelos.DTOS.usuarios.DTO.ResponseUpdateUserDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserInfoDTO;
 import Modelos.DTOS.usuarios.DTO.UpdateUserDTO;
@@ -194,7 +195,7 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
 
         buttonInicio.setBackground(new java.awt.Color(153, 204, 0));
         buttonInicio.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        buttonInicio.setText("INICIO");
+        buttonInicio.setText("VOLVER");
         buttonInicio.setBorderPainted(false);
         buttonInicio.setFocusable(false);
         buttonInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +218,7 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
                             .addComponent(jLabelApellidos)
                             .addComponent(jLabelNombre)
                             .addComponent(jLabelDireccion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                         .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,7 +270,7 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
                 .addComponent(buttonModificarUsuario)
                 .addGap(33, 33, 33)
                 .addComponent(buttonInicio)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -385,8 +386,8 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
         // Cerramos la ventana de registro. 
         // y volvemos a inicio.
         this.dispose();
-        VentanaLogin inicio = new VentanaLogin();
-        inicio.setVisible(true);
+        VentanaUsuario usuario = new VentanaUsuario();
+        usuario.setVisible(true);
 
     }//GEN-LAST:event_buttonInicioActionPerformed
 
