@@ -41,15 +41,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     TablePeliculas modelPeliculas;
     JSONArray jsonArrayPeliculas;
     int posicionPelicula;
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/java/Pantallas/usuarios/VentanaUsuario.java
-    UUID idUsuario, idPelicula ;
-=======
     UUID idUsuario, idPelicula;
->>>>>>> 194339f (Continuacion alquileres):src/main/java/Pantallas/VentanaUsuario.java
-=======
-    UUID idUsuario, idPelicula;
->>>>>>> master
 
     /**
      * Constructor de un nuevo formulario Ventana USUARIO.
@@ -101,17 +93,13 @@ public class VentanaUsuario extends javax.swing.JFrame {
         // System.out.println(responseJson.getValue().getNombre());
         // Ponemos el nombre en el textfield correspondiente.
         jTextFieldNombre.setText(responseJson.getValue().getNombre());
-<<<<<<< HEAD:src/main/java/Pantallas/usuarios/VentanaUsuario.java
-        
-        //Obtenemos el idUsuario del usuario.
-        idUsuario = responseJson.getValue().getId();
-        
-=======
 
         //Obtenemos el idUsuario del usuario.
         idUsuario = responseJson.getValue().getId();
 
->>>>>>> 194339f (Continuacion alquileres):src/main/java/Pantallas/VentanaUsuario.java
+        //Obtenemos el idUsuario del usuario.
+        idUsuario = responseJson.getValue().getId();
+
         //***********************************************
     }
 
@@ -580,15 +568,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
         //cerramos el panel de contraseña si estaba abierto.
         panelContraseña.setVisible(false);
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/java/Pantallas/usuarios/VentanaUsuario.java
-        
-=======
-
->>>>>>> 194339f (Continuacion alquileres):src/main/java/Pantallas/VentanaUsuario.java
-=======
-
->>>>>>> master
         //Obtenemos la fila seleccionada de pelicula.
         posicionPelicula = jTablePeliculas.getSelectedRow();
 
@@ -599,34 +578,14 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     "Debes seleccionar una\n"
                     + "PELICULA de la tabla.",
                     "ALQUILAR PELICULA", JOptionPane.INFORMATION_MESSAGE);
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/java/Pantallas/usuarios/VentanaUsuario.java
-        }else {
-=======
         } else {
->>>>>>> 194339f (Continuacion alquileres):src/main/java/Pantallas/VentanaUsuario.java
-=======
-        } else {
->>>>>>> master
+
             // Se ha seleccionado una película.
             // Creamos objeto JSON temporales de la pelicula seleccionada.
             JSONObject objPelicula = new JSONObject();
             objPelicula = jsonArrayPeliculas.getJSONObject(posicionPelicula);
             //Asignamos el id de la pelicula a su variable UUID.
             idPelicula = (UUID) objPelicula.get("id");
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/java/Pantallas/usuarios/VentanaUsuario.java
-            
-             // Mostramos mensaje emergente de confirmacion.
-            int opcion = JOptionPane.showConfirmDialog(this,
-                     "Deseas alquilar la pelicula\n"
-                    + objPelicula.get("TITULO")  + "  ?",
-                    "CONFIRMACION",
-                    JOptionPane.YES_NO_OPTION);
-            
-=======
-=======
->>>>>>> master
 
             // Mostramos mensaje emergente de confirmacion.
             int opcion = JOptionPane.showConfirmDialog(this,
@@ -635,37 +594,16 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     "CONFIRMACION",
                     JOptionPane.YES_NO_OPTION);
 
-<<<<<<< HEAD
->>>>>>> 194339f (Continuacion alquileres):src/main/java/Pantallas/VentanaUsuario.java
-=======
->>>>>>> master
             if (opcion == JOptionPane.YES_OPTION) {
                 //****************************************************************
                 // Realizamos la peticion de alquiler nuevo 
                 // para el usuario.
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/java/Pantallas/usuarios/VentanaUsuario.java
                 // Creamos el cliente de acceso
                 Client client = ClientBuilder.newClient();
                 // Creamos el target (URL)
                 WebTarget target = client.target(Constants.urlPeliculasAddAlquiler
-                        +idPelicula+ "?token=" + Constants.token);
+                        + idPelicula + "?token=" + Constants.token);
 
-
-            
-            
-            
-            }
-            
-            
-        }
-        
-        
-        
-        
-=======
-=======
->>>>>>> master
                 //***********************************************
                 StringBuilder resultado = new StringBuilder();
                 try {
@@ -692,7 +630,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     }
                     // Cerramos la conexion.
                     rd.close();
-                    
+
                     // Creamos una instancia de Gson para convertir nuestro String a JSON
                     Gson gson = new Gson();
                     // Pasamos la respuesta a un String.
@@ -700,19 +638,18 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     // El string es un json que lo convertimos en un objeto de java
                     // Lo transformamos gracias al objeto DTO creado para ello.
                     ResponseAlquilerPeliculaDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerPeliculaDTO.class);
-                   
-                    
+
                     //Si todo bien...
                     if (conn.getResponseCode() == 200) {
                         // Mostramos mensaje emergente de informacion.
                         JOptionPane.showMessageDialog(this,
                                 "Película alquilada correctamente.\n"
-                                +"Fecha de inicio:           "+responseJson.getValue().getFechaInicio()+"\n"
-                                +"Fecha de finalizacion: "+responseJson.getValue().getFechaFin()+"\n"
-                                +"Estado: "+responseJson.getValue().getEstado(),                                
+                                + "Fecha de inicio:           " + responseJson.getValue().getFechaInicio() + "\n"
+                                + "Fecha de finalizacion: " + responseJson.getValue().getFechaFin() + "\n"
+                                + "Estado: " + responseJson.getValue().getEstado(),
                                 "ALQUILER PELICULA", JOptionPane.INFORMATION_MESSAGE);
                         // y volvemos a inicio.
-                        
+
                     }
                 } catch (MalformedURLException ex) {
                     System.out.println(ex);
@@ -723,10 +660,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 //No hacemos nada...
             }
         }
-<<<<<<< HEAD
->>>>>>> 194339f (Continuacion alquileres):src/main/java/Pantallas/VentanaUsuario.java
-=======
->>>>>>> master
     }//GEN-LAST:event_alquilarPeliculaActionPerformed
 
     /**
