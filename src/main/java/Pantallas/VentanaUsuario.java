@@ -97,6 +97,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
         //Obtenemos el idUsuario del usuario.
         idUsuario = responseJson.getValue().getId();
 
+        //Obtenemos el idUsuario del usuario.
+        idUsuario = responseJson.getValue().getId();
+
         //***********************************************
     }
 
@@ -565,7 +568,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
         //cerramos el panel de contraseña si estaba abierto.
         panelContraseña.setVisible(false);
-
         //Obtenemos la fila seleccionada de pelicula.
         posicionPelicula = jTablePeliculas.getSelectedRow();
 
@@ -577,6 +579,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     + "PELICULA de la tabla.",
                     "ALQUILAR PELICULA", JOptionPane.INFORMATION_MESSAGE);
         } else {
+
             // Se ha seleccionado una película.
             // Creamos objeto JSON temporales de la pelicula seleccionada.
             JSONObject objPelicula = new JSONObject();
@@ -595,6 +598,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 //****************************************************************
                 // Realizamos la peticion de alquiler nuevo 
                 // para el usuario.
+                // Creamos el cliente de acceso
+                Client client = ClientBuilder.newClient();
+                // Creamos el target (URL)
+                WebTarget target = client.target(Constants.urlPeliculasAddAlquiler
+                        + idPelicula + "?token=" + Constants.token);
+
                 //***********************************************
                 StringBuilder resultado = new StringBuilder();
                 try {
@@ -621,7 +630,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     }
                     // Cerramos la conexion.
                     rd.close();
-                    
+
                     // Creamos una instancia de Gson para convertir nuestro String a JSON
                     Gson gson = new Gson();
                     // Pasamos la respuesta a un String.
@@ -629,19 +638,18 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     // El string es un json que lo convertimos en un objeto de java
                     // Lo transformamos gracias al objeto DTO creado para ello.
                     ResponseAlquilerPeliculaDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerPeliculaDTO.class);
-                   
-                    
+
                     //Si todo bien...
                     if (conn.getResponseCode() == 200) {
                         // Mostramos mensaje emergente de informacion.
                         JOptionPane.showMessageDialog(this,
                                 "Película alquilada correctamente.\n"
-                                +"Fecha de inicio:           "+responseJson.getValue().getFechaInicio()+"\n"
-                                +"Fecha de finalizacion: "+responseJson.getValue().getFechaFin()+"\n"
-                                +"Estado: "+responseJson.getValue().getEstado(),                                
+                                + "Fecha de inicio:           " + responseJson.getValue().getFechaInicio() + "\n"
+                                + "Fecha de finalizacion: " + responseJson.getValue().getFechaFin() + "\n"
+                                + "Estado: " + responseJson.getValue().getEstado(),
                                 "ALQUILER PELICULA", JOptionPane.INFORMATION_MESSAGE);
                         // y volvemos a inicio.
-                        
+
                     }
                 } catch (MalformedURLException ex) {
                     System.out.println(ex);
