@@ -492,6 +492,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jScrollPaneUsuarios.setVisible(true);
         jTableUsuarios.setVisible(true);
 
+        //Cerramos estos...
         jScrollPaneAlquileres.setVisible(false);
         jTableAlquileres.setVisible(false);
         jPanelCambioEstatus.setVisible(false);
@@ -726,8 +727,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
                 // Creamos el target (URL)
                 WebTarget target = client.target(Constants.urlPeliculasDeleteAlquilerId
-                        + id 
-                        +"?token=" + Constants.token);
+                        + id
+                        + "?token=" + Constants.token);
 
                 // Creamos la solicitud
                 Invocation.Builder solicitud = target.request();
@@ -748,6 +749,10 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,
                             "Alquiler eliminado correctamente.",
                             "ELIMINAR ALQUILER", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    VentanaGestionAlquilerPeliculas volver = new VentanaGestionAlquilerPeliculas();
+                    volver.setVisible(true);
+                    this.dispose();
                     //****************************************************************
                 } else {
                     // Si ha habido error en la operacion.
@@ -880,7 +885,9 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
         //cerramos las otras listas.
         jScrollPanePeliculas.setVisible(false);
+        jTablePeliculas.setVisible(false);
         jScrollPaneUsuarios.setVisible(false);
+        jTableUsuarios.setVisible(false);
         jLabelPeliculas.setVisible(false);
         jLabelUsuarios.setVisible(false);
         jPanelCambioEstatus.setVisible(false);
@@ -965,52 +972,35 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         /**
          * Metodo para modificar el estado de un alquiler.
          */
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        String estado = (String)jComboBoxEstatus.getSelectedItem();
-        System.out.println(estado);
-        
 
-        
+        String estado = (String) jComboBoxEstatus.getSelectedItem();
+        System.out.println(estado);
+
+
     }//GEN-LAST:event_buttonModificarEstatusActionPerformed
 
     private void jButtonVolverAlquilerStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverAlquilerStatusActionPerformed
         /**
-        *
-        * Método para volver a la pantalla anterior.
-        */
-        
-        jPanelCambioEstatus.setVisible(false);
+         *
+         * Método para volver a la pantalla anterior.
+         */
+
+        VentanaGestionAlquilerPeliculas volver = new VentanaGestionAlquilerPeliculas();
+        volver.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jButtonVolverAlquilerStatusActionPerformed
 
     private void modificarEstatusAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEstatusAlquilerActionPerformed
-        
+
         //cerramos las otras listas.
-        
         jScrollPanePeliculas.setVisible(false);
         jScrollPaneUsuarios.setVisible(false);
         jLabelPeliculas.setVisible(false);
         jLabelUsuarios.setVisible(false);
         jScrollPaneAlquileres.setVisible(false);
         jPanelCambioEstatus.setVisible(false);
-        
-        
-        
+
         //Obtenemos la fila seleccionada de alquileres.
         posicionAlquiler = jTableAlquileres.getSelectedRow();
 
@@ -1022,22 +1012,12 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     + "de la tabla de alquileres.",
                     "MODIFICAR ESTATUS ALQUILER", JOptionPane.INFORMATION_MESSAGE);
         } else {
-                    
+
             jPanelCambioEstatus.setVisible(true);
-            
+
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_modificarEstatusAlquilerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
