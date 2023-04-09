@@ -384,8 +384,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
      *
      */
     private void listaPeliculasUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasUsuariosActionPerformed
-        
-        
+
         //Mostramos lo diferentes elementos.
         jLabelPeliculas.setVisible(true);
         jLabelUsuarios.setVisible(true);
@@ -398,8 +397,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
         jScrollPaneAlquileres.setVisible(false);
         jTableAlquileres.setVisible(false);
-        
-        
+
         //Leemos la lista de peliculas.
         StringBuilder resultadoPeliculas = new StringBuilder();
         try {
@@ -538,7 +536,6 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         JTableHeader headerUsuarios = jTableUsuarios.getTableHeader();
         headerUsuarios.setBackground(Color.LIGHT_GRAY);
 
-
     }//GEN-LAST:event_listaPeliculasUsuariosActionPerformed
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
@@ -596,10 +593,10 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
          * metodo para eliminar un alquiler de pelicula de la aplicacion.
          *
          */
-        
+
         //Obtenemos la fila seleccionada de alquileres.
         posicionAlquiler = jTableAlquileres.getSelectedRow();
-        
+
         if (posicionAlquiler == -1) {
             // No se ha seleccionado alquiler de la lista.
             // Mostramos mensaje emergente de informacion.
@@ -607,32 +604,32 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     "Debes seleccionar un alquiler\n"
                     + "de la tabla de alquileres.",
                     "ELIMINAR PELICULA", JOptionPane.INFORMATION_MESSAGE);
-        }else{
+        } else {
             // Se ha seleccionado un alquiler de la lista.
             // Creamos objeto JSON temporal de la fila seleccionada.
             JSONObject objAlquiler = new JSONObject();
             objAlquiler = jsonArrayAlquileres.getJSONObject(posicionAlquiler);
-            
+
             //Asignamos el id del alquiler a su variable UUID.
             UUID id = (UUID) objAlquiler.get("idAlquiler");
-            
+
             // Mostramos mensaje emergente de confirmacion.
             int opcion = JOptionPane.showConfirmDialog(this,
                     "Deseas eliminar el alquiler\n"
-                    + objAlquiler.get("idAlquiler") + " ? ",
+                    + id + " ? ",
                     "CONFIRMACION",
                     JOptionPane.YES_NO_OPTION);
-            
+
             if (opcion == JOptionPane.YES_OPTION) {
                 //Eliminamos alquiler.
-                                
+
                 // Creamos el cliente de acceso
                 Client client = ClientBuilder.newClient();
 
                 // Creamos el target (URL)
-                WebTarget target = client.target(Constants.urlPeliculasDeleteAlquilerId 
-                        +id+"&token=" + Constants.token);
-                
+                WebTarget target = client.target(Constants.urlPeliculasDeleteAlquilerId
+                        + id + "&token=" + Constants.token);
+
                 // Creamos la solicitud
                 Invocation.Builder solicitud = target.request();
 
@@ -746,26 +743,25 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
                     //Si todo bien...
                     if (conn.getResponseCode() == 200) {
-                        
+
                         /*
                         // Mostramos mensaje emergente de informacion.
                         JOptionPane.showMessageDialog(this,
                                 "Pelicula alquilada correctamente.",
                                 "ALQUILER PELICULA", JOptionPane.INFORMATION_MESSAGE);
                         // y volvemos a inicio.
-                        */
-                                                
+                         */
                         // Mostramos mensaje emergente de informacion.
                         JOptionPane.showMessageDialog(this,
                                 "Película alquilada correctamente.\n"
-                                +"Titulo: " + objPelicula.get("TITULO")+"\n"
-                                +"Usuario: "+ objUsuario.get("NOMBRE") + " " + objUsuario.get("APELLIDOS")+"\n"                                        
-                                +"Fecha de inicio:           "+responseJson.getValue().getFechaInicio()+"\n"
-                                +"Fecha de finalizacion: "+responseJson.getValue().getFechaFin()+"\n"
-                                +"Estado: "+responseJson.getValue().getEstado(),                                
+                                + "Titulo: " + objPelicula.get("TITULO") + "\n"
+                                + "Usuario: " + objUsuario.get("NOMBRE") + " " + objUsuario.get("APELLIDOS") + "\n"
+                                + "Fecha de inicio:           " + responseJson.getValue().getFechaInicio() + "\n"
+                                + "Fecha de finalizacion: " + responseJson.getValue().getFechaFin() + "\n"
+                                + "Estado: " + responseJson.getValue().getEstado(),
                                 "ALQUILER PELICULA", JOptionPane.INFORMATION_MESSAGE);
                         // y volvemos a inicio.
-                        
+
                     }
                 } catch (MalformedURLException ex) {
                     System.out.println(ex);
@@ -779,18 +775,17 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_alquilarPeliculaActionPerformed
 
     private void listaAlquileresPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAlquileresPeliculasActionPerformed
-        
+
         //Tabla alquileres.
         jScrollPaneAlquileres.setVisible(true);
         jTableAlquileres.setVisible(true);
-        
+
         //cerramos las otras listas.
         jScrollPanePeliculas.setVisible(false);
         jScrollPaneUsuarios.setVisible(false);
         jLabelPeliculas.setVisible(false);
         jLabelUsuarios.setVisible(false);
-        
-               
+
         //Leemos la lista de peliculas.
         StringBuilder resultadoAlquileres = new StringBuilder();
         try {
@@ -855,7 +850,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         //Añadimos color a la cabecera.
         JTableHeader header = jTableAlquileres.getTableHeader();
         header.setBackground(Color.LIGHT_GRAY);
-        
+
         //Ponemos los datos numericos en el lado derecho de la celda.
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
         renderer.setHorizontalAlignment(JLabel.CENTER);
@@ -864,7 +859,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
         //Asignamos el ancho de la columna id.
         jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(250);
-               
+
     }//GEN-LAST:event_listaAlquileresPeliculasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

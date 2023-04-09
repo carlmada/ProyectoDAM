@@ -15,7 +15,7 @@ public class TableUsuarios extends AbstractTableModel {
 
     //Atributos
     private JSONArray data;
-    private String[] columnNames ;
+    private String[] columnNames;
 
     //Constructor.
     public TableUsuarios(JSONArray data, String[] columnames) {
@@ -38,7 +38,7 @@ public class TableUsuarios extends AbstractTableModel {
         JSONObject jsonObject = data.getJSONObject(rowIndex);
         String columname = columnNames[columnIndex];
         return jsonObject.get(columname);
-        
+
     }
 
     @Override

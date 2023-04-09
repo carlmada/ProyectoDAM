@@ -345,16 +345,16 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
 
             // Recibimos la respuesta y la leemos en una clase String
             String responseJsonString = post.readEntity(String.class);
-            
+
             //Covertimos el JsonString en un objeto JSON.
             JSONObject json = new JSONObject(responseJsonString);
-                
+
             // Si todo ha salido correcto.
             if (post.getStatus() == 200) {
-                
+
                 // Mostramos mensaje emergente de informacion.
-                JOptionPane.showMessageDialog(this,"        "+
-                        json.getString("message")
+                JOptionPane.showMessageDialog(this, "        "
+                        + json.getString("message")
                         + "\nVolverás a la pantalla de login.",
                         "PERFIL DE USUARIO", JOptionPane.INFORMATION_MESSAGE);
                 // Cerramos la ventana de registro. 

@@ -9,7 +9,7 @@ public class UpdateUserAdminDTO {
     //Contructor.
     public UpdateUserAdminDTO() {
     }
-    
+
     //Atributos.
     private boolean isAdmin;
 
@@ -21,5 +21,5 @@ public class UpdateUserAdminDTO {
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
-    
+
 }

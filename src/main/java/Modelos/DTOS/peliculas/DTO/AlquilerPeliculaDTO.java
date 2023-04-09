@@ -4,8 +4,7 @@ import java.util.UUID;
 
 /**
  *
- * Clase que formata los datos de respuesta del 
- * servidor a la peticion de un nuevo alquiler de pelicula.
+ * Clase que formata los datos de respuesta del servidor a la peticion de un nuevo alquiler de pelicula.
  *
  * @author Carlos
  */
@@ -13,7 +12,7 @@ public class AlquilerPeliculaDTO {
 
     public AlquilerPeliculaDTO() {
     }
-    
+
     //Variables.
     private UUID id;
     private UUID pelicula;
@@ -22,7 +21,7 @@ public class AlquilerPeliculaDTO {
     private String fechaFin;
     private double precio;
     private String estado;
-    
+
     //Getters-Setters.
     public UUID getId() {
         return id;
@@ -79,6 +78,5 @@ public class AlquilerPeliculaDTO {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
 
 }

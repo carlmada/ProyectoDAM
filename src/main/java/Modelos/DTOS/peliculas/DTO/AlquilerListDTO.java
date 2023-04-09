@@ -3,16 +3,16 @@ package Modelos.DTOS.peliculas.DTO;
 import java.util.UUID;
 
 /**
- *Clase que formata los datos que recibiremos del servidor 
- *cuando pidamos la lista de alquileres.
+ * Clase que formata los datos que recibiremos del servidor cuando pidamos la lista de alquileres.
  *
  * @author Carlos
  */
 public class AlquilerListDTO {
+
     //Constructor.
     public AlquilerListDTO() {
     }
-        
+
     //Atributos
     private UUID id;
     private UUID peliculaId;
@@ -21,7 +21,7 @@ public class AlquilerListDTO {
     private String fechaFin;
     private double precio;
     private String estado;
-    
+
     //Getters-Setters.
     public UUID getId() {
         return id;
@@ -78,6 +78,5 @@ public class AlquilerListDTO {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
+
 }

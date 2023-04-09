@@ -506,7 +506,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         //***********************************************
         jScrollPane.setVisible(true);
         jTable.setVisible(true);
-        
+
         StringBuilder resultado = new StringBuilder();
         try {
             // Creamos la URL
@@ -560,7 +560,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         }
 
         //Creamos un String[] de columnas
-        String[] columnNames = {"TITULO", "DIRECTOR", "GENERO","AÑO", "DURACION", "PRECIO" };
+        String[] columnNames = {"TITULO", "DIRECTOR", "GENERO", "AÑO", "DURACION", "PRECIO"};
 
         //Creamos el modelo de tabla
         model = new TablePeliculas(jsonArray, columnNames);
@@ -753,16 +753,14 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
 
         /**
          *
-         * Metodo que se ejecuta al clicar en el boton MODIFICAR 
-         * del formulario de datos de la pelicula.
+         * Metodo que se ejecuta al clicar en el boton MODIFICAR del formulario de datos de la pelicula.
          *
          * Operacion de modificación de los datos de la pelicula. *
          *
-         */ 
-
+         */
         //Obtenemos su id.
         idModificarPelicula = (UUID) objModificarPelicula.get("id");
-        
+
         // Leemos los campos de datos de la pelicula.
         String titulo = textTitulo.getText();
         String director = textDirector.getText();
@@ -770,7 +768,6 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         int duracion = Integer.parseInt(textDuracion.getText());
         int año = Integer.parseInt(textAño.getText());
         int precio = Integer.parseInt(textPrecio.getText());
-
 
         // Creamos un objeto JSON temporal de la fila seleccionada.
         JSONObject obj = new JSONObject();
@@ -789,10 +786,10 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 + "Precio: " + precio
                 + "\n\n            Es correcto?",
                 "CONFIRMACION", 0);
-        
+
         //Si todo está correcto...
-        if(opcion ==0){
-            
+        if (opcion == 0) {
+
             // Creamos el cliente
             Client client = ClientBuilder.newClient();
 
@@ -812,30 +809,29 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             updatePelicula.setDuracion(duracion);
             updatePelicula.setAño(año);
             updatePelicula.setPrecio(precio);
-            
+
             // Creamos una instancia de Gson para convertir nuestro String a JSON
             Gson gson = new Gson();
             // lo pasamos a objeto Json
             String jsonString = gson.toJson(updatePelicula);
-            
+
             // Enviamos nuestro json via PUT a la API
             Response put = solicitud.put(Entity.json(jsonString));
-            
+
             // Recibimos la respuesta y la leemos en una clase String
             String responseJsonString = put.readEntity(String.class);
-            
+
             //Covertimos el JsonString en un objeto JSON.
             JSONObject json = new JSONObject(responseJsonString);
-            
+
             System.out.println(put.getStatus());
             System.out.println(json);
-            
-            
+
             // Si todo ha salido correcto.
             if (put.getStatus() == 200) {
                 // Mostramos mensaje emergente de informacion.
-                JOptionPane.showMessageDialog(this,""+
-                        json.getString("message")
+                JOptionPane.showMessageDialog(this, ""
+                        + json.getString("message")
                         + "\nVolverás a Gestión de películas.",
                         "MODIFICAR PELICULA", JOptionPane.INFORMATION_MESSAGE);
                 // Cerramos la ventana de registro. 
@@ -843,7 +839,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();
                 gestionPeliculas.setVisible(true);
                 this.dispose();
-                                
+
             } else {
                 // Mostramos mensaje emergente de aviso.
                 JOptionPane.showMessageDialog(this,
@@ -859,7 +855,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
                 textPrecio.setText("");
 
             }
-        } 
+        }
     }//GEN-LAST:event_buttonModificarPeliculaConfirmacionActionPerformed
 
     private void jButtonVolver2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolver2ActionPerformed

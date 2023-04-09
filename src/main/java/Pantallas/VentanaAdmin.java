@@ -40,7 +40,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         panelContraseña.setVisible(false);
-        
+
         //***********************************************
         StringBuilder resultado = new StringBuilder();
         try {
@@ -420,15 +420,14 @@ public class VentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_gestionPeliculasActionPerformed
 
     private void cambioDeContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioDeContraseñaActionPerformed
-      panelContraseña.setVisible(true);
-        
+        panelContraseña.setVisible(true);
+
     }//GEN-LAST:event_cambioDeContraseñaActionPerformed
-    
+
     private void buttonModificarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarContraseñaActionPerformed
 
         // Leemos los campos password introducidos.
         // Comprobamos que los password sean iguales...
-
         char[] password = jPassword.getPassword();
         String pass = new String(password);
 
@@ -472,20 +471,20 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
                 // Mostramos mensaje emergente de informacion.
                 JOptionPane.showMessageDialog(this,
-                    "Contraseña actualizada correctamente."
-                    + "\nVolverás a la pantalla de login.",
-                    "CAMBIO de CONTRASEÑA", JOptionPane.INFORMATION_MESSAGE);
+                        "Contraseña actualizada correctamente."
+                        + "\nVolverás a la pantalla de login.",
+                        "CAMBIO de CONTRASEÑA", JOptionPane.INFORMATION_MESSAGE);
                 // Cerramos la ventana.
                 // y volvemos a inicio.
                 this.dispose();
                 VentanaLogin inicio = new VentanaLogin();
                 inicio.setVisible(true);
-            }else{
+            } else {
                 // Mostramos mensaje emergente de aviso.
                 JOptionPane.showMessageDialog(this,
-                    "Error en cambio de contraseña.\n"
-                    + "Vuelve a introducir los datos.",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                        "Error en cambio de contraseña.\n"
+                        + "Vuelve a introducir los datos.",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
                 // Limpiamos todos los campos.
                 jPassword.setText("");
                 jPassword2.setText("");
@@ -494,9 +493,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
         } else {
             // Mostramos mensaje emergente de aviso.
             JOptionPane.showMessageDialog(this,
-                "Las contraseñas no coinciden.\n"
-                + "Vuelve a introducir los datos.",
-                "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "Las contraseñas no coinciden.\n"
+                    + "Vuelve a introducir los datos.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
             // Limpiamos todos los campos.
             jPassword.setText("");
             jPassword2.setText("");
@@ -506,9 +505,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         /**
-        *
-        * Método para volver a la pantalla anterior.
-        */
+         *
+         * Método para volver a la pantalla anterior.
+         */
 
         VentanaAdmin ventanaAdmin = new VentanaAdmin();
         ventanaAdmin.setVisible(true);

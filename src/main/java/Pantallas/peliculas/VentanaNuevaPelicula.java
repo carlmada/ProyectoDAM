@@ -15,16 +15,14 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * Ventana de registro de 
- * una nueva pelicula.
+ * Ventana de registro de una nueva pelicula.
  *
  * @author Carlos
  */
 public class VentanaNuevaPelicula extends javax.swing.JFrame {
 
     /**
-     * Constructor de un nuevo formulario 
-     * Ventana NUEVA PELICULA.
+     * Constructor de un nuevo formulario Ventana NUEVA PELICULA.
      */
     public VentanaNuevaPelicula() {
         initComponents();
@@ -32,8 +30,7 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. 
-     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -258,64 +255,64 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
      *
      */
     private void buttonRegistroPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegistroPeliculaActionPerformed
-            // Leemos los campos de datos de la pelicula.
-       
-            String titulo = textTitulo.getText();
-            String director = textDirector.getText();
-            String genero = textGenero.getText();
-            int duracion = Integer.parseInt(textDuracion.getText());
-            int año = Integer.parseInt(textAño.getText());
-            int precio = Integer.parseInt(textPrecio.getText());
+        // Leemos los campos de datos de la pelicula.
 
-            // Creamos el cliente de login
-            Client client = ClientBuilder.newClient();
+        String titulo = textTitulo.getText();
+        String director = textDirector.getText();
+        String genero = textGenero.getText();
+        int duracion = Integer.parseInt(textDuracion.getText());
+        int año = Integer.parseInt(textAño.getText());
+        int precio = Integer.parseInt(textPrecio.getText());
 
-            // Creamos el target (URL)
-            WebTarget target = client.target(Constants.urlAddPelicula + "?token=" + Constants.token);
+        // Creamos el cliente de login
+        Client client = ClientBuilder.newClient();
 
-            // Creamos la solicitud
-            Invocation.Builder solicitud = target.request();
+        // Creamos el target (URL)
+        WebTarget target = client.target(Constants.urlAddPelicula + "?token=" + Constants.token);
 
-            // Creamos el objeto DTO que espera el servidor
-            RegisterPeliculaDTO registerPelicula = new RegisterPeliculaDTO();
+        // Creamos la solicitud
+        Invocation.Builder solicitud = target.request();
 
-            // Asignamos los valores
-            registerPelicula.setTitulo(titulo);
-            registerPelicula.setDirector(director);
-            registerPelicula.setGenero(genero);
-            registerPelicula.setDuracion(duracion);
-            registerPelicula.setAño(año);
-            registerPelicula.setPrecio(precio);
-            
-            // Creamos una instancia de Gson para convertir nuestro String a JSON
-            Gson gson = new Gson();
-            // lo pasamos a objeto Json
-            String jsonString = gson.toJson(registerPelicula);
-            // System.out.println(jsonString);
+        // Creamos el objeto DTO que espera el servidor
+        RegisterPeliculaDTO registerPelicula = new RegisterPeliculaDTO();
 
-            // Enviamos nuestro json via POST a la API
-            Response post = solicitud.post(Entity.json(jsonString));
+        // Asignamos los valores
+        registerPelicula.setTitulo(titulo);
+        registerPelicula.setDirector(director);
+        registerPelicula.setGenero(genero);
+        registerPelicula.setDuracion(duracion);
+        registerPelicula.setAño(año);
+        registerPelicula.setPrecio(precio);
 
-            // Recibimos la respuesta y la leemos en una clase String
-            String responseJsonString = post.readEntity(String.class);
+        // Creamos una instancia de Gson para convertir nuestro String a JSON
+        Gson gson = new Gson();
+        // lo pasamos a objeto Json
+        String jsonString = gson.toJson(registerPelicula);
+        // System.out.println(jsonString);
 
-            // Si todo ha salido correcto.
-            if (post.getStatus() == 200) {
-                // Comprobacion por consola.
-                System.out.println(responseJsonString);
+        // Enviamos nuestro json via POST a la API
+        Response post = solicitud.post(Entity.json(jsonString));
 
-                // Mostramos mensaje emergente de informacion.
-                JOptionPane.showMessageDialog(this,
-                        "Pelicula registrada correctamente.",
-                        "NUEVA PELICULA", JOptionPane.INFORMATION_MESSAGE);
-                // Cerramos la ventana de registro. 
-                // y volvemos a inicio.
-                this.dispose();
-                VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();
-                gestionPeliculas.setVisible(true);
-            }else{
-                // Mostramos mensaje emergente de aviso.
-                JOptionPane.showMessageDialog(this,
+        // Recibimos la respuesta y la leemos en una clase String
+        String responseJsonString = post.readEntity(String.class);
+
+        // Si todo ha salido correcto.
+        if (post.getStatus() == 200) {
+            // Comprobacion por consola.
+            System.out.println(responseJsonString);
+
+            // Mostramos mensaje emergente de informacion.
+            JOptionPane.showMessageDialog(this,
+                    "Pelicula registrada correctamente.",
+                    "NUEVA PELICULA", JOptionPane.INFORMATION_MESSAGE);
+            // Cerramos la ventana de registro. 
+            // y volvemos a inicio.
+            this.dispose();
+            VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();
+            gestionPeliculas.setVisible(true);
+        } else {
+            // Mostramos mensaje emergente de aviso.
+            JOptionPane.showMessageDialog(this,
                     "Error en entrada de datos.\n"
                     + "Vuelve a introducir los datos.",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -326,11 +323,11 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
             textDuracion.setText("");
             textAño.setText("");
             textPrecio.setText("");
-            }
+        }
     }//GEN-LAST:event_buttonRegistroPeliculaActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
-       /**
+        /**
          *
          * Método para volver a la pantalla anterior.
          */

@@ -4,13 +4,12 @@ import java.util.List;
 
 /**
  *
- *Clase que formata los datos de respuesta del servidor 
- *a la peticion de la lista de alquileres.
- * 
+ * Clase que formata los datos de respuesta del servidor a la peticion de la lista de alquileres.
+ *
  * @author Carlos
  */
 public class ResponseAlquilerListDTO {
-    
+
     // Atributos.
     private String message;
     private List<AlquilerListDTO> value;
@@ -30,6 +29,6 @@ public class ResponseAlquilerListDTO {
 
     public void setValue(List<AlquilerListDTO> value) {
         this.value = value;
-    }   
-    
+    }
+
 }

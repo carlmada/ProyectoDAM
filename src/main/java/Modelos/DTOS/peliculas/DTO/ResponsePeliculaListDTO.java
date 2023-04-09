@@ -4,13 +4,12 @@ import java.util.List;
 
 /**
  *
- *Clase que formata los datos de respuesta del servidor 
- *a la peticion de la lista de peliculas .
- * 
+ * Clase que formata los datos de respuesta del servidor a la peticion de la lista de peliculas .
+ *
  * @author Carlos
  */
 public class ResponsePeliculaListDTO {
-    
+
     // Atributos.
     private String message;
     private List<PeliculaListDTO> value;
@@ -30,6 +29,6 @@ public class ResponsePeliculaListDTO {
 
     public void setValue(List<PeliculaListDTO> value) {
         this.value = value;
-    }   
-    
+    }
+
 }

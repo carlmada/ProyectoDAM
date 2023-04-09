@@ -1,17 +1,16 @@
 package Modelos.DTOS.peliculas.DTO;
 
 /**
- *Clase que formata los datos que se enviaran al servidor
- *para modificar una pelicula.
- * 
+ * Clase que formata los datos que se enviaran al servidor para modificar una pelicula.
+ *
  * @author Carlos
  */
 public class UpdatePeliculaDTO {
-   
+
     //Constructor.
     public UpdatePeliculaDTO() {
     }
-    
+
 //Atributos.
     private String titulo;
     private String director;
@@ -67,5 +66,5 @@ public class UpdatePeliculaDTO {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
-    
+
 }

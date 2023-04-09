@@ -1,10 +1,8 @@
 package Modelos.DTOS.peliculas.DTO;
 
-
 /**
  *
- * Clase que formata los datos de registro 
- * de una nueva pelicula que se enviara al servidor.
+ * Clase que formata los datos de registro de una nueva pelicula que se enviara al servidor.
  *
  * @author Carlos
  */
@@ -13,7 +11,7 @@ public class RegisterPeliculaDTO {
     //Constructor vacio.
     public RegisterPeliculaDTO() {
     }
-    
+
     //Atributos
     private String titulo;
     private String director;
@@ -21,9 +19,8 @@ public class RegisterPeliculaDTO {
     private int duracion;
     private int año;
     private int precio;
-    
-    //Getters-Setters.
 
+    //Getters-Setters.
     public String getTitulo() {
         return titulo;
     }
@@ -71,5 +68,5 @@ public class RegisterPeliculaDTO {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
-     
+
 }

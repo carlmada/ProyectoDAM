@@ -667,7 +667,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
      * Metodo para mostrar la tabla de peliculas para poder seleccionarlas.
      *
      */
-
     private void listaPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasActionPerformed
 
         //cerramos el panel de contraseña si estaba abierto.
@@ -756,7 +755,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jTablePeliculas.getColumnModel().getColumn(5).setPreferredWidth(45);
 
         //***************************************************
-
     }//GEN-LAST:event_listaPeliculasActionPerformed
 
     private void buttonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioActionPerformed

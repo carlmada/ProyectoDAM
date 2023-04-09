@@ -527,15 +527,15 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 //Si opcion es SI...
                 if (opcion == 0) {
                     //Cambiamos su ROL a usuario.
-                    Boolean admin=false;
+                    Boolean admin = false;
                     try {
                         // Creamos la URL.
-                        URL url = new URL(Constants.urlUpdateUsuarioAdmin + id + "/"+admin+"?token="+Constants.token);
+                        URL url = new URL(Constants.urlUpdateUsuarioAdmin + id + "/" + admin + "?token=" + Constants.token);
                         //Creamos la conexion al servidor.
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                         //Metodo PUT
                         conn.setDoOutput(true);
-                        conn.setRequestMethod("PUT"); 
+                        conn.setRequestMethod("PUT");
                         //Comprobacion de respuesta del servidor
                         System.out.println(conn.getResponseCode());
                     } catch (MalformedURLException ex) {
@@ -549,7 +549,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 }
 
             } else { //Si es Usuario...
-                
+
                 // Mostramos mensaje emergente de confirmacion.
                 int opcion = JOptionPane.showConfirmDialog(null,
                         "          Es un USUARIO.\n"
@@ -559,10 +559,10 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 //Si opcion es SI...
                 if (opcion == 0) {
                     //Cambiamos su ROL a administrador.
-                    Boolean admin=true;
+                    Boolean admin = true;
                     try {
                         // Creamos la URL.
-                        URL url = new URL(Constants.urlUpdateUsuarioAdmin + id + "/"+admin+"?token="+Constants.token);
+                        URL url = new URL(Constants.urlUpdateUsuarioAdmin + id + "/" + admin + "?token=" + Constants.token);
                         //Creamos la conexion al servidor.
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                         //Metodo PUT
@@ -570,7 +570,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                         conn.setRequestMethod("PUT");
                         //Comprobacion de respuesta del servidor
                         System.out.println(conn.getResponseCode());
-                        
+
                     } catch (MalformedURLException ex) {
                         Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {

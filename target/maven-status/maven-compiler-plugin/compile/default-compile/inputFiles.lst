@@ -3,11 +3,15 @@ C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\Up
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\utils\TablePeliculas.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\RegisterPeliculaDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\LogoutUserDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\AlquilerPeliculaDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\movies4rent\Movies4Rent.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\ResponseAlquilerListDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\UserListDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\usuarios\VentanaNuevoUsuario.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\UpdatePeliculaDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\utils\TableAlquileres.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\ResponseUpdateUserDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\ResponseAlquilerPeliculaDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\ResponsePeliculaListDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\ResponseUserListDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\RegisterUserDTO.java
@@ -15,6 +19,7 @@ C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\P
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\CambioDePasswordDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\ResponseLogoutDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\usuarios\VentanaGestionUsuarios.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantalla\alquiler\VentanaGestionAlquilerPeliculas.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\utils\Constants.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\peliculas\VentanaGestionPeliculas.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\TokenDTO.java
@@ -27,6 +32,7 @@ C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\Us
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\ResponseUserInfoDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\token.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\Usuarios.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\AlquilerListDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\ResponseLoginDTO.java
-C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\usuarios\VentanaUsuario.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\VentanaUsuario.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\peliculas\VentanaNuevaPelicula.java

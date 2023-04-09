@@ -4,8 +4,7 @@ import java.util.UUID;
 
 /**
  *
- * Clase que formata los datos que recibiremos
- * del servidor cuando pidamos la lista de usuarios.
+ * Clase que formata los datos que recibiremos del servidor cuando pidamos la lista de usuarios.
  *
  * @author Carlos
  */
@@ -23,7 +22,7 @@ public class UserListDTO {
     private String email;
     private String direccion;
     private Boolean isAdmin;
-    
+
     //Getters-Setters.
     public UUID getId() {
         return id;
