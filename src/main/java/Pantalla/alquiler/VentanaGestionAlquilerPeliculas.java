@@ -48,7 +48,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     TableAlquileres modelAlquileres;
     JSONArray jsonArrayPeliculas, jsonArrayUsuarios, jsonArrayAlquileres;
     int posicionPelicula, posicionUsuario, posicionAlquiler;
-    UUID idPelicula, idUsuario, alquilerId;
+    UUID idPelicula, idUsuario;
 
     /**
      * Constructor de un nuevo formulario Ventana de gestion de alquileres de peliculas.
@@ -614,7 +614,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             objAlquiler = jsonArrayAlquileres.getJSONObject(posicionAlquiler);
             
             //Asignamos el id del alquiler a su variable UUID.
-            alquilerId = (UUID) objAlquiler.get("idAlquiler");
+            UUID id = (UUID) objAlquiler.get("idAlquiler");
             
             // Mostramos mensaje emergente de confirmacion.
             int opcion = JOptionPane.showConfirmDialog(this,
@@ -631,8 +631,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
                 // Creamos el target (URL)
                 WebTarget target = client.target(Constants.urlPeliculasDeleteAlquilerId 
-                        +"?alquilerId="+alquilerId
-                        +"&token=" + Constants.token);
+                        +id+"&token=" + Constants.token);
                 
                 // Creamos la solicitud
                 Invocation.Builder solicitud = target.request();
