@@ -628,7 +628,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
                 // Creamos el target (URL)
                 WebTarget target = client.target(Constants.urlPeliculasDeleteAlquilerId
-                        + id + "&token=" + Constants.token);
+                        +"?alquilerId=" + id 
+                        +"&token=" + Constants.token);
 
                 // Creamos la solicitud
                 Invocation.Builder solicitud = target.request();
