@@ -57,6 +57,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         initComponents();
         jLabelPeliculas.setVisible(false);
         jLabelUsuarios.setVisible(false);
+        jPanelCambioEstatus.setVisible(false);
 
         //Obtenemos el nombre del usuario para mostrarlo.
         //***********************************************
@@ -117,7 +118,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jLabelUsuario = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         listaPeliculasUsuarios = new javax.swing.JButton();
-        modificarAlquiler = new javax.swing.JButton();
+        modificarEstatusAlquiler = new javax.swing.JButton();
         eliminarAlquilerPelicula = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
         alquilarPelicula = new javax.swing.JButton();
@@ -130,6 +131,12 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         listaAlquileresPeliculas = new javax.swing.JButton();
         jScrollPaneAlquileres = new javax.swing.JScrollPane();
         jTableAlquileres = new javax.swing.JTable();
+        jPanelCambioEstatus = new javax.swing.JPanel();
+        jLabelStatusAlquiler = new javax.swing.JLabel();
+        jLabelEstatus = new javax.swing.JLabel();
+        buttonModificarEstatus = new javax.swing.JButton();
+        jButtonVolverAlquilerStatus = new javax.swing.JButton();
+        jComboBoxEstatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GESTION DE ALQUILER DE PELICULASPELICULAS");
@@ -179,9 +186,14 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             }
         });
 
-        modificarAlquiler.setBackground(new java.awt.Color(255, 153, 51));
-        modificarAlquiler.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        modificarAlquiler.setText("Modificar Alquiler");
+        modificarEstatusAlquiler.setBackground(new java.awt.Color(255, 153, 51));
+        modificarEstatusAlquiler.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        modificarEstatusAlquiler.setText("Modificar Estatus Alquiler");
+        modificarEstatusAlquiler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEstatusAlquilerActionPerformed(evt);
+            }
+        });
 
         eliminarAlquilerPelicula.setBackground(new java.awt.Color(255, 51, 51));
         eliminarAlquilerPelicula.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
@@ -261,6 +273,81 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jTableAlquileres.setSelectionBackground(new java.awt.Color(102, 204, 255));
         jScrollPaneAlquileres.setViewportView(jTableAlquileres);
 
+        jPanelCambioEstatus.setBackground(new java.awt.Color(204, 255, 255));
+        jPanelCambioEstatus.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+
+        jLabelStatusAlquiler.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        jLabelStatusAlquiler.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelStatusAlquiler.setText("Cambio Estatus Alquiler");
+
+        jLabelEstatus.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelEstatus.setText("Nuevo Estatus :");
+
+        buttonModificarEstatus.setBackground(new java.awt.Color(255, 153, 51));
+        buttonModificarEstatus.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        buttonModificarEstatus.setText("MODIFICAR");
+        buttonModificarEstatus.setBorderPainted(false);
+        buttonModificarEstatus.setFocusable(false);
+        buttonModificarEstatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonModificarEstatusActionPerformed(evt);
+            }
+        });
+
+        jButtonVolverAlquilerStatus.setBackground(new java.awt.Color(153, 204, 0));
+        jButtonVolverAlquilerStatus.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jButtonVolverAlquilerStatus.setText("VOLVER");
+        jButtonVolverAlquilerStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverAlquilerStatusActionPerformed(evt);
+            }
+        });
+
+        jComboBoxEstatus.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jComboBoxEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EN_CURSO", "FINALIZADO", "CANCELADO" }));
+
+        javax.swing.GroupLayout jPanelCambioEstatusLayout = new javax.swing.GroupLayout(jPanelCambioEstatus);
+        jPanelCambioEstatus.setLayout(jPanelCambioEstatusLayout);
+        jPanelCambioEstatusLayout.setHorizontalGroup(
+            jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
+                .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelStatusAlquiler, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
+                                .addComponent(jLabelEstatus)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
+                        .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jComboBoxEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCambioEstatusLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(buttonModificarEstatus)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonVolverAlquilerStatus)))
+                        .addGap(0, 117, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelCambioEstatusLayout.setVerticalGroup(
+            jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelStatusAlquiler)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEstatus)
+                    .addComponent(jComboBoxEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonModificarEstatus)
+                    .addComponent(jButtonVolverAlquilerStatus))
+                .addGap(32, 32, 32))
+        );
+
         javax.swing.GroupLayout jPanelGestionAlquilerPeliculasLayout = new javax.swing.GroupLayout(jPanelGestionAlquilerPeliculas);
         jPanelGestionAlquilerPeliculas.setLayout(jPanelGestionAlquilerPeliculasLayout);
         jPanelGestionAlquilerPeliculasLayout.setHorizontalGroup(
@@ -269,7 +356,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(eliminarAlquilerPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(modificarAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modificarEstatusAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(listaPeliculasUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(alquilarPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -309,6 +396,11 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     .addGap(247, 247, 247)
                     .addComponent(jScrollPaneAlquileres, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(140, Short.MAX_VALUE)))
+            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
+                    .addGap(247, 247, 247)
+                    .addComponent(jPanelCambioEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(279, Short.MAX_VALUE)))
         );
         jPanelGestionAlquilerPeliculasLayout.setVerticalGroup(
             jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,7 +428,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(eliminarAlquilerPelicula)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(modificarAlquiler)))
+                                .addComponent(modificarEstatusAlquiler)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                         .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonCerrarSesion)
@@ -350,6 +442,11 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     .addGap(81, 81, 81)
                     .addComponent(jScrollPaneAlquileres, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(101, Short.MAX_VALUE)))
+            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
+                    .addContainerGap(160, Short.MAX_VALUE)
+                    .addComponent(jPanelCambioEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(101, 101, 101)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -397,6 +494,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
         jScrollPaneAlquileres.setVisible(false);
         jTableAlquileres.setVisible(false);
+        jPanelCambioEstatus.setVisible(false);
 
         //Leemos la lista de peliculas.
         StringBuilder resultadoPeliculas = new StringBuilder();
@@ -628,8 +726,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
                 // Creamos el target (URL)
                 WebTarget target = client.target(Constants.urlPeliculasDeleteAlquilerId
-                        +"?alquilerId=" + id 
-                        +"&token=" + Constants.token);
+                        + id 
+                        +"?token=" + Constants.token);
 
                 // Creamos la solicitud
                 Invocation.Builder solicitud = target.request();
@@ -661,7 +759,6 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_eliminarAlquilerPeliculaActionPerformed
-
     /**
      *
      * Metodo para asignar un alquiler de pelicula a un usuario.
@@ -786,6 +883,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jScrollPaneUsuarios.setVisible(false);
         jLabelPeliculas.setVisible(false);
         jLabelUsuarios.setVisible(false);
+        jPanelCambioEstatus.setVisible(false);
 
         //Leemos la lista de peliculas.
         StringBuilder resultadoAlquileres = new StringBuilder();
@@ -863,14 +961,99 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_listaAlquileresPeliculasActionPerformed
 
+    private void buttonModificarEstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarEstatusActionPerformed
+        /**
+         * Metodo para modificar el estado de un alquiler.
+         */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        String estado = (String)jComboBoxEstatus.getSelectedItem();
+        System.out.println(estado);
+        
+
+        
+    }//GEN-LAST:event_buttonModificarEstatusActionPerformed
+
+    private void jButtonVolverAlquilerStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverAlquilerStatusActionPerformed
+        /**
+        *
+        * Método para volver a la pantalla anterior.
+        */
+        
+        jPanelCambioEstatus.setVisible(false);
+        
+    }//GEN-LAST:event_jButtonVolverAlquilerStatusActionPerformed
+
+    private void modificarEstatusAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEstatusAlquilerActionPerformed
+        
+        //cerramos las otras listas.
+        
+        jScrollPanePeliculas.setVisible(false);
+        jScrollPaneUsuarios.setVisible(false);
+        jLabelPeliculas.setVisible(false);
+        jLabelUsuarios.setVisible(false);
+        jScrollPaneAlquileres.setVisible(false);
+        jPanelCambioEstatus.setVisible(false);
+        
+        
+        
+        //Obtenemos la fila seleccionada de alquileres.
+        posicionAlquiler = jTableAlquileres.getSelectedRow();
+
+        if (posicionAlquiler == -1) {
+            // No se ha seleccionado alquiler de la lista.
+            // Mostramos mensaje emergente de informacion.
+            JOptionPane.showMessageDialog(this,
+                    "Debes seleccionar un alquiler\n"
+                    + "de la tabla de alquileres.",
+                    "MODIFICAR ESTATUS ALQUILER", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+                    
+            jPanelCambioEstatus.setVisible(true);
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_modificarEstatusAlquilerActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alquilarPelicula;
+    private javax.swing.JButton buttonModificarEstatus;
     private javax.swing.JButton eliminarAlquilerPelicula;
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JButton jButtonVolver;
+    private javax.swing.JButton jButtonVolverAlquilerStatus;
+    private javax.swing.JComboBox<String> jComboBoxEstatus;
+    private javax.swing.JLabel jLabelEstatus;
     private javax.swing.JLabel jLabelPeliculas;
+    private javax.swing.JLabel jLabelStatusAlquiler;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JLabel jLabelUsuarios;
+    private javax.swing.JPanel jPanelCambioEstatus;
     private javax.swing.JPanel jPanelGestionAlquilerPeliculas;
     private javax.swing.JScrollPane jScrollPaneAlquileres;
     private javax.swing.JScrollPane jScrollPanePeliculas;
@@ -882,7 +1065,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     private javax.swing.JButton listaAlquileresPeliculas;
     private javax.swing.JButton listaPeliculasUsuarios;
     private javax.swing.JTextArea mensajeAlquilerPeliculas;
-    private javax.swing.JButton modificarAlquiler;
+    private javax.swing.JButton modificarEstatusAlquiler;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
 
