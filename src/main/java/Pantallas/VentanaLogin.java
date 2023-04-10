@@ -32,8 +32,9 @@ public class VentanaLogin extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
-     *
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * @Author Carlos.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -171,6 +172,7 @@ public class VentanaLogin extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton ENTRAR del formulario.
      *
      * Operacion de login al servidor.
+     * @Author Carlos.
      *
      */
     private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
@@ -241,6 +243,7 @@ public class VentanaLogin extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton NUEVO USUARIO del formulario.
      *
      * Conduce a la ventana de registro de nuevo usuario.
+     * @Author Carlos.
      *
      */
     private void buttonNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNuevoUsuarioActionPerformed

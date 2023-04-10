@@ -1,9 +1,7 @@
 package Pantallas.peliculas;
 
 import Modelos.DTOS.peliculas.DTO.RegisterPeliculaDTO;
-import Pantallas.VentanaAdmin;
 import com.google.gson.Gson;
-import java.time.LocalDate;
 import utils.Constants;
 import javax.swing.JOptionPane;
 import javax.ws.rs.client.Client;
@@ -23,6 +21,7 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
 
     /**
      * Constructor de un nuevo formulario Ventana NUEVA PELICULA.
+     * @Author Carlos.
      */
     public VentanaNuevaPelicula() {
         initComponents();
@@ -30,7 +29,9 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * @Author Carlos.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -252,6 +253,7 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton REGISTRAR PELICULA del formulario.
      *
      * Operacion de registro de una nueva pelicula en la aplicacion.
+     * @Author Carlos.
      *
      */
     private void buttonRegistroPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegistroPeliculaActionPerformed
@@ -330,6 +332,7 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
         /**
          *
          * Método para volver a la pantalla anterior.
+         * @Author Carlos.
          */
 
         VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();

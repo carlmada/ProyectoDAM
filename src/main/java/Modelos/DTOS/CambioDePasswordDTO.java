@@ -1,7 +1,8 @@
 package Modelos.DTOS;
 
 /**
- * Clase que formata los datos que se enviaran al servidor para realizar el cambio de password.
+ * Clase que formata los datos que se enviaran
+ * al servidor para realizar el cambio de password.
  *
  * @author Carlos
  */

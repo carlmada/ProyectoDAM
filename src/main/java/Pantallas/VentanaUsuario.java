@@ -2,7 +2,6 @@ package Pantallas;
 
 import Modelos.DTOS.CambioDePasswordDTO;
 import Modelos.DTOS.ResponseLogoutDTO;
-import Modelos.DTOS.peliculas.DTO.ResponseAlquilerListDTO;
 import Modelos.DTOS.peliculas.DTO.ResponseAlquilerPeliculaDTO;
 import Modelos.DTOS.peliculas.DTO.ResponseAlquilerUsuarioDTO;
 import Modelos.DTOS.peliculas.DTO.ResponsePeliculaListDTO;
@@ -49,8 +48,8 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     /**
      * Constructor de un nuevo formulario Ventana USUARIO.
-     *
      * Se crea una peticion al servidor para mostrar el nombre del usuario.
+     * @author Carlos.
      *
      */
     public VentanaUsuario() {
@@ -106,7 +105,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * @author Carlos
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -450,8 +451,8 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     /**
      * Metodo que se ejecuta al clicar en el boton CERRAR SESION del formulario.
-     *
      * Operacion de logout del servidor.
+     * @author Carlos.
      *
      */
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
@@ -502,7 +503,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     /**
      * Metodo que llama a la ventana de modificacion del perfil del usuario.
-     *
+     *@author Carlos.
      */
     private void modificarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPerfilActionPerformed
         VentanaModificarUsuario ventanaModificarUsuario = new VentanaModificarUsuario();
@@ -512,7 +513,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     /**
      * Metodo que muestra el panel de cambio de contraseña del usuario.
-     *
+     * @author Carlos.
      */
     private void cambioDeContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioDeContraseñaActionPerformed
         //cerramos la tabla peliculas si estaba abierta.        
@@ -524,7 +525,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     /**
      * Metodo que muestra el formulario de cambio de contraseña del usuario.
-     *
+     * @author Carlos.
      */
     private void buttonModificarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarContraseñaActionPerformed
 
@@ -608,8 +609,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     /**
      *
-     * Metodo que usa el usuario para hacer el alquiler de una pelicula.
-     *
+     * Metodo que usa el usuario para 
+     * hacer el alquiler de una pelicula.
+     * @author Carlos.
      */
     private void alquilarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alquilarPeliculaActionPerformed
 
@@ -711,8 +713,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     /**
      *
-     * Metodo para mostrar la tabla de peliculas para poder seleccionarlas.
-     *
+     * Metodo para mostrar la tabla de 
+     * peliculas para poder seleccionarlas.
+     * @author Carlos.
      */
     private void listaPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasActionPerformed
 
@@ -806,6 +809,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
         //***************************************************
     }//GEN-LAST:event_listaPeliculasActionPerformed
 
+    /**
+     *
+     * Metodo para volver a la pantalla anterior.
+     * @author Carlos.
+     */
+    
     private void buttonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioActionPerformed
         // Cerramos la ventana de registro.
         // y volvemos a inicio.
@@ -814,6 +823,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
         usuario.setVisible(true);
     }//GEN-LAST:event_buttonInicioActionPerformed
 
+    /**
+     *
+     * Metodo para mostrar la lista de 
+     * alquileres de un usuario.
+     * @author Carlos.
+     */
     private void listaAlquileresUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAlquileresUsuarioActionPerformed
         
         //Mostramos la tabla.

@@ -53,6 +53,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
     /**
      * Constructor de un nuevo formulario Ventana de gestion de alquileres de peliculas.
+     *
+     * @author Carlos
      */
     public VentanaGestionAlquilerPeliculas() {
         initComponents();
@@ -107,6 +109,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
     /**
      * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
+     *
+     * @author Carlos
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -480,6 +484,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         /**
          *
          * Método para volver a la pantalla anterior.
+         *
+         * @author Carlos
          */
 
         VentanaAdmin ventanaAdmin = new VentanaAdmin();
@@ -493,7 +499,12 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
      *
      */
     private void listaPeliculasUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasUsuariosActionPerformed
-
+        /**
+         * metodo para mostrar las lista de las peliculas y los usuarios.
+         *
+         * @author Carlos
+         */
+        
         //Mostramos lo diferentes elementos.
         jLabelPeliculas.setVisible(true);
         jLabelUsuarios.setVisible(true);
@@ -652,6 +663,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         /**
          * Metodo para cerrar la sesion y volver a inicio.
+         * @author Carlos
          */
         StringBuilder resultado = new StringBuilder();
         try {
@@ -779,6 +791,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     /**
      *
      * Metodo para asignar un alquiler de pelicula a un usuario.
+     * @author Carlos.
      *
      */
     private void alquilarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alquilarPeliculaActionPerformed
@@ -891,6 +904,12 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
     private void listaAlquileresPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAlquileresPeliculasActionPerformed
 
+        /**
+         * Metodo para mostrar la lista de los alquileres
+         * de peliculas de la aplicacion.
+         * 
+         * @author Carlos
+         */
         //Tabla alquileres.
         jScrollPaneAlquileres.setVisible(true);
         jTableAlquileres.setVisible(true);
@@ -983,6 +1002,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     private void buttonModificarEstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarEstatusActionPerformed
         /**
          * Metodo para modificar el estado de un alquiler.
+         * @author Carlos
          */
 
         //Leemos el nuevo estado que hemos seleccionado...
@@ -1041,6 +1061,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         /**
          *
          * Método para volver a la pantalla anterior.
+         * @author Carlos
          */
 
         VentanaGestionAlquilerPeliculas volver = new VentanaGestionAlquilerPeliculas();
@@ -1051,6 +1072,10 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
     private void modificarEstatusAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEstatusAlquilerActionPerformed
 
+        /**
+         * Metodo para cambiar el estado de un alquiler
+         * @author Carlos.
+         */
         //cerramos las otras listas.
         jScrollPanePeliculas.setVisible(false);
         jScrollPaneUsuarios.setVisible(false);

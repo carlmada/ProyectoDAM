@@ -1,7 +1,6 @@
 package Pantallas.usuarios;
 
 import Pantallas.VentanaUsuario;
-import Modelos.DTOS.usuarios.DTO.ResponseUpdateUserDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserInfoDTO;
 import Modelos.DTOS.usuarios.DTO.UpdateUserDTO;
 import Pantallas.VentanaLogin;
@@ -32,6 +31,8 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
 
     /**
      * Constructor de un nuevo formulario Ventana MODIFICAR USUARIO.
+     *
+     * @Author Carlos.
      */
     public VentanaModificarUsuario() {
         initComponents();
@@ -81,7 +82,9 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * @Author Carlos.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -291,6 +294,7 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton MODIFICAR del formulario.
      *
      * Operacion de modificación de los datos del usuario.
+     * @Author Carlos.
      *
      */
     private void buttonModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarUsuarioActionPerformed
@@ -383,6 +387,12 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonModificarUsuarioActionPerformed
 
     private void buttonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioActionPerformed
+        /**
+         * Metodo para volver a la ventana anterior.
+         * @Author Carlos.
+         * 
+         */
+  
         // Cerramos la ventana de registro. 
         // y volvemos a inicio.
         this.dispose();

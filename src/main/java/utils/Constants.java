@@ -2,7 +2,7 @@ package utils;
 
 /**
  *
- * Clase con las variables static que seran utilizadas en la aplicacion.
+ * Clase con variables static que seran utilizadas en la aplicacion.
  *
  * @author Carlos
  */

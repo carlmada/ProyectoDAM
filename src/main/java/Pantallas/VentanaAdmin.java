@@ -34,7 +34,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
      * Constructor de un nuevo formulario Ventana Administrador.
      *
      * Se crea una peticion al servidor para mostrar el nombre del usuario.
-     *
+     * @Author Carlos.
      */
     public VentanaAdmin() {
         initComponents();
@@ -85,7 +85,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * @Author Carlos.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -352,6 +354,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton CERRAR SESION del formulario.
      *
      * Operacion de logout del servidor.
+     * @Author Carlos.
      *
      */
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
@@ -402,30 +405,54 @@ public class VentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
     private void gestionAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionAlquilerActionPerformed
+        /**
+         * Metodo para abrir la ventana de gestion de alquileres.
+         * @Author Carlos.
+         */
+        
         VentanaGestionAlquilerPeliculas alquiler = new VentanaGestionAlquilerPeliculas();
         alquiler.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_gestionAlquilerActionPerformed
 
     private void gestionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuariosActionPerformed
+        /**
+         * Metodo para abrir la ventana de gestion de usuarios.
+         * @Author Carlos.
+         */
+        
         VentanaGestionUsuarios gestionUsuarios = new VentanaGestionUsuarios();
         gestionUsuarios.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_gestionUsuariosActionPerformed
 
     private void gestionPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionPeliculasActionPerformed
+        /**
+         * Metodo para abrir la ventana de gestion de peliculas.
+         * @Author Carlos.
+         */
         VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();
         gestionPeliculas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_gestionPeliculasActionPerformed
 
     private void cambioDeContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioDeContraseñaActionPerformed
+        /**
+         * Metodo para abrir el panel de cambio de contraseña.
+         * @Author Carlos.
+         */
+                
         panelContraseña.setVisible(true);
 
     }//GEN-LAST:event_cambioDeContraseñaActionPerformed
 
     private void buttonModificarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarContraseñaActionPerformed
 
+        /**
+         * Metodo para abrir la ventana de modificacion de contraseña.
+         * @Author Carlos.
+         */
+        
         // Leemos los campos password introducidos.
         // Comprobamos que los password sean iguales...
         char[] password = jPassword.getPassword();
@@ -507,6 +534,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
         /**
          *
          * Método para volver a la pantalla anterior.
+         * 
+         * @Author Carlos.
          */
 
         VentanaAdmin ventanaAdmin = new VentanaAdmin();

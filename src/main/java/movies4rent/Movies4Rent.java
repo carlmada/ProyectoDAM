@@ -1,6 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 package movies4rent;
 
 import Pantallas.VentanaLogin;
@@ -20,7 +17,7 @@ public class Movies4Rent {
      * @param args
      */
     public static void main(String[] args) {
-        //System.out.println("Hello World!");
+        
         inicio.setVisible(true);
     }
 }

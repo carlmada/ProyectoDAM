@@ -3,8 +3,6 @@ package Pantallas.usuarios;
 import Modelos.DTOS.ResponseLogoutDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserInfoDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserListDTO;
-import Modelos.DTOS.usuarios.DTO.UpdateUserAdminDTO;
-import Modelos.DTOS.usuarios.DTO.UserListDTO;
 import Pantallas.VentanaAdmin;
 import Pantallas.VentanaLogin;
 import com.google.gson.Gson;
@@ -13,7 +11,6 @@ import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,13 +18,9 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
@@ -49,6 +42,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
 
     /**
      * Constructor de un nuevo formulario Ventana de gestion de los usuarios.
+     * @Author Carlos.
      */
     public VentanaGestionUsuarios() {
         initComponents();
@@ -98,7 +92,9 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * @Author Carlos.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -280,6 +276,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         /**
          *
          * Método para volver a la pantalla anterior.
+         * @Author Carlos.
          */
 
         VentanaAdmin ventanaAdmin = new VentanaAdmin();
@@ -292,8 +289,9 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         /**
          *
          * Método para crear una tabla que muestre la lista de usuarios de la aplicacion.
+         * @Author Carlos.
          */
-        //***********************************************
+       
         StringBuilder resultado = new StringBuilder();
         try {
             // Creamos la URL
@@ -363,6 +361,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         /**
          * Metodo para cerrar la sesion y volver a inicio.
+         * @Author Carlos.
          */
         StringBuilder resultado = new StringBuilder();
         try {
@@ -413,6 +412,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
     private void eliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioActionPerformed
         /**
          * metodo para eliminar un usuario de la aplicacion.
+         * @Author Carlos.
          *
          */
 
@@ -490,7 +490,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
          * Metodo para modificar el ROL del usuario
          *
          * administrador o usuario.
-         *
+         * @Author Carlos.
          */
 
         //Obtenemos la fila seleccionada.
