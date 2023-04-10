@@ -49,6 +49,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     JSONArray jsonArrayPeliculas, jsonArrayUsuarios, jsonArrayAlquileres;
     int posicionPelicula, posicionUsuario, posicionAlquiler;
     UUID idPelicula, idUsuario;
+    JSONObject objAlquiler;
 
     /**
      * Constructor de un nuevo formulario Ventana de gestion de alquileres de peliculas.
@@ -137,6 +138,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         buttonModificarEstatus = new javax.swing.JButton();
         jButtonVolverAlquilerStatus = new javax.swing.JButton();
         jComboBoxEstatus = new javax.swing.JComboBox<>();
+        jTextEstatusActual = new javax.swing.JLabel();
+        jLabelStatusActual1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GESTION DE ALQUILER DE PELICULASPELICULAS");
@@ -306,29 +309,34 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jComboBoxEstatus.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jComboBoxEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EN_CURSO", "FINALIZADO", "CANCELADO" }));
 
+        jTextEstatusActual.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+
+        jLabelStatusActual1.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelStatusActual1.setText("Estatus Actual:");
+
         javax.swing.GroupLayout jPanelCambioEstatusLayout = new javax.swing.GroupLayout(jPanelCambioEstatus);
         jPanelCambioEstatus.setLayout(jPanelCambioEstatusLayout);
         jPanelCambioEstatusLayout.setHorizontalGroup(
             jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelStatusAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelStatusAlquiler, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
-                                .addComponent(jLabelEstatus)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jComboBoxEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCambioEstatusLayout.createSequentialGroup()
-                                .addGap(64, 64, 64)
                                 .addComponent(buttonModificarEstatus)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonVolverAlquilerStatus)))
+                                .addComponent(jButtonVolverAlquilerStatus))
+                            .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
+                                .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelEstatus)
+                                    .addComponent(jLabelStatusActual1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextEstatusActual, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 117, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -337,11 +345,15 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             .addGroup(jPanelCambioEstatusLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelStatusAlquiler)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelStatusActual1)
+                    .addComponent(jTextEstatusActual))
+                .addGap(26, 26, 26)
                 .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEstatus)
                     .addComponent(jComboBoxEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addGroup(jPanelCambioEstatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonModificarEstatus)
                     .addComponent(jButtonVolverAlquilerStatus))
@@ -444,9 +456,9 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     .addContainerGap(101, Short.MAX_VALUE)))
             .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                    .addContainerGap(160, Short.MAX_VALUE)
+                    .addContainerGap(153, Short.MAX_VALUE)
                     .addComponent(jPanelCambioEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(101, 101, 101)))
+                    .addGap(48, 48, 48)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -706,7 +718,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         } else {
             // Se ha seleccionado un alquiler de la lista.
             // Creamos objeto JSON temporal de la fila seleccionada.
-            JSONObject objAlquiler = new JSONObject();
+            objAlquiler = new JSONObject();
             objAlquiler = jsonArrayAlquileres.getJSONObject(posicionAlquiler);
 
             //Asignamos el id del alquiler a su variable UUID.
@@ -749,7 +761,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,
                             "Alquiler eliminado correctamente.",
                             "ELIMINAR ALQUILER", JOptionPane.INFORMATION_MESSAGE);
-                    
+
                     VentanaGestionAlquilerPeliculas volver = new VentanaGestionAlquilerPeliculas();
                     volver.setVisible(true);
                     this.dispose();
@@ -934,7 +946,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         //Creamos una lista de objetos JSON
         jsonArrayAlquileres = new JSONArray();
         for (int i = 0; i < responseJson.getValue().size(); i++) {
-            JSONObject objAlquiler = new JSONObject();
+            objAlquiler = new JSONObject();
             objAlquiler.put("idAlquiler", responseJson.getValue().get(i).getId());
             objAlquiler.put("idPelicula", responseJson.getValue().get(i).getPeliculaId());
             objAlquiler.put("idUsuario", responseJson.getValue().get(i).getUsuariId());
@@ -973,10 +985,56 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
          * Metodo para modificar el estado de un alquiler.
          */
 
+        //Leemos el nuevo estado que hemos seleccionado...
         String estado = (String) jComboBoxEstatus.getSelectedItem();
-        System.out.println(estado);
+        // Se ha seleccionado un alquiler de la lista.
+        // Creamos objeto JSON temporal de la fila seleccionada.
+        objAlquiler = jsonArrayAlquileres.getJSONObject(posicionAlquiler);
 
+        //Asignamos el id del alquiler a su variable UUID.
+        UUID id = (UUID) objAlquiler.get("idAlquiler");
 
+        // Mostramos mensaje emergente de confirmacion.
+        int opcion = JOptionPane.showConfirmDialog(this,
+                "Deseas cambiar el estado del alquiler a\n"
+                + estado + " ? ",
+                "CONFIRMACION",
+                JOptionPane.YES_NO_OPTION);
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            //Cambiamos el estado del alquiler.
+
+            try {
+                // Creamos la URL.
+                URL url = new URL(Constants.urlPeliculasUpdateStatusAlquiler
+                        + "?estadoAlquiler=" + estado
+                        + "&alquilerId=" + id
+                        + "&token=" + Constants.token);
+
+                //Creamos la conexion al servidor.
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                //Metodo PUT
+                conn.setDoOutput(true);
+                conn.setRequestMethod("PUT");
+                //Comprobacion de respuesta del servidor
+                System.out.println(conn.getResponseCode());
+
+                // Si todo ha salido correcto.
+                if (conn.getResponseCode() == 200) {
+                    // Mostramos mensaje emergente de informacion.
+                    JOptionPane.showMessageDialog(this,
+                            "Estado del alquiler modificado correctamente.",
+                            "MODIFICAR ESTADO ALQUILER", JOptionPane.INFORMATION_MESSAGE);
+                    VentanaGestionAlquilerPeliculas volver = new VentanaGestionAlquilerPeliculas();
+                    volver.setVisible(true);
+                    this.dispose();
+                }
+            } catch (MalformedURLException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_buttonModificarEstatusActionPerformed
 
     private void jButtonVolverAlquilerStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverAlquilerStatusActionPerformed
@@ -988,7 +1046,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         VentanaGestionAlquilerPeliculas volver = new VentanaGestionAlquilerPeliculas();
         volver.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_jButtonVolverAlquilerStatusActionPerformed
 
     private void modificarEstatusAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEstatusAlquilerActionPerformed
@@ -1012,11 +1070,11 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     + "de la tabla de alquileres.",
                     "MODIFICAR ESTATUS ALQUILER", JOptionPane.INFORMATION_MESSAGE);
         } else {
-
             jPanelCambioEstatus.setVisible(true);
+            objAlquiler = jsonArrayAlquileres.getJSONObject(posicionAlquiler);
+            jTextEstatusActual.setText(objAlquiler.getString("Estado"));
 
         }
-
 
     }//GEN-LAST:event_modificarEstatusAlquilerActionPerformed
 
@@ -1030,6 +1088,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxEstatus;
     private javax.swing.JLabel jLabelEstatus;
     private javax.swing.JLabel jLabelPeliculas;
+    private javax.swing.JLabel jLabelStatusActual1;
     private javax.swing.JLabel jLabelStatusAlquiler;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JLabel jLabelUsuarios;
@@ -1041,6 +1100,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     private javax.swing.JTable jTableAlquileres;
     private javax.swing.JTable jTablePeliculas;
     private javax.swing.JTable jTableUsuarios;
+    private javax.swing.JLabel jTextEstatusActual;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JButton listaAlquileresPeliculas;
     private javax.swing.JButton listaPeliculasUsuarios;

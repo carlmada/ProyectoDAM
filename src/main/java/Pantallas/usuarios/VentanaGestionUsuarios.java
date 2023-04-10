@@ -438,7 +438,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                     "Deseas eliminar el usuario\n"
                     + obj.get("NOMBRE") + " "
                     + obj.getString("APELLIDOS") + " ?",
-                    "CONFIRMACION",
+                    "ELIMINAR USUARIO",
                     JOptionPane.YES_NO_OPTION);
 
             if (opcion == JOptionPane.YES_OPTION) {
@@ -536,20 +536,22 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                         //Metodo PUT
                         conn.setDoOutput(true);
                         conn.setRequestMethod("PUT");
-                        //Comprobacion de respuesta del servidor
-                        System.out.println(conn.getResponseCode());
+                        // Si todo ha salido correcto.
+                        if (conn.getResponseCode() == 200) {
+                            // Mostramos mensaje emergente de informacion.
+                            JOptionPane.showMessageDialog(this,
+                                    "ROL del usuario modificado correctamente.",
+                                    "MODIFICAR ROL USUARIO", JOptionPane.INFORMATION_MESSAGE);
+                        }
                     } catch (MalformedURLException ex) {
                         Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
                         Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
                 } else {
                     //No hacemos nada.                    
                 }
-
             } else { //Si es Usuario...
-
                 // Mostramos mensaje emergente de confirmacion.
                 int opcion = JOptionPane.showConfirmDialog(null,
                         "          Es un USUARIO.\n"
@@ -568,15 +570,18 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                         //Metodo PUT
                         conn.setDoOutput(true);
                         conn.setRequestMethod("PUT");
-                        //Comprobacion de respuesta del servidor
-                        System.out.println(conn.getResponseCode());
-
+                        // Si todo ha salido correcto.
+                        if (conn.getResponseCode() == 200) {
+                            // Mostramos mensaje emergente de informacion.
+                            JOptionPane.showMessageDialog(this,
+                                    "ROL del usuario modificado correctamente.",
+                                    "MODIFICAR ROL USUARIO", JOptionPane.INFORMATION_MESSAGE);
+                        }
                     } catch (MalformedURLException ex) {
                         Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
                         Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
                 } else {
                     //No hacemos nada.                    
                 }
