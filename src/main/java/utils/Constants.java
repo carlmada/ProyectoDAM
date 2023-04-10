@@ -36,6 +36,7 @@ public class Constants {
     //url de Alquileres.
     public static String urlPeliculasAlquileres = url + "/peliculas/alquileres";
     public static String urlPeliculasAddAlquiler = url + "/peliculas/alquileres/nuevo";
+    public static String urlPeliculasAlquileresByUser = url + "/peliculas/alquileres/alquilerByUser/";
     public static String urlPeliculasDeleteAlquilerId = url + "/peliculas/alquileres/delete/";
     public static String urlPeliculasUpdateStatusAlquiler = url + "/peliculas/alquileres/updateStatus";
 

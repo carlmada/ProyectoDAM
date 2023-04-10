@@ -904,7 +904,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jLabelUsuarios.setVisible(false);
         jPanelCambioEstatus.setVisible(false);
 
-        //Leemos la lista de peliculas.
+        //Leemos la lista de alquileres.
         StringBuilder resultadoAlquileres = new StringBuilder();
         try {
             // Creamos la URL
