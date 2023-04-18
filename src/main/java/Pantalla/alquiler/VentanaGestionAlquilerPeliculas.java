@@ -42,7 +42,7 @@ import utils.TableUsuarios;
  */
 public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
-    //Variable de Clase.
+    //Variables de Clase.
     TablePeliculas modelPeliculas;
     TableUsuarios modelUsuarios;
     TableAlquileres modelAlquileres;
@@ -663,6 +663,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         /**
          * Metodo para cerrar la sesion y volver a inicio.
+         * 
          * @author Carlos
          */
         StringBuilder resultado = new StringBuilder();
@@ -1002,6 +1003,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     private void buttonModificarEstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarEstatusActionPerformed
         /**
          * Metodo para modificar el estado de un alquiler.
+         * 
          * @author Carlos
          */
 
@@ -1073,7 +1075,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     private void modificarEstatusAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEstatusAlquilerActionPerformed
 
         /**
-         * Metodo para cambiar el estado de un alquiler
+         * Metodo para cambiar el estado de un alquiler.
+         * 
          * @author Carlos.
          */
         //cerramos las otras listas.

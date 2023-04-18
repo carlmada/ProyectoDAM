@@ -23,7 +23,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
 /**
- * Ventana del usuario ADMINISTRADOR.
+ * Ventana principal del usuario ADMINISTRADOR.
  *
  * @author Carlos
  */
@@ -450,6 +450,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         /**
          * Metodo para abrir la ventana de modificacion de contraseña.
+         * 
          * @Author Carlos.
          */
         

@@ -11,7 +11,7 @@ public class UpdatePeliculaDTO {
     public UpdatePeliculaDTO() {
     }
 
-//Atributos.
+    //Atributos.
     private String titulo;
     private String director;
     private String genero;

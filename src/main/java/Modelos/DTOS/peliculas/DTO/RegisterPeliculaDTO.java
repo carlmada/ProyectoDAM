@@ -8,7 +8,7 @@ package Modelos.DTOS.peliculas.DTO;
  */
 public class RegisterPeliculaDTO {
 
-    //Constructor vacio.
+    //Constructor.
     public RegisterPeliculaDTO() {
     }
 

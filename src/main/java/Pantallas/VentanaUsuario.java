@@ -39,7 +39,7 @@ import utils.TablePeliculas;
  */
 public class VentanaUsuario extends javax.swing.JFrame {
 
-    //Variable de Clase.
+    //Variables de Clase.
     TablePeliculas modelPeliculas;
     TableAlquileres modelAlquileres;
     JSONArray jsonArrayPeliculas;
