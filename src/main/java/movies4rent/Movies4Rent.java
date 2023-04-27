@@ -3,7 +3,7 @@ package movies4rent;
 import Pantallas.VentanaLogin;
 
 /**
- * Clase Principal (Main) de la aplicacion.
+ * Clase Principal (Main) de la aplicaion.
  *
  * @author Carlos
  */
@@ -17,7 +17,7 @@ public class Movies4Rent {
      * @param args
      */
     public static void main(String[] args) {
-        //Inicio de la aplicacion.
+
         inicio.setVisible(true);
     }
 }

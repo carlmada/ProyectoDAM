@@ -1,8 +1,7 @@
 package Modelos.DTOS.usuarios.DTO;
 
 /**
- * Clase que utilitzarem per modificar el ROL dels usuaris.
- * 
+ *
  * @author Carlos
  */
 public class UpdateUserAdminDTO {

@@ -8,8 +8,7 @@ package utils;
  */
 public class Constants {
 
-    //Variables con las url del servidor (endPoints) donde realizaremos las peticiones.
-    
+    //Variables con las url del servidor donde realizaremos las peticiones.
     //URL General.
     public static String url = "http://localhost:8080";
 
@@ -20,7 +19,8 @@ public class Constants {
 
     //url de usuarios.
     public static String urlUsuarios = url + "/users";
-    public static String urlUsuariosPorId = url + "/users/{id}";
+    public static String urlUsuariosPaginados = url + "/users";
+    public static String urlUsuariosPorId = url + "/users/";
     public static String urlUsuariosInfo = url + "/users/info";
     public static String urlUpdateUsuarios = url + "/users/update";
     public static String urlUsersDeleteId = url + "/users/delete/";
@@ -29,13 +29,14 @@ public class Constants {
 
     //url de Peliculas.
     public static String urlPeliculas = url + "/peliculas";
+    public static String urlPeliculasPaginadas = url + "/peliculas";
     public static String urlAddPelicula = url + "/peliculas/add";
-    public static String urlPeliculaPorId = url + "/peliculas/{id}";
+    public static String urlPeliculaPorId = url + "/peliculas/";
     public static String urlpeliculaDeleteId = url + "/peliculas/delete/";
     public static String urlUpdatePelicula = url + "/peliculas/update/";
-
     //url de Alquileres.
     public static String urlPeliculasAlquileres = url + "/peliculas/alquileres";
+    public static String urlPeliculasAlquileresPaginados = url + "/peliculas/alquileres";
     public static String urlPeliculasAddAlquiler = url + "/peliculas/alquileres/nuevo";
     public static String urlPeliculasAlquileresByUser = url + "/peliculas/alquileres/alquilerByUser/";
     public static String urlPeliculasDeleteAlquilerId = url + "/peliculas/alquileres/delete/";

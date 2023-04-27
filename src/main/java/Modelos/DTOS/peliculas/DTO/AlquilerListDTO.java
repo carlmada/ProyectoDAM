@@ -15,8 +15,8 @@ public class AlquilerListDTO {
 
     //Atributos
     private UUID id;
-    private UUID peliculaId;
-    private UUID usuariId;
+    private UUID pelicula;
+    private UUID usuari;
     private String fechaInicio;
     private String fechaFin;
     private double precio;
@@ -31,20 +31,20 @@ public class AlquilerListDTO {
         this.id = id;
     }
 
-    public UUID getPeliculaId() {
-        return peliculaId;
+    public UUID getPelicula() {
+        return pelicula;
     }
 
-    public void setPeliculaId(UUID peliculaId) {
-        this.peliculaId = peliculaId;
+    public void setPelicula(UUID pelicula) {
+        this.pelicula = pelicula;
     }
 
-    public UUID getUsuariId() {
-        return usuariId;
+    public UUID getUsuari() {
+        return usuari;
     }
 
-    public void setUsuariId(UUID usuariId) {
-        this.usuariId = usuariId;
+    public void setUsuari(UUID usuari) {
+        this.usuari = usuari;
     }
 
     public String getFechaInicio() {

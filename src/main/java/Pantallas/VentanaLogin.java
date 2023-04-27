@@ -32,8 +32,8 @@ public class VentanaLogin extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. 
-     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
+     *
      * @Author Carlos.
      */
     @SuppressWarnings("unchecked")
@@ -92,7 +92,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         textPassword.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         textPassword.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
-        buttonEntrar.setBackground(new java.awt.Color(102, 204, 0));
+        buttonEntrar.setBackground(new java.awt.Color(153, 204, 0));
         buttonEntrar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         buttonEntrar.setText("ENTRAR");
         buttonEntrar.setBorderPainted(false);
@@ -103,7 +103,7 @@ public class VentanaLogin extends javax.swing.JFrame {
             }
         });
 
-        buttonNuevoUsuario.setBackground(new java.awt.Color(255, 153, 102));
+        buttonNuevoUsuario.setBackground(new java.awt.Color(255, 153, 51));
         buttonNuevoUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         buttonNuevoUsuario.setText("NUEVO USUARIO");
         buttonNuevoUsuario.setBorderPainted(false);
@@ -151,7 +151,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 .addComponent(buttonEntrar)
                 .addGap(34, 34, 34)
                 .addComponent(buttonNuevoUsuario)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,6 +172,7 @@ public class VentanaLogin extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton ENTRAR del formulario.
      *
      * Operacion de login al servidor.
+     *
      * @Author Carlos.
      *
      */
@@ -243,6 +244,7 @@ public class VentanaLogin extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton NUEVO USUARIO del formulario.
      *
      * Conduce a la ventana de registro de nuevo usuario.
+     *
      * @Author Carlos.
      *
      */
