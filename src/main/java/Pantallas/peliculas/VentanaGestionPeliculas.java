@@ -32,13 +32,13 @@ import utils.TablePeliculas;
 
 /**
  *
- * Ventana para realizar la gestión de las peliculas.
+ * Ventana para realizar la gestión de las peliculas como administrador.
  *
  * @author Carlos
  */
 public class VentanaGestionPeliculas extends javax.swing.JFrame {
 
-    //Variable de Clase.
+    //Variables de Clase.
     TablePeliculas model;
     JSONArray jsonArray;
     int posicion;
@@ -636,6 +636,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
     private void eliminarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPeliculaActionPerformed
+        
         /**
          * metodo para eliminar una pelicula de la aplicacion.
          *

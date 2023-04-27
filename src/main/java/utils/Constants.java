@@ -8,7 +8,8 @@ package utils;
  */
 public class Constants {
 
-    //Variables con las url del servidor donde realizaremos las peticiones.
+    //Variables con las url del servidor (endPoints) donde realizaremos las peticiones.
+    
     //URL General.
     public static String url = "http://localhost:8080";
 

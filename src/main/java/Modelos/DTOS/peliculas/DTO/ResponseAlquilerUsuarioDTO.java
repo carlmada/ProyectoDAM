@@ -16,7 +16,6 @@ public class ResponseAlquilerUsuarioDTO {
     private List<AlquilerUsuarioDTO> value;
 
     //Getters-Setters
-
     public String getMessage() {
         return message;
     }

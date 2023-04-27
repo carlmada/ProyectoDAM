@@ -19,6 +19,7 @@ public class AlquilerUsuarioDTO {
     private int año;
     private int precio;
 
+    //Constructor
     public AlquilerUsuarioDTO(UUID id, String titulo, String director, String genero, int duracion, int año, int precio) {
         this.id = id;
         this.titulo = titulo;

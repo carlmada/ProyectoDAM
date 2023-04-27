@@ -30,7 +30,7 @@ import utils.Constants;
 
 /**
  *
- * Ventana para realizar la gestión de los usuarios.
+ * Ventana para realizar la gestión de los usuarios como administrador.
  *
  * @author Carlos
  */
@@ -487,7 +487,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
 
     private void modificarRolUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarRolUsuarioActionPerformed
         /**
-         * Metodo para modificar el ROL del usuario
+         * Metodo para modificar el ROL del usuario seleccionado.
          *
          * administrador o usuario.
          * @Author Carlos.
