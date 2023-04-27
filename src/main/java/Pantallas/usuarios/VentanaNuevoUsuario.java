@@ -29,8 +29,9 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
-     *
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
+     * 
      * @Author Carlos.
      *
      */
@@ -102,7 +103,7 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
         jLabelConfirmPassword.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabelConfirmPassword.setText("Confirm Password :");
 
-        buttonRegistroUsuario.setBackground(new java.awt.Color(255, 153, 51));
+        buttonRegistroUsuario.setBackground(new java.awt.Color(255, 153, 102));
         buttonRegistroUsuario.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         buttonRegistroUsuario.setText("REGISTRAR");
         buttonRegistroUsuario.setBorderPainted(false);
@@ -187,7 +188,7 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
                     .addGroup(jPanelNuevoUsuarioLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabelDireccion)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(295, 304, Short.MAX_VALUE))
             .addGroup(jPanelNuevoUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +256,7 @@ public class VentanaNuevoUsuario extends javax.swing.JFrame {
                 .addGroup(jPanelNuevoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelConfirmPassword))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(buttonRegistroUsuario)
                 .addGap(41, 41, 41))
         );

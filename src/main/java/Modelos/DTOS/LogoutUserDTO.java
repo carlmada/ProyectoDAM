@@ -1,7 +1,8 @@
 package Modelos.DTOS;
 
 /**
- * Clase que formatea los datos que serviran para hacer el logout al servidor.
+ * Clase que formatea los datos 
+ * que serviran para hacer el logout al servidor.
  *
  * @author Carlos
  */

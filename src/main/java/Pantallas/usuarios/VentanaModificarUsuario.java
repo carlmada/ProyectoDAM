@@ -82,8 +82,8 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
-     *
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
      * @Author Carlos.
      */
     @SuppressWarnings("unchecked")
@@ -141,7 +141,7 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
         jLabelDireccion.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabelDireccion.setText("Dirección :");
 
-        buttonModificarUsuario.setBackground(new java.awt.Color(255, 153, 51));
+        buttonModificarUsuario.setBackground(new java.awt.Color(255, 153, 102));
         buttonModificarUsuario.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         buttonModificarUsuario.setText("MODIFICAR");
         buttonModificarUsuario.setBorderPainted(false);
@@ -294,7 +294,6 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton MODIFICAR del formulario.
      *
      * Operacion de modificación de los datos del usuario.
-     *
      * @Author Carlos.
      *
      */
@@ -390,11 +389,10 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
     private void buttonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioActionPerformed
         /**
          * Metodo para volver a la ventana anterior.
-         *
          * @Author Carlos.
-         *
+         * 
          */
-
+  
         // Cerramos la ventana de registro. 
         // y volvemos a inicio.
         this.dispose();

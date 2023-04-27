@@ -1,5 +1,7 @@
 package Modelos.DTOS.usuarios.DTO;
 
+import java.util.List;
+
 /**
  *
  * Clase que formata los datos de respuesta del servidor a la peticion de la lista de usuarios .
@@ -10,7 +12,7 @@ public class ResponseUserListDTO {
 
     // Atributos.
     private String message;
-    private ValueUser value;
+    private List<UserListDTO> value;
 
     //Getters-Setters.
     public String getMessage() {
@@ -21,11 +23,11 @@ public class ResponseUserListDTO {
         this.message = message;
     }
 
-    public ValueUser getValue() {
+    public List<UserListDTO> getValue() {
         return value;
     }
 
-    public void setValue(ValueUser value) {
+    public void setValue(List<UserListDTO> value) {
         this.value = value;
     }
 

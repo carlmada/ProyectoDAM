@@ -1,11 +1,9 @@
 package Pantalla.alquiler;
 
 import Modelos.DTOS.ResponseLogoutDTO;
-import Modelos.DTOS.peliculas.DTO.ResponsePeliculaDTO;
-import Modelos.DTOS.alquiler.DTO.ResponseAlquilerListDTO;
-import Modelos.DTOS.alquiler.DTO.ResponseAlquilerPeliculaDTO;
+import Modelos.DTOS.peliculas.DTO.ResponseAlquilerListDTO;
+import Modelos.DTOS.peliculas.DTO.ResponseAlquilerPeliculaDTO;
 import Modelos.DTOS.peliculas.DTO.ResponsePeliculaListDTO;
-import Modelos.DTOS.usuarios.DTO.ResponseUserDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserInfoDTO;
 import Modelos.DTOS.usuarios.DTO.ResponseUserListDTO;
 import Pantallas.VentanaAdmin;
@@ -31,9 +29,9 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import utils.Constants;
-import Tablas.TableAlquileres;
-import Tablas.TablePeliculas;
-import Tablas.TableUsuarios;
+import utils.TableAlquileres;
+import utils.TablePeliculas;
+import utils.TableUsuarios;
 
 /**
  *
@@ -52,10 +50,6 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     int posicionPelicula, posicionUsuario, posicionAlquiler;
     UUID idPelicula, idUsuario;
     JSONObject objAlquiler;
-    int paginaPeliculas = 0, paginaUsuarios = 0, paginaAlquileres = 0,
-            paginaSizePeliculas = 10, paginaSizeUsuarios = 10, paginaSizeAlquileres = 10,
-            paginasTotalesPeliculas, paginasTotalesUsuarios, paginasTotalesAlquileres;
-    String tituloPelicula, nombreUser, parametros;
 
     /**
      * Constructor de un nuevo formulario Ventana de gestion de alquileres de peliculas.
@@ -64,8 +58,8 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
      */
     public VentanaGestionAlquilerPeliculas() {
         initComponents();
-        jPanelPeliculasUsuarios.setVisible(false);
-        jPanelAlquileres.setVisible(false);
+        jLabelPeliculas.setVisible(false);
+        jLabelUsuarios.setVisible(false);
         jPanelCambioEstatus.setVisible(false);
 
         //Obtenemos el nombre del usuario para mostrarlo.
@@ -133,7 +127,15 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         eliminarAlquilerPelicula = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
         alquilarPelicula = new javax.swing.JButton();
+        jScrollPanePeliculas = new javax.swing.JScrollPane();
+        jTablePeliculas = new javax.swing.JTable();
+        jScrollPaneUsuarios = new javax.swing.JScrollPane();
+        jTableUsuarios = new javax.swing.JTable();
+        jLabelPeliculas = new javax.swing.JLabel();
+        jLabelUsuarios = new javax.swing.JLabel();
         listaAlquileresPeliculas = new javax.swing.JButton();
+        jScrollPaneAlquileres = new javax.swing.JScrollPane();
+        jTableAlquileres = new javax.swing.JTable();
         jPanelCambioEstatus = new javax.swing.JPanel();
         jLabelStatusAlquiler = new javax.swing.JLabel();
         jLabelEstatus = new javax.swing.JLabel();
@@ -142,52 +144,6 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jComboBoxEstatus = new javax.swing.JComboBox<>();
         jTextEstatusActual = new javax.swing.JLabel();
         jLabelStatusActual1 = new javax.swing.JLabel();
-        jPanelPeliculasUsuarios = new javax.swing.JPanel();
-        jLabelPeliculas = new javax.swing.JLabel();
-        jLabelUsuarios = new javax.swing.JLabel();
-        jScrollPanePeliculas = new javax.swing.JScrollPane();
-        jTablePeliculas = new javax.swing.JTable();
-        jScrollPaneUsuarios = new javax.swing.JScrollPane();
-        jTableUsuarios = new javax.swing.JTable();
-        jButtonAnteriorPeliculas = new javax.swing.JButton();
-        jLabelPaginaPeliculas = new javax.swing.JLabel();
-        jButtonSiguientePeliculas = new javax.swing.JButton();
-        jButtonSiguienteUsuarios = new javax.swing.JButton();
-        jButtonAnteriorUsuarios = new javax.swing.JButton();
-        jLabelPaginaUsuario = new javax.swing.JLabel();
-        jPanelAlquileres = new javax.swing.JPanel();
-        jScrollPaneAlquileres = new javax.swing.JScrollPane();
-        jTableAlquileres = new javax.swing.JTable();
-        jLabelAlquileres = new javax.swing.JLabel();
-        jButtonAnteriorAlquileres = new javax.swing.JButton();
-        jLabelPaginaAlquileres = new javax.swing.JLabel();
-        jButtonSiguienteAlquileres = new javax.swing.JButton();
-        jButtonFiltros = new javax.swing.JButton();
-        jPanelFiltros = new javax.swing.JPanel();
-        jLabelFiltrosDeBusqueda = new javax.swing.JLabel();
-        jLabelDescripcion = new javax.swing.JLabel();
-        jLabelDescripcion2 = new javax.swing.JLabel();
-        jLabelPeliculaId = new javax.swing.JLabel();
-        jUsuariId = new javax.swing.JLabel();
-        jLabelFechaInicio = new javax.swing.JLabel();
-        jLabelFechaFin = new javax.swing.JLabel();
-        jLabelPrecio = new javax.swing.JLabel();
-        jLabelOrden = new javax.swing.JLabel();
-        jTextFieldPeliculaId = new javax.swing.JTextField();
-        jTextFieldUsuariId = new javax.swing.JTextField();
-        jTextFieldFechaInicio = new javax.swing.JTextField();
-        jTextFieldFechaFin = new javax.swing.JTextField();
-        jTextFieldPrecio = new javax.swing.JTextField();
-        jComboBoxFiltros = new javax.swing.JComboBox<>();
-        jButtonFiltrar = new javax.swing.JButton();
-        buttonVolver2 = new javax.swing.JButton();
-        jPanelAlquileresFiltrados = new javax.swing.JPanel();
-        jScrollPaneAlquileresFiltrados = new javax.swing.JScrollPane();
-        jTableAlquileres1 = new javax.swing.JTable();
-        jLabelAlquileres1 = new javax.swing.JLabel();
-        jButtonAnteriorAlquileresFiltrados = new javax.swing.JButton();
-        jLabelPaginaAlquileresFiltrados = new javax.swing.JLabel();
-        jButtonSiguienteAlquileresFiltrados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GESTION DE ALQUILER DE PELICULASPELICULAS");
@@ -273,6 +229,36 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             }
         });
 
+        jScrollPanePeliculas.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPanePeliculas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPanePeliculas.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPanePeliculas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+
+        jTablePeliculas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jTablePeliculas.setFillsViewportHeight(true);
+        jTablePeliculas.setFocusable(false);
+        jTablePeliculas.setGridColor(new java.awt.Color(153, 153, 153));
+        jTablePeliculas.setSelectionBackground(new java.awt.Color(102, 204, 255));
+        jScrollPanePeliculas.setViewportView(jTablePeliculas);
+
+        jScrollPaneUsuarios.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPaneUsuarios.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPaneUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPaneUsuarios.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+
+        jTableUsuarios.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jTableUsuarios.setFillsViewportHeight(true);
+        jTableUsuarios.setFocusable(false);
+        jTableUsuarios.setGridColor(new java.awt.Color(153, 153, 153));
+        jTableUsuarios.setSelectionBackground(new java.awt.Color(102, 204, 255));
+        jScrollPaneUsuarios.setViewportView(jTableUsuarios);
+
+        jLabelPeliculas.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        jLabelPeliculas.setText("Peliculas");
+
+        jLabelUsuarios.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        jLabelUsuarios.setText("Usuarios");
+
         listaAlquileresPeliculas.setBackground(new java.awt.Color(0, 204, 255));
         listaAlquileresPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         listaAlquileresPeliculas.setText("Lista de Alquileres");
@@ -281,6 +267,18 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                 listaAlquileresPeliculasActionPerformed(evt);
             }
         });
+
+        jScrollPaneAlquileres.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPaneAlquileres.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPaneAlquileres.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPaneAlquileres.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+
+        jTableAlquileres.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jTableAlquileres.setFillsViewportHeight(true);
+        jTableAlquileres.setFocusable(false);
+        jTableAlquileres.setGridColor(new java.awt.Color(153, 153, 153));
+        jTableAlquileres.setSelectionBackground(new java.awt.Color(102, 204, 255));
+        jScrollPaneAlquileres.setViewportView(jTableAlquileres);
 
         jPanelCambioEstatus.setBackground(new java.awt.Color(204, 255, 255));
         jPanelCambioEstatus.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
@@ -315,7 +313,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jComboBoxEstatus.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jComboBoxEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EN_CURSO", "FINALIZADO", "CANCELADO" }));
 
-        jTextEstatusActual.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        jTextEstatusActual.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
 
         jLabelStatusActual1.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabelStatusActual1.setText("Estatus Actual:");
@@ -366,475 +364,6 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
-        jPanelPeliculasUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabelPeliculas.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabelPeliculas.setText("Peliculas");
-
-        jLabelUsuarios.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabelUsuarios.setText("Usuarios");
-
-        jScrollPanePeliculas.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPanePeliculas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jScrollPanePeliculas.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPanePeliculas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-
-        jTablePeliculas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jTablePeliculas.setFillsViewportHeight(true);
-        jTablePeliculas.setFocusable(false);
-        jTablePeliculas.setGridColor(new java.awt.Color(153, 153, 153));
-        jTablePeliculas.setSelectionBackground(new java.awt.Color(102, 204, 255));
-        jScrollPanePeliculas.setViewportView(jTablePeliculas);
-
-        jScrollPaneUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPaneUsuarios.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jScrollPaneUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPaneUsuarios.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-
-        jTableUsuarios.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jTableUsuarios.setFillsViewportHeight(true);
-        jTableUsuarios.setFocusable(false);
-        jTableUsuarios.setGridColor(new java.awt.Color(153, 153, 153));
-        jTableUsuarios.setSelectionBackground(new java.awt.Color(102, 204, 255));
-        jScrollPaneUsuarios.setViewportView(jTableUsuarios);
-
-        jButtonAnteriorPeliculas.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonAnteriorPeliculas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonAnteriorPeliculas.setText("Anterior");
-        jButtonAnteriorPeliculas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonAnteriorPeliculas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorPeliculasActionPerformed(evt);
-            }
-        });
-
-        jLabelPaginaPeliculas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jLabelPaginaPeliculas.setText("1");
-
-        jButtonSiguientePeliculas.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonSiguientePeliculas.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonSiguientePeliculas.setText("Siguiente");
-        jButtonSiguientePeliculas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonSiguientePeliculas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguientePeliculasActionPerformed(evt);
-            }
-        });
-
-        jButtonSiguienteUsuarios.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonSiguienteUsuarios.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonSiguienteUsuarios.setText("Siguiente");
-        jButtonSiguienteUsuarios.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonSiguienteUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguienteUsuariosActionPerformed(evt);
-            }
-        });
-
-        jButtonAnteriorUsuarios.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonAnteriorUsuarios.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonAnteriorUsuarios.setText("Anterior");
-        jButtonAnteriorUsuarios.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonAnteriorUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorUsuariosActionPerformed(evt);
-            }
-        });
-
-        jLabelPaginaUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jLabelPaginaUsuario.setText("1");
-
-        javax.swing.GroupLayout jPanelPeliculasUsuariosLayout = new javax.swing.GroupLayout(jPanelPeliculasUsuarios);
-        jPanelPeliculasUsuarios.setLayout(jPanelPeliculasUsuariosLayout);
-        jPanelPeliculasUsuariosLayout.setHorizontalGroup(
-            jPanelPeliculasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPeliculasUsuariosLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabelPeliculas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelUsuarios)
-                .addGap(130, 130, 130))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPeliculasUsuariosLayout.createSequentialGroup()
-                .addGroup(jPanelPeliculasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPeliculasUsuariosLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jButtonAnteriorPeliculas)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabelPaginaPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButtonSiguientePeliculas))
-                    .addComponent(jScrollPanePeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanelPeliculasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPeliculasUsuariosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(jButtonAnteriorUsuarios)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabelPaginaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButtonSiguienteUsuarios)
-                        .addGap(37, 37, 37))
-                    .addGroup(jPanelPeliculasUsuariosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPaneUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
-        jPanelPeliculasUsuariosLayout.setVerticalGroup(
-            jPanelPeliculasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPeliculasUsuariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelPeliculasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPeliculas)
-                    .addComponent(jLabelUsuarios))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelPeliculasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPanePeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPaneUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelPeliculasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPeliculasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonAnteriorUsuarios)
-                        .addComponent(jButtonSiguienteUsuarios)
-                        .addComponent(jLabelPaginaUsuario))
-                    .addGroup(jPanelPeliculasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonAnteriorPeliculas)
-                        .addComponent(jButtonSiguientePeliculas)
-                        .addComponent(jLabelPaginaPeliculas)))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-
-        jPanelAlquileres.setBackground(new java.awt.Color(255, 255, 255));
-
-        jScrollPaneAlquileres.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPaneAlquileres.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jScrollPaneAlquileres.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPaneAlquileres.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-
-        jTableAlquileres.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jTableAlquileres.setFillsViewportHeight(true);
-        jTableAlquileres.setFocusable(false);
-        jTableAlquileres.setGridColor(new java.awt.Color(153, 153, 153));
-        jTableAlquileres.setSelectionBackground(new java.awt.Color(102, 204, 255));
-        jScrollPaneAlquileres.setViewportView(jTableAlquileres);
-
-        jLabelAlquileres.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabelAlquileres.setText("ALQUILERES");
-
-        jButtonAnteriorAlquileres.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonAnteriorAlquileres.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonAnteriorAlquileres.setText("Anterior");
-        jButtonAnteriorAlquileres.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonAnteriorAlquileres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorAlquileresActionPerformed(evt);
-            }
-        });
-
-        jLabelPaginaAlquileres.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jLabelPaginaAlquileres.setText("1");
-
-        jButtonSiguienteAlquileres.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonSiguienteAlquileres.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonSiguienteAlquileres.setText("Siguiente");
-        jButtonSiguienteAlquileres.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonSiguienteAlquileres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguienteAlquileresActionPerformed(evt);
-            }
-        });
-
-        jButtonFiltros.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonFiltros.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonFiltros.setText("Filtros de búsqueda");
-        jButtonFiltros.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonFiltros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFiltrosActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelAlquileresLayout = new javax.swing.GroupLayout(jPanelAlquileres);
-        jPanelAlquileres.setLayout(jPanelAlquileresLayout);
-        jPanelAlquileresLayout.setHorizontalGroup(
-            jPanelAlquileresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAlquileresLayout.createSequentialGroup()
-                .addGroup(jPanelAlquileresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAlquileresLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPaneAlquileres, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelAlquileresLayout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jLabelAlquileres))
-                    .addGroup(jPanelAlquileresLayout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jButtonAnteriorAlquileres)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabelPaginaAlquileres, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButtonSiguienteAlquileres)
-                        .addGap(30, 30, 30)
-                        .addComponent(jButtonFiltros)))
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        jPanelAlquileresLayout.setVerticalGroup(
-            jPanelAlquileresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlquileresLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelAlquileres)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneAlquileres, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelAlquileresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAnteriorAlquileres)
-                    .addComponent(jButtonSiguienteAlquileres)
-                    .addComponent(jLabelPaginaAlquileres)
-                    .addComponent(jButtonFiltros))
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
-
-        jPanelFiltros.setBackground(new java.awt.Color(204, 255, 255));
-
-        jLabelFiltrosDeBusqueda.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
-        jLabelFiltrosDeBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelFiltrosDeBusqueda.setText("FILTROS DE BUSQUEDA");
-
-        jLabelDescripcion.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
-        jLabelDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDescripcion.setText("Puedes filtrar la búsqueda rellenando uno de los campos.");
-
-        jLabelDescripcion2.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
-        jLabelDescripcion2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDescripcion2.setText("Y seleccionar el orden deseado.");
-
-        jLabelPeliculaId.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jLabelPeliculaId.setText("Pelicula Id :");
-
-        jUsuariId.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jUsuariId.setText("Usuario Id :");
-
-        jLabelFechaInicio.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jLabelFechaInicio.setText("Fecha Inicio :");
-
-        jLabelFechaFin.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jLabelFechaFin.setText("Fecha Fin :");
-
-        jLabelPrecio.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jLabelPrecio.setText("Precio :");
-
-        jLabelOrden.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jLabelOrden.setText("Orden :");
-
-        jTextFieldPeliculaId.setBackground(java.awt.SystemColor.control);
-        jTextFieldPeliculaId.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jTextFieldPeliculaId.setToolTipText("");
-        jTextFieldPeliculaId.setBorder(null);
-
-        jTextFieldUsuariId.setBackground(java.awt.SystemColor.control);
-        jTextFieldUsuariId.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jTextFieldUsuariId.setToolTipText("");
-        jTextFieldUsuariId.setBorder(null);
-
-        jTextFieldFechaInicio.setBackground(javax.swing.UIManager.getDefaults().getColor("control"));
-        jTextFieldFechaInicio.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jTextFieldFechaInicio.setToolTipText("");
-        jTextFieldFechaInicio.setBorder(null);
-
-        jTextFieldFechaFin.setBackground(javax.swing.UIManager.getDefaults().getColor("control"));
-        jTextFieldFechaFin.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jTextFieldFechaFin.setToolTipText("");
-        jTextFieldFechaFin.setBorder(null);
-
-        jTextFieldPrecio.setBackground(javax.swing.UIManager.getDefaults().getColor("control"));
-        jTextFieldPrecio.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jTextFieldPrecio.setToolTipText("");
-        jTextFieldPrecio.setBorder(null);
-
-        jComboBoxFiltros.setBackground(javax.swing.UIManager.getDefaults().getColor("control"));
-        jComboBoxFiltros.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jComboBoxFiltros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin orden", "peliculaId Asc", "peliculaId Desc", "usuariId Asc", "usuariId Desc", "FechaInicio Asc", "FechaInicio Desc", "FechaFin Asc", "FechaFin Desc", "precio Asc", "precio Desc", " " }));
-        jComboBoxFiltros.setBorder(null);
-
-        jButtonFiltrar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonFiltrar.setText("FILTRAR");
-        jButtonFiltrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonFiltrar.setBorderPainted(false);
-        jButtonFiltrar.setFocusable(false);
-        jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFiltrarActionPerformed(evt);
-            }
-        });
-
-        buttonVolver2.setBackground(new java.awt.Color(153, 204, 0));
-        buttonVolver2.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        buttonVolver2.setText("VOLVER");
-        buttonVolver2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        buttonVolver2.setBorderPainted(false);
-        buttonVolver2.setFocusable(false);
-        buttonVolver2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVolver2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelFiltrosLayout = new javax.swing.GroupLayout(jPanelFiltros);
-        jPanelFiltros.setLayout(jPanelFiltrosLayout);
-        jPanelFiltrosLayout.setHorizontalGroup(
-            jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelDescripcion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelFiltrosDeBusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                            .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                                            .addComponent(jButtonFiltrar)
-                                            .addGap(25, 25, 25)
-                                            .addComponent(buttonVolver2))
-                                        .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                                            .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltrosLayout.createSequentialGroup()
-                                                    .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabelOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                            .addComponent(jUsuariId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(jLabelPeliculaId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(jLabelFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                                .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                                                    .addComponent(jLabelPrecio)
-                                                    .addGap(54, 54, 54)))
-                                            .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jTextFieldFechaInicio)
-                                                .addComponent(jComboBoxFiltros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTextFieldUsuariId)
-                                                .addComponent(jTextFieldPeliculaId)
-                                                .addComponent(jTextFieldFechaFin)
-                                                .addComponent(jTextFieldPrecio))))
-                                    .addComponent(jLabelFechaFin))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-        );
-        jPanelFiltrosLayout.setVerticalGroup(
-            jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelFiltrosDeBusqueda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelDescripcion)
-                .addGap(4, 4, 4)
-                .addComponent(jLabelDescripcion2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPeliculaId)
-                    .addComponent(jTextFieldPeliculaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jUsuariId)
-                    .addComponent(jTextFieldUsuariId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFechaInicio)
-                    .addComponent(jTextFieldFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFechaFin)
-                    .addComponent(jTextFieldFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPrecio)
-                    .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelOrden)
-                    .addComponent(jComboBoxFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonFiltrar)
-                    .addComponent(buttonVolver2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(17, 17, 17))
-        );
-
-        jPanelAlquileresFiltrados.setBackground(new java.awt.Color(255, 255, 255));
-
-        jScrollPaneAlquileresFiltrados.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPaneAlquileresFiltrados.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jScrollPaneAlquileresFiltrados.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPaneAlquileresFiltrados.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-
-        jTableAlquileres1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jTableAlquileres1.setFillsViewportHeight(true);
-        jTableAlquileres1.setFocusable(false);
-        jTableAlquileres1.setGridColor(new java.awt.Color(153, 153, 153));
-        jTableAlquileres1.setSelectionBackground(new java.awt.Color(102, 204, 255));
-        jScrollPaneAlquileresFiltrados.setViewportView(jTableAlquileres1);
-
-        jLabelAlquileres1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabelAlquileres1.setText("ALQUILERES");
-
-        jButtonAnteriorAlquileresFiltrados.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonAnteriorAlquileresFiltrados.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonAnteriorAlquileresFiltrados.setText("Anterior");
-        jButtonAnteriorAlquileresFiltrados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonAnteriorAlquileresFiltrados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorAlquileresFiltradosActionPerformed(evt);
-            }
-        });
-
-        jLabelPaginaAlquileresFiltrados.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jLabelPaginaAlquileresFiltrados.setText("1");
-
-        jButtonSiguienteAlquileresFiltrados.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonSiguienteAlquileresFiltrados.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButtonSiguienteAlquileresFiltrados.setText("Siguiente");
-        jButtonSiguienteAlquileresFiltrados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonSiguienteAlquileresFiltrados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguienteAlquileresFiltradosActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelAlquileresFiltradosLayout = new javax.swing.GroupLayout(jPanelAlquileresFiltrados);
-        jPanelAlquileresFiltrados.setLayout(jPanelAlquileresFiltradosLayout);
-        jPanelAlquileresFiltradosLayout.setHorizontalGroup(
-            jPanelAlquileresFiltradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAlquileresFiltradosLayout.createSequentialGroup()
-                .addGroup(jPanelAlquileresFiltradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAlquileresFiltradosLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPaneAlquileresFiltrados, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelAlquileresFiltradosLayout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jLabelAlquileres1))
-                    .addGroup(jPanelAlquileresFiltradosLayout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jButtonAnteriorAlquileresFiltrados)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabelPaginaAlquileresFiltrados, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButtonSiguienteAlquileresFiltrados)))
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        jPanelAlquileresFiltradosLayout.setVerticalGroup(
-            jPanelAlquileresFiltradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlquileresFiltradosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelAlquileres1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneAlquileresFiltrados, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelAlquileresFiltradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAnteriorAlquileresFiltrados)
-                    .addComponent(jButtonSiguienteAlquileresFiltrados)
-                    .addComponent(jLabelPaginaAlquileresFiltrados))
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jPanelGestionAlquilerPeliculasLayout = new javax.swing.GroupLayout(jPanelGestionAlquilerPeliculas);
         jPanelGestionAlquilerPeliculas.setLayout(jPanelGestionAlquilerPeliculasLayout);
         jPanelGestionAlquilerPeliculasLayout.setHorizontalGroup(
@@ -850,43 +379,44 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     .addComponent(listaAlquileresPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(mensajeAlquilerPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 260, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonVolver)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCerrarSesion)
-                        .addGap(62, 62, 62))
+                        .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(mensajeAlquilerPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelUsuario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 197, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
+                                        .addComponent(jButtonVolver)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonCerrarSesion))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
+                                        .addComponent(jScrollPanePeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPaneUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addGap(6, 6, 6)))))
+                        .addGap(63, 63, 63))
                     .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanelPeliculasUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(41, Short.MAX_VALUE))))
+                        .addGap(180, 180, 180)
+                        .addComponent(jLabelPeliculas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelUsuarios)
+                        .addGap(158, 158, 158))))
+            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
+                    .addGap(247, 247, 247)
+                    .addComponent(jScrollPaneAlquileres, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(140, Short.MAX_VALUE)))
             .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
                     .addGap(247, 247, 247)
                     .addComponent(jPanelCambioEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(279, Short.MAX_VALUE)))
-            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                    .addContainerGap(248, Short.MAX_VALUE)
-                    .addComponent(jPanelAlquileres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(72, Short.MAX_VALUE)))
-            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                    .addGap(282, 282, 282)
-                    .addComponent(jPanelFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(282, Short.MAX_VALUE)))
-            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                    .addContainerGap(258, Short.MAX_VALUE)
-                    .addComponent(jPanelAlquileresFiltrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(62, 62, 62)))
         );
         jPanelGestionAlquilerPeliculasLayout.setVerticalGroup(
             jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -897,46 +427,42 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     .addComponent(mensajeAlquilerPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelUsuario)
                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listaPeliculasUsuarios)
+                    .addComponent(jLabelPeliculas)
+                    .addComponent(jLabelUsuarios))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(listaPeliculasUsuarios)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(listaAlquileresPeliculas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(alquilarPelicula)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(eliminarAlquilerPelicula)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(modificarEstatusAlquiler))
+                        .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPaneUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
+                                .addComponent(listaAlquileresPeliculas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(alquilarPelicula)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(eliminarAlquilerPelicula)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(modificarEstatusAlquiler)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCerrarSesion)
+                            .addComponent(jButtonVolver)))
                     .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelPeliculasUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCerrarSesion)
-                    .addComponent(jButtonVolver))
+                        .addComponent(jScrollPanePeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
+                    .addGap(81, 81, 81)
+                    .addComponent(jScrollPaneAlquileres, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(101, Short.MAX_VALUE)))
             .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
                     .addContainerGap(153, Short.MAX_VALUE)
                     .addComponent(jPanelCambioEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(48, 48, 48)))
-            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                    .addContainerGap(77, Short.MAX_VALUE)
-                    .addComponent(jPanelAlquileres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(48, Short.MAX_VALUE)))
-            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(jPanelFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(83, Short.MAX_VALUE)))
-            .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
-                    .addContainerGap(87, Short.MAX_VALUE)
-                    .addComponent(jPanelAlquileresFiltrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(38, 38, 38)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -974,33 +500,31 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
      */
     private void listaPeliculasUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasUsuariosActionPerformed
         /**
-         * metodo para mostrar las lista de las peliculas y los usuarios de manera paginada.
+         * metodo para mostrar las lista de las peliculas y los usuarios.
          *
          * @author Carlos
          */
+        
+        //Mostramos lo diferentes elementos.
+        jLabelPeliculas.setVisible(true);
+        jLabelUsuarios.setVisible(true);
+        //Tabla peliculas.
+        jScrollPanePeliculas.setVisible(true);
+        jTablePeliculas.setVisible(true);
+        //Tabla Usuarios.
+        jScrollPaneUsuarios.setVisible(true);
+        jTableUsuarios.setVisible(true);
 
-        //Mostramos el panel de lista 
-        //de peliculas y usuarios.
-        jPanelPeliculasUsuarios.setVisible(true);
-        //Cerramos otros paneles si estuvieran abiertos.
-        jPanelAlquileres.setVisible(false);
+        //Cerramos estos...
+        jScrollPaneAlquileres.setVisible(false);
+        jTableAlquileres.setVisible(false);
         jPanelCambioEstatus.setVisible(false);
 
-        paginaPeliculas = 0;
-        paginaUsuarios = 0;
-        /**
-         * Esta es la primera tabla de peliculas que se muestra. pagina 0 ( 1 en pantalla.)
-         */
-        // Creamos la URL
-        // Es una url con tres parametros en modo query.
+        //Leemos la lista de peliculas.
         StringBuilder resultadoPeliculas = new StringBuilder();
         try {
             // Creamos la URL
-            URL url = new URL(Constants.urlPeliculasPaginadas
-                    + "?page=" + paginaPeliculas
-                    + "&pageSize=" + paginaSizePeliculas
-                    + "&token=" + Constants.token);
-
+            URL url = new URL(Constants.urlPeliculas + "?token=" + Constants.token);
             // Creamos la conexion al servidor.
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // Metodo GET
@@ -1028,32 +552,29 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
         // Pasamos la respuesta a un String.
         String responseJsonString = resultadoPeliculas.toString();
-
+        System.out.println(responseJsonString);
         //*************************************************
         // El array de objetos JSON lo convertimos en un array de objetos DTO.
         // Lo transformamos gracias al objeto DTO creado para ello.
         ResponsePeliculaListDTO responseJson = gson.fromJson(responseJsonString, ResponsePeliculaListDTO.class);
         //*************************************************
-        paginasTotalesPeliculas = responseJson.getValue().getTotalPages();
-        jLabelPaginaPeliculas.setText(String.valueOf(paginaPeliculas + 1) + " de " + paginasTotalesPeliculas);
 
         //Creamos una lista de objetos JSON
         jsonArrayPeliculas = new JSONArray();
-        for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
+        for (int i = 0; i < responseJson.getValue().size(); i++) {
             JSONObject objPelicula = new JSONObject();
-            objPelicula.put("id", responseJson.getValue().getContent().get(i).getId());
-            objPelicula.put("TITULO", responseJson.getValue().getContent().get(i).getTitulo());
-            objPelicula.put("DIRECTOR", responseJson.getValue().getContent().get(i).getDirector());
-            objPelicula.put("GENERO", responseJson.getValue().getContent().get(i).getGenero());
-            objPelicula.put("DURACION", responseJson.getValue().getContent().get(i).getDuracion());
-            objPelicula.put("AÑO", responseJson.getValue().getContent().get(i).getAño());
-            objPelicula.put("PRECIO", responseJson.getValue().getContent().get(i).getPrecio());
-            objPelicula.put("ALQUILERES", responseJson.getValue().getContent().get(i).getVecesAlquilada());
+            objPelicula.put("id", responseJson.getValue().get(i).getId());
+            objPelicula.put("TITULO", responseJson.getValue().get(i).getTitulo());
+            objPelicula.put("DIRECTOR", responseJson.getValue().get(i).getDirector());
+            objPelicula.put("GENERO", responseJson.getValue().get(i).getGenero());
+            objPelicula.put("DURACION", responseJson.getValue().get(i).getDuracion());
+            objPelicula.put("AÑO", responseJson.getValue().get(i).getAño());
+            objPelicula.put("PRECIO", responseJson.getValue().get(i).getPrecio());
             jsonArrayPeliculas.put(objPelicula);
         }
 
         //Creamos un String[] de columnas
-        String[] columnNamesPeliculas = {"TITULO", "DIRECTOR", "PRECIO", "ALQUILERES"};
+        String[] columnNamesPeliculas = {"TITULO", "DIRECTOR", "PRECIO"};
 
         //Creamos el modelo de tabla
         modelPeliculas = new TablePeliculas(jsonArrayPeliculas, columnNamesPeliculas);
@@ -1062,31 +583,21 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         //Mostramos la tabla
         //Añadimos color a la cabecera.
         JTableHeader header = jTablePeliculas.getTableHeader();
-        header.setBackground(Color.CYAN);
+        header.setBackground(Color.LIGHT_GRAY);
         //Ponemos los datos numericos en el lado derecho de la celda.
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
         renderer.setHorizontalAlignment(JLabel.CENTER);
         jTablePeliculas.getColumnModel().getColumn(2).setCellRenderer(renderer);
-        jTablePeliculas.getColumnModel().getColumn(3).setCellRenderer(renderer);
         //Asignamos el ancho de las columnas.
-        jTablePeliculas.getColumnModel().getColumn(0).setPreferredWidth(140);
-        jTablePeliculas.getColumnModel().getColumn(2).setPreferredWidth(25);
-        jTablePeliculas.getColumnModel().getColumn(3).setPreferredWidth(50);
+        jTablePeliculas.getColumnModel().getColumn(0).setPreferredWidth(150);
+        jTablePeliculas.getColumnModel().getColumn(2).setPreferredWidth(30);
 
-        /**
-         * Esta es la primera tabla de usuarios que se muestra. pagina 0 ( 1 en pantalla.)
-         *
-         */
+        //***************************************************
         //Leemos la lista de usuarios.
         StringBuilder resultadoUsuarios = new StringBuilder();
         try {
             // Creamos la URL
-            // Es una url con tres parametros en modo query.
-            URL url = new URL(Constants.urlUsuariosPaginados
-                    + "?page=" + paginaUsuarios
-                    + "&pageSize=" + paginaSizeUsuarios
-                    + "&token=" + Constants.token);
-
+            URL url = new URL(Constants.urlUsuarios + "?token=" + Constants.token);
             // Creamos la conexion al servidor.
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // Metodo GET
@@ -1120,19 +631,18 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         // Lo transformamos gracias al objeto DTO creado para ello.
         ResponseUserListDTO responseJsonUsuarios = gsonUsuarios.fromJson(responseJsonStringUsuarios, ResponseUserListDTO.class);
         //*************************************************
-        paginasTotalesUsuarios = responseJson.getValue().getTotalPages();
-        jLabelPaginaUsuario.setText(String.valueOf(paginaUsuarios + 1) + " de " + paginasTotalesUsuarios);
+
         //Creamos una lista de objetos JSON
         jsonArrayUsuarios = new JSONArray();
-        for (int i = 0; i < responseJsonUsuarios.getValue().getContent().size(); i++) {
+        for (int i = 0; i < responseJsonUsuarios.getValue().size(); i++) {
             JSONObject objUsuario = new JSONObject();
-            objUsuario.put("id", responseJsonUsuarios.getValue().getContent().get(i).getId());
-            objUsuario.put("NOMBRE", responseJsonUsuarios.getValue().getContent().get(i).getNombre());
-            objUsuario.put("APELLIDOS", responseJsonUsuarios.getValue().getContent().get(i).getApellidos());
-            objUsuario.put("TELEFONO", responseJsonUsuarios.getValue().getContent().get(i).getTelefono());
-            objUsuario.put("EMAIL", responseJsonUsuarios.getValue().getContent().get(i).getEmail());
-            objUsuario.put("DIRECCION", responseJsonUsuarios.getValue().getContent().get(i).getDireccion());
-            objUsuario.put("IsAdmin", responseJsonUsuarios.getValue().getContent().get(i).getIsAdmin());
+            objUsuario.put("id", responseJsonUsuarios.getValue().get(i).getId());
+            objUsuario.put("NOMBRE", responseJsonUsuarios.getValue().get(i).getNombre());
+            objUsuario.put("APELLIDOS", responseJsonUsuarios.getValue().get(i).getApellidos());
+            objUsuario.put("TELEFONO", responseJsonUsuarios.getValue().get(i).getTelefono());
+            objUsuario.put("EMAIL", responseJsonUsuarios.getValue().get(i).getEmail());
+            objUsuario.put("DIRECCION", responseJsonUsuarios.getValue().get(i).getDireccion());
+            objUsuario.put("IsAdmin", responseJsonUsuarios.getValue().get(i).getIsAdmin());
             jsonArrayUsuarios.put(objUsuario);
         }
 
@@ -1146,14 +656,13 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         //Mostramos la lista
         //Añadimos color a la cabecera.
         JTableHeader headerUsuarios = jTableUsuarios.getTableHeader();
-        headerUsuarios.setBackground(Color.CYAN);
+        headerUsuarios.setBackground(Color.LIGHT_GRAY);
 
     }//GEN-LAST:event_listaPeliculasUsuariosActionPerformed
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         /**
          * Metodo para cerrar la sesion y volver a inicio.
-         *
          * @author Carlos
          */
         StringBuilder resultado = new StringBuilder();
@@ -1207,10 +716,6 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
          * metodo para eliminar un alquiler de pelicula de la aplicacion.
          *
          */
-
-        //Cerramos otros paneles si estuvieran abiertos.
-        jPanelPeliculasUsuarios.setVisible(false);
-        jPanelCambioEstatus.setVisible(false);
 
         //Obtenemos la fila seleccionada de alquileres.
         posicionAlquiler = jTableAlquileres.getSelectedRow();
@@ -1269,10 +774,10 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                             "Alquiler eliminado correctamente.",
                             "ELIMINAR ALQUILER", JOptionPane.INFORMATION_MESSAGE);
 
-                    //Limpiamos la seleccion actual.
-                    jTableAlquileres.clearSelection();
-                    jPanelAlquileres.setVisible(false);
-
+                    VentanaGestionAlquilerPeliculas volver = new VentanaGestionAlquilerPeliculas();
+                    volver.setVisible(true);
+                    this.dispose();
+                    //****************************************************************
                 } else {
                     // Si ha habido error en la operacion.
                     // Mostramos mensaje emergente de informacion.
@@ -1280,25 +785,16 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                             "Ha ocurrido un error inesperado.",
                             "ELIMINAR ALQUILER", JOptionPane.INFORMATION_MESSAGE);
                 }
-            } else {
-                //ceramos el panel de alquileres.
-                jTableAlquileres.clearSelection();
-                jPanelAlquileres.setVisible(false);
             }
         }
     }//GEN-LAST:event_eliminarAlquilerPeliculaActionPerformed
     /**
      *
      * Metodo para asignar un alquiler de pelicula a un usuario.
-     *
      * @author Carlos.
      *
      */
     private void alquilarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alquilarPeliculaActionPerformed
-
-        //Cerramos lo que este abierto.
-        jPanelAlquileres.setVisible(false);
-        jPanelCambioEstatus.setVisible(false);
 
         //Obtenemos la fila seleccionada de pelicula y usuario..
         posicionPelicula = jTablePeliculas.getSelectedRow();
@@ -1392,10 +888,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                                 + "Fecha de finalizacion: " + responseJson.getValue().getFechaFin() + "\n"
                                 + "Estado: " + responseJson.getValue().getEstado(),
                                 "ALQUILER PELICULA", JOptionPane.INFORMATION_MESSAGE);
-
-                        //Limpiamos la seleccion actual.
-                        jTablePeliculas.clearSelection();
-                        jTableUsuarios.clearSelection();
+                        // y volvemos a inicio.
 
                     }
                 } catch (MalformedURLException ex) {
@@ -1406,38 +899,35 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             } else {
                 //No hacemos nada.
             }
-
         }
-
     }//GEN-LAST:event_alquilarPeliculaActionPerformed
 
     private void listaAlquileresPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAlquileresPeliculasActionPerformed
 
         /**
-         * Metodo para mostrar la lista de los alquileres de peliculas paginadas de la aplicacion.
-         *
+         * Metodo para mostrar la lista de los alquileres
+         * de peliculas de la aplicacion.
+         * 
          * @author Carlos
          */
-        //Mostramos el panel de lista de alquileres.       
-        jPanelAlquileres.setVisible(true);
-        //Cerramos otros paneles si estuvieran abiertos.
-        jPanelPeliculasUsuarios.setVisible(false);
+        //Tabla alquileres.
+        jScrollPaneAlquileres.setVisible(true);
+        jTableAlquileres.setVisible(true);
+
+        //cerramos las otras listas.
+        jScrollPanePeliculas.setVisible(false);
+        jTablePeliculas.setVisible(false);
+        jScrollPaneUsuarios.setVisible(false);
+        jTableUsuarios.setVisible(false);
+        jLabelPeliculas.setVisible(false);
+        jLabelUsuarios.setVisible(false);
         jPanelCambioEstatus.setVisible(false);
-        paginaAlquileres = 0;
-        /**
-         * Esta es la primera tabla de alquileres que se muestra. pagina 0 ( 1 en pantalla.)
-         *
-         */
+
         //Leemos la lista de alquileres.
         StringBuilder resultadoAlquileres = new StringBuilder();
         try {
             // Creamos la URL
-            // Es una url con tres parametros en modo query.
-            URL url = new URL(Constants.urlPeliculasAlquileresPaginados
-                    + "?page=" + paginaAlquileres
-                    + "&pageSize=" + paginaSizeAlquileres
-                    + "&token=" + Constants.token);
-
+            URL url = new URL(Constants.urlPeliculasAlquileres + "?token=" + Constants.token);
             // Creamos la conexion al servidor.
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // Metodo GET
@@ -1465,40 +955,29 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
         // Pasamos la respuesta a un String.
         String responseJsonString = resultadoAlquileres.toString();
-
+        System.out.println(responseJsonString);
+        //*************************************************
         // El array de objetos JSON lo convertimos en un array de objetos DTO.
         // Lo transformamos gracias al objeto DTO creado para ello.
         ResponseAlquilerListDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerListDTO.class);
         //*************************************************
 
-        paginasTotalesAlquileres = responseJson.getValue().getTotalPages();
-        jLabelPaginaAlquileres.setText(String.valueOf(paginaAlquileres + 1) + " de " + paginasTotalesAlquileres);
-
         //Creamos una lista de objetos JSON
         jsonArrayAlquileres = new JSONArray();
-        for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
+        for (int i = 0; i < responseJson.getValue().size(); i++) {
             objAlquiler = new JSONObject();
-            objAlquiler.put("idAlquiler", responseJson.getValue().getContent().get(i).getId());
-            objAlquiler.put("idPelicula", responseJson.getValue().getContent().get(i).getPelicula());
-            objAlquiler.put("idUsuario", responseJson.getValue().getContent().get(i).getUsuari());
-            objAlquiler.put("Fecha Inicio", responseJson.getValue().getContent().get(i).getFechaInicio());
-            objAlquiler.put("Fecha Fin", responseJson.getValue().getContent().get(i).getFechaFin());
-            objAlquiler.put("Precio", responseJson.getValue().getContent().get(i).getPrecio());
-            objAlquiler.put("Estado", responseJson.getValue().getContent().get(i).getEstado());
-            //Obtenemos el titulo de la pelicula.
-            idPelicula = responseJson.getValue().getContent().get(i).getPelicula();
-            tituloPelicula = tituloPelicula(idPelicula);
-            objAlquiler.put("Titulo Pelicula", tituloPelicula);
-            //Obtenemos el nombre del usuario.
-            idUsuario = responseJson.getValue().getContent().get(i).getUsuari();
-            nombreUser = nombreUsuario(idUsuario);
-            objAlquiler.put("Nombre Usuario", nombreUser);
-
+            objAlquiler.put("idAlquiler", responseJson.getValue().get(i).getId());
+            objAlquiler.put("idPelicula", responseJson.getValue().get(i).getPeliculaId());
+            objAlquiler.put("idUsuario", responseJson.getValue().get(i).getUsuariId());
+            objAlquiler.put("Fecha Inicio", responseJson.getValue().get(i).getFechaInicio());
+            objAlquiler.put("Fecha Fin", responseJson.getValue().get(i).getFechaFin());
+            objAlquiler.put("Precio", responseJson.getValue().get(i).getPrecio());
+            objAlquiler.put("Estado", responseJson.getValue().get(i).getEstado());
             jsonArrayAlquileres.put(objAlquiler);
         }
 
         //Creamos un String[] de columnas
-        String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Estado"};
+        String[] columnNamesPeliculas = {"idAlquiler", "Fecha Inicio", "Fecha Fin", "Estado"};
 
         //Creamos el modelo de tabla
         modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
@@ -1507,7 +986,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         //Mostramos la tabla
         //Añadimos color a la cabecera.
         JTableHeader header = jTableAlquileres.getTableHeader();
-        header.setBackground(Color.CYAN);
+        header.setBackground(Color.LIGHT_GRAY);
 
         //Ponemos los datos numericos en el lado derecho de la celda.
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
@@ -1516,14 +995,13 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jTableAlquileres.getColumnModel().getColumn(2).setCellRenderer(renderer);
         jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
         //Asignamos el ancho de la columna id.
-        jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(200);
+        jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(250);
 
     }//GEN-LAST:event_listaAlquileresPeliculasActionPerformed
 
     private void buttonModificarEstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarEstatusActionPerformed
         /**
          * Metodo para modificar el estado de un alquiler.
-         *
          * @author Carlos
          */
 
@@ -1567,46 +1045,43 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,
                             "Estado del alquiler modificado correctamente.",
                             "MODIFICAR ESTADO ALQUILER", JOptionPane.INFORMATION_MESSAGE);
-
-                    jTableAlquileres.clearSelection();
-                    jPanelCambioEstatus.setVisible(false);
-
+                    VentanaGestionAlquilerPeliculas volver = new VentanaGestionAlquilerPeliculas();
+                    volver.setVisible(true);
+                    this.dispose();
                 }
             } catch (MalformedURLException ex) {
                 ex.printStackTrace();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-        } else {
-            //ceramos el panel de alquileres.
-            jTableAlquileres.clearSelection();
-            jPanelAlquileres.setVisible(false);
-            jPanelCambioEstatus.setVisible(false);
-
         }
-
     }//GEN-LAST:event_buttonModificarEstatusActionPerformed
 
     private void jButtonVolverAlquilerStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverAlquilerStatusActionPerformed
         /**
          *
          * Método para volver a la pantalla anterior.
-         *
          * @author Carlos
          */
 
-        jPanelCambioEstatus.setVisible(false);
+        VentanaGestionAlquilerPeliculas volver = new VentanaGestionAlquilerPeliculas();
+        volver.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jButtonVolverAlquilerStatusActionPerformed
 
     private void modificarEstatusAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEstatusAlquilerActionPerformed
 
         /**
          * Metodo para cambiar el estado de un alquiler
-         *
          * @author Carlos.
          */
-        //Cerramos otros paneles si estuvieran abiertos.
-        jPanelPeliculasUsuarios.setVisible(false);
+        //cerramos las otras listas.
+        jScrollPanePeliculas.setVisible(false);
+        jScrollPaneUsuarios.setVisible(false);
+        jLabelPeliculas.setVisible(false);
+        jLabelUsuarios.setVisible(false);
+        jScrollPaneAlquileres.setVisible(false);
         jPanelCambioEstatus.setVisible(false);
 
         //Obtenemos la fila seleccionada de alquileres.
@@ -1621,7 +1096,6 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     "MODIFICAR ESTATUS ALQUILER", JOptionPane.INFORMATION_MESSAGE);
         } else {
             jPanelCambioEstatus.setVisible(true);
-            jPanelAlquileres.setVisible(false);
             objAlquiler = jsonArrayAlquileres.getJSONObject(posicionAlquiler);
             jTextEstatusActual.setText(objAlquiler.getString("Estado"));
 
@@ -1629,947 +1103,35 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_modificarEstatusAlquilerActionPerformed
 
-    private void jButtonAnteriorPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorPeliculasActionPerformed
-        /**
-         * Hago la consulta de tabla. Con la pagina anterior. Leo los datos en el DTO para ello. Paso los datos a la tabla.
-         *
-         */
-        if (paginaPeliculas > 0) {
-            paginaPeliculas--;
-
-            StringBuilder resultado = new StringBuilder();
-            try {
-                // Creamos la URL
-                /*
-                URL url = new URL(Constants.urlPeliculas + "?token=" + Constants.token);
-                 */
-
-                URL url = new URL(Constants.urlPeliculasPaginadas
-                        + "?page=" + paginaPeliculas
-                        + "&pageSize=" + paginaSizePeliculas
-                        + "&token=" + Constants.token);
-
-                // Creamos la conexion al servidor.
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                // Metodo GET
-                conn.setRequestMethod("GET");
-
-                // Abrimos un input Stream de datos del servidor
-                // y esperamos la respuesta del servidor.
-                BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                // Leemos la respuesta del servidor.
-                // y contruimos el string 'resultado'
-                String linea;
-                while ((linea = rd.readLine()) != null) {
-                    resultado.append(linea);
-                }
-                // Cerramos la conexion.
-                rd.close();
-            } catch (MalformedURLException ex) {
-                System.out.println(ex);
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
-            // Creamos una instancia de Gson para convertir nuestro String a JSON
-            Gson gson = new Gson();
-
-            // Pasamos la respuesta a un String.
-            String responseJsonString = resultado.toString();
-
-            //*************************************************
-            // El array de objetos JSON lo convertimos en un array de objetos DTO.
-            // Lo transformamos gracias al objeto DTO creado para ello.
-            ResponsePeliculaListDTO responseJson = gson.fromJson(responseJsonString, ResponsePeliculaListDTO.class);
-            //*************************************************
-
-            //Actualizo el label del contador de paginas.
-            jLabelPaginaPeliculas.setText(String.valueOf(paginaPeliculas + 1) + " de " + paginasTotalesPeliculas);
-
-            //Creamos una lista de objetos JSON
-            jsonArrayPeliculas = new JSONArray();
-            for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-                JSONObject obj = new JSONObject();
-                obj.put("id", responseJson.getValue().getContent().get(i).getId());
-                obj.put("TITULO", responseJson.getValue().getContent().get(i).getTitulo());
-                obj.put("DIRECTOR", responseJson.getValue().getContent().get(i).getDirector());
-                obj.put("GENERO", responseJson.getValue().getContent().get(i).getGenero());
-                obj.put("DURACION", responseJson.getValue().getContent().get(i).getDuracion());
-                obj.put("AÑO", responseJson.getValue().getContent().get(i).getAño());
-                obj.put("PRECIO", responseJson.getValue().getContent().get(i).getPrecio());
-                obj.put("ALQUILERES", responseJson.getValue().getContent().get(i).getVecesAlquilada());
-                jsonArrayPeliculas.put(obj);
-            }
-
-            //Creamos un String[] de columnas
-            String[] columnNames = {"TITULO", "DIRECTOR", "PRECIO", "ALQUILERES"};
-
-            //Creamos el modelo de tabla
-            modelPeliculas = new TablePeliculas(jsonArrayPeliculas, columnNames);
-            //Asignamos el modelo a la tabla
-            jTablePeliculas.setModel(modelPeliculas);
-            //Mostramos la tabla
-            //Añadimos color a la cabecera.
-            JTableHeader header = jTablePeliculas.getTableHeader();
-            header.setBackground(Color.CYAN);
-            //Ponemos los datos numericos en el lado derecho de la celda.
-            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-            renderer.setHorizontalAlignment(JLabel.CENTER);
-            jTablePeliculas.getColumnModel().getColumn(2).setCellRenderer(renderer);
-            jTablePeliculas.getColumnModel().getColumn(3).setCellRenderer(renderer);
-            //Asignamos el ancho de las columnas.
-            jTablePeliculas.getColumnModel().getColumn(0).setPreferredWidth(140);
-            jTablePeliculas.getColumnModel().getColumn(2).setPreferredWidth(25);
-            jTablePeliculas.getColumnModel().getColumn(3).setPreferredWidth(50);
-
-        }
-    }//GEN-LAST:event_jButtonAnteriorPeliculasActionPerformed
-
-    private void jButtonSiguientePeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguientePeliculasActionPerformed
-        /**
-         * Hago la consulta de tabla. Con la pagina siguiente. Leo los datos en el DTO para ello. Paso los datos a la tabla.
-         *
-         */
-        if (paginaPeliculas < paginasTotalesPeliculas - 1) {
-            paginaPeliculas++;
-
-            StringBuilder resultado = new StringBuilder();
-            try {
-                // Creamos la URL
-                /*
-                URL url = new URL(Constants.urlPeliculas + "?token=" + Constants.token);
-                 */
-
-                URL url = new URL(Constants.urlPeliculasPaginadas
-                        + "?page=" + paginaPeliculas
-                        + "&pageSize=" + paginaSizePeliculas
-                        + "&token=" + Constants.token);
-
-                // Creamos la conexion al servidor.
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                // Metodo GET
-                conn.setRequestMethod("GET");
-
-                // Abrimos un input Stream de datos del servidor
-                // y esperamos la respuesta del servidor.
-                BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                // Leemos la respuesta del servidor.
-                // y contruimos el string 'resultado'
-                String linea;
-                while ((linea = rd.readLine()) != null) {
-                    resultado.append(linea);
-                }
-                // Cerramos la conexion.
-                rd.close();
-            } catch (MalformedURLException ex) {
-                System.out.println(ex);
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
-            // Creamos una instancia de Gson para convertir nuestro String a JSON
-            Gson gson = new Gson();
-
-            // Pasamos la respuesta a un String.
-            String responseJsonString = resultado.toString();
-
-            //*************************************************
-            // El array de objetos JSON lo convertimos en un array de objetos DTO.
-            // Lo transformamos gracias al objeto DTO creado para ello.
-            ResponsePeliculaListDTO responseJson = gson.fromJson(responseJsonString, ResponsePeliculaListDTO.class);
-            //*************************************************
-
-            //Actualizo el label del contador de paginas.
-            jLabelPaginaPeliculas.setText(String.valueOf(paginaPeliculas + 1) + " de " + paginasTotalesPeliculas);
-
-            //Creamos una lista de objetos JSON
-            jsonArrayPeliculas = new JSONArray();
-            for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-                JSONObject obj = new JSONObject();
-                obj.put("id", responseJson.getValue().getContent().get(i).getId());
-                obj.put("TITULO", responseJson.getValue().getContent().get(i).getTitulo());
-                obj.put("DIRECTOR", responseJson.getValue().getContent().get(i).getDirector());
-                obj.put("GENERO", responseJson.getValue().getContent().get(i).getGenero());
-                obj.put("DURACION", responseJson.getValue().getContent().get(i).getDuracion());
-                obj.put("AÑO", responseJson.getValue().getContent().get(i).getAño());
-                obj.put("PRECIO", responseJson.getValue().getContent().get(i).getPrecio());
-                obj.put("ALQUILERES", responseJson.getValue().getContent().get(i).getVecesAlquilada());
-                jsonArrayPeliculas.put(obj);
-            }
-
-            //Creamos un String[] de columnas
-            String[] columnNames = {"TITULO", "DIRECTOR", "PRECIO", "ALQUILERES"};
-
-            //Creamos el modelo de tabla
-            modelPeliculas = new TablePeliculas(jsonArrayPeliculas, columnNames);
-            //Asignamos el modelo a la tabla
-            jTablePeliculas.setModel(modelPeliculas);
-            //Mostramos la tabla
-            //Añadimos color a la cabecera.
-            JTableHeader header = jTablePeliculas.getTableHeader();
-            header.setBackground(Color.CYAN);
-            //Ponemos los datos numericos en el lado derecho de la celda.
-            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-            renderer.setHorizontalAlignment(JLabel.CENTER);
-            jTablePeliculas.getColumnModel().getColumn(2).setCellRenderer(renderer);
-            jTablePeliculas.getColumnModel().getColumn(3).setCellRenderer(renderer);
-            //Asignamos el ancho de las columnas.
-            jTablePeliculas.getColumnModel().getColumn(0).setPreferredWidth(140);
-            jTablePeliculas.getColumnModel().getColumn(2).setPreferredWidth(25);
-            jTablePeliculas.getColumnModel().getColumn(3).setPreferredWidth(50);
-        }
-
-    }//GEN-LAST:event_jButtonSiguientePeliculasActionPerformed
-
-    private void jButtonSiguienteUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteUsuariosActionPerformed
-
-        /**
-         * Hago la consulta de tabla. Con la siguiente pagina. Leo los datos en el DTO para ello. Paso los datos a la tabla.
-         *
-         */
-        if (paginaUsuarios < paginasTotalesUsuarios - 1) {
-            paginaUsuarios++;
-            StringBuilder resultado = new StringBuilder();
-            try {
-                // Creamos la URL
-                // Es una url con tres parametros en modo query.
-
-                URL url = new URL(Constants.urlUsuariosPaginados
-                        + "?page=" + paginaUsuarios
-                        + "&pageSize=" + paginaSizeUsuarios
-                        + "&token=" + Constants.token);
-
-                // Creamos la conexion al servidor.
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                // Metodo GET
-                conn.setRequestMethod("GET");
-
-                // Abrimos un input Stream de datos del servidor
-                // y esperamos la respuesta del servidor.
-                BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                // Leemos la respuesta del servidor.
-                // y contruimos el string 'resultado'
-                String linea;
-                while ((linea = rd.readLine()) != null) {
-                    resultado.append(linea);
-                }
-                // Cerramos la conexion.
-                rd.close();
-            } catch (MalformedURLException ex) {
-                System.out.println(ex);
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
-            // Creamos una instancia de Gson para convertir nuestro String a JSON
-            Gson gson = new Gson();
-
-            // Pasamos la respuesta a un String.
-            String responseJsonString = resultado.toString();
-            //*************************************************
-            // El array de objetos JSON lo convertimos en un array de objetos DTO.
-            // Lo transformamos gracias al objeto DTO creado para ello.
-            ResponseUserListDTO responseJson = gson.fromJson(responseJsonString, ResponseUserListDTO.class);
-            //*************************************************
-
-            //Actualizo el label del contador de paginas.
-            jLabelPaginaUsuario.setText(String.valueOf(paginaUsuarios + 1) + " de " + paginasTotalesUsuarios);
-
-            //Creamos una lista de objetos JSON
-            jsonArrayUsuarios = new JSONArray();
-            for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-                JSONObject obj = new JSONObject();
-                obj.put("id", responseJson.getValue().getContent().get(i).getId());
-                obj.put("NOMBRE", responseJson.getValue().getContent().get(i).getNombre());
-                obj.put("APELLIDOS", responseJson.getValue().getContent().get(i).getApellidos());
-                obj.put("TELEFONO", responseJson.getValue().getContent().get(i).getTelefono());
-                obj.put("EMAIL", responseJson.getValue().getContent().get(i).getEmail());
-                obj.put("DIRECCION", responseJson.getValue().getContent().get(i).getDireccion());
-                obj.put("IsAdmin", responseJson.getValue().getContent().get(i).getIsAdmin());
-                jsonArrayUsuarios.put(obj);
-            }
-
-            //Actualizo la tabla.
-            //Creamos un String[] de columnas
-            String[] columnNames = {"NOMBRE", "APELLIDOS"};
-
-            //Creamos el modelo de tabla
-            modelUsuarios = new TableUsuarios(jsonArrayUsuarios, columnNames);
-            //Asignamos el modelo a la tabla
-            jTableUsuarios.setModel(modelUsuarios);
-            //Mostramos la lista
-            //Añadimos color a la cabecera.
-            JTableHeader headerUsuarios = jTableUsuarios.getTableHeader();
-            headerUsuarios.setBackground(Color.CYAN);
-        }
-    }//GEN-LAST:event_jButtonSiguienteUsuariosActionPerformed
-
-    private void jButtonAnteriorUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorUsuariosActionPerformed
-
-        /**
-         * Hago la consulta de tabla. Con la pagina anterior. Leo los datos en el DTO para ello. Paso los datos a la tabla.
-         *
-         */
-        if (paginaUsuarios > 0) {
-            paginaUsuarios--;
-            StringBuilder resultado = new StringBuilder();
-            try {
-                // Creamos la URL
-                // Es una url con tres parametros en modo query.
-
-                URL url = new URL(Constants.urlUsuariosPaginados
-                        + "?page=" + paginaUsuarios
-                        + "&pageSize=" + paginaSizeUsuarios
-                        + "&token=" + Constants.token);
-
-                // Creamos la conexion al servidor.
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                // Metodo GET
-                conn.setRequestMethod("GET");
-
-                // Abrimos un input Stream de datos del servidor
-                // y esperamos la respuesta del servidor.
-                BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                // Leemos la respuesta del servidor.
-                // y contruimos el string 'resultado'
-                String linea;
-                while ((linea = rd.readLine()) != null) {
-                    resultado.append(linea);
-                }
-                // Cerramos la conexion.
-                rd.close();
-            } catch (MalformedURLException ex) {
-                System.out.println(ex);
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
-            // Creamos una instancia de Gson para convertir nuestro String a JSON
-            Gson gson = new Gson();
-
-            // Pasamos la respuesta a un String.
-            String responseJsonString = resultado.toString();
-            //*************************************************
-            // El array de objetos JSON lo convertimos en un array de objetos DTO.
-            // Lo transformamos gracias al objeto DTO creado para ello.
-            ResponseUserListDTO responseJson = gson.fromJson(responseJsonString, ResponseUserListDTO.class);
-            //*************************************************
-
-            //Actualizo el label del contador de paginas.
-            jLabelPaginaUsuario.setText(String.valueOf(paginaUsuarios + 1) + " de " + paginasTotalesUsuarios);
-
-            //Creamos una lista de objetos JSON
-            jsonArrayUsuarios = new JSONArray();
-            for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-                JSONObject obj = new JSONObject();
-                obj.put("id", responseJson.getValue().getContent().get(i).getId());
-                obj.put("NOMBRE", responseJson.getValue().getContent().get(i).getNombre());
-                obj.put("APELLIDOS", responseJson.getValue().getContent().get(i).getApellidos());
-                obj.put("TELEFONO", responseJson.getValue().getContent().get(i).getTelefono());
-                obj.put("EMAIL", responseJson.getValue().getContent().get(i).getEmail());
-                obj.put("DIRECCION", responseJson.getValue().getContent().get(i).getDireccion());
-                obj.put("IsAdmin", responseJson.getValue().getContent().get(i).getIsAdmin());
-                jsonArrayUsuarios.put(obj);
-            }
-
-            //Actualizo la tabla.
-            //Creamos un String[] de columnas
-            String[] columnNames = {"NOMBRE", "APELLIDOS"};
-
-            //Creamos el modelo de tabla
-            modelUsuarios = new TableUsuarios(jsonArrayUsuarios, columnNames);
-            //Asignamos el modelo a la tabla
-            jTableUsuarios.setModel(modelUsuarios);
-            //Mostramos la lista
-            //Añadimos color a la cabecera.
-            JTableHeader headerUsuarios = jTableUsuarios.getTableHeader();
-            headerUsuarios.setBackground(Color.CYAN);
-        }
-    }//GEN-LAST:event_jButtonAnteriorUsuariosActionPerformed
-
-    private void jButtonAnteriorAlquileresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorAlquileresActionPerformed
-        /**
-         * Hago la consulta de tabla. Con la pagina anterior. Leo los datos en el DTO para ello. Paso los datos a la tabla.
-         *
-         */
-        if (paginaAlquileres > 0) {
-            paginaAlquileres--;
-            //Leemos la lista de alquileres.
-            StringBuilder resultadoAlquileres = new StringBuilder();
-            try {
-                // Creamos la URL
-                // Es una url con tres parametros en modo query.
-                URL url = new URL(Constants.urlPeliculasAlquileresPaginados
-                        + "?page=" + paginaAlquileres
-                        + "&pageSize=" + paginaSizeAlquileres
-                        + "&token=" + Constants.token);
-
-                // Creamos la conexion al servidor.
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                // Metodo GET
-                conn.setRequestMethod("GET");
-
-                // Abrimos un input Stream de datos del servidor
-                // y esperamos la respuesta del servidor.
-                BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                // Leemos la respuesta del servidor.
-                // y contruimos el string 'resultado'
-                String linea;
-                while ((linea = rd.readLine()) != null) {
-                    resultadoAlquileres.append(linea);
-                }
-                // Cerramos la conexion.
-                rd.close();
-            } catch (MalformedURLException ex) {
-                System.out.println(ex);
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
-            // Creamos una instancia de Gson para convertir nuestro String a JSON
-            Gson gson = new Gson();
-
-            // Pasamos la respuesta a un String.
-            String responseJsonString = resultadoAlquileres.toString();
-
-            // El array de objetos JSON lo convertimos en un array de objetos DTO.
-            // Lo transformamos gracias al objeto DTO creado para ello.
-            ResponseAlquilerListDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerListDTO.class);
-            //*************************************************
-
-            jLabelPaginaAlquileres.setText(String.valueOf(paginaAlquileres + 1) + " de " + paginasTotalesAlquileres);
-
-            //Creamos una lista de objetos JSON
-            jsonArrayAlquileres = new JSONArray();
-            for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-                objAlquiler = new JSONObject();
-                objAlquiler.put("idAlquiler", responseJson.getValue().getContent().get(i).getId());
-                objAlquiler.put("idPelicula", responseJson.getValue().getContent().get(i).getPelicula());
-                objAlquiler.put("idUsuario", responseJson.getValue().getContent().get(i).getUsuari());
-                objAlquiler.put("Fecha Inicio", responseJson.getValue().getContent().get(i).getFechaInicio());
-                objAlquiler.put("Fecha Fin", responseJson.getValue().getContent().get(i).getFechaFin());
-                objAlquiler.put("Precio", responseJson.getValue().getContent().get(i).getPrecio());
-                objAlquiler.put("Estado", responseJson.getValue().getContent().get(i).getEstado());
-                //Obtenemos el titulo de la pelicula.
-                idPelicula = responseJson.getValue().getContent().get(i).getPelicula();
-                tituloPelicula = tituloPelicula(idPelicula);
-                objAlquiler.put("Titulo Pelicula", tituloPelicula);
-                //Obtenemos el nombre del usuario.
-                idUsuario = responseJson.getValue().getContent().get(i).getUsuari();
-                nombreUser = nombreUsuario(idUsuario);
-                objAlquiler.put("Nombre Usuario", nombreUser);
-
-                jsonArrayAlquileres.put(objAlquiler);
-            }
-
-            //Creamos un String[] de columnas
-            String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Fin", "Estado"};
-
-            //Creamos el modelo de tabla
-            modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
-            //Asignamos el modelo a la tabla
-            jTableAlquileres.setModel(modelAlquileres);
-            //Mostramos la tabla
-            //Añadimos color a la cabecera.
-            JTableHeader header = jTableAlquileres.getTableHeader();
-            header.setBackground(Color.CYAN);
-
-            //Ponemos los datos numericos en el lado derecho de la celda.
-            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-            renderer.setHorizontalAlignment(JLabel.CENTER);
-            jTableAlquileres.getColumnModel().getColumn(1).setCellRenderer(renderer);
-            jTableAlquileres.getColumnModel().getColumn(2).setCellRenderer(renderer);
-            jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
-            //Asignamos el ancho de la columna id.
-            jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(200);
-        }
-    }//GEN-LAST:event_jButtonAnteriorAlquileresActionPerformed
-
-    private void jButtonSiguienteAlquileresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteAlquileresActionPerformed
-        /**
-         * Hago la consulta de tabla. Con la pagina siguiente. Leo los datos en el DTO para ello. Paso los datos a la tabla.
-         *
-         */
-        if (paginaAlquileres < paginasTotalesAlquileres - 1) {
-            paginaAlquileres++;
-            //Leemos la lista de alquileres.
-            StringBuilder resultadoAlquileres = new StringBuilder();
-            try {
-                // Creamos la URL
-                // Es una url con tres parametros en modo query.
-                URL url = new URL(Constants.urlPeliculasAlquileresPaginados
-                        + "?page=" + paginaAlquileres
-                        + "&pageSize=" + paginaSizeAlquileres
-                        + "&token=" + Constants.token);
-
-                // Creamos la conexion al servidor.
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                // Metodo GET
-                conn.setRequestMethod("GET");
-
-                // Abrimos un input Stream de datos del servidor
-                // y esperamos la respuesta del servidor.
-                BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                // Leemos la respuesta del servidor.
-                // y contruimos el string 'resultado'
-                String linea;
-                while ((linea = rd.readLine()) != null) {
-                    resultadoAlquileres.append(linea);
-                }
-                // Cerramos la conexion.
-                rd.close();
-            } catch (MalformedURLException ex) {
-                System.out.println(ex);
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
-            // Creamos una instancia de Gson para convertir nuestro String a JSON
-            Gson gson = new Gson();
-
-            // Pasamos la respuesta a un String.
-            String responseJsonString = resultadoAlquileres.toString();
-
-            // El array de objetos JSON lo convertimos en un array de objetos DTO.
-            // Lo transformamos gracias al objeto DTO creado para ello.
-            ResponseAlquilerListDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerListDTO.class);
-            //*************************************************
-
-            jLabelPaginaAlquileres.setText(String.valueOf(paginaAlquileres + 1) + " de " + paginasTotalesAlquileres);
-
-            //Creamos una lista de objetos JSON
-            jsonArrayAlquileres = new JSONArray();
-            for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-                objAlquiler = new JSONObject();
-                objAlquiler.put("idAlquiler", responseJson.getValue().getContent().get(i).getId());
-                objAlquiler.put("idPelicula", responseJson.getValue().getContent().get(i).getPelicula());
-                objAlquiler.put("idUsuario", responseJson.getValue().getContent().get(i).getUsuari());
-                objAlquiler.put("Fecha Inicio", responseJson.getValue().getContent().get(i).getFechaInicio());
-                objAlquiler.put("Fecha Fin", responseJson.getValue().getContent().get(i).getFechaFin());
-                objAlquiler.put("Precio", responseJson.getValue().getContent().get(i).getPrecio());
-                objAlquiler.put("Estado", responseJson.getValue().getContent().get(i).getEstado());
-
-                //Obtenemos el titulo de la pelicula.
-                idPelicula = responseJson.getValue().getContent().get(i).getPelicula();
-                tituloPelicula = tituloPelicula(idPelicula);
-                objAlquiler.put("Titulo Pelicula", tituloPelicula);
-
-                //Obtenemos el nombre del usuario.
-                idUsuario = responseJson.getValue().getContent().get(i).getUsuari();
-                nombreUser = nombreUsuario(idUsuario);
-                objAlquiler.put("Nombre Usuario", nombreUser);
-
-                jsonArrayAlquileres.put(objAlquiler);
-            }
-
-            //Creamos un String[] de columnas
-            String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Fin", "Estado"};
-
-            //Creamos el modelo de tabla
-            modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
-            //Asignamos el modelo a la tabla
-            jTableAlquileres.setModel(modelAlquileres);
-            //Mostramos la tabla
-            //Añadimos color a la cabecera.
-            JTableHeader header = jTableAlquileres.getTableHeader();
-            header.setBackground(Color.CYAN);
-
-            //Ponemos los datos numericos en el lado derecho de la celda.
-            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-            renderer.setHorizontalAlignment(JLabel.CENTER);
-            jTableAlquileres.getColumnModel().getColumn(1).setCellRenderer(renderer);
-            jTableAlquileres.getColumnModel().getColumn(2).setCellRenderer(renderer);
-            jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
-            //Asignamos el ancho de la columna id.
-            jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(200);
-        }
-    }//GEN-LAST:event_jButtonSiguienteAlquileresActionPerformed
-
-    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-
-        /**
-        * Metodo para mostrar la lista de alquileres filtrada por los parametros de búsqueda.
-        *
-        * Esta es la primera tabla de alquileres filtradas que se muestra. pagina 0 ( 1 en pantalla.)
-        *
-        * @Author Carlos.
-        */
-        //cerramos los paneles que hubieran estado abiertos.
-        jPanelCambioEstatus.setVisible(false);
-        jPanelPeliculasUsuarios.setVisible(false);
-        jPanelAlquileres.setVisible(false);  
-        jPanelFiltros.setVisible(false);
-        
-        //Variables de la url.
-        String peliculaId;
-        String usuariId;
-        String fechaInicio, fechaFin, precio;
-
-        // Leemos los campos seleccionados
-        // y creamos la cadena de parametros.
-        if (!jTextFieldPeliculaId.getText().isEmpty()) {
-            peliculaId = jTextFieldPeliculaId.getText();
-            parametros = "&peliculaId=" + peliculaId;
-
-        } else if (!jTextFieldUsuariId.getText().isEmpty()) {
-            usuariId = jTextFieldUsuariId.getText();
-            parametros = "&usuariId=" + usuariId;
-
-        } else if (!jTextFieldFechaInicio.getText().isEmpty()) {
-            fechaInicio = jTextFieldFechaInicio.getText();
-            parametros = "&fechaInicio=" + fechaInicio;
-        
-        }else if (!jTextFieldFechaFin.getText().isEmpty()) {
-            fechaFin = jTextFieldFechaFin.getText();
-            parametros = "&fechaFin=" + fechaFin;
-            
-        }else if (!jTextFieldPrecio.getText().isEmpty()) {
-            precio = jTextFieldPrecio.getText();
-            parametros = "&precio=" + precio;  
-            
-        } else {
-            // Mostramos mensaje emergente de informacion.
-            JOptionPane.showMessageDialog(this,
-                "No has introducido datos para realizar la búsqueda.",
-                "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-            VentanaGestionAlquilerPeliculas ventanaGestionAlquilerPeliculas = new VentanaGestionAlquilerPeliculas();
-            ventanaGestionAlquilerPeliculas.setVisible(true);
-            this.dispose();
-        }
-
-        //Leemos el orden que hemos seleccionado...
-        String orden = (String) jComboBoxFiltros.getSelectedItem();
-
-        //Asignamos el string parametro del orden.
-        orden = switch (orden) {
-            case "peliculaIdAsc" ->
-                "&orden=peliculaIdAsc";
-            case "peliculaIdDesc" ->
-                "&orden=peliculaIdDesc";
-            case "usuariIdAsc" ->
-                "&orden=usuariIdAsc";
-            case "usuariIdDesc" ->
-                "&orden=usuariDesc";
-            case "FechaInicioAsc" ->
-                "&orden=FechaInicioAsc";
-            case "FechaInicioDesc" ->
-                "&orden=FechaInicioDesc";
-            case "FechaFinAsc" ->
-                "&orden=FechaFinAsc";
-            case "FechaFinDesc" ->
-                "&orden=FechaFinDesc";
-            case "precioAsc" ->
-                "&orden=precioAsc";
-            case "precioDesc" ->
-                "&orden=precioDesc";
-            default ->
-                "";
-        };
-        
-        //Terminamos de crear el string parametros de la url.
-        parametros = parametros + orden;
-
-        //Tabla alquileres filtrados.
-        jPanelAlquileresFiltrados.setVisible(true);
-
-        // Creamos la URL
-        // Es una url con cuatro parametros en modo PATH.
-        StringBuilder resultado = new StringBuilder();
-        try {
-
-            URL url = new URL(Constants.urlPeliculasAlquileresPaginados
-                + "?page=" + paginaFiltro
-                + "&pageSize=" + paginaSizeFiltro
-                + "&token=" + Constants.token
-                + parametros);
-
-            // Creamos la conexion al servidor.
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            // Metodo GET
-            conn.setRequestMethod("GET");
-
-            // Abrimos un input Stream de datos del servidor
-            // y esperamos la respuesta del servidor.
-            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            // Leemos la respuesta del servidor.
-            // y contruimos el string 'resultado'
-            String linea;
-            while ((linea = rd.readLine()) != null) {
-                resultado.append(linea);
-            }
-            // Cerramos la conexion.
-            rd.close();
-        } catch (MalformedURLException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
-        // Creamos una instancia de Gson para convertir nuestro String a JSON
-        Gson gson = new Gson();
-
-        // Pasamos la respuesta a un String.
-        String responseJsonString = resultado.toString();
-
-        //*************************************************
-        // El array de objetos JSON lo convertimos en un array de objetos DTO.
-        // Lo transformamos gracias al objeto DTO creado para ello.
-        ResponsePeliculaListDTO responseJson = gson.fromJson(responseJsonString, ResponsePeliculaListDTO.class);
-        //*************************************************
-
-        paginasTotalesFiltro = responseJson.getValue().getTotalPages();
-        jLabelPaginaPeliculasFiltradas.setText(String.valueOf(paginaFiltro + 1) + " de " + paginasTotalesFiltro);
-
-        //Creamos una lista de objetos JSON
-        jsonArray = new JSONArray();
-        for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-            JSONObject obj = new JSONObject();
-            obj.put("id", responseJson.getValue().getContent().get(i).getId());
-            obj.put("TITULO", responseJson.getValue().getContent().get(i).getTitulo());
-            obj.put("DIRECTOR", responseJson.getValue().getContent().get(i).getDirector());
-            obj.put("GENERO", responseJson.getValue().getContent().get(i).getGenero());
-            obj.put("DURACION", responseJson.getValue().getContent().get(i).getDuracion());
-            obj.put("AÑO", responseJson.getValue().getContent().get(i).getAño());
-            obj.put("PRECIO", responseJson.getValue().getContent().get(i).getPrecio());
-            obj.put("ALQUILERES", responseJson.getValue().getContent().get(i).getVecesAlquilada());
-            jsonArray.put(obj);
-        }
-
-        //Creamos un String[] de columnas
-        String[] columnNames = {"TITULO", "DIRECTOR", "GENERO", "AÑO", "DURACION", "PRECIO", "ALQUILERES"};
-
-        //Creamos el modelo de tabla
-        model = new TablePeliculas(jsonArray, columnNames);
-        //Asignamos el modelo a la tabla
-        jTablePeliculasFiltradas.setModel(model);
-        //Mostramos la tabla
-        //Añadimos color a la cabecera.
-        JTableHeader header = jTablePeliculasFiltradas.getTableHeader();
-        header.setBackground(Color.CYAN);
-        //Ponemos los datos numericos en el centro de la celda.
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setHorizontalAlignment(JLabel.CENTER);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(3).setCellRenderer(renderer);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(5).setCellRenderer(renderer);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(6).setCellRenderer(renderer);
-        //Asignamos el ancho de las columnas.
-        jTablePeliculasFiltradas.getColumnModel().getColumn(0).setPreferredWidth(110);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(1).setPreferredWidth(55);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(2).setPreferredWidth(55);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(3).setPreferredWidth(10);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(4).setPreferredWidth(30);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(5).setPreferredWidth(15);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(6).setPreferredWidth(50);
-    }//GEN-LAST:event_jButtonFiltrarActionPerformed
-
-    private void buttonVolver2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolver2ActionPerformed
-        // Cerramos el panel de filtros.
-        // y volvemos a pantalla anterior..
-        VentanaGestionAlquilerPeliculas volver2 = new VentanaGestionAlquilerPeliculas();
-        volver2.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_buttonVolver2ActionPerformed
-
-    private void jButtonFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrosActionPerformed
-        /**
-         * Metodo para mostrar el panel de entrada de parametros para realizar la búsqueda de alquileres.
-         *
-         * @Author Carlos.
-         */
-        //cerramos los paneles que hubieran estado abiertos.
-        jPanelCambioEstatus.setVisible(false);
-        jPanelPeliculasUsuarios.setVisible(false);
-        jPanelAlquileres.setVisible(false);      
-        //Limpiamos las selecciones de las tablas.
-        jTableAlquileres.clearSelection();
-        jTablePeliculas.clearSelection();
-        jTableUsuarios.clearSelection();
-        
-        //Mostramos panel de seleccion de filtros.
-        jPanelFiltros.setVisible(true);
-
-        //Ponemos los campos en blanco.
-        jTextFieldPeliculaId.setText("");
-        jTextFieldUsuariId.setText("");
-        jTextFieldFechaInicio.setText("");
-        jTextFieldFechaFin.setText("");
-        
-    }//GEN-LAST:event_jButtonFiltrosActionPerformed
-
-    private void jButtonAnteriorAlquileresFiltradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorAlquileresFiltradosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAnteriorAlquileresFiltradosActionPerformed
-
-    private void jButtonSiguienteAlquileresFiltradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteAlquileresFiltradosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSiguienteAlquileresFiltradosActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alquilarPelicula;
     private javax.swing.JButton buttonModificarEstatus;
-    private javax.swing.JButton buttonVolver2;
     private javax.swing.JButton eliminarAlquilerPelicula;
-    private javax.swing.JButton jButtonAnteriorAlquileres;
-    private javax.swing.JButton jButtonAnteriorAlquileresFiltrados;
-    private javax.swing.JButton jButtonAnteriorPeliculas;
-    private javax.swing.JButton jButtonAnteriorUsuarios;
     private javax.swing.JButton jButtonCerrarSesion;
-    private javax.swing.JButton jButtonFiltrar;
-    private javax.swing.JButton jButtonFiltros;
-    private javax.swing.JButton jButtonSiguienteAlquileres;
-    private javax.swing.JButton jButtonSiguienteAlquileresFiltrados;
-    private javax.swing.JButton jButtonSiguientePeliculas;
-    private javax.swing.JButton jButtonSiguienteUsuarios;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JButton jButtonVolverAlquilerStatus;
     private javax.swing.JComboBox<String> jComboBoxEstatus;
-    private javax.swing.JComboBox<String> jComboBoxFiltros;
-    private javax.swing.JLabel jLabelAlquileres;
-    private javax.swing.JLabel jLabelAlquileres1;
-    private javax.swing.JLabel jLabelDescripcion;
-    private javax.swing.JLabel jLabelDescripcion2;
     private javax.swing.JLabel jLabelEstatus;
-    private javax.swing.JLabel jLabelFechaFin;
-    private javax.swing.JLabel jLabelFechaInicio;
-    private javax.swing.JLabel jLabelFiltrosDeBusqueda;
-    private javax.swing.JLabel jLabelOrden;
-    private javax.swing.JLabel jLabelPaginaAlquileres;
-    private javax.swing.JLabel jLabelPaginaAlquileresFiltrados;
-    private javax.swing.JLabel jLabelPaginaPeliculas;
-    private javax.swing.JLabel jLabelPaginaUsuario;
-    private javax.swing.JLabel jLabelPeliculaId;
     private javax.swing.JLabel jLabelPeliculas;
-    private javax.swing.JLabel jLabelPrecio;
     private javax.swing.JLabel jLabelStatusActual1;
     private javax.swing.JLabel jLabelStatusAlquiler;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JLabel jLabelUsuarios;
-    private javax.swing.JPanel jPanelAlquileres;
-    private javax.swing.JPanel jPanelAlquileresFiltrados;
     private javax.swing.JPanel jPanelCambioEstatus;
-    private javax.swing.JPanel jPanelFiltros;
     private javax.swing.JPanel jPanelGestionAlquilerPeliculas;
-    private javax.swing.JPanel jPanelPeliculasUsuarios;
     private javax.swing.JScrollPane jScrollPaneAlquileres;
-    private javax.swing.JScrollPane jScrollPaneAlquileresFiltrados;
     private javax.swing.JScrollPane jScrollPanePeliculas;
     private javax.swing.JScrollPane jScrollPaneUsuarios;
     private javax.swing.JTable jTableAlquileres;
-    private javax.swing.JTable jTableAlquileres1;
     private javax.swing.JTable jTablePeliculas;
     private javax.swing.JTable jTableUsuarios;
     private javax.swing.JLabel jTextEstatusActual;
-    private javax.swing.JTextField jTextFieldFechaFin;
-    private javax.swing.JTextField jTextFieldFechaInicio;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldPeliculaId;
-    private javax.swing.JTextField jTextFieldPrecio;
-    private javax.swing.JTextField jTextFieldUsuariId;
-    private javax.swing.JLabel jUsuariId;
     private javax.swing.JButton listaAlquileresPeliculas;
     private javax.swing.JButton listaPeliculasUsuarios;
     private javax.swing.JTextArea mensajeAlquilerPeliculas;
     private javax.swing.JButton modificarEstatusAlquiler;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
-
-    private String tituloPelicula(UUID idPelicula) {
-
-        /**
-         * Método para obtener los datos de una pelicula y retornar su titulo.
-         */
-        StringBuilder resultado = new StringBuilder();
-        try {
-            //Creamos la URL
-            URL url = new URL(Constants.urlPeliculaPorId
-                    + idPelicula + "?token=" + Constants.token);
-
-            //Creamos la conexion al servidor.
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //Metodo GET
-            conn.setRequestMethod("GET");
-
-            // Abrimos un input Stream de datos del servidor
-            // y esperamos la respuesta del servidor.
-            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            // Leemos la respuesta del servidor.
-            // y contruimos el string 'resultado'
-            String linea;
-            while ((linea = rd.readLine()) != null) {
-                resultado.append(linea);
-            }
-            // Cerramos la conexion.
-            rd.close();
-        } catch (MalformedURLException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
-
-        // Creamos una instancia de Gson para convertir nuestro String a JSON
-        Gson gson = new Gson();
-
-        // Pasamos la respuesta a un String.
-        String responseJsonString = resultado.toString();
-
-        // El string es un json que lo convertimos en un objeto de java
-        // Lo transformamos gracias al objeto DTO creado para ello.
-        ResponsePeliculaDTO responseJson = gson.fromJson(responseJsonString, ResponsePeliculaDTO.class);
-
-        tituloPelicula = responseJson.getValue().getTitulo();
-        return tituloPelicula;
-
-    }
-
-    private String nombreUsuario(UUID idUsuario) {
-
-        /**
-         * Método para obtener los datos de un usuario y retornar su nombre.
-         */
-        StringBuilder resultado = new StringBuilder();
-        try {
-            //Creamos la URL
-            URL url = new URL(Constants.urlUsuariosPorId
-                    + idUsuario + "?token=" + Constants.token);
-
-            //Creamos la conexion al servidor.
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //Metodo GET
-            conn.setRequestMethod("GET");
-
-            // Abrimos un input Stream de datos del servidor
-            // y esperamos la respuesta del servidor.
-            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            // Leemos la respuesta del servidor.
-            // y contruimos el string 'resultado'
-            String linea;
-            while ((linea = rd.readLine()) != null) {
-                resultado.append(linea);
-            }
-            // Cerramos la conexion.
-            rd.close();
-        } catch (MalformedURLException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
-
-        // Creamos una instancia de Gson para convertir nuestro String a JSON
-        Gson gson = new Gson();
-
-        // Pasamos la respuesta a un String.
-        String responseJsonString = resultado.toString();
-
-        // El string es un json que lo convertimos en un objeto de java
-        // Lo transformamos gracias al objeto DTO creado para ello.
-        ResponseUserDTO responseJson = gson.fromJson(responseJsonString, ResponseUserDTO.class);
-
-        nombreUser = responseJson.getValue().getNombre();
-        return nombreUser;
-
-    }
 
 }

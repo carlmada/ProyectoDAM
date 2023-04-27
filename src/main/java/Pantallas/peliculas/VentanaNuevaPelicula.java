@@ -21,7 +21,6 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
 
     /**
      * Constructor de un nuevo formulario Ventana NUEVA PELICULA.
-     *
      * @Author Carlos.
      */
     public VentanaNuevaPelicula() {
@@ -30,8 +29,8 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
-     *
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
      * @Author Carlos.
      */
     @SuppressWarnings("unchecked")
@@ -254,7 +253,6 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton REGISTRAR PELICULA del formulario.
      *
      * Operacion de registro de una nueva pelicula en la aplicacion.
-     *
      * @Author Carlos.
      *
      */
@@ -334,7 +332,6 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
         /**
          *
          * Método para volver a la pantalla anterior.
-         *
          * @Author Carlos.
          */
 

@@ -21,7 +21,6 @@ public class PeliculaListDTO {
     private int duracion;
     private int año;
     private int precio;
-    private int vecesAlquilada;
 
     //Getters-Setters.
     public UUID getId() {
@@ -78,14 +77,6 @@ public class PeliculaListDTO {
 
     public void setPrecio(int precio) {
         this.precio = precio;
-    }
-
-    public int getVecesAlquilada() {
-        return vecesAlquilada;
-    }
-
-    public void setVecesAlquilada(int vecesAlquilada) {
-        this.vecesAlquilada = vecesAlquilada;
     }
 
 }

@@ -12,7 +12,7 @@ public class ResponseAlquilerListDTO {
 
     // Atributos.
     private String message;
-    private ValueAlquiler value;
+    private List<AlquilerListDTO> value;
 
     //Getters-Setters
     public String getMessage() {
@@ -23,11 +23,11 @@ public class ResponseAlquilerListDTO {
         this.message = message;
     }
 
-    public ValueAlquiler getValue() {
+    public List<AlquilerListDTO> getValue() {
         return value;
     }
 
-    public void setValue(ValueAlquiler value) {
+    public void setValue(List<AlquilerListDTO> value) {
         this.value = value;
     }
 

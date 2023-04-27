@@ -34,14 +34,12 @@ public class VentanaAdmin extends javax.swing.JFrame {
      * Constructor de un nuevo formulario Ventana Administrador.
      *
      * Se crea una peticion al servidor para mostrar el nombre del usuario.
-     *
      * @Author Carlos.
      */
     public VentanaAdmin() {
         initComponents();
         setLocationRelativeTo(null);
         panelContraseña.setVisible(false);
-        jPanelRanking.setVisible(false);
 
         //***********************************************
         StringBuilder resultado = new StringBuilder();
@@ -87,8 +85,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que llama el constructor para inicializar el formulario. Este metodo se regenera automaticamente por el Editor de formularios.
-     *
+     * Metodo que llama el constructor para inicializar el formulario. 
+     * Este metodo se regenera automaticamente por el Editor de formularios.
      * @Author Carlos.
      */
     @SuppressWarnings("unchecked")
@@ -114,8 +112,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
         jPassword2 = new javax.swing.JPasswordField();
         buttonModificarContraseña = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
-        jPanelRanking = new javax.swing.JPanel();
-        jLabelRanking = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADMINISTRADOR");
@@ -279,27 +275,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
-        jLabelRanking.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
-        jLabelRanking.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelRanking.setText("Ranking de peliculas");
-
-        javax.swing.GroupLayout jPanelRankingLayout = new javax.swing.GroupLayout(jPanelRanking);
-        jPanelRanking.setLayout(jPanelRankingLayout);
-        jPanelRankingLayout.setHorizontalGroup(
-            jPanelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelRankingLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabelRanking, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
-        );
-        jPanelRankingLayout.setVerticalGroup(
-            jPanelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelRankingLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabelRanking)
-                .addContainerGap(223, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jPanelAdminLayout = new javax.swing.GroupLayout(jPanelAdmin);
         jPanelAdmin.setLayout(jPanelAdminLayout);
         jPanelAdminLayout.setHorizontalGroup(
@@ -323,16 +298,11 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addComponent(jLabelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
             .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelAdminLayout.createSequentialGroup()
                     .addGap(284, 284, 284)
                     .addComponent(panelContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(109, Short.MAX_VALUE)))
-            .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAdminLayout.createSequentialGroup()
-                    .addContainerGap(262, Short.MAX_VALUE)
-                    .addComponent(jPanelRanking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(109, Short.MAX_VALUE)))
         );
         jPanelAdminLayout.setVerticalGroup(
@@ -355,18 +325,13 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addComponent(rankingPeliculas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cambioDeContraseña)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion)
                 .addContainerGap())
             .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelAdminLayout.createSequentialGroup()
                     .addGap(86, 86, 86)
                     .addComponent(panelContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(49, Short.MAX_VALUE)))
-            .addGroup(jPanelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAdminLayout.createSequentialGroup()
-                    .addContainerGap(82, Short.MAX_VALUE)
-                    .addComponent(jPanelRanking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(49, Short.MAX_VALUE)))
         );
 
@@ -389,7 +354,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
      * Metodo que se ejecuta al clicar en el boton CERRAR SESION del formulario.
      *
      * Operacion de logout del servidor.
-     *
      * @Author Carlos.
      *
      */
@@ -443,10 +407,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void gestionAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionAlquilerActionPerformed
         /**
          * Metodo para abrir la ventana de gestion de alquileres.
-         *
          * @Author Carlos.
          */
-
+        
         VentanaGestionAlquilerPeliculas alquiler = new VentanaGestionAlquilerPeliculas();
         alquiler.setVisible(true);
         this.dispose();
@@ -455,10 +418,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void gestionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuariosActionPerformed
         /**
          * Metodo para abrir la ventana de gestion de usuarios.
-         *
          * @Author Carlos.
          */
-
+        
         VentanaGestionUsuarios gestionUsuarios = new VentanaGestionUsuarios();
         gestionUsuarios.setVisible(true);
         this.dispose();
@@ -467,10 +429,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void gestionPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionPeliculasActionPerformed
         /**
          * Metodo para abrir la ventana de gestion de peliculas.
-         *
          * @Author Carlos.
          */
-
         VentanaGestionPeliculas gestionPeliculas = new VentanaGestionPeliculas();
         gestionPeliculas.setVisible(true);
         this.dispose();
@@ -479,10 +439,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void cambioDeContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambioDeContraseñaActionPerformed
         /**
          * Metodo para abrir el panel de cambio de contraseña.
-         *
          * @Author Carlos.
          */
-        jPanelRanking.setVisible(false);
+                
         panelContraseña.setVisible(true);
 
     }//GEN-LAST:event_cambioDeContraseñaActionPerformed
@@ -491,9 +450,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         /**
          * Metodo para abrir la ventana de modificacion de contraseña.
-         *
          * @Author Carlos.
          */
+        
         // Leemos los campos password introducidos.
         // Comprobamos que los password sean iguales...
         char[] password = jPassword.getPassword();
@@ -575,7 +534,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         /**
          *
          * Método para volver a la pantalla anterior.
-         *
+         * 
          * @Author Carlos.
          */
 
@@ -595,10 +554,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelConfirmPassword;
     private javax.swing.JLabel jLabelPassword;
-    private javax.swing.JLabel jLabelRanking;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelAdmin;
-    private javax.swing.JPanel jPanelRanking;
     private javax.swing.JPasswordField jPassword;
     private javax.swing.JPasswordField jPassword2;
     private javax.swing.JTextField jTextFieldNombre;
