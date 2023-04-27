@@ -1,7 +1,5 @@
 package Modelos.DTOS.peliculas.DTO;
 
-import java.util.List;
-
 /**
  *
  * Clase que formata los datos de respuesta del servidor a la peticion de la lista de peliculas .
@@ -12,7 +10,7 @@ public class ResponsePeliculaListDTO {
 
     // Atributos.
     private String message;
-    private List<PeliculaListDTO> value;
+    private ValuePelicula value;
 
     //Getters-Setters
     public String getMessage() {
@@ -23,11 +21,11 @@ public class ResponsePeliculaListDTO {
         this.message = message;
     }
 
-    public List<PeliculaListDTO> getValue() {
+    public ValuePelicula getValue() {
         return value;
     }
 
-    public void setValue(List<PeliculaListDTO> value) {
+    public void setValue(ValuePelicula value) {
         this.value = value;
     }
 

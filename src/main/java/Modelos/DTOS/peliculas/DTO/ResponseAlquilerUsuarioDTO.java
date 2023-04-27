@@ -4,19 +4,17 @@ import java.util.List;
 
 /**
  *
- * Clase que formata los datos de respuesta del servidor
- * a la peticion de la lista de alquileres del usuario
- * .
+ * Clase que formata los datos de respuesta del servidor a la peticion de la lista de alquileres del usuario .
+ *
  * @author Carlos
  */
 public class ResponseAlquilerUsuarioDTO {
-    
+
     // Atributos.
     private String message;
     private List<AlquilerUsuarioDTO> value;
 
     //Getters-Setters
-
     public String getMessage() {
         return message;
     }
@@ -32,5 +30,5 @@ public class ResponseAlquilerUsuarioDTO {
     public void setValue(List<AlquilerUsuarioDTO> value) {
         this.value = value;
     }
-    
+
 }
