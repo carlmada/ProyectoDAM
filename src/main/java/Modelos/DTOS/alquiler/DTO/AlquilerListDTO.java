@@ -19,7 +19,7 @@ public class AlquilerListDTO {
     private UUID usuari;
     private String fechaInicio;
     private String fechaFin;
-    private double precio;
+    private int precio;
     private String estado;
 
     //Getters-Setters.
@@ -63,11 +63,11 @@ public class AlquilerListDTO {
         this.fechaFin = fechaFin;
     }
 
-    public double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 

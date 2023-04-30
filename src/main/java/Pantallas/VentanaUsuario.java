@@ -47,7 +47,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     UUID idUsuario, idPelicula;
     int pagina = 0, paginaSize = 10, paginasTotales;
     int paginaFiltro = 0, paginaSizeFiltro = 10, paginasTotalesFiltro;
-    String parametros = null;
+    String parametros = "";
 
     /**
      * Constructor de un nuevo formulario Ventana USUARIO. Se crea una peticion al servidor para mostrar el nombre del usuario.
@@ -155,10 +155,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabelDirector = new javax.swing.JLabel();
         jLabelGenero = new javax.swing.JLabel();
         jLabelAño = new javax.swing.JLabel();
+        jLabelVecesAlquilada = new javax.swing.JLabel();
         jLabelOrden = new javax.swing.JLabel();
         jTextFieldDirector = new javax.swing.JTextField();
         jTextFieldGenero = new javax.swing.JTextField();
         jTextFieldAño = new javax.swing.JTextField();
+        jTextFieldVecesAlquilada = new javax.swing.JTextField();
         jComboBoxFiltros = new javax.swing.JComboBox<>();
         jButtonFiltrar = new javax.swing.JButton();
         jLabelDescripcion2 = new javax.swing.JLabel();
@@ -488,6 +490,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabelAño.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabelAño.setText("Año :");
 
+        jLabelVecesAlquilada.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelVecesAlquilada.setText("Veces Alquilada :");
+
         jLabelOrden.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabelOrden.setText("Orden :");
 
@@ -505,6 +510,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jTextFieldAño.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jTextFieldAño.setToolTipText("");
         jTextFieldAño.setBorder(null);
+
+        jTextFieldVecesAlquilada.setBackground(java.awt.SystemColor.control);
+        jTextFieldVecesAlquilada.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jTextFieldVecesAlquilada.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextFieldVecesAlquilada.setBorder(null);
 
         jComboBoxFiltros.setBackground(javax.swing.UIManager.getDefaults().getColor("control"));
         jComboBoxFiltros.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
@@ -566,7 +576,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
                                             .addComponent(jTextFieldAño)
                                             .addComponent(jComboBoxFiltros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextFieldGenero)
-                                            .addComponent(jTextFieldDirector))))
+                                            .addComponent(jTextFieldDirector)))
+                                    .addGroup(jPanelFiltrosLayout.createSequentialGroup()
+                                        .addComponent(jLabelVecesAlquilada, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldVecesAlquilada, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelDescripcion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -595,13 +609,17 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     .addComponent(jTextFieldAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelVecesAlquilada)
+                    .addComponent(jTextFieldVecesAlquilada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelOrden)
                     .addComponent(jComboBoxFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonFiltrar)
                     .addComponent(buttonInicio1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanelPeliculasFiltradas.setBackground(new java.awt.Color(255, 255, 255));
@@ -699,7 +717,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                             .addComponent(listaAlquileresUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                             .addComponent(listaPeliculas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cambioDeContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addComponent(panelContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
@@ -708,7 +726,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
                     .addContainerGap(197, Short.MAX_VALUE)
@@ -1538,22 +1556,30 @@ public class VentanaUsuario extends javax.swing.JFrame {
         String director;
         String genero;
         String año;
-
+        String vecesAlquilada;
+        parametros ="";
+        
         // Leemos los campos seleccionados
         // y creamos la cadena de parametros.
         if (!jTextFieldDirector.getText().isEmpty()) {
             director = jTextFieldDirector.getText().replace(" ", "%20");
-            parametros = "&director=" + director;
+            parametros = parametros + "&director=" + director;
+        }
 
-        } else if (!jTextFieldGenero.getText().isEmpty()) {
+        if (!jTextFieldGenero.getText().isEmpty()) {
             genero = jTextFieldGenero.getText().replace(" ", "%20");
-            parametros = "&genero=" + genero;
-
-        } else if (!jTextFieldAño.getText().isEmpty()) {
+            parametros = parametros + "&genero=" + genero;
+        }
+        if (!jTextFieldAño.getText().isEmpty()) {
             año = jTextFieldAño.getText();
-            parametros = "&año=" + año;
+            parametros = parametros + "&ano=" + año;
+        }
+        if (!jTextFieldVecesAlquilada.getText().isEmpty()) {
+            vecesAlquilada = jTextFieldVecesAlquilada.getText();
+            parametros = parametros + "&vecesAlquilada=" + vecesAlquilada;
+        }
 
-        } else {
+        if ("".equals(parametros)) {
             // Mostramos mensaje emergente de informacion.
             JOptionPane.showMessageDialog(this,
                     "No has introducido datos para realizar la búsqueda.",
@@ -1593,7 +1619,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     + "&pageSize=" + paginaSizeFiltro
                     + "&token=" + Constants.token
                     + parametros);
-
+            
             // Creamos la conexion al servidor.
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // Metodo GET
@@ -1912,6 +1938,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPaginaPeliculasFiltradas;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JLabel jLabelVecesAlquilada;
     private javax.swing.JPanel jPanelAlquileres;
     private javax.swing.JPanel jPanelFiltros;
     private javax.swing.JPanel jPanelPeliculas;
@@ -1929,6 +1956,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldDirector;
     private javax.swing.JTextField jTextFieldGenero;
     private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldVecesAlquilada;
     private javax.swing.JButton listaAlquileresUsuario;
     private javax.swing.JButton listaPeliculas;
     private javax.swing.JTextArea mensajeBienvenida;

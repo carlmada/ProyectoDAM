@@ -41,7 +41,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
     JSONArray jsonArray;
     int pagina = 0, paginaSize = 10, paginasTotales;
     int paginaFiltro = 0, paginaSizeFiltro = 10, paginasTotalesFiltro;
-    String parametros = null;
+    String parametros = "";
 
     /**
      * Constructor de un nuevo formulario Ventana de gestion de los usuarios.
@@ -275,7 +275,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
 
         jLabelDescripcion.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
         jLabelDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDescripcion.setText("Puedes filtrar la búsqueda rellenando uno de los campos.");
+        jLabelDescripcion.setText("Puedes filtrar la búsqueda rellenando los campos.");
 
         jLabelDescripcion2.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
         jLabelDescripcion2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1167,22 +1167,26 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         String nombre;
         String apellidos;
         String username;
-
+        parametros="";
+        
         // Leemos los campos seleccionados
         // y creamos la cadena de parametros.
         if (!jTextFieldNombre.getText().isEmpty()) {
             nombre = jTextFieldNombre.getText().replace(" ", "%20");
-            parametros = "&nombre=" + nombre;
+            parametros = parametros + "&nombre=" + nombre;
+        }
 
-        } else if (!jTextFieldApellidos.getText().isEmpty()) {
+        if (!jTextFieldApellidos.getText().isEmpty()) {
             apellidos = jTextFieldApellidos.getText().replace(" ", "%20");
-            parametros = "&apellidos=" + apellidos;
+            parametros = parametros + "&apellidos=" + apellidos;
+        }
 
-        } else if (!jTextFieldUsername.getText().isEmpty()) {
+        if (!jTextFieldUsername.getText().isEmpty()) {
             username = jTextFieldUsername.getText();
-            parametros = "&username=" + username;
+            parametros = parametros + "&username=" + username;
+        }
 
-        } else {
+        if (parametros.equals("")) {
             // Mostramos mensaje emergente de informacion.
             JOptionPane.showMessageDialog(this,
                     "No has introducido datos para realizar la búsqueda.",

@@ -153,7 +153,7 @@
                           <Component id="modificarPelicula" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="99" max="32767" attributes="0"/>
+                  <EmptySpace pref="100" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonCerrarSesion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -570,7 +570,7 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="autoscrolls" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[30, 20]"/>
@@ -588,7 +588,7 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="autoscrolls" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[30, 20]"/>
@@ -606,7 +606,7 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="autoscrolls" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[30, 20]"/>
@@ -624,7 +624,7 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="autoscrolls" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[30, 20]"/>
@@ -642,7 +642,7 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="autoscrolls" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[30, 20]"/>
@@ -660,7 +660,7 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="autoscrolls" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[30, 20]"/>
@@ -779,6 +779,11 @@
                                                   <Component id="jTextFieldDirector" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabelVecesAlquilada" min="-2" pref="144" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jTextFieldVecesAlquilada" min="-2" pref="123" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -815,7 +820,12 @@
                           <Component id="jLabelAño1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldAño" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelVecesAlquilada" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldVecesAlquilada" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelOrden" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBoxFiltros" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -825,7 +835,7 @@
                           <Component id="jButtonFiltrar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="buttonInicio1" alignment="3" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="19" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -846,7 +856,7 @@
                   <Font name="Serif" size="16" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Puedes filtrar la b&#xfa;squeda rellenando uno de los campos."/>
+                <Property name="text" type="java.lang.String" value="Puedes filtrar la b&#xfa;squeda rellenando los campos."/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelDirector1">
@@ -871,6 +881,14 @@
                   <Font name="Serif" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="A&#xf1;o :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelVecesAlquilada">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Serif" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Veces Alquilada :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelOrden">
@@ -918,6 +936,20 @@
                   <Font name="Serif" size="14" style="1"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldVecesAlquilada">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" id="Control" palette="2" red="f0" type="palette"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Serif" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
