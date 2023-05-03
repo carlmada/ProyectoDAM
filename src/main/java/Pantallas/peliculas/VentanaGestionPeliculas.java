@@ -513,7 +513,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
 
         jComboBoxFiltros.setBackground(javax.swing.UIManager.getDefaults().getColor("control"));
         jComboBoxFiltros.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jComboBoxFiltros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin orden", "vecesAlquiladaAsc", "vecesAlquiladaDesc", "duracionAsc", "duracionDesc", "añoAsc", "añoDesc", " " }));
+        jComboBoxFiltros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin orden", "directorAsc", "directorDesc", "vecesAlquiladaAsc", "vecesAlquiladaDesc", "duracionAsc", "duracionDesc", "añoAsc", "añoDesc", " " }));
         jComboBoxFiltros.setBorder(null);
 
         jButtonFiltrar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
@@ -838,7 +838,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         //cerramos los paneles que hubieran estado abiertos.
         jPanelFiltros.setVisible(false);
         jPanelPeliculasFiltradas.setVisible(false);
-        
+
         //Mostramos la tabla de peliculas.
         jScrollPane.setVisible(true);
         jTable.setVisible(true);
@@ -1010,7 +1010,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         //Cerramos panel de filtros si estaba abierto.
         jPanelFiltros.setVisible(false);
         jPanelPeliculasFiltradas.setVisible(false);
-        
+
         //Obtenemos la fila seleccionada.
         posicion = jTable.getSelectedRow();
 
@@ -1094,7 +1094,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         //Cerramos panel de filtros si estaba abierto.
         jPanelFiltros.setVisible(false);
         jPanelPeliculasFiltradas.setVisible(false);
-        
+
         //Obtenemos la fila seleccionada.
         posicion = jTable.getSelectedRow();
 
@@ -1485,7 +1485,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         jButtonSiguiente.setVisible(false);
         jButtonFiltros.setVisible(false);
         jPanelFiltros.setVisible(false);
-        
+
         //Limpiamos la tabla de peliculas filtradas.
         jTablePeliculasFiltradas.clearSelection();
 
@@ -1494,8 +1494,8 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         String genero;
         String año;
         String vecesAlquilada;
-        parametros ="";
-        
+        parametros = "";
+
         // Leemos los campos seleccionados
         // y creamos la cadena de parametros.
         if (!jTextFieldDirector.getText().isEmpty()) {
@@ -1526,12 +1526,15 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             this.dispose();
         }
 
-        
         //Leemos el orden que hemos seleccionado...
         String orden = (String) jComboBoxFiltros.getSelectedItem();
 
         //Asignamos el string parametro del orden.
         orden = switch (orden) {
+            case "directorAsc" ->
+                "&orden=directorAsc";
+            case "directorDesc" ->
+                "&orden=directorDesc";
             case "vecesAlquiladaAsc" ->
                 "&orden=vecesAlquiladaAsc";
             case "vecesAlquiladaDesc" ->
@@ -1869,7 +1872,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         jButtonFiltros.setVisible(false);
         jScrollPane.setVisible(false);
         jTable.clearSelection();
-        
+
         //Mostramos panel de seleccion de filtros.
         jPanelFiltros.setVisible(true);
 

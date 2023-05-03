@@ -4,6 +4,31 @@ import Pantallas.usuarios.VentanaNuevoUsuario;
 import Modelos.DTOS.LoginUserDTO;
 import Modelos.DTOS.ResponseLoginDTO;
 import com.google.gson.Gson;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 import utils.Constants;
 import javax.swing.JOptionPane;
 import javax.ws.rs.client.Client;
@@ -177,13 +202,36 @@ public class VentanaLogin extends javax.swing.JFrame {
      *
      */
     private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
-        // TODO add your handling code here:
+
+        //Leemos los campos.
+        // **********************************************
+        // **********************************************
         user = textUsuario.getText();
         char[] password = textPassword.getPassword();
         pass = new String(password);
-
+        
+        SSLContext sslContext = null;
+        try {
+            HostnameVerifier allHostsValid = (hostname, session) -> true;
+            sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, new TrustManager[]{new X509TrustManager() {
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+                public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+                }
+                public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+                }
+            }}, new java.security.SecureRandom());
+        } catch (NoSuchAlgorithmException | KeyManagementException e) {
+            throw new RuntimeException(e);
+        }
+        ClientBuilder clientBuilder = ClientBuilder.newBuilder();
+        if(sslContext != null) {
+            clientBuilder.sslContext(sslContext);
+        }
         //Creamos el cliente de login
-        Client client = ClientBuilder.newClient();
+        Client client = clientBuilder.build();
         //Creamos el target (URL)
         WebTarget target = client.target(Constants.urlLogin);
         //Creamos la solicitud
@@ -196,10 +244,8 @@ public class VentanaLogin extends javax.swing.JFrame {
         //Creamos una instancia de Gson para convertir nuestro String a JSON
         Gson gson = new Gson();
         String jsonString = gson.toJson(loginUser);
-
         //Enviamos nuestro json via POST a la API
         Response post = solicitud.post(Entity.json(jsonString));
-
         //Recibimos la respuesta y la leemos en una clase String
         String responseJsonString = post.readEntity(String.class);
         //El string es un json que lo convertimos en un objeto de java
@@ -210,7 +256,6 @@ public class VentanaLogin extends javax.swing.JFrame {
                 System.out.println(responseJson.getMessage());
                 System.out.println("token: " + responseJson.getValue().getToken());
                 System.out.println("is admin: " + responseJson.getValue().isAdmin());
-
                 //Asignamos el token a la variable global.
                 Constants.token = responseJson.getValue().getToken();
                 // Comprobamos si es administrador o usuario
@@ -236,8 +281,10 @@ public class VentanaLogin extends javax.swing.JFrame {
                         "     Error de Login.\nVuelve a iniciar sesion.",
                         "INFORMACION", JOptionPane.ERROR_MESSAGE);
                 break;
-
         }
+        // ****************************************************
+        // ****************************************************
+
     }//GEN-LAST:event_buttonEntrarActionPerformed
 
     /**

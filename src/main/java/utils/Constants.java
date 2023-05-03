@@ -10,7 +10,7 @@ public class Constants {
 
     //Variables con las url del servidor donde realizaremos las peticiones.
     //URL General.
-    public static String url = "http://localhost:8080";
+    public static String url = "https://localhost:8080";
 
     //url de login - logout - registro.
     public static String urlLogin = url + "/login";

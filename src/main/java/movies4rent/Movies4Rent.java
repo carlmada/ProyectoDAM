@@ -17,7 +17,7 @@ public class Movies4Rent {
      * @param args
      */
     public static void main(String[] args) {
-
+       
         inicio.setVisible(true);
     }
 }

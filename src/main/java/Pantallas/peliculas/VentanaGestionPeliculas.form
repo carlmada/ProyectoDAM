@@ -964,15 +964,17 @@
                   <Font name="Serif" size="18" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="8">
+                  <StringArray count="10">
                     <StringItem index="0" value="Sin orden"/>
-                    <StringItem index="1" value="vecesAlquiladaAsc"/>
-                    <StringItem index="2" value="vecesAlquiladaDesc"/>
-                    <StringItem index="3" value="duracionAsc"/>
-                    <StringItem index="4" value="duracionDesc"/>
-                    <StringItem index="5" value="a&#xf1;oAsc"/>
-                    <StringItem index="6" value="a&#xf1;oDesc"/>
-                    <StringItem index="7" value=" "/>
+                    <StringItem index="1" value="directorAsc"/>
+                    <StringItem index="2" value="directorDesc"/>
+                    <StringItem index="3" value="vecesAlquiladaAsc"/>
+                    <StringItem index="4" value="vecesAlquiladaDesc"/>
+                    <StringItem index="5" value="duracionAsc"/>
+                    <StringItem index="6" value="duracionDesc"/>
+                    <StringItem index="7" value="a&#xf1;oAsc"/>
+                    <StringItem index="8" value="a&#xf1;oDesc"/>
+                    <StringItem index="9" value=" "/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

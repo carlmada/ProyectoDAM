@@ -518,7 +518,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
         jComboBoxFiltros.setBackground(javax.swing.UIManager.getDefaults().getColor("control"));
         jComboBoxFiltros.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jComboBoxFiltros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin orden", "vecesAlquiladaAsc", "vecesAlquiladaDesc", "duracionAsc", "duracionDesc", "añoAsc", "añoDesc", " " }));
+        jComboBoxFiltros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin orden", "directorAsc", "directorDesc", "vecesAlquiladaAsc", "vecesAlquiladaDesc", "duracionAsc", "duracionDesc", "añoAsc", "añoDesc", " " }));
         jComboBoxFiltros.setBorder(null);
 
         jButtonFiltrar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
@@ -1594,13 +1594,24 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
         //Asignamos el string parametro del orden.
         orden = switch (orden) {
-            case "vecesAlquiladaAsc" -> "&orden=vecesAlquiladaAsc";
-            case "vecesAlquiladaDesc" -> "&orden=vecesAlquiladaDesc";
-            case "duracionAsc" -> "&orden=duracionAsc";
-            case "duracionDesc" -> "&orden=duracionDesc";
-            case "añoAsc" -> "&orden=anoAsc";
-            case "añoDesc" -> "&orden=anoDesc";
-            default -> "";
+            case "directorAsc" ->
+                "&orden=directorAsc";
+            case "directorDesc" ->
+                "&orden=directorDesc";
+            case "vecesAlquiladaAsc" ->
+                "&orden=vecesAlquiladaAsc";
+            case "vecesAlquiladaDesc" ->
+                "&orden=vecesAlquiladaDesc";
+            case "duracionAsc" ->
+                "&orden=duracionAsc";
+            case "duracionDesc" ->
+                "&orden=duracionDesc";
+            case "añoAsc" ->
+                "&orden=anoAsc";
+            case "añoDesc" ->
+                "&orden=anoDesc";
+            default ->
+                "";
         };
 
         //Terminamos de crear el string parametros de la url.
