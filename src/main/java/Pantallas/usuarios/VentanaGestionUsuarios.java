@@ -457,21 +457,23 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 .addComponent(jLabelPaginaUsuariosFiltrados, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSiguienteUsuariosFiltrados)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(311, Short.MAX_VALUE))
             .addGroup(jPanelUsuariosFiltradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPaneUsuariosFiltrados, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
         );
         jPanelUsuariosFiltradosLayout.setVerticalGroup(
             jPanelUsuariosFiltradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuariosFiltradosLayout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
+                .addContainerGap(258, Short.MAX_VALUE)
                 .addGroup(jPanelUsuariosFiltradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonSiguienteUsuariosFiltrados)
                     .addComponent(jLabelPaginaUsuariosFiltrados, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAnteriorUsuariosFiltrados))
                 .addContainerGap())
             .addGroup(jPanelUsuariosFiltradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPaneUsuariosFiltrados, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+                .addGroup(jPanelUsuariosFiltradosLayout.createSequentialGroup()
+                    .addComponent(jScrollPaneUsuariosFiltrados, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 69, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanelGestionUsuariosLayout = new javax.swing.GroupLayout(jPanelGestionUsuarios);
@@ -571,7 +573,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 .addGroup(jPanelGestionUsuariosLayout.createSequentialGroup()
                     .addGap(81, 81, 81)
                     .addComponent(jPanelUsuariosFiltrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(191, Short.MAX_VALUE)))
+                    .addContainerGap(90, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1184,16 +1186,6 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         if (!jTextFieldUsername.getText().isEmpty()) {
             username = jTextFieldUsername.getText();
             parametros = parametros + "&username=" + username;
-        }
-
-        if (parametros.equals("")) {
-            // Mostramos mensaje emergente de informacion.
-            JOptionPane.showMessageDialog(this,
-                    "No has introducido datos para realizar la búsqueda.",
-                    "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-            VentanaGestionUsuarios ventanaGestionUsuarios = new VentanaGestionUsuarios();
-            ventanaGestionUsuarios.setVisible(true);
-            this.dispose();
         }
 
         //Leemos el orden que hemos seleccionado...

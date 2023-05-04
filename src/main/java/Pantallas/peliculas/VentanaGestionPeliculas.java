@@ -846,6 +846,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         jButtonAnterior.setVisible(true);
         jButtonSiguiente.setVisible(true);
         jButtonFiltros.setVisible(true);
+        
         /**
          * Esta es la primera tabla de peliculas que se muestra. pagina 0 ( 1 en pantalla.)
          *
@@ -1515,17 +1516,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             vecesAlquilada = jTextFieldVecesAlquilada.getText();
             parametros = parametros + "&vecesAlquilada=" + vecesAlquilada;
         }
-
-        if ("".equals(parametros)) {
-            // Mostramos mensaje emergente de informacion.
-            JOptionPane.showMessageDialog(this,
-                    "No has introducido datos para realizar la búsqueda.",
-                    "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-            VentanaGestionPeliculas ventanaGestionPeliculas = new VentanaGestionPeliculas();
-            ventanaGestionPeliculas.setVisible(true);
-            this.dispose();
-        }
-
+        
         //Leemos el orden que hemos seleccionado...
         String orden = (String) jComboBoxFiltros.getSelectedItem();
 

@@ -1,18 +1,18 @@
-package Modelos.DTOS.peliculas.DTO;
+package Modelos.DTOS.ranking.DTO;
 
 import java.util.UUID;
 
 /**
- * Clase que formata los datos de pelicula.
+ * Clase que formata los datos de ranking de peliculas.
  * 
  * @author Carlos
  */
-public class PeliculaDTO {
+public class RankingListDTO {
     
-    public PeliculaDTO() {
+    public RankingListDTO() {
     }
-
-    //Variables.
+    
+     //Variables.
     private UUID id;
     private String titulo;
     private String director;
@@ -20,8 +20,8 @@ public class PeliculaDTO {
     private int duracion;
     private int año;
     private int precio;
+    private int vecesAlquilada;
     
-
     //Getters-Setters.
     public UUID getId() {
         return id;
@@ -79,4 +79,13 @@ public class PeliculaDTO {
         this.precio = precio;
     }
 
+    public int getVecesAlquilada() {
+        return vecesAlquilada;
+    }
+
+    public void setVecesAlquilada(int vecesAlquilada) {
+        this.vecesAlquilada = vecesAlquilada;
+    }
+    
+    
 }

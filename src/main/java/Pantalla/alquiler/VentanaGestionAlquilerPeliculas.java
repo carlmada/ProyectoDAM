@@ -211,7 +211,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         mensajeAlquilerPeliculas.setColumns(20);
         mensajeAlquilerPeliculas.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         mensajeAlquilerPeliculas.setRows(2);
-        mensajeAlquilerPeliculas.setText("    ALQUILER DE PELICULAS");
+        mensajeAlquilerPeliculas.setText("    GESTION DE ALQUILERES");
         mensajeAlquilerPeliculas.setBorder(null);
         mensajeAlquilerPeliculas.setSelectionColor(new java.awt.Color(255, 255, 255));
 
@@ -917,7 +917,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
                     .addGroup(jPanelGestionAlquilerPeliculasLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanelPeliculasUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(jPanelGestionAlquilerPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCerrarSesion)
                     .addComponent(jButtonVolver))
@@ -2261,16 +2261,6 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             
         }
         
-        if(parametros.equals("")){
-            // Mostramos mensaje emergente de informacion.
-            JOptionPane.showMessageDialog(this,
-                "No has introducido datos para realizar la búsqueda.",
-                "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-            VentanaGestionAlquilerPeliculas ventanaGestionAlquilerPeliculas = new VentanaGestionAlquilerPeliculas();
-            ventanaGestionAlquilerPeliculas.setVisible(true);
-            this.dispose();
-        }
-
         //Leemos el orden que hemos seleccionado...
         String orden = (String) jComboBoxFiltros.getSelectedItem();
 

@@ -10,6 +10,7 @@ C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\usuarios\VentanaNu
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\utils\TableAlquileres.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\alquiler\DTO\ValueAlquiler.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\ResponseAlquilerPeliculaDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\ranking\DTO\RankingListDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\RegisterUserDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Tablas\TableAlquileres.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\CambioDePasswordDTO.java
@@ -18,6 +19,7 @@ C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\ResponseLogoutD
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\usuarios\VentanaGestionUsuarios.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\peliculas\VentanaGestionPeliculas.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\ValuePelicula.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Tablas\TableRanking.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\LoginUserDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\UpdateUserAdminDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\VentanaAdmin.java
@@ -42,6 +44,7 @@ C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\A
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\ResponseUpdateUserDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Tablas\TablePeliculas.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\ResponsePeliculaListDTO.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\ranking\DTO\ValueRanking.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\usuarios\DTO\ResponseUserListDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\PeliculaListDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\alquiler\DTO\AlquilerDTO.java
@@ -54,6 +57,7 @@ C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\usuarios\VentanaMo
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\utils\TableUsuarios.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\peliculas\DTO\ValueAlquiler.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\Usuarios.java
+C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\ranking\DTO\ResponseRankingListDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Tablas\TableUsuarios.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Modelos\DTOS\alquiler\DTO\ResponseAlquilerUsuarioDTO.java
 C:\Users\Carlos\Documents\ProyectoDAM\src\main\java\Pantallas\VentanaUsuario.java

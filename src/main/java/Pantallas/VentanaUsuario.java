@@ -127,10 +127,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabelUsuario = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         listaPeliculas = new javax.swing.JButton();
+        rankingPeliculas = new javax.swing.JButton();
+        listaAlquileresUsuario = new javax.swing.JButton();
+        alquilarPelicula = new javax.swing.JButton();
         modificarPerfil = new javax.swing.JButton();
         cambioDeContraseña = new javax.swing.JButton();
-        alquilarPelicula = new javax.swing.JButton();
-        listaAlquileresUsuario = new javax.swing.JButton();
         panelContraseña = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelPassword = new javax.swing.JLabel();
@@ -223,6 +224,33 @@ public class VentanaUsuario extends javax.swing.JFrame {
             }
         });
 
+        rankingPeliculas.setBackground(new java.awt.Color(0, 204, 255));
+        rankingPeliculas.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        rankingPeliculas.setText("Ranking de Películas");
+        rankingPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rankingPeliculasActionPerformed(evt);
+            }
+        });
+
+        listaAlquileresUsuario.setBackground(new java.awt.Color(0, 204, 255));
+        listaAlquileresUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        listaAlquileresUsuario.setText("Lista de Alquileres Usuario");
+        listaAlquileresUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaAlquileresUsuarioActionPerformed(evt);
+            }
+        });
+
+        alquilarPelicula.setBackground(new java.awt.Color(0, 204, 102));
+        alquilarPelicula.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        alquilarPelicula.setText("Alquilar Pelicula");
+        alquilarPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alquilarPeliculaActionPerformed(evt);
+            }
+        });
+
         modificarPerfil.setBackground(new java.awt.Color(255, 153, 51));
         modificarPerfil.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         modificarPerfil.setText("Modificar Perfil");
@@ -238,24 +266,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
         cambioDeContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cambioDeContraseñaActionPerformed(evt);
-            }
-        });
-
-        alquilarPelicula.setBackground(new java.awt.Color(0, 204, 102));
-        alquilarPelicula.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        alquilarPelicula.setText("Alquilar Pelicula");
-        alquilarPelicula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alquilarPeliculaActionPerformed(evt);
-            }
-        });
-
-        listaAlquileresUsuario.setBackground(new java.awt.Color(0, 204, 255));
-        listaAlquileresUsuario.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        listaAlquileresUsuario.setText("Lista de Alquileres Usuario");
-        listaAlquileresUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaAlquileresUsuarioActionPerformed(evt);
             }
         });
 
@@ -450,7 +460,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addComponent(jButtonSiguientePeliculas)
                 .addGap(51, 51, 51)
                 .addComponent(jButtonFiltros)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(jPanelPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPanePeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE))
         );
@@ -677,7 +687,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addComponent(jLabelPaginaPeliculasFiltradas, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSiguientePeliculasFiltradas)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
             .addGroup(jPanelPeliculasFiltradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPanePeliculasFiltradas, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE))
         );
@@ -716,8 +726,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
                             .addComponent(alquilarPelicula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(listaAlquileresUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                             .addComponent(listaPeliculas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cambioDeContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                            .addComponent(cambioDeContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rankingPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
@@ -726,7 +737,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     .addGroup(jPanelUsuarioLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
                     .addContainerGap(197, Short.MAX_VALUE)
@@ -767,6 +778,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
                         .addComponent(listaPeliculas)
                         .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                                .addGap(0, 216, Short.MAX_VALUE)
+                                .addComponent(jButtonCerrarSesion)
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanelUsuarioLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rankingPeliculas)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(listaAlquileresUsuario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -775,11 +792,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                                 .addComponent(modificarPerfil)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cambioDeContraseña)
-                                .addGap(0, 137, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
-                                .addGap(0, 218, Short.MAX_VALUE)
-                                .addComponent(jButtonCerrarSesion)
-                                .addGap(18, 18, 18))))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
                     .addContainerGap(104, Short.MAX_VALUE)
@@ -1579,16 +1592,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
             parametros = parametros + "&vecesAlquilada=" + vecesAlquilada;
         }
 
-        if ("".equals(parametros)) {
-            // Mostramos mensaje emergente de informacion.
-            JOptionPane.showMessageDialog(this,
-                    "No has introducido datos para realizar la búsqueda.",
-                    "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-            VentanaUsuario usuario = new VentanaUsuario();
-            usuario.setVisible(true);
-        }
-
         //Leemos el orden que hemos seleccionado...
         String orden = (String) jComboBoxFiltros.getSelectedItem();
 
@@ -1922,6 +1925,10 @@ public class VentanaUsuario extends javax.swing.JFrame {
         usuario.setVisible(true);
     }//GEN-LAST:event_buttonInicio1ActionPerformed
 
+    private void rankingPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingPeliculasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rankingPeliculasActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alquilarPelicula;
     private javax.swing.JButton buttonInicio;
@@ -1973,6 +1980,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private javax.swing.JTextArea mensajeBienvenida;
     private javax.swing.JButton modificarPerfil;
     private javax.swing.JPanel panelContraseña;
+    private javax.swing.JButton rankingPeliculas;
     private javax.swing.JLabel textLogo;
     // End of variables declaration//GEN-END:variables
 

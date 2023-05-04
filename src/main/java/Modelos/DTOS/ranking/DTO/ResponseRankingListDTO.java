@@ -1,15 +1,17 @@
-package Modelos.DTOS.peliculas.DTO;
+package Modelos.DTOS.ranking.DTO;
 
 /**
- * DTO de pelicula de respuesta del servidor.
+ * DTO de ranking de respuesta del servidor.
  * 
  * @author Carlos
  */
-public class ResponsePeliculaDTO {
-
+public class ResponseRankingListDTO {
+    
     // Atributos.
     private String message;
-    private PeliculaDTO value;
+    private ValueRanking value;
+    
+    //Getters-Setters
 
     public String getMessage() {
         return message;
@@ -19,12 +21,13 @@ public class ResponsePeliculaDTO {
         this.message = message;
     }
 
-    public PeliculaDTO getValue() {
+    public ValueRanking getValue() {
         return value;
     }
 
-    public void setValue(PeliculaDTO value) {
+    public void setValue(ValueRanking value) {
         this.value = value;
     }
-
+    
+    
 }

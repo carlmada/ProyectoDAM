@@ -21,6 +21,7 @@ Pantallas\peliculas\VentanaGestionPeliculas$10.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$4.class
 Modelos\DTOS\CambioDePasswordDTO.class
 Pantallas\VentanaAdmin$7.class
+Pantallas\VentanaUsuario$16.class
 Pantallas\peliculas\VentanaGestionPeliculas$3.class
 Modelos\DTOS\ResponseLogoutDTO.class
 Pantallas\VentanaUsuario$9.class
@@ -57,6 +58,7 @@ Modelos\DTOS\alquiler\DTO\ValueAlquiler.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$8.class
 Pantallas\VentanaLogin$3.class
 Pantallas\peliculas\VentanaNuevaPelicula$2.class
+Pantallas\VentanaAdmin$8.class
 Pantallas\VentanaUsuario$11.class
 Modelos\DTOS\LogoutUserDTO.class
 Pantallas\usuarios\VentanaGestionUsuarios$7.class
@@ -77,14 +79,17 @@ Pantalla\alquiler\VentanaGestionAlquilerPeliculas$2.class
 Tablas\TablePeliculas.class
 Modelos\DTOS\peliculas\DTO\PeliculaDTO.class
 Modelos\DTOS\peliculas\DTO\RegisterPeliculaDTO.class
+Modelos\DTOS\ranking\DTO\RankingListDTO.class
 Pantallas\usuarios\VentanaGestionUsuarios$8.class
 Modelos\DTOS\usuarios\DTO\ResponseUserInfoDTO.class
 Pantallas\usuarios\VentanaModificarUsuario.class
 Pantallas\peliculas\VentanaGestionPeliculas$11.class
+Modelos\DTOS\ranking\DTO\ValueRanking.class
 Pantallas\usuarios\VentanaGestionUsuarios$5.class
 Pantallas\VentanaAdmin$6.class
 Pantallas\VentanaUsuario$14.class
 Modelos\DTOS\peliculas\DTO\ResponseAlquilerUsuarioDTO.class
+Modelos\DTOS\ranking\DTO\ResponseRankingListDTO.class
 Modelos\DTOS\alquiler\DTO\ResponseAlquilerPeliculaDTO.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$11.class
 Pantallas\VentanaUsuario$7.class
@@ -112,6 +117,7 @@ Pantalla\alquiler\VentanaGestionAlquilerPeliculas$5.class
 Pantallas\VentanaUsuario$8.class
 Pantallas\VentanaUsuario.class
 Pantallas\peliculas\VentanaGestionPeliculas$8.class
+Tablas\TableRanking.class
 Pantallas\peliculas\VentanaGestionPeliculas$1.class
 Pantallas\VentanaAdmin$5.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$13.class
