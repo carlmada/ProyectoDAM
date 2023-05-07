@@ -17,7 +17,9 @@ import java.net.URL;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -620,6 +622,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         jScrollPane.setVisible(true);
         jPanelFiltros.setVisible(false);
         jPanelUsuariosFiltrados.setVisible(false);
+        pagina = 0;
 
         /**
          * Esta es la primera tabla de usuarios que se muestra. pagina 0 ( 1 en pantalla.)
@@ -682,12 +685,13 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             obj.put("TELEFONO", responseJson.getValue().getContent().get(i).getTelefono());
             obj.put("EMAIL", responseJson.getValue().getContent().get(i).getEmail());
             obj.put("DIRECCION", responseJson.getValue().getContent().get(i).getDireccion());
+            obj.put("USERNAME", responseJson.getValue().getContent().get(i).getUsername());
             obj.put("IsAdmin", responseJson.getValue().getContent().get(i).getIsAdmin());
             jsonArray.put(obj);
         }
 
         //Creamos un String[] de columnas
-        String[] columnNames = {"NOMBRE", "APELLIDOS", "TELEFONO", "EMAIL", "DIRECCION", "IsAdmin"};
+        String[] columnNames = {"NOMBRE", "APELLIDOS", "USERNAME", "EMAIL", "DIRECCION", "IsAdmin"};
 
         //Creamos el modelo de tabla
         model = new TableUsuarios(jsonArray, columnNames);
@@ -697,6 +701,13 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         //Añadimos color a la cabecera.
         JTableHeader header = jTable.getTableHeader();
         header.setBackground(Color.cyan);
+
+        //Ponemos los datos de tipo de usuario en el centro de la celda.
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(JLabel.CENTER);
+        jTable.getColumnModel().getColumn(5).setCellRenderer(renderer);
+        //Asignamos el ancho de la columna.
+        jTable.getColumnModel().getColumn(5).setPreferredWidth(40);
 
     }//GEN-LAST:event_listaUsuariosActionPerformed
 
@@ -889,10 +900,17 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                         if (conn.getResponseCode() == 200) {
                             // Mostramos mensaje emergente de informacion.
                             JOptionPane.showMessageDialog(this,
-                                    "ROL del usuario modificado correctamente.",
+                                    "ROL del usuario modificado correctamente.\n"
+                                    + "Volverás a la pantalla de login.",
                                     "MODIFICAR ROL USUARIO", JOptionPane.INFORMATION_MESSAGE);
                         }
                         jTable.clearSelection();
+                        // Cerramos la ventana. 
+                        // y volvemos a inicio.
+                        this.dispose();
+                        VentanaLogin inicio = new VentanaLogin();
+                        inicio.setVisible(true);
+
                     } catch (MalformedURLException ex) {
                         Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
@@ -925,10 +943,17 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                         if (conn.getResponseCode() == 200) {
                             // Mostramos mensaje emergente de informacion.
                             JOptionPane.showMessageDialog(this,
-                                    "ROL del usuario modificado correctamente.",
+                                    "ROL del usuario modificado correctamente.\n"
+                                    + "Volverás a la pantalla de login.",
                                     "MODIFICAR ROL USUARIO", JOptionPane.INFORMATION_MESSAGE);
                         }
                         jTable.clearSelection();
+                        // Cerramos la ventana. 
+                        // y volvemos a inicio.
+                        this.dispose();
+                        VentanaLogin inicio = new VentanaLogin();
+                        inicio.setVisible(true);
+
                     } catch (MalformedURLException ex) {
                         Logger.getLogger(VentanaGestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
@@ -1008,6 +1033,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 obj.put("TELEFONO", responseJson.getValue().getContent().get(i).getTelefono());
                 obj.put("EMAIL", responseJson.getValue().getContent().get(i).getEmail());
                 obj.put("DIRECCION", responseJson.getValue().getContent().get(i).getDireccion());
+                obj.put("USERNAME", responseJson.getValue().getContent().get(i).getUsername());
                 obj.put("IsAdmin", responseJson.getValue().getContent().get(i).getIsAdmin());
                 jsonArray.put(obj);
             }
@@ -1015,7 +1041,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
 
             //Actualizo la tabla.
             //Creamos un String[] de columnas
-            String[] columnNames = {"NOMBRE", "APELLIDOS", "TELEFONO", "EMAIL", "DIRECCION", "IsAdmin"};
+            String[] columnNames = {"NOMBRE", "APELLIDOS", "USERNAME", "EMAIL", "DIRECCION", "IsAdmin"};
 
             //Creamos el modelo de tabla
             model = new TableUsuarios(jsonArray, columnNames);
@@ -1025,6 +1051,12 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             //Añadimos color a la cabecera.
             JTableHeader header = jTable.getTableHeader();
             header.setBackground(Color.cyan);
+            //Ponemos los datos de tipo de usuario en el centro de la celda.
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            jTable.getColumnModel().getColumn(5).setCellRenderer(renderer);
+            //Asignamos el ancho de la columna.
+            jTable.getColumnModel().getColumn(5).setPreferredWidth(40);
         }
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
@@ -1093,6 +1125,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 obj.put("TELEFONO", responseJson.getValue().getContent().get(i).getTelefono());
                 obj.put("EMAIL", responseJson.getValue().getContent().get(i).getEmail());
                 obj.put("DIRECCION", responseJson.getValue().getContent().get(i).getDireccion());
+                obj.put("USERNAME", responseJson.getValue().getContent().get(i).getUsername());
                 obj.put("IsAdmin", responseJson.getValue().getContent().get(i).getIsAdmin());
                 jsonArray.put(obj);
             }
@@ -1100,7 +1133,7 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
 
             //Actualizo la tabla.
             //Creamos un String[] de columnas
-            String[] columnNames = {"NOMBRE", "APELLIDOS", "TELEFONO", "EMAIL", "DIRECCION", "IsAdmin"};
+            String[] columnNames = {"NOMBRE", "APELLIDOS", "USERNAME", "EMAIL", "DIRECCION", "IsAdmin"};
 
             //Creamos el modelo de tabla
             model = new TableUsuarios(jsonArray, columnNames);
@@ -1110,6 +1143,12 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             //Añadimos color a la cabecera.
             JTableHeader header = jTable.getTableHeader();
             header.setBackground(Color.cyan);
+            //Ponemos los datos de tipo de usuario en el centro de la celda.
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            jTable.getColumnModel().getColumn(5).setCellRenderer(renderer);
+            //Asignamos el ancho de la columna.
+            jTable.getColumnModel().getColumn(5).setPreferredWidth(40);
         }
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
@@ -1169,8 +1208,8 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         String nombre;
         String apellidos;
         String username;
-        parametros="";
-        
+        parametros = "";
+
         // Leemos los campos seleccionados
         // y creamos la cadena de parametros.
         if (!jTextFieldNombre.getText().isEmpty()) {
@@ -1273,12 +1312,13 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             obj.put("TELEFONO", responseJson.getValue().getContent().get(i).getTelefono());
             obj.put("EMAIL", responseJson.getValue().getContent().get(i).getEmail());
             obj.put("DIRECCION", responseJson.getValue().getContent().get(i).getDireccion());
+            obj.put("USERNAME", responseJson.getValue().getContent().get(i).getUsername());
             obj.put("IsAdmin", responseJson.getValue().getContent().get(i).getIsAdmin());
             jsonArray.put(obj);
         }
 
         //Creamos un String[] de columnas
-        String[] columnNames = {"NOMBRE", "APELLIDOS", "TELEFONO", "EMAIL", "DIRECCION", "IsAdmin"};
+        String[] columnNames = {"NOMBRE", "APELLIDOS", "USERNAME", "EMAIL", "DIRECCION", "IsAdmin"};
 
         //Creamos el modelo de tabla
         model = new TableUsuarios(jsonArray, columnNames);
@@ -1288,6 +1328,12 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
         //Añadimos color a la cabecera.
         JTableHeader header = jTableUsuariosFiltrados.getTableHeader();
         header.setBackground(Color.cyan);
+        //Ponemos los datos de tipo de usuario en el centro de la celda.
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(JLabel.CENTER);
+        jTableUsuariosFiltrados.getColumnModel().getColumn(5).setCellRenderer(renderer);
+        //Asignamos el ancho de la columna.
+        jTableUsuariosFiltrados.getColumnModel().getColumn(5).setPreferredWidth(40);
 
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
@@ -1357,12 +1403,13 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 obj.put("TELEFONO", responseJson.getValue().getContent().get(i).getTelefono());
                 obj.put("EMAIL", responseJson.getValue().getContent().get(i).getEmail());
                 obj.put("DIRECCION", responseJson.getValue().getContent().get(i).getDireccion());
+                obj.put("USERNAME", responseJson.getValue().getContent().get(i).getUsername());
                 obj.put("IsAdmin", responseJson.getValue().getContent().get(i).getIsAdmin());
                 jsonArray.put(obj);
             }
 
             //Creamos un String[] de columnas
-            String[] columnNames = {"NOMBRE", "APELLIDOS", "TELEFONO", "EMAIL", "DIRECCION", "IsAdmin"};
+            String[] columnNames = {"NOMBRE", "APELLIDOS", "USERNAME", "EMAIL", "DIRECCION", "IsAdmin"};
 
             //Creamos el modelo de tabla
             model = new TableUsuarios(jsonArray, columnNames);
@@ -1372,6 +1419,12 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             //Añadimos color a la cabecera.
             JTableHeader header = jTableUsuariosFiltrados.getTableHeader();
             header.setBackground(Color.cyan);
+            //Ponemos los datos de tipo de usuario en el centro de la celda.
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            jTableUsuariosFiltrados.getColumnModel().getColumn(5).setCellRenderer(renderer);
+            //Asignamos el ancho de la columna.
+            jTableUsuariosFiltrados.getColumnModel().getColumn(5).setPreferredWidth(40);
         }
     }//GEN-LAST:event_jButtonAnteriorUsuariosFiltradosActionPerformed
 
@@ -1442,12 +1495,13 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
                 obj.put("TELEFONO", responseJson.getValue().getContent().get(i).getTelefono());
                 obj.put("EMAIL", responseJson.getValue().getContent().get(i).getEmail());
                 obj.put("DIRECCION", responseJson.getValue().getContent().get(i).getDireccion());
+                obj.put("USERNAME", responseJson.getValue().getContent().get(i).getUsername());
                 obj.put("IsAdmin", responseJson.getValue().getContent().get(i).getIsAdmin());
                 jsonArray.put(obj);
             }
 
             //Creamos un String[] de columnas
-            String[] columnNames = {"NOMBRE", "APELLIDOS", "TELEFONO", "EMAIL", "DIRECCION", "IsAdmin"};
+            String[] columnNames = {"NOMBRE", "APELLIDOS", "USERNAME", "EMAIL", "DIRECCION", "IsAdmin"};
 
             //Creamos el modelo de tabla
             model = new TableUsuarios(jsonArray, columnNames);
@@ -1457,6 +1511,12 @@ public class VentanaGestionUsuarios extends javax.swing.JFrame {
             //Añadimos color a la cabecera.
             JTableHeader header = jTableUsuariosFiltrados.getTableHeader();
             header.setBackground(Color.cyan);
+            //Ponemos los datos de tipo de usuario en el centro de la celda.
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            jTableUsuariosFiltrados.getColumnModel().getColumn(5).setCellRenderer(renderer);
+            //Asignamos el ancho de la columna.
+            jTableUsuariosFiltrados.getColumnModel().getColumn(5).setPreferredWidth(40);
 
         }
     }//GEN-LAST:event_jButtonSiguienteUsuariosFiltradosActionPerformed

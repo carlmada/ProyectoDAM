@@ -29,6 +29,8 @@ import org.json.JSONObject;
  */
 public class VentanaModificarUsuario extends javax.swing.JFrame {
 
+    JSONObject objectUsuario= new JSONObject();
+ 
     /**
      * Constructor de un nuevo formulario Ventana MODIFICAR USUARIO.
      *
@@ -78,7 +80,22 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
 
         // Ponemos el nombre en el textfield correspondiente.
         jTextFieldNombre.setText(responseJson.getValue().getNombre());
+        
+        
+        //creamos un usuario con los datos que recibimos.
+        objectUsuario.put("nombre", responseJson.getValue().getNombre());
+        objectUsuario.put("apellidos", responseJson.getValue().getApellidos());
+        objectUsuario.put("email", responseJson.getValue().getEmail());
+        objectUsuario.put("direccion", responseJson.getValue().getDireccion());
+                
+        //Mostramos los datos actuales el usuario.
+        textNombre.setText(objectUsuario.getString("nombre"));
+        textApellidos.setText(objectUsuario.getString("apellidos"));
+        textEmail.setText(objectUsuario.getString("email"));
+        textDireccion.setText(objectUsuario.getString("direccion"));
+        
         //***********************************************
+        
     }
 
     /**
@@ -299,8 +316,8 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
      *
      */
     private void buttonModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarUsuarioActionPerformed
+        
         // Leemos los campos de datos del usuario.
-
         String nombre = textNombre.getText();
         String apellidos = textApellidos.getText();
         String telefono = textTelefono.getText();
@@ -373,12 +390,14 @@ public class VentanaModificarUsuario extends javax.swing.JFrame {
                         json.getString("message") + "\n"
                         + "Vuelve a introducir los datos.",
                         "ERROR", JOptionPane.ERROR_MESSAGE);
+                /*
                 // Limpiamos todos los campos.
                 textNombre.setText("");
                 textApellidos.setText("");
                 textTelefono.setText("");
                 textEmail.setText("");
                 textDireccion.setText("");
+                */
                 // Continuamos en ventana de modificacion de perfil.
             }
         } else {

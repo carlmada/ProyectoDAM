@@ -143,7 +143,7 @@
                           <Component id="jPanelPeliculasUsuarios" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="67" max="32767" attributes="0"/>
+                  <EmptySpace pref="68" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonCerrarSesion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonVolver" alignment="3" min="-2" max="-2" attributes="0"/>

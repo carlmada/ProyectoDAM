@@ -838,6 +838,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         //cerramos los paneles que hubieran estado abiertos.
         jPanelFiltros.setVisible(false);
         jPanelPeliculasFiltradas.setVisible(false);
+        panelModificarPelicula.setVisible(false);
 
         //Mostramos la tabla de peliculas.
         jScrollPane.setVisible(true);
@@ -847,6 +848,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         jButtonSiguiente.setVisible(true);
         jButtonFiltros.setVisible(true);
         
+        pagina = 0;
         /**
          * Esta es la primera tabla de peliculas que se muestra. pagina 0 ( 1 en pantalla.)
          *
@@ -1095,7 +1097,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
         //Cerramos panel de filtros si estaba abierto.
         jPanelFiltros.setVisible(false);
         jPanelPeliculasFiltradas.setVisible(false);
-
+        
         //Obtenemos la fila seleccionada.
         posicion = jTable.getSelectedRow();
 
@@ -1114,6 +1116,7 @@ public class VentanaGestionPeliculas extends javax.swing.JFrame {
             jLabelPagina.setVisible(false);
             jButtonAnterior.setVisible(false);
             jButtonSiguiente.setVisible(false);
+            jButtonFiltros.setVisible(false);
             // Creamos un objeto JSON temporal de la fila seleccionada.
             objModificarPelicula = new JSONObject();
             objModificarPelicula = jsonArray.getJSONObject(posicion);

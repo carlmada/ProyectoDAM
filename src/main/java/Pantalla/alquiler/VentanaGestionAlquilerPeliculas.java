@@ -34,7 +34,6 @@ import utils.Constants;
 import Tablas.TableAlquileres;
 import Tablas.TablePeliculas;
 import Tablas.TableUsuarios;
-import java.time.LocalDate;
 
 /**
  *
@@ -56,7 +55,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
     int paginaPeliculas = 0, paginaUsuarios = 0, paginaAlquileres = 0, paginaFiltro = 0,
             paginaSizePeliculas = 10, paginaSizeUsuarios = 10, paginaSizeAlquileres = 10, paginaSizeFiltro = 10,
             paginasTotalesPeliculas, paginasTotalesUsuarios, paginasTotalesAlquileres, paginasTotalesFiltro;
-    String tituloPelicula, nombreUser, parametros="";
+    String tituloPelicula, nombreUser, parametros = "";
 
     /**
      * Constructor de un nuevo formulario Ventana de gestion de alquileres de peliculas.
@@ -1069,7 +1068,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         //Añadimos color a la cabecera.
         JTableHeader header = jTablePeliculas.getTableHeader();
         header.setBackground(Color.CYAN);
-        //Ponemos los datos numericos en el lado derecho de la celda.
+        //Ponemos los datos numericos en el centro de la celda.
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
         renderer.setHorizontalAlignment(JLabel.CENTER);
         jTablePeliculas.getColumnModel().getColumn(2).setCellRenderer(renderer);
@@ -1424,8 +1423,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
          *
          * @author Carlos
          */
-        //Mostramos el panel de lista de alquileres.       
-        jPanelAlquileres.setVisible(true);
+        
         //Cerramos otros paneles si estuvieran abiertos.
         jPanelPeliculasUsuarios.setVisible(false);
         jPanelCambioEstatus.setVisible(false);
@@ -1479,58 +1477,68 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         ResponseAlquilerListDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerListDTO.class);
         //*************************************************
 
-        paginasTotalesAlquileres = responseJson.getValue().getTotalPages();
-        jLabelPaginaAlquileres.setText(String.valueOf(paginaAlquileres + 1) + " de " + paginasTotalesAlquileres);
+        // Si no hay alquileres...
+        if (responseJson == null) {
+            // Mostramos mensaje emergente de informacion.
+            JOptionPane.showMessageDialog(this,
+                    "No hay alquileres para mostrar.",
+                    "ALQUILERES", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            //Mostramos el panel de lista de alquileres.       
+            jPanelAlquileres.setVisible(true);
+            
+            paginasTotalesAlquileres = responseJson.getValue().getTotalPages();
+            jLabelPaginaAlquileres.setText(String.valueOf(paginaAlquileres + 1) + " de " + paginasTotalesAlquileres);
 
-        //Creamos una lista de objetos JSON
-        jsonArrayAlquileres = new JSONArray();
-        for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-            objAlquiler = new JSONObject();
-            objAlquiler.put("idAlquiler", responseJson.getValue().getContent().get(i).getId());
-            objAlquiler.put("idPelicula", responseJson.getValue().getContent().get(i).getPelicula());
-            objAlquiler.put("idUsuario", responseJson.getValue().getContent().get(i).getUsuari());
-            objAlquiler.put("Fecha Inicio", responseJson.getValue().getContent().get(i).getFechaInicio());
-            objAlquiler.put("Fecha Fin", responseJson.getValue().getContent().get(i).getFechaFin());
-            objAlquiler.put("Precio", responseJson.getValue().getContent().get(i).getPrecio());
-            objAlquiler.put("Estado", responseJson.getValue().getContent().get(i).getEstado());
-            //Obtenemos el titulo de la pelicula.
-            idPelicula = responseJson.getValue().getContent().get(i).getPelicula();
-            tituloPelicula = tituloPelicula(idPelicula);
-            objAlquiler.put("Titulo Pelicula", tituloPelicula);
-            //Obtenemos el nombre del usuario.
-            idUsuario = responseJson.getValue().getContent().get(i).getUsuari();
-            nombreUser = nombreUsuario(idUsuario);
-            objAlquiler.put("Nombre Usuario", nombreUser);
+            //Creamos una lista de objetos JSON
+            jsonArrayAlquileres = new JSONArray();
+            for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
+                objAlquiler = new JSONObject();
+                objAlquiler.put("idAlquiler", responseJson.getValue().getContent().get(i).getId());
+                objAlquiler.put("idPelicula", responseJson.getValue().getContent().get(i).getPelicula());
+                objAlquiler.put("idUsuario", responseJson.getValue().getContent().get(i).getUsuari());
+                objAlquiler.put("Fecha Inicio", responseJson.getValue().getContent().get(i).getFechaInicio());
+                objAlquiler.put("Fecha Fin", responseJson.getValue().getContent().get(i).getFechaFin());
+                objAlquiler.put("Precio", responseJson.getValue().getContent().get(i).getPrecio());
+                objAlquiler.put("Estado", responseJson.getValue().getContent().get(i).getEstado());
+                //Obtenemos el titulo de la pelicula.
+                idPelicula = responseJson.getValue().getContent().get(i).getPelicula();
+                tituloPelicula = tituloPelicula(idPelicula);
+                objAlquiler.put("Titulo Pelicula", tituloPelicula);
+                //Obtenemos el nombre del usuario.
+                idUsuario = responseJson.getValue().getContent().get(i).getUsuari();
+                nombreUser = nombreUsuario(idUsuario);
+                objAlquiler.put("Nombre Usuario", nombreUser);
 
-            jsonArrayAlquileres.put(objAlquiler);
+                jsonArrayAlquileres.put(objAlquiler);
+            }
+
+            //Creamos un String[] de columnas
+            String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Precio", "Estado"};
+
+            //Creamos el modelo de tabla
+            modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
+            //Asignamos el modelo a la tabla
+            jTableAlquileres.setModel(modelAlquileres);
+            //Mostramos la tabla
+            //Añadimos color a la cabecera.
+            JTableHeader header = jTableAlquileres.getTableHeader();
+            header.setBackground(Color.CYAN);
+
+            //Ponemos los datos numericos centrados en la celda.
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            jTableAlquileres.getColumnModel().getColumn(1).setCellRenderer(renderer);
+            jTableAlquileres.getColumnModel().getColumn(2).setCellRenderer(renderer);
+            jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
+            jTableAlquileres.getColumnModel().getColumn(4).setCellRenderer(renderer);
+            //Asignamos el ancho de las columnas.
+            jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(190);
+            jTableAlquileres.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTableAlquileres.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTableAlquileres.getColumnModel().getColumn(4).setPreferredWidth(25);
+            jTableAlquileres.getColumnModel().getColumn(5).setPreferredWidth(70);
         }
-
-        //Creamos un String[] de columnas
-        String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Precio", "Estado"};
-
-        //Creamos el modelo de tabla
-        modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
-        //Asignamos el modelo a la tabla
-        jTableAlquileres.setModel(modelAlquileres);
-        //Mostramos la tabla
-        //Añadimos color a la cabecera.
-        JTableHeader header = jTableAlquileres.getTableHeader();
-        header.setBackground(Color.CYAN);
-
-        //Ponemos los datos numericos centrados en la celda.
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setHorizontalAlignment(JLabel.CENTER);
-        jTableAlquileres.getColumnModel().getColumn(1).setCellRenderer(renderer);
-        jTableAlquileres.getColumnModel().getColumn(2).setCellRenderer(renderer);
-        jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
-        jTableAlquileres.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        //Asignamos el ancho de las columnas.
-        jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(190);
-        jTableAlquileres.getColumnModel().getColumn(2).setPreferredWidth(60);
-        jTableAlquileres.getColumnModel().getColumn(3).setPreferredWidth(60);
-        jTableAlquileres.getColumnModel().getColumn(4).setPreferredWidth(25);
-        jTableAlquileres.getColumnModel().getColumn(5).setPreferredWidth(70);
-
     }//GEN-LAST:event_listaAlquileresPeliculasActionPerformed
 
     private void buttonModificarEstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarEstatusActionPerformed
@@ -2076,30 +2084,30 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             }
 
             //Creamos un String[] de columnas
-        String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Precio", "Estado"};
+            String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Precio", "Estado"};
 
-        //Creamos el modelo de tabla
-        modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
-        //Asignamos el modelo a la tabla
-        jTableAlquileres.setModel(modelAlquileres);
-        //Mostramos la tabla
-        //Añadimos color a la cabecera.
-        JTableHeader header = jTableAlquileres.getTableHeader();
-        header.setBackground(Color.CYAN);
+            //Creamos el modelo de tabla
+            modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
+            //Asignamos el modelo a la tabla
+            jTableAlquileres.setModel(modelAlquileres);
+            //Mostramos la tabla
+            //Añadimos color a la cabecera.
+            JTableHeader header = jTableAlquileres.getTableHeader();
+            header.setBackground(Color.CYAN);
 
-        //Ponemos los datos numericos centrados en la celda.
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setHorizontalAlignment(JLabel.CENTER);
-        jTableAlquileres.getColumnModel().getColumn(1).setCellRenderer(renderer);
-        jTableAlquileres.getColumnModel().getColumn(2).setCellRenderer(renderer);
-        jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
-        jTableAlquileres.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        //Asignamos el ancho de las columnas.
-        jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(190);
-        jTableAlquileres.getColumnModel().getColumn(2).setPreferredWidth(60);
-        jTableAlquileres.getColumnModel().getColumn(3).setPreferredWidth(60);
-        jTableAlquileres.getColumnModel().getColumn(4).setPreferredWidth(25);
-        jTableAlquileres.getColumnModel().getColumn(5).setPreferredWidth(70);
+            //Ponemos los datos numericos centrados en la celda.
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            jTableAlquileres.getColumnModel().getColumn(1).setCellRenderer(renderer);
+            jTableAlquileres.getColumnModel().getColumn(2).setCellRenderer(renderer);
+            jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
+            jTableAlquileres.getColumnModel().getColumn(4).setCellRenderer(renderer);
+            //Asignamos el ancho de las columnas.
+            jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(190);
+            jTableAlquileres.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTableAlquileres.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTableAlquileres.getColumnModel().getColumn(4).setPreferredWidth(25);
+            jTableAlquileres.getColumnModel().getColumn(5).setPreferredWidth(70);
         }
     }//GEN-LAST:event_jButtonAnteriorAlquileresActionPerformed
 
@@ -2181,52 +2189,52 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             }
 
             //Creamos un String[] de columnas
-        String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Precio", "Estado"};
+            String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Precio", "Estado"};
 
-        //Creamos el modelo de tabla
-        modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
-        //Asignamos el modelo a la tabla
-        jTableAlquileres.setModel(modelAlquileres);
-        //Mostramos la tabla
-        //Añadimos color a la cabecera.
-        JTableHeader header = jTableAlquileres.getTableHeader();
-        header.setBackground(Color.CYAN);
+            //Creamos el modelo de tabla
+            modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
+            //Asignamos el modelo a la tabla
+            jTableAlquileres.setModel(modelAlquileres);
+            //Mostramos la tabla
+            //Añadimos color a la cabecera.
+            JTableHeader header = jTableAlquileres.getTableHeader();
+            header.setBackground(Color.CYAN);
 
-        //Ponemos los datos numericos centrados en la celda.
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setHorizontalAlignment(JLabel.CENTER);
-        jTableAlquileres.getColumnModel().getColumn(1).setCellRenderer(renderer);
-        jTableAlquileres.getColumnModel().getColumn(2).setCellRenderer(renderer);
-        jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
-        jTableAlquileres.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        //Asignamos el ancho de las columnas.
-        jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(190);
-        jTableAlquileres.getColumnModel().getColumn(2).setPreferredWidth(60);
-        jTableAlquileres.getColumnModel().getColumn(3).setPreferredWidth(60);
-        jTableAlquileres.getColumnModel().getColumn(4).setPreferredWidth(25);
-        jTableAlquileres.getColumnModel().getColumn(5).setPreferredWidth(70);
+            //Ponemos los datos numericos centrados en la celda.
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            jTableAlquileres.getColumnModel().getColumn(1).setCellRenderer(renderer);
+            jTableAlquileres.getColumnModel().getColumn(2).setCellRenderer(renderer);
+            jTableAlquileres.getColumnModel().getColumn(3).setCellRenderer(renderer);
+            jTableAlquileres.getColumnModel().getColumn(4).setCellRenderer(renderer);
+            //Asignamos el ancho de las columnas.
+            jTableAlquileres.getColumnModel().getColumn(0).setPreferredWidth(190);
+            jTableAlquileres.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTableAlquileres.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTableAlquileres.getColumnModel().getColumn(4).setPreferredWidth(25);
+            jTableAlquileres.getColumnModel().getColumn(5).setPreferredWidth(70);
         }
     }//GEN-LAST:event_jButtonSiguienteAlquileresActionPerformed
 
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
 
         /**
-        * Metodo para mostrar la lista de alquileres filtrada por los parametros de búsqueda.
-        *
-        * Esta es la primera tabla de alquileres filtradas que se muestra. pagina 0 ( 1 en pantalla.)
-        *
-        * @Author Carlos.
-        */
+         * Metodo para mostrar la lista de alquileres filtrada por los parametros de búsqueda.
+         *
+         * Esta es la primera tabla de alquileres filtradas que se muestra. pagina 0 ( 1 en pantalla.)
+         *
+         * @Author Carlos.
+         */
         //cerramos los paneles que hubieran estado abiertos.
         jPanelCambioEstatus.setVisible(false);
         jPanelPeliculasUsuarios.setVisible(false);
-        jPanelAlquileres.setVisible(false);  
+        jPanelAlquileres.setVisible(false);
         jPanelFiltros.setVisible(false);
-        
+
         //Variables de la url.
         String peliculaId;
         String usuariId;
-        String fechaInicio, fechaFin, precio ;
+        String fechaInicio, fechaFin, precio;
         parametros = "";
 
         // Leemos los campos seleccionados
@@ -2235,32 +2243,32 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             peliculaId = jTextFieldPeliculaId.getText();
             parametros = parametros + "&peliculaId=" + peliculaId;
 
-        } 
-        
+        }
+
         if (!jTextFieldUsuariId.getText().isEmpty()) {
             usuariId = jTextFieldUsuariId.getText();
             parametros = parametros + "&usuariId=" + usuariId;
 
         }
-        
+
         if (!jTextFieldFechaInicio.getText().isEmpty()) {
             fechaInicio = jTextFieldFechaInicio.getText();
             parametros = parametros + "&fechaInicio=" + fechaInicio;
-        
+
         }
-        
+
         if (!jTextFieldFechaFin.getText().isEmpty()) {
             fechaFin = jTextFieldFechaFin.getText();
             parametros = parametros + "&fechaFin=" + fechaFin;
-            
+
         }
-        
+
         if (!jTextFieldPrecio.getText().isEmpty()) {
             precio = jTextFieldPrecio.getText();
-            parametros = parametros + "&precio=" + precio;  
-            
+            parametros = parametros + "&precio=" + precio;
+
         }
-        
+
         //Leemos el orden que hemos seleccionado...
         String orden = (String) jComboBoxFiltros.getSelectedItem();
 
@@ -2289,23 +2297,23 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
             default ->
                 "";
         };
-                
+
         //Terminamos de crear el string parametros de la url.
         parametros = parametros + orden;
 
         //Tabla alquileres filtrados.
         jPanelAlquileresFiltrados.setVisible(true);
-        
+
         // Creamos la URL
         // Es una url con cuatro parametros en modo PATH.
         StringBuilder resultado = new StringBuilder();
         try {
 
             URL url = new URL(Constants.urlPeliculasAlquileresPaginados
-                + "?page=" + paginaFiltro
-                + "&pageSize=" + paginaSizeFiltro
-                + "&token=" + Constants.token
-                + parametros);
+                    + "?page=" + paginaFiltro
+                    + "&pageSize=" + paginaSizeFiltro
+                    + "&token=" + Constants.token
+                    + parametros);
 
             // Creamos la conexion al servidor.
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -2368,7 +2376,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         }
 
         //Creamos un String[] de columnas
-        String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin","Precio", "Estado"};
+        String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Precio", "Estado"};
 
         //Creamos el modelo de tabla
         modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
@@ -2392,7 +2400,7 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         jTableAlquileresFiltrados.getColumnModel().getColumn(3).setPreferredWidth(60);
         jTableAlquileresFiltrados.getColumnModel().getColumn(4).setPreferredWidth(25);
         jTableAlquileresFiltrados.getColumnModel().getColumn(5).setPreferredWidth(70);
-        
+
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void buttonVolver2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolver2ActionPerformed
@@ -2412,14 +2420,14 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
         //cerramos los paneles que hubieran estado abiertos.
         jPanelCambioEstatus.setVisible(false);
         jPanelPeliculasUsuarios.setVisible(false);
-        jPanelAlquileres.setVisible(false); 
+        jPanelAlquileres.setVisible(false);
         jPanelAlquileresFiltrados.setVisible(false);
-        
+
         //Limpiamos las selecciones de las tablas.
         jTableAlquileres.clearSelection();
         jTablePeliculas.clearSelection();
         jTableUsuarios.clearSelection();
-        
+
         //Mostramos panel de seleccion de filtros.
         jPanelFiltros.setVisible(true);
 
@@ -2438,209 +2446,209 @@ public class VentanaGestionAlquilerPeliculas extends javax.swing.JFrame {
          */
         if (paginaFiltro > 0) {
             paginaFiltro--;
-        // Creamos la URL
-        // Es una url con cuatro parametros en modo PATH.
-        StringBuilder resultado = new StringBuilder();
-        try {
+            // Creamos la URL
+            // Es una url con cuatro parametros en modo PATH.
+            StringBuilder resultado = new StringBuilder();
+            try {
 
-            URL url = new URL(Constants.urlPeliculasAlquileresPaginados
-                + "?page=" + paginaFiltro
-                + "&pageSize=" + paginaSizeFiltro
-                + "&token=" + Constants.token
-                + parametros);
-            
-            // Creamos la conexion al servidor.
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            // Metodo GET
-            conn.setRequestMethod("GET");
+                URL url = new URL(Constants.urlPeliculasAlquileresPaginados
+                        + "?page=" + paginaFiltro
+                        + "&pageSize=" + paginaSizeFiltro
+                        + "&token=" + Constants.token
+                        + parametros);
 
-            // Abrimos un input Stream de datos del servidor
-            // y esperamos la respuesta del servidor.
-            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                // Creamos la conexion al servidor.
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                // Metodo GET
+                conn.setRequestMethod("GET");
 
-            // Leemos la respuesta del servidor.
-            // y construimos el string 'resultado'
-            String linea;
-            while ((linea = rd.readLine()) != null) {
-                resultado.append(linea);
+                // Abrimos un input Stream de datos del servidor
+                // y esperamos la respuesta del servidor.
+                BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                // Leemos la respuesta del servidor.
+                // y construimos el string 'resultado'
+                String linea;
+                while ((linea = rd.readLine()) != null) {
+                    resultado.append(linea);
+                }
+                // Cerramos la conexion.
+                rd.close();
+            } catch (MalformedURLException ex) {
+                System.out.println(ex);
+            } catch (IOException ex) {
+                System.out.println(ex);
             }
-            // Cerramos la conexion.
-            rd.close();
-        } catch (MalformedURLException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
-        // Creamos una instancia de Gson para convertir nuestro String a JSON
-        Gson gson = new Gson();
+            // Creamos una instancia de Gson para convertir nuestro String a JSON
+            Gson gson = new Gson();
 
-        // Pasamos la respuesta a un String.
-        String responseJsonString = resultado.toString();
+            // Pasamos la respuesta a un String.
+            String responseJsonString = resultado.toString();
 
-        //*************************************************
-        // El array de objetos JSON lo convertimos en un array de objetos DTO.
-        // Lo transformamos gracias al objeto DTO creado para ello.
-        ResponseAlquilerListDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerListDTO.class);
-        //*************************************************
+            //*************************************************
+            // El array de objetos JSON lo convertimos en un array de objetos DTO.
+            // Lo transformamos gracias al objeto DTO creado para ello.
+            ResponseAlquilerListDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerListDTO.class);
+            //*************************************************
 
-        paginasTotalesFiltro = responseJson.getValue().getTotalPages();
-        jLabelPaginaAlquileresFiltrados.setText(String.valueOf(paginaFiltro + 1) + " de " + paginasTotalesFiltro);
+            paginasTotalesFiltro = responseJson.getValue().getTotalPages();
+            jLabelPaginaAlquileresFiltrados.setText(String.valueOf(paginaFiltro + 1) + " de " + paginasTotalesFiltro);
 
-        //Creamos una lista de objetos JSON
-        jsonArrayAlquileres = new JSONArray();
-        for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-            objAlquiler = new JSONObject();
-            objAlquiler.put("idAlquiler", responseJson.getValue().getContent().get(i).getId());
-            objAlquiler.put("idPelicula", responseJson.getValue().getContent().get(i).getPelicula());
-            objAlquiler.put("idUsuario", responseJson.getValue().getContent().get(i).getUsuari());
-            objAlquiler.put("Fecha Inicio", responseJson.getValue().getContent().get(i).getFechaInicio());
-            objAlquiler.put("Fecha Fin", responseJson.getValue().getContent().get(i).getFechaFin());
-            objAlquiler.put("Precio", responseJson.getValue().getContent().get(i).getPrecio());
-            objAlquiler.put("Estado", responseJson.getValue().getContent().get(i).getEstado());
-            //Obtenemos el titulo de la pelicula.
-            idPelicula = responseJson.getValue().getContent().get(i).getPelicula();
-            tituloPelicula = tituloPelicula(idPelicula);
-            objAlquiler.put("Titulo Pelicula", tituloPelicula);
-            //Obtenemos el nombre del usuario.
-            idUsuario = responseJson.getValue().getContent().get(i).getUsuari();
-            nombreUser = nombreUsuario(idUsuario);
-            objAlquiler.put("Nombre Usuario", nombreUser);
+            //Creamos una lista de objetos JSON
+            jsonArrayAlquileres = new JSONArray();
+            for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
+                objAlquiler = new JSONObject();
+                objAlquiler.put("idAlquiler", responseJson.getValue().getContent().get(i).getId());
+                objAlquiler.put("idPelicula", responseJson.getValue().getContent().get(i).getPelicula());
+                objAlquiler.put("idUsuario", responseJson.getValue().getContent().get(i).getUsuari());
+                objAlquiler.put("Fecha Inicio", responseJson.getValue().getContent().get(i).getFechaInicio());
+                objAlquiler.put("Fecha Fin", responseJson.getValue().getContent().get(i).getFechaFin());
+                objAlquiler.put("Precio", responseJson.getValue().getContent().get(i).getPrecio());
+                objAlquiler.put("Estado", responseJson.getValue().getContent().get(i).getEstado());
+                //Obtenemos el titulo de la pelicula.
+                idPelicula = responseJson.getValue().getContent().get(i).getPelicula();
+                tituloPelicula = tituloPelicula(idPelicula);
+                objAlquiler.put("Titulo Pelicula", tituloPelicula);
+                //Obtenemos el nombre del usuario.
+                idUsuario = responseJson.getValue().getContent().get(i).getUsuari();
+                nombreUser = nombreUsuario(idUsuario);
+                objAlquiler.put("Nombre Usuario", nombreUser);
 
-            jsonArrayAlquileres.put(objAlquiler);
-        }
+                jsonArrayAlquileres.put(objAlquiler);
+            }
 
-        //Creamos un String[] de columnas
-        String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin","Precio", "Estado"};
+            //Creamos un String[] de columnas
+            String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Precio", "Estado"};
 
-        //Creamos el modelo de tabla
-        modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
-        //Asignamos el modelo a la tabla
-        jTableAlquileresFiltrados.setModel(modelAlquileres);
-        //Mostramos la tabla
-        //Añadimos color a la cabecera.
-        JTableHeader header = jTableAlquileresFiltrados.getTableHeader();
-        header.setBackground(Color.CYAN);
+            //Creamos el modelo de tabla
+            modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
+            //Asignamos el modelo a la tabla
+            jTableAlquileresFiltrados.setModel(modelAlquileres);
+            //Mostramos la tabla
+            //Añadimos color a la cabecera.
+            JTableHeader header = jTableAlquileresFiltrados.getTableHeader();
+            header.setBackground(Color.CYAN);
 
-        //Ponemos los datos numericos centrados en la celda.
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setHorizontalAlignment(JLabel.CENTER);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(1).setCellRenderer(renderer);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(2).setCellRenderer(renderer);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(3).setCellRenderer(renderer);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        //Asignamos el ancho de las columnas.
-        jTableAlquileresFiltrados.getColumnModel().getColumn(0).setPreferredWidth(190);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(2).setPreferredWidth(60);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(3).setPreferredWidth(60);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(4).setPreferredWidth(25);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(5).setPreferredWidth(70);       
+            //Ponemos los datos numericos centrados en la celda.
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(1).setCellRenderer(renderer);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(2).setCellRenderer(renderer);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(3).setCellRenderer(renderer);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(4).setCellRenderer(renderer);
+            //Asignamos el ancho de las columnas.
+            jTableAlquileresFiltrados.getColumnModel().getColumn(0).setPreferredWidth(190);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(4).setPreferredWidth(25);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(5).setPreferredWidth(70);
         }
     }//GEN-LAST:event_jButtonAnteriorAlquileresFiltradosActionPerformed
 
     private void jButtonSiguienteAlquileresFiltradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteAlquileresFiltradosActionPerformed
-       /**
+        /**
          * Hago la consulta de tabla. Con la pagina siguiente. Leo los datos en el DTO para ello. Paso los datos a la tabla.
          *
          */
         if (paginaFiltro < paginasTotalesFiltro - 1) {
             paginaFiltro++;
-            
-        // Creamos la URL
-        // Es una url con cuatro parametros en modo PATH.
-        StringBuilder resultado = new StringBuilder();
-        try {
 
-            URL url = new URL(Constants.urlPeliculasAlquileresPaginados
-                + "?page=" + paginaFiltro
-                + "&pageSize=" + paginaSizeFiltro
-                + "&token=" + Constants.token
-                + parametros);
-            
-            // Creamos la conexion al servidor.
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            // Metodo GET
-            conn.setRequestMethod("GET");
+            // Creamos la URL
+            // Es una url con cuatro parametros en modo PATH.
+            StringBuilder resultado = new StringBuilder();
+            try {
 
-            // Abrimos un input Stream de datos del servidor
-            // y esperamos la respuesta del servidor.
-            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                URL url = new URL(Constants.urlPeliculasAlquileresPaginados
+                        + "?page=" + paginaFiltro
+                        + "&pageSize=" + paginaSizeFiltro
+                        + "&token=" + Constants.token
+                        + parametros);
 
-            // Leemos la respuesta del servidor.
-            // y construimos el string 'resultado'
-            String linea;
-            while ((linea = rd.readLine()) != null) {
-                resultado.append(linea);
+                // Creamos la conexion al servidor.
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                // Metodo GET
+                conn.setRequestMethod("GET");
+
+                // Abrimos un input Stream de datos del servidor
+                // y esperamos la respuesta del servidor.
+                BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                // Leemos la respuesta del servidor.
+                // y construimos el string 'resultado'
+                String linea;
+                while ((linea = rd.readLine()) != null) {
+                    resultado.append(linea);
+                }
+                // Cerramos la conexion.
+                rd.close();
+            } catch (MalformedURLException ex) {
+                System.out.println(ex);
+            } catch (IOException ex) {
+                System.out.println(ex);
             }
-            // Cerramos la conexion.
-            rd.close();
-        } catch (MalformedURLException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
-        // Creamos una instancia de Gson para convertir nuestro String a JSON
-        Gson gson = new Gson();
+            // Creamos una instancia de Gson para convertir nuestro String a JSON
+            Gson gson = new Gson();
 
-        // Pasamos la respuesta a un String.
-        String responseJsonString = resultado.toString();
+            // Pasamos la respuesta a un String.
+            String responseJsonString = resultado.toString();
 
-        //*************************************************
-        // El array de objetos JSON lo convertimos en un array de objetos DTO.
-        // Lo transformamos gracias al objeto DTO creado para ello.
-        ResponseAlquilerListDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerListDTO.class);
-        //*************************************************
+            //*************************************************
+            // El array de objetos JSON lo convertimos en un array de objetos DTO.
+            // Lo transformamos gracias al objeto DTO creado para ello.
+            ResponseAlquilerListDTO responseJson = gson.fromJson(responseJsonString, ResponseAlquilerListDTO.class);
+            //*************************************************
 
-        paginasTotalesFiltro = responseJson.getValue().getTotalPages();
-        jLabelPaginaAlquileresFiltrados.setText(String.valueOf(paginaFiltro + 1) + " de " + paginasTotalesFiltro);
+            paginasTotalesFiltro = responseJson.getValue().getTotalPages();
+            jLabelPaginaAlquileresFiltrados.setText(String.valueOf(paginaFiltro + 1) + " de " + paginasTotalesFiltro);
 
-        //Creamos una lista de objetos JSON
-        jsonArrayAlquileres = new JSONArray();
-        for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-            objAlquiler = new JSONObject();
-            objAlquiler.put("idAlquiler", responseJson.getValue().getContent().get(i).getId());
-            objAlquiler.put("idPelicula", responseJson.getValue().getContent().get(i).getPelicula());
-            objAlquiler.put("idUsuario", responseJson.getValue().getContent().get(i).getUsuari());
-            objAlquiler.put("Fecha Inicio", responseJson.getValue().getContent().get(i).getFechaInicio());
-            objAlquiler.put("Fecha Fin", responseJson.getValue().getContent().get(i).getFechaFin());
-            objAlquiler.put("Precio", responseJson.getValue().getContent().get(i).getPrecio());
-            objAlquiler.put("Estado", responseJson.getValue().getContent().get(i).getEstado());
-            //Obtenemos el titulo de la pelicula.
-            idPelicula = responseJson.getValue().getContent().get(i).getPelicula();
-            tituloPelicula = tituloPelicula(idPelicula);
-            objAlquiler.put("Titulo Pelicula", tituloPelicula);
-            //Obtenemos el nombre del usuario.
-            idUsuario = responseJson.getValue().getContent().get(i).getUsuari();
-            nombreUser = nombreUsuario(idUsuario);
-            objAlquiler.put("Nombre Usuario", nombreUser);
+            //Creamos una lista de objetos JSON
+            jsonArrayAlquileres = new JSONArray();
+            for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
+                objAlquiler = new JSONObject();
+                objAlquiler.put("idAlquiler", responseJson.getValue().getContent().get(i).getId());
+                objAlquiler.put("idPelicula", responseJson.getValue().getContent().get(i).getPelicula());
+                objAlquiler.put("idUsuario", responseJson.getValue().getContent().get(i).getUsuari());
+                objAlquiler.put("Fecha Inicio", responseJson.getValue().getContent().get(i).getFechaInicio());
+                objAlquiler.put("Fecha Fin", responseJson.getValue().getContent().get(i).getFechaFin());
+                objAlquiler.put("Precio", responseJson.getValue().getContent().get(i).getPrecio());
+                objAlquiler.put("Estado", responseJson.getValue().getContent().get(i).getEstado());
+                //Obtenemos el titulo de la pelicula.
+                idPelicula = responseJson.getValue().getContent().get(i).getPelicula();
+                tituloPelicula = tituloPelicula(idPelicula);
+                objAlquiler.put("Titulo Pelicula", tituloPelicula);
+                //Obtenemos el nombre del usuario.
+                idUsuario = responseJson.getValue().getContent().get(i).getUsuari();
+                nombreUser = nombreUsuario(idUsuario);
+                objAlquiler.put("Nombre Usuario", nombreUser);
 
-            jsonArrayAlquileres.put(objAlquiler);
-        }
+                jsonArrayAlquileres.put(objAlquiler);
+            }
 
-        //Creamos un String[] de columnas
-        String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin","Precio", "Estado"};
+            //Creamos un String[] de columnas
+            String[] columnNamesPeliculas = {"Titulo Pelicula", "Nombre Usuario", "Fecha Inicio", "Fecha Fin", "Precio", "Estado"};
 
-        //Creamos el modelo de tabla
-        modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
-        //Asignamos el modelo a la tabla
-        jTableAlquileresFiltrados.setModel(modelAlquileres);
-        //Mostramos la tabla
-        //Añadimos color a la cabecera.
-        JTableHeader header = jTableAlquileresFiltrados.getTableHeader();
-        header.setBackground(Color.CYAN);
+            //Creamos el modelo de tabla
+            modelAlquileres = new TableAlquileres(jsonArrayAlquileres, columnNamesPeliculas);
+            //Asignamos el modelo a la tabla
+            jTableAlquileresFiltrados.setModel(modelAlquileres);
+            //Mostramos la tabla
+            //Añadimos color a la cabecera.
+            JTableHeader header = jTableAlquileresFiltrados.getTableHeader();
+            header.setBackground(Color.CYAN);
 
-        //Ponemos los datos numericos centrados en la celda.
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setHorizontalAlignment(JLabel.CENTER);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(1).setCellRenderer(renderer);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(2).setCellRenderer(renderer);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(3).setCellRenderer(renderer);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        //Asignamos el ancho de las columnas.
-        jTableAlquileresFiltrados.getColumnModel().getColumn(0).setPreferredWidth(190);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(2).setPreferredWidth(60);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(3).setPreferredWidth(60);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(4).setPreferredWidth(25);
-        jTableAlquileresFiltrados.getColumnModel().getColumn(5).setPreferredWidth(70);
+            //Ponemos los datos numericos centrados en la celda.
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(1).setCellRenderer(renderer);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(2).setCellRenderer(renderer);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(3).setCellRenderer(renderer);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(4).setCellRenderer(renderer);
+            //Asignamos el ancho de las columnas.
+            jTableAlquileresFiltrados.getColumnModel().getColumn(0).setPreferredWidth(190);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(4).setPreferredWidth(25);
+            jTableAlquileresFiltrados.getColumnModel().getColumn(5).setPreferredWidth(70);
         }
     }//GEN-LAST:event_jButtonSiguienteAlquileresFiltradosActionPerformed
 

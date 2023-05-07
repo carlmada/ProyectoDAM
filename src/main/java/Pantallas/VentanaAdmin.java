@@ -870,7 +870,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
         jTableRanking.setModel(model);
         //Mostramos la tabla
         //Añadimos color a la cabecera.
-        //Añadimos color a la cabecera.
         JTableHeader header = jTableRanking.getTableHeader();
         header.setBackground(Color.CYAN);
         //Ponemos los datos numericos en el centro de la celda.
@@ -1018,7 +1017,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
         //Asignamos el modelo a la tabla
         jTableRanking.setModel(model);
         //Mostramos la tabla
-        //Añadimos color a la cabecera.
         //Añadimos color a la cabecera.
         JTableHeader header = jTableRanking.getTableHeader();
         header.setBackground(Color.CYAN);

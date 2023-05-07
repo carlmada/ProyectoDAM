@@ -93,7 +93,7 @@ public class VentanaNuevaPelicula extends javax.swing.JFrame {
         jLabelPrecio.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabelPrecio.setText("Precio:");
 
-        buttonRegistroPelicula.setBackground(new java.awt.Color(255, 153, 102));
+        buttonRegistroPelicula.setBackground(new java.awt.Color(255, 153, 51));
         buttonRegistroPelicula.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         buttonRegistroPelicula.setText("REGISTRAR PELICULA");
         buttonRegistroPelicula.setBorderPainted(false);

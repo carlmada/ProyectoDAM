@@ -47,6 +47,8 @@ public class Usuarios {
         this.username = username;
     }
 
+    public Usuarios(){};
+    
     //Getters-Setters.
     public UUID getId() {
         return id;

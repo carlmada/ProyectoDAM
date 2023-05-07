@@ -12,6 +12,7 @@ Pantallas\VentanaLogin$1.class
 Pantallas\usuarios\VentanaGestionUsuarios$1.class
 utils\TableAlquileres.class
 Modelos\DTOS\usuarios\DTO\UserInfoDTO.class
+Pantallas\VentanaAdmin$11.class
 Modelos\DTOS\peliculas\DTO\AlquilerListDTO.class
 Modelos\DTOS\usuarios\DTO\UserListDTO.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$18.class
@@ -54,6 +55,7 @@ Pantallas\peliculas\VentanaGestionPeliculas$4.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$1.class
 Modelos\DTOS\alquiler\DTO\AlquilerDTO.class
 Pantallas\peliculas\VentanaGestionPeliculas$13.class
+Pantallas\VentanaUsuario$19.class
 Modelos\DTOS\alquiler\DTO\ValueAlquiler.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$8.class
 Pantallas\VentanaLogin$3.class
@@ -67,6 +69,7 @@ Pantallas\usuarios\VentanaGestionUsuarios$2.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$16.class
 Pantallas\peliculas\VentanaGestionPeliculas$5.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$9.class
+Pantallas\VentanaUsuario$18.class
 Modelos\DTOS\peliculas\DTO\ResponsePeliculaListDTO.class
 Modelos\DTOS\peliculas\DTO\ResponseAlquilerPeliculaDTO.class
 Pantallas\VentanaUsuario$4.class
@@ -77,8 +80,10 @@ Pantallas\VentanaLogin$2.class
 Modelos\DTOS\peliculas\DTO\UpdatePeliculaDTO.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$2.class
 Tablas\TablePeliculas.class
+Pantallas\VentanaAdmin$9.class
 Modelos\DTOS\peliculas\DTO\PeliculaDTO.class
 Modelos\DTOS\peliculas\DTO\RegisterPeliculaDTO.class
+Pantallas\VentanaUsuario$17.class
 Modelos\DTOS\ranking\DTO\RankingListDTO.class
 Pantallas\usuarios\VentanaGestionUsuarios$8.class
 Modelos\DTOS\usuarios\DTO\ResponseUserInfoDTO.class
@@ -132,6 +137,7 @@ Modelos\DTOS\usuarios\DTO\RegisterUserDTO.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$19.class
 Modelos\DTOS\peliculas\DTO\AlquilerUsuarioDTO.class
 Pantalla\alquiler\VentanaGestionAlquilerPeliculas$12.class
+Pantallas\VentanaAdmin$10.class
 Modelos\DTOS\usuarios\DTO\ResponseUpdateUserDTO.class
 Pantallas\VentanaUsuario$1.class
 Modelos\DTOS\peliculas\DTO\ValuePelicula.class
