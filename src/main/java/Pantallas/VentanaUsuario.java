@@ -2177,6 +2177,8 @@ public class VentanaUsuario extends javax.swing.JFrame {
         panelContraseña.setVisible(false);
         jPanelPeliculas.setVisible(false);
         jPanelAlquileres.setVisible(false);
+        jPanelFiltros.setVisible(false);
+        jPanelPeliculasFiltradas.setVisible(false);
         
         //********************************************
         // Creamos la URL
@@ -2283,6 +2285,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jPanelRanking.setVisible(false);
         //Abrimos el panel para seleccionar los filtros.
         jPanelFiltrosRanking.setVisible(true);
+        
+        jTextFieldTituloRanking.setText("");
+        jTextFieldDirectorRanking.setText("");
+        jTextFieldGeneroRanking.setText("");
+        jTextFieldAñoRanking.setText("");
 
     }//GEN-LAST:event_jButonFiltrosRankingActionPerformed
 
