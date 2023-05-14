@@ -149,6 +149,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jPanelAlquileres = new javax.swing.JPanel();
         jScrollPaneAlquileresUsuario = new javax.swing.JScrollPane();
         jTableAlquileresUsuario = new javax.swing.JTable();
+        jLabelAlquileres = new javax.swing.JLabel();
         jPanelPeliculas = new javax.swing.JPanel();
         jScrollPanePeliculas = new javax.swing.JScrollPane();
         jTablePeliculas = new javax.swing.JTable();
@@ -159,18 +160,20 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jPanelFiltros = new javax.swing.JPanel();
         jLabelFiltrosDeBusqueda = new javax.swing.JLabel();
         jLabelDescripcion = new javax.swing.JLabel();
+        jLabelDescripcion2 = new javax.swing.JLabel();
+        jLabelTitulo1 = new javax.swing.JLabel();
         jLabelDirector = new javax.swing.JLabel();
         jLabelGenero = new javax.swing.JLabel();
         jLabelAño = new javax.swing.JLabel();
         jLabelVecesAlquilada = new javax.swing.JLabel();
         jLabelOrden = new javax.swing.JLabel();
+        jTextFieldTitulo1 = new javax.swing.JTextField();
         jTextFieldDirector = new javax.swing.JTextField();
         jTextFieldGenero = new javax.swing.JTextField();
         jTextFieldAño = new javax.swing.JTextField();
         jTextFieldVecesAlquilada = new javax.swing.JTextField();
         jComboBoxFiltros = new javax.swing.JComboBox<>();
         jButtonFiltrar = new javax.swing.JButton();
-        jLabelDescripcion2 = new javax.swing.JLabel();
         buttonInicio1 = new javax.swing.JButton();
         jPanelPeliculasFiltradas = new javax.swing.JPanel();
         jScrollPanePeliculasFiltradas = new javax.swing.JScrollPane();
@@ -199,11 +202,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("USUARIO");
+        setPreferredSize(new java.awt.Dimension(800, 480));
         setResizable(false);
 
         jPanelUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jPanelUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jPanelUsuario.setPreferredSize(new java.awt.Dimension(800, 400));
+        jPanelUsuario.setPreferredSize(new java.awt.Dimension(800, 480));
 
         textLogo.setBackground(new java.awt.Color(255, 255, 255));
         textLogo.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
@@ -371,7 +375,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addGroup(panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelConfirmPassword)
                     .addComponent(jPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                 .addGroup(panelContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonModificarContraseña)
                     .addComponent(buttonInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -400,21 +404,32 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jTableAlquileresUsuario.setSelectionBackground(new java.awt.Color(102, 204, 255));
         jScrollPaneAlquileresUsuario.setViewportView(jTableAlquileresUsuario);
 
+        jLabelAlquileres.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        jLabelAlquileres.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelAlquileres.setText("Alquileres Usuario");
+
         javax.swing.GroupLayout jPanelAlquileresLayout = new javax.swing.GroupLayout(jPanelAlquileres);
         jPanelAlquileres.setLayout(jPanelAlquileresLayout);
         jPanelAlquileresLayout.setHorizontalGroup(
             jPanelAlquileresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAlquileresLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneAlquileresUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGroup(jPanelAlquileresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAlquileresLayout.createSequentialGroup()
+                        .addComponent(jScrollPaneAlquileresUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(67, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlquileresLayout.createSequentialGroup()
+                        .addComponent(jLabelAlquileres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(47, 47, 47))))
         );
         jPanelAlquileresLayout.setVerticalGroup(
             jPanelAlquileresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAlquileresLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneAlquileresUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                .addGap(49, 49, 49))
+                .addComponent(jLabelAlquileres)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneAlquileresUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
 
         jPanelPeliculas.setBackground(new java.awt.Color(255, 255, 255));
@@ -484,9 +499,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addComponent(jButtonSiguientePeliculas)
                 .addGap(51, 51, 51)
                 .addComponent(jButtonFiltros)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
             .addGroup(jPanelPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPanePeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE))
+                .addComponent(jScrollPanePeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE))
         );
         jPanelPeliculasLayout.setVerticalGroup(
             jPanelPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -515,6 +530,13 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabelDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelDescripcion.setText("Puedes filtrar la búsqueda rellenando uno de los campos.");
 
+        jLabelDescripcion2.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
+        jLabelDescripcion2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDescripcion2.setText("Y seleccionar el orden deseado.");
+
+        jLabelTitulo1.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabelTitulo1.setText("Titulo:");
+
         jLabelDirector.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabelDirector.setText("Director :");
 
@@ -529,6 +551,11 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
         jLabelOrden.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabelOrden.setText("Orden :");
+
+        jTextFieldTitulo1.setBackground(java.awt.SystemColor.control);
+        jTextFieldTitulo1.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jTextFieldTitulo1.setToolTipText("");
+        jTextFieldTitulo1.setBorder(null);
 
         jTextFieldDirector.setBackground(java.awt.SystemColor.control);
         jTextFieldDirector.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -566,10 +593,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabelDescripcion2.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
-        jLabelDescripcion2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDescripcion2.setText("Y seleccionar el orden deseado.");
-
         buttonInicio1.setBackground(new java.awt.Color(153, 204, 0));
         buttonInicio1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         buttonInicio1.setText("VOLVER");
@@ -588,10 +611,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
             jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelDescripcion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelFiltrosDeBusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                            .addComponent(jLabelFiltrosDeBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
                             .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
@@ -603,21 +628,24 @@ public class VentanaUsuario extends javax.swing.JFrame {
                                             .addComponent(jLabelOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addComponent(jLabelGenero, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabelDirector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                                .addComponent(jLabelAño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                .addComponent(jLabelDirector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabelAño, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jTextFieldAño)
                                             .addComponent(jComboBoxFiltros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextFieldGenero)
-                                            .addComponent(jTextFieldDirector)))
+                                            .addComponent(jTextFieldDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                                         .addComponent(jLabelVecesAlquilada, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextFieldVecesAlquilada, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelDescripcion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanelFiltrosLayout.createSequentialGroup()
+                                .addComponent(jLabelTitulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(116, 116, 116)))))
                 .addContainerGap())
         );
         jPanelFiltrosLayout.setVerticalGroup(
@@ -629,6 +657,10 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addComponent(jLabelDescripcion)
                 .addGap(4, 4, 4)
                 .addComponent(jLabelDescripcion2)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTitulo1)
+                    .addComponent(jTextFieldTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDirector)
@@ -767,7 +799,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addGap(201, 201, 201)
                 .addComponent(jButonFiltrosRanking)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPaneRanking, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+            .addComponent(jScrollPaneRanking, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
         );
         jPanelRankingLayout.setVerticalGroup(
             jPanelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -947,9 +979,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     .addContainerGap(30, Short.MAX_VALUE)))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
-                    .addContainerGap(204, Short.MAX_VALUE)
+                    .addContainerGap(202, Short.MAX_VALUE)
                     .addComponent(jPanelPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(31, Short.MAX_VALUE)))
+                    .addContainerGap()))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
                     .addContainerGap(228, Short.MAX_VALUE)
@@ -962,9 +994,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     .addGap(21, 21, 21)))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
-                    .addContainerGap(219, Short.MAX_VALUE)
+                    .addContainerGap(200, Short.MAX_VALUE)
                     .addComponent(jPanelRanking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                    .addGap(16, 16, 16)))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelUsuarioLayout.createSequentialGroup()
                     .addGap(199, 199, 199)
@@ -990,7 +1022,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                         .addComponent(listaPeliculas)
                         .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelUsuarioLayout.createSequentialGroup()
-                                .addGap(0, 218, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButtonCerrarSesion)
                                 .addGap(18, 18, 18))
                             .addGroup(jPanelUsuarioLayout.createSequentialGroup()
@@ -1012,12 +1044,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
                     .addGap(50, 50, 50)))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
-                    .addContainerGap(110, Short.MAX_VALUE)
+                    .addContainerGap(109, Short.MAX_VALUE)
                     .addComponent(jPanelPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(51, Short.MAX_VALUE)))
+                    .addContainerGap(132, Short.MAX_VALUE)))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
-                    .addContainerGap(103, Short.MAX_VALUE)
+                    .addContainerGap(45, Short.MAX_VALUE)
                     .addComponent(jPanelFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1029,7 +1061,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 .addGroup(jPanelUsuarioLayout.createSequentialGroup()
                     .addGap(68, 68, 68)
                     .addComponent(jPanelRanking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(68, Short.MAX_VALUE)))
+                    .addContainerGap(148, Short.MAX_VALUE)))
             .addGroup(jPanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuarioLayout.createSequentialGroup()
                     .addContainerGap(117, Short.MAX_VALUE)
@@ -1045,7 +1077,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1785,174 +1817,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonFiltrosActionPerformed
 
-    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-
-        /**
-         * Metodo para mostrar la lista de peliculas filtrada por los parametros de búsqueda.
-         *
-         * Esta es la primera tabla de peliculas filtradas que se muestra. pagina 0 ( 1 en pantalla.)
-         *
-         * @Author Carlos.
-         */
-        //cerramos los paneles que hubieran estado abiertos.
-        panelContraseña.setVisible(false);
-        jPanelAlquileres.setVisible(false);
-        jPanelFiltros.setVisible(false);
-        jPanelPeliculas.setVisible(false);
-        jPanelFiltrosRanking.setVisible(false);
-        jPanelRanking.setVisible(false);
-
-        //Variables de la url.
-        
-        String director;
-        String genero;
-        String año;
-        String vecesAlquilada;
-        parametros ="";
-        
-        // Leemos los campos seleccionados
-        // y creamos la cadena de parametros.
-        if (!jTextFieldDirector.getText().isEmpty()) {
-            director = jTextFieldDirector.getText().replace(" ", "%20");
-            parametros = parametros + "&director=" + director;
-        }
-
-        if (!jTextFieldGenero.getText().isEmpty()) {
-            genero = jTextFieldGenero.getText().replace(" ", "%20");
-            parametros = parametros + "&genero=" + genero;
-        }
-        if (!jTextFieldAño.getText().isEmpty()) {
-            año = jTextFieldAño.getText();
-            parametros = parametros + "&ano=" + año;
-        }
-        if (!jTextFieldVecesAlquilada.getText().isEmpty()) {
-            vecesAlquilada = jTextFieldVecesAlquilada.getText();
-            parametros = parametros + "&vecesAlquilada=" + vecesAlquilada;
-        }
-
-        //Leemos el orden que hemos seleccionado...
-        String orden = (String) jComboBoxFiltros.getSelectedItem();
-
-        //Asignamos el string parametro del orden.
-        orden = switch (orden) {
-            case "directorAsc" ->
-                "&orden=directorAsc";
-            case "directorDesc" ->
-                "&orden=directorDesc";
-            case "vecesAlquiladaAsc" ->
-                "&orden=vecesAlquiladaAsc";
-            case "vecesAlquiladaDesc" ->
-                "&orden=vecesAlquiladaDesc";
-            case "duracionAsc" ->
-                "&orden=duracionAsc";
-            case "duracionDesc" ->
-                "&orden=duracionDesc";
-            case "añoAsc" ->
-                "&orden=anoAsc";
-            case "añoDesc" ->
-                "&orden=anoDesc";
-            default ->
-                "";
-        };
-
-        //Terminamos de crear el string parametros de la url.
-        parametros = parametros + orden;
-
-        //Tabla peliculas filtradas.        
-        jPanelPeliculasFiltradas.setVisible(true);
-
-        // Creamos la URL
-        // Es una url con cuatro parametros en modo PATH.
-        StringBuilder resultado = new StringBuilder();
-        try {
-            
-            URL url = new URL(Constants.urlPeliculasPaginadas
-                    + "?page=" + paginaFiltro
-                    + "&pageSize=" + paginaSizeFiltro
-                    + "&token=" + Constants.token
-                    + parametros);
-            
-            // Creamos la conexion al servidor.
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            // Metodo GET
-            conn.setRequestMethod("GET");
-
-            // Abrimos un input Stream de datos del servidor
-            // y esperamos la respuesta del servidor.
-            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            // Leemos la respuesta del servidor.
-            // y contruimos el string 'resultado'
-            String linea;
-            while ((linea = rd.readLine()) != null) {
-                resultado.append(linea);
-            }
-            // Cerramos la conexion.
-            rd.close();
-        } catch (MalformedURLException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
-        // Creamos una instancia de Gson para convertir nuestro String a JSON
-        Gson gson = new Gson();
-
-        // Pasamos la respuesta a un String.
-        String responseJsonString = resultado.toString();
-
-        //*************************************************
-        // El array de objetos JSON lo convertimos en un array de objetos DTO.
-        // Lo transformamos gracias al objeto DTO creado para ello.
-        ResponsePeliculaListDTO responseJson = gson.fromJson(responseJsonString, ResponsePeliculaListDTO.class);
-        //*************************************************
-
-        paginasTotalesFiltro = responseJson.getValue().getTotalPages();
-        jLabelPaginaPeliculasFiltradas.setText(String.valueOf(paginaFiltro + 1) + " de " + paginasTotalesFiltro);
-
-        //Creamos una lista de objetos JSON
-        jsonArrayPeliculas = new JSONArray();
-        for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
-            JSONObject obj = new JSONObject();
-            obj.put("id", responseJson.getValue().getContent().get(i).getId());
-            obj.put("TITULO", responseJson.getValue().getContent().get(i).getTitulo());
-            obj.put("DIRECTOR", responseJson.getValue().getContent().get(i).getDirector());
-            obj.put("GENERO", responseJson.getValue().getContent().get(i).getGenero());
-            obj.put("DURACION", responseJson.getValue().getContent().get(i).getDuracion());
-            obj.put("AÑO", responseJson.getValue().getContent().get(i).getAño());
-            obj.put("PRECIO", responseJson.getValue().getContent().get(i).getPrecio());
-            obj.put("ALQUILERES", responseJson.getValue().getContent().get(i).getVecesAlquilada());
-            jsonArrayPeliculas.put(obj);
-        }
-
-        //Creamos un String[] de columnas
-        String[] columnNames = {"TITULO", "DIRECTOR", "GENERO", "AÑO", "DURACION", "PRECIO", "ALQUILERES"};
-
-        //Creamos el modelo de tabla
-        modelPeliculas = new TablePeliculas(jsonArrayPeliculas, columnNames);
-        //Asignamos el modelo a la tabla
-        jTablePeliculasFiltradas.setModel(modelPeliculas);
-        //Mostramos la tabla
-        //Añadimos color a la cabecera.
-        JTableHeader header = jTablePeliculasFiltradas.getTableHeader();
-        header.setBackground(Color.CYAN);
-        //Ponemos los datos numericos en el centro de la celda.
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setHorizontalAlignment(JLabel.CENTER);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(3).setCellRenderer(renderer);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(5).setCellRenderer(renderer);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(6).setCellRenderer(renderer);
-        //Asignamos el ancho de las columnas.
-        jTablePeliculasFiltradas.getColumnModel().getColumn(0).setPreferredWidth(110);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(1).setPreferredWidth(55);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(2).setPreferredWidth(55);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(3).setPreferredWidth(10);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(4).setPreferredWidth(30);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(5).setPreferredWidth(15);
-        jTablePeliculasFiltradas.getColumnModel().getColumn(6).setPreferredWidth(50);
-
-    }//GEN-LAST:event_jButtonFiltrarActionPerformed
-
     private void jButtonAnteriorPeliculasFiltradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorPeliculasFiltradasActionPerformed
        /**
          * Hago la consulta de tabla. Con la pagina anterior. Leo los datos en el DTO para ello. Paso los datos a la tabla.
@@ -2154,14 +2018,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
       
       }      
     }//GEN-LAST:event_jButtonSiguientePeliculasFiltradasActionPerformed
-
-    private void buttonInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicio1ActionPerformed
-        // Cerramos la ventana de registro.
-        // y volvemos a inicio.
-        this.dispose();
-        VentanaUsuario usuario = new VentanaUsuario();
-        usuario.setVisible(true);
-    }//GEN-LAST:event_buttonInicio1ActionPerformed
 
     private void rankingPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingPeliculasActionPerformed
         /**
@@ -2435,6 +2291,186 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jTextFieldAñoRanking.setText("");
     }//GEN-LAST:event_buttonVolver2ActionPerformed
 
+    private void buttonInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicio1ActionPerformed
+        // Cerramos la ventana de registro.
+        // y volvemos a inicio.
+        this.dispose();
+        VentanaUsuario usuario = new VentanaUsuario();
+        usuario.setVisible(true);
+    }//GEN-LAST:event_buttonInicio1ActionPerformed
+
+    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+
+        /**
+        * Metodo para mostrar la lista de peliculas filtrada por los parametros de búsqueda.
+        *
+        * Esta es la primera tabla de peliculas filtradas que se muestra. pagina 0 ( 1 en pantalla.)
+        *
+        * @Author Carlos.
+        */
+        //cerramos los paneles que hubieran estado abiertos.
+        panelContraseña.setVisible(false);
+        jPanelAlquileres.setVisible(false);
+        jPanelFiltros.setVisible(false);
+        jPanelPeliculas.setVisible(false);
+        jPanelFiltrosRanking.setVisible(false);
+        jPanelRanking.setVisible(false);
+
+        //Variables de la url.
+        String titulo;
+        String director;
+        String genero;
+        String año;
+        String vecesAlquilada;
+        parametros ="";
+
+        // Leemos los campos seleccionados
+        // y creamos la cadena de parametros.
+        if (!jTextFieldTitulo1.getText().isEmpty()) {
+            titulo = jTextFieldTitulo1.getText().replace(" ", "%20");
+            parametros = parametros + "&titulo=" + titulo;
+        }
+         
+        if (!jTextFieldDirector.getText().isEmpty()) {
+            director = jTextFieldDirector.getText().replace(" ", "%20");
+            parametros = parametros + "&director=" + director;
+        }
+
+        if (!jTextFieldGenero.getText().isEmpty()) {
+            genero = jTextFieldGenero.getText().replace(" ", "%20");
+            parametros = parametros + "&genero=" + genero;
+        }
+        if (!jTextFieldAño.getText().isEmpty()) {
+            año = jTextFieldAño.getText();
+            parametros = parametros + "&ano=" + año;
+        }
+        if (!jTextFieldVecesAlquilada.getText().isEmpty()) {
+            vecesAlquilada = jTextFieldVecesAlquilada.getText();
+            parametros = parametros + "&vecesAlquilada=" + vecesAlquilada;
+        }
+
+        //Leemos el orden que hemos seleccionado...
+        String orden = (String) jComboBoxFiltros.getSelectedItem();
+
+        //Asignamos el string parametro del orden.
+        orden = switch (orden) {
+            case "directorAsc" ->
+            "&orden=directorAsc";
+            case "directorDesc" ->
+            "&orden=directorDesc";
+            case "vecesAlquiladaAsc" ->
+            "&orden=vecesAlquiladaAsc";
+            case "vecesAlquiladaDesc" ->
+            "&orden=vecesAlquiladaDesc";
+            case "duracionAsc" ->
+            "&orden=duracionAsc";
+            case "duracionDesc" ->
+            "&orden=duracionDesc";
+            case "añoAsc" ->
+            "&orden=anoAsc";
+            case "añoDesc" ->
+            "&orden=anoDesc";
+            default ->
+            "";
+        };
+
+        //Terminamos de crear el string parametros de la url.
+        parametros = parametros + orden;
+
+        //Tabla peliculas filtradas.
+        jPanelPeliculasFiltradas.setVisible(true);
+
+        // Creamos la URL
+        // Es una url con cuatro parametros en modo PATH.
+        StringBuilder resultado = new StringBuilder();
+        try {
+
+            URL url = new URL(Constants.urlPeliculasPaginadas
+                + "?page=" + paginaFiltro
+                + "&pageSize=" + paginaSizeFiltro
+                + "&token=" + Constants.token
+                + parametros);
+
+            // Creamos la conexion al servidor.
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            // Metodo GET
+            conn.setRequestMethod("GET");
+
+            // Abrimos un input Stream de datos del servidor
+            // y esperamos la respuesta del servidor.
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            // Leemos la respuesta del servidor.
+            // y contruimos el string 'resultado'
+            String linea;
+            while ((linea = rd.readLine()) != null) {
+                resultado.append(linea);
+            }
+            // Cerramos la conexion.
+            rd.close();
+        } catch (MalformedURLException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        // Creamos una instancia de Gson para convertir nuestro String a JSON
+        Gson gson = new Gson();
+
+        // Pasamos la respuesta a un String.
+        String responseJsonString = resultado.toString();
+
+        //*************************************************
+        // El array de objetos JSON lo convertimos en un array de objetos DTO.
+        // Lo transformamos gracias al objeto DTO creado para ello.
+        ResponsePeliculaListDTO responseJson = gson.fromJson(responseJsonString, ResponsePeliculaListDTO.class);
+        //*************************************************
+
+        paginasTotalesFiltro = responseJson.getValue().getTotalPages();
+        jLabelPaginaPeliculasFiltradas.setText(String.valueOf(paginaFiltro + 1) + " de " + paginasTotalesFiltro);
+
+        //Creamos una lista de objetos JSON
+        jsonArrayPeliculas = new JSONArray();
+        for (int i = 0; i < responseJson.getValue().getContent().size(); i++) {
+            JSONObject obj = new JSONObject();
+            obj.put("id", responseJson.getValue().getContent().get(i).getId());
+            obj.put("TITULO", responseJson.getValue().getContent().get(i).getTitulo());
+            obj.put("DIRECTOR", responseJson.getValue().getContent().get(i).getDirector());
+            obj.put("GENERO", responseJson.getValue().getContent().get(i).getGenero());
+            obj.put("DURACION", responseJson.getValue().getContent().get(i).getDuracion());
+            obj.put("AÑO", responseJson.getValue().getContent().get(i).getAño());
+            obj.put("PRECIO", responseJson.getValue().getContent().get(i).getPrecio());
+            obj.put("ALQUILERES", responseJson.getValue().getContent().get(i).getVecesAlquilada());
+            jsonArrayPeliculas.put(obj);
+        }
+
+        //Creamos un String[] de columnas
+        String[] columnNames = {"TITULO", "DIRECTOR", "GENERO", "AÑO", "DURACION", "PRECIO", "ALQUILERES"};
+
+        //Creamos el modelo de tabla
+        modelPeliculas = new TablePeliculas(jsonArrayPeliculas, columnNames);
+        //Asignamos el modelo a la tabla
+        jTablePeliculasFiltradas.setModel(modelPeliculas);
+        //Mostramos la tabla
+        //Añadimos color a la cabecera.
+        JTableHeader header = jTablePeliculasFiltradas.getTableHeader();
+        header.setBackground(Color.CYAN);
+        //Ponemos los datos numericos en el centro de la celda.
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(JLabel.CENTER);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(3).setCellRenderer(renderer);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(4).setCellRenderer(renderer);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(5).setCellRenderer(renderer);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(6).setCellRenderer(renderer);
+        //Asignamos el ancho de las columnas.
+        jTablePeliculasFiltradas.getColumnModel().getColumn(0).setPreferredWidth(110);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(1).setPreferredWidth(55);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(2).setPreferredWidth(55);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(3).setPreferredWidth(10);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(4).setPreferredWidth(30);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(5).setPreferredWidth(15);
+        jTablePeliculasFiltradas.getColumnModel().getColumn(6).setPreferredWidth(50);
+    }//GEN-LAST:event_jButtonFiltrarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alquilarPelicula;
     private javax.swing.JButton buttonInicio;
@@ -2453,6 +2489,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSiguientePeliculasFiltradas;
     private javax.swing.JComboBox<String> jComboBoxFiltros;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelAlquileres;
     private javax.swing.JLabel jLabelAño;
     private javax.swing.JLabel jLabelAño1;
     private javax.swing.JLabel jLabelConfirmPassword;
@@ -2471,6 +2508,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelRanking;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JLabel jLabelTitulo1;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JLabel jLabelVecesAlquilada;
     private javax.swing.JPanel jPanelAlquileres;
@@ -2497,6 +2535,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldGenero;
     private javax.swing.JTextField jTextFieldGeneroRanking;
     private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldTitulo1;
     private javax.swing.JTextField jTextFieldTituloRanking;
     private javax.swing.JTextField jTextFieldVecesAlquilada;
     private javax.swing.JButton listaAlquileresUsuario;
